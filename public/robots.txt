@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /user/resetPassword
+Disallow:/coaching-tickets
+Sitemap: https://playoffz.in/sitemap.xml
