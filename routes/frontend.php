@@ -39,8 +39,6 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     Route::get('/filter-spiritual-volunteers',[BookController::class,'spritualVolunteer']);
 
 
-    Route::get('/devansh', [HomeController::class, 'index'])->name('home');
-
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('pages/{title}', [HomeController::class, 'pagesData'])->name('pagesData');
 
