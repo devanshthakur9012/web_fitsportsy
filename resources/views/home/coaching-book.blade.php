@@ -1236,6 +1236,7 @@
     });
 </script>
 <!-- JavaScript for Animated & Stacked Progress -->
+    @if(isset($collection) && is_array($collection) && count($collection) > 0 && !empty($collection['schedule']))
     <script>
         document.addEventListener("DOMContentLoaded", function () {
         let activities = @json($collection['schedule']);
@@ -1290,4 +1291,5 @@
         updateProgress(); // Start progress animation
     });
     </script>
+    @endif
 @endpush
