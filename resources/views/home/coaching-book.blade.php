@@ -780,23 +780,52 @@
                     <h4 class="mb-1 highlighter">About Tournament</h4>
                     <div class="fs-3 grayText">{!! stripslashes($tournament_detail['event_about']) !!}</div>
                 </div>
-                {{-- <div class="bgFilter text-white"> 
-                    <h4 class="mb-1 highlighter">Rules & Regulations</h4>
-                    <div class="fs-3 grayText">{!! stripslashes($tournament_detail['event_disclaimer']) !!}</div>
-                </div> --}}
-                @if(!empty($tournament_detail['prize_reward']))
+                @if(!empty($tournament_detail['session_overview']))
                     @php 
-                        $collection = json_decode($tournament_detail['prize_reward'], true) ?? []; 
+                        $collection = json_decode($tournament_detail['session_overview'], true) ?? []; 
                     @endphp
-                    @if(is_array($collection) && count($collection) > 0 && !empty($collection[0]))
-                        <div class="bgFilter text-white">
-                            <h4 class="highlighter mb-1">Overview of Session</h4>
-                            @foreach ($collection as $item)
-                                <div class="fs-3 grayText">🏆 {!! mb_convert_encoding($item, 'UTF-8', 'auto') !!}</div>
-                            @endforeach
+
+                    @if(is_array($collection) && count($collection) > 0 && !empty($collection['schedule']))
+                        <div class="mt-2">
+                            <h4 class="mb-1 highlighter">Overview of Session</h4>
+
+                            <!-- Duration & Calories -->
+                            <div class="d-flex justify-content-between mb-1 mt-2">
+                                <h6 class="mb-0">⏳ Duration: <span class="fw-bold">{{ $collection['duration'] }}</span></h6>
+                                <h6 class="mb-0">🔥 Calories: <span class="fw-bold">{{ $collection['calories'] }} kcal</span></h6>
+                            </div>
+
+                            <!-- Single Animated Progress Bar -->
+                            <div id="animatedProgressContainer">
+                                <small class="fw-bold text-muted">Progress</small>
+                                <div class="progress">
+                                    <div id="activityProgressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                                        role="progressbar" 
+                                        style="width: 0%;" 
+                                        aria-valuenow="0" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Final Stacked Progress Bar (Hidden Initially) -->
+                            <div id="stackedProgressContainer" style="display: none;">
+                                <small class="fw-bold text-muted">Session Breakdown</small>
+                                <div class="progress" id="stackedProgress"></div>
+                            </div>
+
+                            <!-- Benefits Section -->
+                            <h6 class="mb-2 mt-3"><i class="⏳"></i> Benefits</h6>
+                            <div class="d-flex flex-wrap">
+                                @foreach ($collection['benefits'] as $benefit)
+                                    <span class="badge badge-primary rounded-pill text-white m-1 px-3 py-2">{{ $benefit }}</span>
+                                @endforeach
+                            </div>
                         </div>
                     @endif
                 @endif
+
                 @if(count($tournament_Artist))
                 <div class="text-white bgFilter2"> 
                     <h4 class="highlighter">Coaching Organizing Team & Coach</h4>
@@ -1206,5 +1235,59 @@
         window.open(whatsappURL, '_blank');
     });
 </script>
+<!-- JavaScript for Animated & Stacked Progress -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        let activities = @json($collection['schedule']);
+        let progressBar = document.getElementById("activityProgressBar");
+        let animatedProgressContainer = document.getElementById("animatedProgressContainer");
+        let stackedProgressContainer = document.getElementById("stackedProgressContainer");
+        let stackedProgress = document.getElementById("stackedProgress");
 
+        let colors = ["bg-primary", "bg-success", "bg-warning", "bg-danger", "bg-info"];
+        let totalActivities = activities.length;
+        let currentIndex = 0;
+        let progress = 0;
+        let stackedHtml = "";
+
+        function updateProgress() {
+            if (currentIndex < totalActivities) {
+                let percentage = Math.round(100 / totalActivities);
+                progress += percentage;
+                progressBar.style.width = progress + "%";
+                progressBar.textContent = activities[currentIndex].activity; // Show name inside bar
+
+                // Smooth transition effect
+                progressBar.style.transition = "width 1.5s ease-in-out";
+
+                // Change color dynamically
+                progressBar.className = "progress-bar progress-bar-striped progress-bar-animated " + colors[currentIndex % colors.length];
+
+                // Store for final stacked progress (without text)
+                stackedHtml += `<div class="progress-bar ${colors[currentIndex % colors.length]}" role="progressbar" style="width: ${percentage}%" 
+                                aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="top" title="${activities[currentIndex].activity}">
+                            </div>`;
+
+                currentIndex++;
+                setTimeout(updateProgress, 2000); // Change activity every 2 seconds
+            } else {
+                // After last step, replace single progress with stacked (without text)
+                setTimeout(() => {
+                    animatedProgressContainer.style.display = "none";
+                    stackedProgressContainer.style.display = "block";
+                    stackedProgress.innerHTML = stackedHtml;
+
+                    // **Reinitialize Bootstrap Tooltip for New Elements**
+                    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                        new bootstrap.Tooltip(tooltipTriggerEl);
+                    });
+
+                }, 2000);
+            }
+        }
+
+        updateProgress(); // Start progress animation
+    });
+    </script>
 @endpush
