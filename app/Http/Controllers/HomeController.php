@@ -1204,4 +1204,76 @@ class HomeController extends Controller
         // dd($data['userData']);
         return view('home.booked-coaching-package-details', $data);
     }
+
+    // MY ATTENDECE 
+    public function myAttendence(){
+        $user = Common::userId();
+        
+        if (empty($user)) {
+            return redirect()->route('home')->with('error', 'Please login to continue!');
+        }
+    
+        $myActivity = $this->myAttendenceApi($user);
+        $data['events'] = $myActivity['Events'] ?? [];
+        $data['attendance'] = $myActivity['AttendanceList'] ?? [];
+        $data['defaultEvent'] = $myActivity['DefaultEvent'] ?? [];
+        return view('frontend.my-attendence', $data);
+    }
+    
+    private function myAttendenceApi($user,$event_id = null, $month = null, $year = null){
+        try {
+            $client = new Client();
+    
+            $data = ["user_id" => $user];
+            // Add filters only if they are provided
+            if (!empty($event_id)) {
+                $data["event_id"] = $event_id;
+            }
+            if (!empty($month)) {
+                $data["month"] = $month;
+            }
+            if (!empty($year)) {
+                $data["year"] = $year;
+            }
+    
+            $baseUrl = env('BACKEND_BASE_URL');
+            $response = $client->post("{$baseUrl}/web_api/u_attendance_list.php", [
+                'json' => $data,
+            ]);
+    
+            $responseData = json_decode($response->getBody(), true);
+    
+            if ($responseData['Result'] == true || $responseData['Result'] == "true") {
+                return $responseData;
+            }
+            return [];
+        } catch (\Throwable $th) {
+            return [];
+        }
+    }    
+
+    public function fetchAttendanceData(Request $request){
+        $user = Common::userId();
+    
+        if (empty($user)) {
+            return response()->json(['error' => 'Unauthorized access'], 403);
+        }
+    
+        // Get filter values
+        $event_id = $request->input('event_id', 0);
+        $date_filter = $request->input('date_filter', date('Y-m'));
+        list($year, $month) = explode('-', $date_filter);
+    
+        // Fetch attendance data with filters
+        $responseData = $this->myAttendenceApi($user, $event_id, $month, $year);
+        $data['events'] = $responseData['Events'] ?? [];
+        $data['attendance'] = $responseData['AttendanceList'] ?? [];
+        $data['defaultEvent'] = $responseData['DefaultEvent'] ?? [];
+        // Return the HTML content
+        $html = view('frontend.attendance-ajax', $data)->render();
+    
+        return response()->json(['html' => $html]);
+    }
+    
+
 }

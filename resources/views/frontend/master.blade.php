@@ -167,6 +167,10 @@
                                             <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
                                             My Activity
                                         </a>
+                                        <a class="dropdown-item" href="{{route('my-attendence')}}">
+                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
+                                            My Attendence
+                                        </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item text-danger" href="{{ url('logout-user') }}">
                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>

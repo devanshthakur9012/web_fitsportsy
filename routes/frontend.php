@@ -206,6 +206,8 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     Route::post('update-play',[HomeController::class,'updatePlay'])->name('update-play');
     Route::get('update-join-status', [HomeController::class, 'updateJoinStatus'])->name('update-join-status');
 
+    Route::get('my-attendence', [HomeController::class, 'myAttendence'])->name('my-attendence');
+    Route::get('/attendence-data', [HomeController::class, 'fetchAttendanceData'])->name('attendence-data.ajax');
 
 
     Route::group(['middleware'=>'appuser'],function(){
