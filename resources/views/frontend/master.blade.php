@@ -168,7 +168,7 @@
                                             My Activity
                                         </a>
                                         <a class="dropdown-item" href="{{route('my-attendence')}}">
-                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
+                                            <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-600"></i>
                                             My Attendence
                                         </a>
                                         <div class="dropdown-divider"></div>
