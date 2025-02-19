@@ -1,23 +1,23 @@
 @extends('frontend.master', ['activePage' => 'home'])
 @section('title', __('Discover Sports coachings in Bangalore'))
 @section('og_data')
-    <meta name="title" content="Discover Sports coachings in Bangalore | PlayOffz" />
-    <meta name="description" content="Find cricket, tennis, and badminton coachings in Bangalore, Chennai, and Hyderabad. Book top courts and play sports with ease on PlayOffz!" />
-    <meta name="keywords" content="playoffz tournament bangalore, cricket tournament in chennai, tennis tournament chennai, tennis coachings in bangalore, badminton court in chennai, badminton courts bangalore, badminton courts hyderabad, play tournament in bangalore, play tournament in chennai, play tennis in bangalore" />
+    <meta name="title" content="Discover Sports coachings in Bangalore | fitsportsy" />
+    <meta name="description" content="Find cricket, tennis, and badminton coachings in Bangalore, Chennai, and Hyderabad. Book top courts and play sports with ease on fitsportsy!" />
+    <meta name="keywords" content="fitsportsy tournament bangalore, cricket tournament in chennai, tennis tournament chennai, tennis coachings in bangalore, badminton court in chennai, badminton courts bangalore, badminton courts hyderabad, play tournament in bangalore, play tournament in chennai, play tennis in bangalore" />
 
-    <meta property="og:title" content=Discover Sports coachings in Bangalore | PlayOffz>
-    <meta property="og:site_name" content=Playoffz>
-    <meta property="og:url" content=https://www.playoffz.in/>
-    <meta property="og:description" content=Find cricket, tennis, and badminton coachings in Bangalore, Chennai, and Hyderabad. Book top courts and play sports with ease on PlayOffz!>
+    <meta property="og:title" content=Discover Sports coachings in Bangalore | fitsportsy>
+    <meta property="og:site_name" content=fitsportsy>
+    <meta property="og:url" content=https://www.fitsportsy.in/>
+    <meta property="og:description" content=Find cricket, tennis, and badminton coachings in Bangalore, Chennai, and Hyderabad. Book top courts and play sports with ease on fitsportsy!>
     <meta property="og:type" content=business.business>
-    <meta property="og:image" content=https://app.playoffz.in/images/event/1734716694.png><meta property="og:image" content=https://app.playoffz.in/images/event/1734716783.png><meta property="og:image" content=https://app.playoffz.in/images/event/1734716795.png><meta property="og:image" content=https://app.playoffz.in/images/event/1734716807.png><meta property="og:image" content=https://app.playoffz.in/images/event/1734716818.png>
+    <meta property="og:image" content=https://app.fitsportsy.in/images/event/1734716694.png><meta property="og:image" content=https://app.fitsportsy.in/images/event/1734716783.png><meta property="og:image" content=https://app.fitsportsy.in/images/event/1734716795.png><meta property="og:image" content=https://app.fitsportsy.in/images/event/1734716807.png><meta property="og:image" content=https://app.fitsportsy.in/images/event/1734716818.png>
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Discover Sports coachings in Bangalore | PlayOffz">
-    <meta name="twitter:site" content="@playoffz">
-    <meta name="twitter:description" content="Find cricket, tennis, and badminton coachings in Bangalore, Chennai, and Hyderabad. Book top courts and play sports with ease on PlayOffz!">
-    <meta name="twitter:image" content="https://app.playoffz.in/images/event/1734716738.png">
-    <meta name="twitter:image:alt" content="playoffz coachings ">
+    <meta name="twitter:title" content="Discover Sports coachings in Bangalore | fitsportsy">
+    <meta name="twitter:site" content="@fitsportsy">
+    <meta name="twitter:description" content="Find cricket, tennis, and badminton coachings in Bangalore, Chennai, and Hyderabad. Book top courts and play sports with ease on fitsportsy!">
+    <meta name="twitter:image" content="https://app.fitsportsy.in/images/event/1734716738.png">
+    <meta name="twitter:image:alt" content="fitsportsy coachings ">
 
 @endsection
 @section('content')
@@ -521,192 +521,192 @@
         "@type": "ListItem", 
         "position": 1, 
         "name": "Home page",
-        "item": "https://playoffz.in/"  
+        "item": "https://fitsportsy.in/"  
       },{
         "@type": "ListItem", 
         "position": 2, 
         "name": "Coaching in bangalore",
-        "item": "https://playoffz.in/coachings-in-bengaluru"  
+        "item": "https://fitsportsy.in/coachings-in-bengaluru"  
       },{
         "@type": "ListItem", 
         "position": 3, 
         "name": "Coaching in Ahmedabaad",
-        "item": "https://playoffz.in/coachings-in-ahmedabad"  
+        "item": "https://fitsportsy.in/coachings-in-ahmedabad"  
       },{
         "@type": "ListItem", 
         "position": 4, 
         "name": "coaching in bealgavi",
-        "item": "https://playoffz.in/coachings-in-belagavi"  
+        "item": "https://fitsportsy.in/coachings-in-belagavi"  
       },{
         "@type": "ListItem", 
         "position": 5, 
         "name": "coaching in chandigarh",
-        "item": "https://playoffz.in/coachings-in-chandigarh"  
+        "item": "https://fitsportsy.in/coachings-in-chandigarh"  
       },{
         "@type": "ListItem", 
         "position": 6, 
         "name": "coaching in chennai",
-        "item": "https://playoffz.in/coachings-in-chennai"  
+        "item": "https://fitsportsy.in/coachings-in-chennai"  
       },{
         "@type": "ListItem", 
         "position": 7, 
         "name": "coaching in coimbatore",
-        "item": "https://playoffz.in/coachings-in-coimbatore"  
+        "item": "https://fitsportsy.in/coachings-in-coimbatore"  
       },{
         "@type": "ListItem", 
         "position": 8, 
         "name": "coaching in delhi",
-        "item": "https://playoffz.in/coachings-in-delhi"  
+        "item": "https://fitsportsy.in/coachings-in-delhi"  
       },{
         "@type": "ListItem", 
         "position": 9, 
         "name": "coaching in Goa",
-        "item": "https://playoffz.in/coachings-in-goa"  
+        "item": "https://fitsportsy.in/coachings-in-goa"  
       },{
         "@type": "ListItem", 
         "position": 10, 
         "name": "coaching in Gurugram",
-        "item": "https://playoffz.in/coachings-in-gurugram"  
+        "item": "https://fitsportsy.in/coachings-in-gurugram"  
       },{
         "@type": "ListItem", 
         "position": 11, 
         "name": "coaching in Hyderabaad",
-        "item": "https://playoffz.in/coachings-in-hyderabad"  
+        "item": "https://fitsportsy.in/coachings-in-hyderabad"  
       },{
         "@type": "ListItem", 
         "position": 12, 
         "name": "coaching in Jaipur",
-        "item": "https://playoffz.in/coachings-in-jaipur"  
+        "item": "https://fitsportsy.in/coachings-in-jaipur"  
       },{
         "@type": "ListItem", 
         "position": 13, 
         "name": "coaching in Kochi",
-        "item": "https://playoffz.in/coachings-in-kochi"  
+        "item": "https://fitsportsy.in/coachings-in-kochi"  
       },{
         "@type": "ListItem", 
         "position": 14, 
         "name": "coaching in Kolkata",
-        "item": "https://playoffz.in/coachings-in-kolkata"  
+        "item": "https://fitsportsy.in/coachings-in-kolkata"  
       },{
         "@type": "ListItem", 
         "position": 15, 
         "name": "coaching in Lucknow",
-        "item": "https://playoffz.in/coachings-in-lucknow"  
+        "item": "https://fitsportsy.in/coachings-in-lucknow"  
       },{
         "@type": "ListItem", 
         "position": 16, 
         "name": "coaching in Madurai",
-        "item": "https://playoffz.in/coachings-in-madurai"  
+        "item": "https://fitsportsy.in/coachings-in-madurai"  
       },{
         "@type": "ListItem", 
         "position": 17, 
         "name": "coaching in Mumbai",
-        "item": "https://playoffz.in/coachings-in-madurai"  
+        "item": "https://fitsportsy.in/coachings-in-madurai"  
       },{
         "@type": "ListItem", 
         "position": 18, 
         "name": "coaching in Mysuru",
-        "item": "https://playoffz.in/coachings-in-mysuru"  
+        "item": "https://fitsportsy.in/coachings-in-mysuru"  
       },{
         "@type": "ListItem", 
         "position": 19, 
         "name": "coaching in Nagpur",
-        "item": "https://playoffz.in/coachings-in-nagpur"  
+        "item": "https://fitsportsy.in/coachings-in-nagpur"  
       },{
         "@type": "ListItem", 
         "position": 20, 
         "name": "coaching in Pondicherry",
-        "item": "https://playoffz.in/coachings-in-pondicherry"  
+        "item": "https://fitsportsy.in/coachings-in-pondicherry"  
       },{
         "@type": "ListItem", 
         "position": 21, 
         "name": "coaching in Pune",
-        "item": "https://playoffz.in/coachings-in-pune"  
+        "item": "https://fitsportsy.in/coachings-in-pune"  
       },{
         "@type": "ListItem", 
         "position": 22, 
         "name": "coaching in Salem",
-        "item": "https://playoffz.in/coachings-in-salem"  
+        "item": "https://fitsportsy.in/coachings-in-salem"  
       },{
         "@type": "ListItem", 
         "position": 23, 
         "name": "coaching in thanjavur",
-        "item": "https://playoffz.in/coachings-in-thanjavur"  
+        "item": "https://fitsportsy.in/coachings-in-thanjavur"  
       },{
         "@type": "ListItem", 
         "position": 24, 
         "name": "coaching in tiruchirappalli",
-        "item": "https://playoffz.in/coachings-in-tiruchirappalli"  
+        "item": "https://fitsportsy.in/coachings-in-tiruchirappalli"  
       },{
         "@type": "ListItem", 
         "position": 25, 
         "name": "coaching in Tiruppur",
-        "item": "https://playoffz.in/coachings-in-tiruppur"  
+        "item": "https://fitsportsy.in/coachings-in-tiruppur"  
       },{
         "@type": "ListItem", 
         "position": 26, 
         "name": "coaching in vellore",
-        "item": "https://playoffz.in/coachings-in-vellore"  
+        "item": "https://fitsportsy.in/coachings-in-vellore"  
       },{
         "@type": "ListItem", 
         "position": 27, 
         "name": "coaching in Vijayawada",
-        "item": "https://playoffz.in/coachings-in-vijayawada"  
+        "item": "https://fitsportsy.in/coachings-in-vijayawada"  
       },{
         "@type": "ListItem", 
         "position": 28, 
         "name": "coaching in visakhapatnam",
-        "item": "https://playoffz.in/coachings-in-visakhapatnam"  
+        "item": "https://fitsportsy.in/coachings-in-visakhapatnam"  
       },{
         "@type": "ListItem", 
         "position": 29, 
         "name": "Badminton",
-        "item": "https://playoffz.in/badminton-coaching"  
+        "item": "https://fitsportsy.in/badminton-coaching"  
       },{
         "@type": "ListItem", 
         "position": 30, 
         "name": "cricket",
-        "item": "https://playoffz.in/cricket-coaching"  
+        "item": "https://fitsportsy.in/cricket-coaching"  
       },{
         "@type": "ListItem", 
         "position": 31, 
         "name": "Skating",
-        "item": "https://playoffz.in/skating-coaching"  
+        "item": "https://fitsportsy.in/skating-coaching"  
       },{
         "@type": "ListItem", 
         "position": 32, 
         "name": "Chess",
-        "item": "https://playoffz.in/chess-coaching"  
+        "item": "https://fitsportsy.in/chess-coaching"  
       },{
         "@type": "ListItem", 
         "position": 33, 
         "name": "Football",
-        "item": "https://playoffz.in/football-coaching"  
+        "item": "https://fitsportsy.in/football-coaching"  
       },{
         "@type": "ListItem", 
         "position": 34, 
         "name": "Swimming",
-        "item": "https://playoffz.in/swimming-coaching"  
+        "item": "https://fitsportsy.in/swimming-coaching"  
       },{
         "@type": "ListItem", 
         "position": 35, 
         "name": "Tennis",
-        "item": "https://playoffz.in/tennis-coaching"  
+        "item": "https://fitsportsy.in/tennis-coaching"  
       },{
         "@type": "ListItem", 
         "position": 36, 
         "name": "Volleyball",
-        "item": "https://playoffz.in/tennis-coaching"  
+        "item": "https://fitsportsy.in/tennis-coaching"  
       },{
         "@type": "ListItem", 
         "position": 37, 
         "name": "Running",
-        "item": "https://playoffz.in/running-coaching"  
+        "item": "https://fitsportsy.in/running-coaching"  
       },{
         "@type": "ListItem", 
         "position": 38, 
         "name": "Pickleball",
-        "item": "https://playoffz.in/pickleball-coaching"  
+        "item": "https://fitsportsy.in/pickleball-coaching"  
       }]
     }
     </script>
@@ -716,9 +716,9 @@
     {
       "@context": "https://schema.org",
       "@type": "SportsOrganization",
-      "name": "PlayOffz",
-      "url": "https://playoffz.in/",
-      "logo": "https://app.playoffz.in/images/website/1734759709.png",
+      "name": "fitsportsy",
+      "url": "https://fitsportsy.in/",
+      "logo": "https://app.fitsportsy.in/images/website/1734759709.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+919686314018",
@@ -728,8 +728,8 @@
         "availableLanguage": ["en","Hindi"]
       },
       "sameAs": [
-        "https://www.facebook.com/PlayOffzOfficial",
-        "https://www.instagram.com/playoffzofficial/",
+        "https://www.facebook.com/fitsportsyOfficial",
+        "https://www.instagram.com/fitsportsyofficial/",
         "https://www.linkedin.com/company/105291760/admin/dashboard/"
       ]
     }
@@ -739,10 +739,10 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Playoffz",
-      "image": "https://app.playoffz.in/images/website/1734759709.png",
+      "name": "fitsportsy",
+      "image": "https://app.fitsportsy.in/images/website/1734759709.png",
       "@id": "",
-      "url": "https://www.playoffz.in/",
+      "url": "https://www.fitsportsy.in/",
       "telephone": "+919686314018",
       "address": {
         "@type": "PostalAddress",
@@ -766,8 +766,8 @@
         "closes": "23:59"
       },
       "sameAs": [
-        "https://www.instagram.com/playoffzofficial/",
-        "https://www.facebook.com/PlayOffzOfficial",
+        "https://www.instagram.com/fitsportsyofficial/",
+        "https://www.facebook.com/fitsportsyOfficial",
         "https://www.linkedin.com/company/105291760/admin/dashboard/"
       ] 
     }

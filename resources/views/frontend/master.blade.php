@@ -12,7 +12,7 @@
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
     <link rel="manifest" href="{{ asset('/organizer_manifest.json') }}">
     <link
-        href="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['favicon'] : "https://app.playoffz.in/images/favicon.png" }}"
+        href="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['favicon'] : "https://app.fitsportsy.in/images/favicon.png" }}"
         rel="icon" type="image/png">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>{{ $favicon['app_name'] }} | @yield('title')</title>
@@ -71,8 +71,8 @@
             <div class="container">
                 <div class="d-flex justify-content-between w-100 align-items-center">
                     <a class="navbar-brand" href="/"><img
-                            src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.playoffz.in/images/website/1733339125.png" }}"
-                            class="img-fluid" alt="Playoffz"></a>
+                            src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.fitsportsy.in/images/website/1733339125.png" }}"
+                            class="img-fluid" alt="fitsportsy"></a>
                     <div class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 ml-3 navbar-search">
                         <div class="input-group searchinput">
                             <input type="text" class="form-control border-0 small head-search-box"
@@ -259,9 +259,9 @@
                 <div class="col-sm-6 col-md-4 mt-4 col-lg-4 col-6 ">
                     <div class="resources">
                         <h6 class="footer-heading text-uppercase text-white fw-bold">About Us</h6>
-                        <p>PlayOffz is the ultimate platform for sports enthusiasts, connecting players to exciting
+                        <p>fitsportsy is the ultimate platform for sports enthusiasts, connecting players to exciting
                             coaching nearby. Easily book packages online and stay updated with match schedules,
-                            fixtures, live scoring, and results. For organizers, PlayOffz offers seamless tools to
+                            fixtures, live scoring, and results. For organizers, fitsportsy offers seamless tools to
                             manage and promote coaching effortlessly. Join us to elevate your sports experience!</p>
                     </div>
                 </div>

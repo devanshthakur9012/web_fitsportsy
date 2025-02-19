@@ -697,8 +697,7 @@
                 <div class="dark-gap text-white" style="margin-bottom: 0;">
                     <p class="dark-gap">Sport Catgeory : {{$tournament_detail['category']}}</p>
                     <div class="row">
-                        <div class="col-lg-6 mbsm">
-                            {{-- Timing --}}
+                        {{-- <div class="col-lg-6 mbsm">
                             <div class="d-flex align-items-center">
                                 <div class="icon_box calendar_icon">
                                     <i class="far fa-calendar-alt"></i>
@@ -708,7 +707,7 @@
                                     <small class="text_muted">{{ $tournament_detail['event_time_day'] }}</small>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-6">
                             {{-- Tickets --}}
                             <div class="d-flex align-items-center ">
@@ -777,7 +776,7 @@
                     </div>
                 </div>
                 <div class="text-white bgFilter"> 
-                    <h4 class="mb-1 highlighter">About Tournament</h4>
+                    <h4 class="mb-1 highlighter">About Coaching</h4>
                     <div class="fs-3 grayText">{!! stripslashes($tournament_detail['event_about']) !!}</div>
                 </div>
                 @if(!empty($tournament_detail['session_overview']))
@@ -945,7 +944,7 @@
               
         @if(count($tournament_Facility))
         <div class="text-white bgFilter2"> 
-            <h4 class="highlighter">Tournament Facility</h4>
+            <h4 class="highlighter">Coaching Facility</h4>
             <div class="available-sports">
                 @foreach ($tournament_Facility as $sport)
                     <div class="available-sport-card">

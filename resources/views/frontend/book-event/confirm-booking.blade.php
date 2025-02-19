@@ -482,7 +482,7 @@ $paymentId = "";
     //                 key: "{{ $key_id }}", // Razorpay key from settings
     //                 amount: amount * 100, // Amount in paise
     //                 currency: "{{ $currency }}",
-    //                 name: "PlayOffz",
+    //                 name: "Fitsportsy",
     //                 description: "Order Payment",
     //                 order_id: orderID, // Razorpay Order ID
     //                 prefill: {
@@ -536,7 +536,7 @@ $paymentId = "";
                         key: "{{ $key_id }}",
                         amount: amount * 100,
                         currency: "{{ $currency }}",
-                        name: "PlayOffz",
+                        name: "Fitsportsy",
                         description: "Order Payment",
                         order_id: orderID,
                         prefill: {

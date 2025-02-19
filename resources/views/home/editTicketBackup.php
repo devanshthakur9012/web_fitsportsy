@@ -334,7 +334,7 @@
         };
     
         // Make a POST request to the API
-        fetch('https://app.playoffz.in/web_api/ticket_type.php', {
+        fetch('https://app.Fitsportsy.in/web_api/ticket_type.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

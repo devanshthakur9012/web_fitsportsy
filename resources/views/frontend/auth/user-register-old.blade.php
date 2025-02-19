@@ -31,7 +31,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex justify-content-center align-items-center h-100">
                             <div class="p-lg-5 p-3 w-100">
                                 <div class="text-center">
-                                    <h1 class="h3 mb-4">Login to PlayOffz</h1>
+                                    <h1 class="h3 mb-4">Login to Fitsportsy</h1>
                                 </div>
                                 @include('messages')
                                 <form class="user" method="post" name="register_frm" id="register_frm">
@@ -234,7 +234,7 @@
                             class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex justify-content-center align-items-center h-100">
                             <div class="p-lg-5 p-3 w-100">
                                 <div class="text-center">
-                                    <h1 class="h3 mb-4">Login to PlayOffz</h1>
+                                    <h1 class="h3 mb-4">Login to Fitsportsy</h1>
                                 </div>
                                 @include('messages')
                                 <form class="user" method="post" name="register_frm" id="register_frm">

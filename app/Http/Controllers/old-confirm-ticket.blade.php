@@ -211,7 +211,7 @@ $paymentId = "";
         var razorpayOptions = {
             key: "{{ $key_id }}", // Razorpay key from settings
             amount: Math.round(totalAmount), // Amount in paise
-            name: "PlayOffz",
+            name: "Fitsportsy",
             description: "Order #{{ $feeToken }}", // Dynamic order ID
             currency: "{{ $currency }}",
             prefill: {

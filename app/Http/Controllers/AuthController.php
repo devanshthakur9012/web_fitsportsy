@@ -587,7 +587,7 @@ class AuthController extends Controller
         $makeOrganiserLogin = $this->makeOrganizerLogin($email, $password);
     
         if ($makeOrganiserLogin['Result'] == 'true') {    
-            return redirect()->to('https://app.playoffz.in/'); 
+            return redirect()->to('https://app.fitsportsy.in/'); 
         }
     
         return redirect()->back()->with('warning', $makeOrganiserLogin['ResponseMsg']);
