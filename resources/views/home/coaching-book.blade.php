@@ -662,6 +662,13 @@
         padding: 7px 10px;
         color:#fff !important;
     }
+    .tableDesign{
+        background: #13151f;
+        color: #fff;
+    }
+    .tableDesign th{
+        border: 1px solid #fff;
+    }
     </style>
 @endpush
 @section('content')
@@ -783,17 +790,14 @@
                     @php 
                         $collection = json_decode($tournament_detail['session_overview'], true) ?? []; 
                     @endphp
-
                     @if(is_array($collection) && count($collection) > 0 && !empty($collection['schedule']))
                         <div class="mt-2">
                             <h4 class="mb-1 highlighter">Overview of Session</h4>
-
                             <!-- Duration & Calories -->
                             <div class="d-flex justify-content-between mb-1 mt-2">
                                 <h6 class="mb-0">⏳ Duration: <span class="fw-bold">{{ $collection['duration'] }}</span></h6>
                                 <h6 class="mb-0">🔥 Calories: <span class="fw-bold">{{ $collection['calories'] }} kcal</span></h6>
                             </div>
-
                             <!-- Single Animated Progress Bar -->
                             <div id="animatedProgressContainer">
                                 <small class="fw-bold text-muted">Progress</small>
@@ -807,14 +811,31 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Final Stacked Progress Bar (Hidden Initially) -->
                             <div id="stackedProgressContainer" style="display: none;">
                                 <small class="fw-bold text-muted">Session Breakdown</small>
                                 <div class="progress" id="stackedProgress"></div>
                             </div>
-
-                            <!-- Benefits Section -->
+                            <h6 class="mb-2 mt-3"><i class="⏳"></i> Overview</h6>
+                            <div class="d-flex flex-wrap">
+                                <table class="table table-bordered table-striped tableDesign">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Duration</th>
+                                            <th>Activity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (isset($collection['schedule']))
+                                            @foreach ($collection['schedule'] as $item)
+                                                <tr>
+                                                    <td>{{ $item['time'] }}</td>
+                                                    <td>{{ $item['activity'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>                                
+                            </div>
                             <h6 class="mb-2 mt-3"><i class="⏳"></i> Benefits</h6>
                             <div class="d-flex flex-wrap">
                                 @foreach ($collection['benefits'] as $benefit)
@@ -1045,7 +1066,7 @@
                                 </div>
                                 <div class="card-body position-relative">
                                     <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
-                                    <small>{{$tour['event_sdate']}}</small>
+                                    {{-- <small>{{$tour['event_sdate']}}</small> --}}
                                     <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
                                     <p class="card-text mb-0">
                                         <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map pr-1"></i>
@@ -1078,11 +1099,7 @@
                                     @endisset
                                     <div class="mt-2">
                                         <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
-                                        @if(strtotime($tour['event_sdate']) < strtotime(date('Y-m-d')))
-                                            <a href="javascript:void(0);" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Completed</a>
-                                        @else
-                                            <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
-                                        @endif
+                                        <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
                                     </div>
                                 </div>
                             </div>

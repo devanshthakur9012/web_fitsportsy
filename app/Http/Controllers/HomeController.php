@@ -48,7 +48,7 @@ class HomeController extends Controller
             \Session::put('CURR_CITY', 'Bengaluru');
         }
         $data['tournament'] = $this->homeDataApi();
-        // dd($data['tournament']);
+        // dd($data);
         return view('home.index', $data);
     }
 
@@ -937,7 +937,6 @@ class HomeController extends Controller
         
         // Return the public URL for the cached QR code
         $data['qrCodePath'] = asset('qrcodes/' . $qrCodeFileName);
-        // Generate share message
         return view('home.coaching-book', $data);
     }
 

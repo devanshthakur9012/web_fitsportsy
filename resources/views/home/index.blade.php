@@ -178,71 +178,70 @@
             </div>
         </div>
     @endif
-    @if (isset($tournament) && count($tournament['latest_event']))
-        <div class="hawan_section">
-            <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
-                <h1 class="h4 mb-0 float-left">Latest Coaching</h1>
-                <a href="{{route('coaching-type',['type'=>'latest'])}}" class="d-sm-inline-block text-xs float-right "> See All </a>
-            </div>
-            <div class="event-block-slider">
-                @foreach ($tournament['latest_event'] as $tour)
-                    <div class="card m-card shadow-sm border-0 listcard">
-                        <div>
-                            <div class="m-card-cover  position-relative">
-                                <img src="{{env('BACKEND_BASE_URL')}}/{{$tour['event_img']}}" class="card-img-top" alt="{{$tour['event_title']}}">
-                                @isset($tour['cid'])
-                                    <a href="{{route('coaching',['category'=>Str::slug($tour['category'])])}}" class="my-2"><small class="category">{{$tour['category']}}</small></a>
-                                @endisset
-                            </div>
-                            <div class="card-body position-relative">
-                                <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
-                                <small>{{$tour['event_sdate']}}</small>
-                                <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
-                                <p class="card-text mb-0">
-                                    <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map pr-1"></i>
-                                    {{ strlen($tour['event_place_address']) > 50 ? substr($tour['event_place_address'], 0, 50) . '...' : $tour['event_place_address'] }}
-                                    </small>
-                                </p>
-                                @php
-                                    // Ensure ticket_types exists and is an array
-                                    if (isset($tour['ticket_types']) && is_array($tour['ticket_types'])) {
-                                        // Sort the array by extracting numeric and alphabetic parts
-                                        uksort($tour['ticket_types'], function ($a, $b) {
-                                            // Extract the numeric part of the keys
-                                            $numA = (int) preg_replace('/\D/', '', $a); // Get numbers only
-                                            $numB = (int) preg_replace('/\D/', '', $b); // Get numbers only
-                                
-                                            // Compare numeric parts first
-                                            if ($numA !== $numB) {
-                                                return $numA <=> $numB;
-                                            }
-                                
-                                            // If numeric parts are the same, compare alphabetically (B vs G)
-                                            return strcmp($a, $b);
-                                        });
-                                    }
-                                @endphp
-                                @isset($tour['ticket_types'])
-                                    @foreach ($tour['ticket_types'] as $key => $item)
-                                        <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
-                                    @endforeach
-                                @endisset
-                                <div class="mt-2">
-                                    <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
-                                    @if(strtotime($tour['event_sdate']) < strtotime(date('Y-m-d')))
-                                        <a href="javascript:void(0);" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Completed</a>
-                                    @else
-                                        <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
-                                    @endif
+
+    @if (isset($tournament) && count($tournament['catgeory_data']))
+        @foreach ($tournament['catgeory_data'] as $data)
+            <div class="hawan_section">
+                <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
+                    <h1 class="h4 mb-0 float-left">{{$data['category_name']}}</h1>
+                    <a href="{{ route('coaching', [Str::slug($data['category_name'])]) }}" class="d-sm-inline-block text-xs float-right "> See All </a>
+                </div>
+                <div class="event-block-slider">
+                    @foreach ($data['events'] as $tours)
+                        <div class="card m-card shadow-sm border-0 listcard">
+                            <div>
+                                <div class="m-card-cover  position-relative">
+                                    <img src="{{env('BACKEND_BASE_URL')}}/{{$tours['event_img']}}" class="card-img-top" alt="{{$tours['event_title']}}">
+                                    @isset($tours['cid'])
+                                        <a href="{{route('coaching',['category'=>Str::slug($tours['category'])])}}" class="my-2"><small class="category">{{$tours['category']}}</small></a>
+                                    @endisset
+                                </div>
+                                <div class="card-body position-relative">
+                                    <h5 class="card-title mb-2"><u>{{$tours['event_title']}}</u></h5>
+                                    <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tours['event_place_name']}}</small></p>
+                                    <p class="card-text mb-0">
+                                        <small class="text-dark" title="{{$tours['event_place_address']}}"><i class="fas fa-map pr-1"></i>
+                                        {{ strlen($tours['event_place_address']) > 50 ? substr($tours['event_place_address'], 0, 50) . '...' : $tours['event_place_address'] }}
+                                        </small>
+                                    </p>
+                                    @php
+                                        // Ensure ticket_types exists and is an array
+                                        if (isset($tours['ticket_types']) && is_array($tours['ticket_types'])) {
+                                            // Sort the array by extracting numeric and alphabetic parts
+                                            uksort($tours['ticket_types'], function ($a, $b) {
+                                                // Extract the numeric part of the keys
+                                                $numA = (int) preg_replace('/\D/', '', $a); // Get numbers only
+                                                $numB = (int) preg_replace('/\D/', '', $b); // Get numbers only
+                                    
+                                                // Compare numeric parts first
+                                                if ($numA !== $numB) {
+                                                    return $numA <=> $numB;
+                                                }
+                                    
+                                                // If numeric parts are the same, compare alphabetically (B vs G)
+                                                return strcmp($a, $b);
+                                            });
+                                        }
+                                    @endphp
+                                    @isset($tours['ticket_types'])
+                                        @foreach ($tours['ticket_types'] as $key => $item)
+                                            <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
+                                        @endforeach
+                                    @endisset
+                                    <div class="mt-2">
+                                        <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tours['event_ticket_price']}}</button>
+                                        <a href="{{route('coaching-detail', [Str::slug($tours['event_title']),$tours['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
+        @endforeach
     @endif
-    @if (isset($tournament['location_images']) && isset($tournament['location_images']['adv_image_1']))
+
+    {{-- @if (isset($tournament['location_images']) && isset($tournament['location_images']['adv_image_1']))
         <div class="row my-5">
             <div class="col-lg-12">
                 <a class="small_banner" target="_blank">
@@ -460,20 +459,20 @@
                 @endforeach
             </div>
         </div>
-    @endif
+    @endif --}}
     <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
         <h2 class="h4 mb-0 float-left">Categories</h2>
     </div>
     <div class="all-category mb-5">
         @foreach (Common::allEventCategoriesByApi() as $cat)
-        <div class="category-card">
-            <a href="{{ route('coaching', [Str::slug($tour['category'])]) }}">
-                <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cover_img']}}" class="category-img" alt="...">
-                <div class="cat-content">
-                    <p class="cat-title text-truncate">{{$cat['title']}}</p>
-                </div>
-            </a>
-        </div>
+            <div class="category-card">
+                <a href="{{ route('coaching', [Str::slug($cat['title'])]) }}">
+                    <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cover_img']}}" class="category-img" alt="...">
+                    <div class="cat-content">
+                        <p class="cat-title text-truncate">{{$cat['title']}}</p>
+                    </div>
+                </a>
+            </div>
         @endforeach
     </div>
 </div>

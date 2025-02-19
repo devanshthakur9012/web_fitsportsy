@@ -68,7 +68,6 @@
                                     </div>
                                     <div class="card-body position-relative">
                                         <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
-                                        <small>{{$tour['event_sdate']}}</small>
                                         <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
                                         <p class="card-text mb-0">
                                             <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map pr-2"></i>
@@ -101,11 +100,7 @@
                                         @endisset
                                         <div class="mt-2">
                                             <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
-                                            @if(strtotime($tour['event_sdate']) < strtotime(date('Y-m-d')))
-                                                <a href="javascript:void(0);" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Completed</a>
-                                            @else
-                                                <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
-                                            @endif
+                                            <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
                                         </div>
                                     </div>
                                 </div>
