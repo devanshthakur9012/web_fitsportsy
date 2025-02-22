@@ -21,7 +21,7 @@
                         <img class="object-contain h-full w-full" src="{{$logo ? url('images/upload/' . $logo) : asset('/images/logo.png') }}" alt="Logo">
                     </a>
                 </li>
-                
+
                 <li class="mt-2 xxsm:max-sm:hidden nav-item {{ $activePage == 'home' ? 'active' : '' }} ">
                     <a href="{{ url('/') }}"
                         class="nav-link md:px-1 capitalize font-poppins font-normal text-base leading-6 text-gray">{{ __('Home') }}</a>
