@@ -57,10 +57,10 @@
 
         /*new header*/
         .new-topbar{
-            background: #861f41;
+            background: #000000;
         }
         .new-logo{
-            background: #861f41;
+            background: #000000;
         }
         .new-logo{
             position: relative;
@@ -73,11 +73,11 @@
             right: 100%;
             height: 100%;
             width: 3000px;
-            background: #861f41;
+            background: #000000;
             z-index: -1;
         }
         .new-menu{
-            background: #fff;
+
         }
 
         .menu-curve{
@@ -86,7 +86,7 @@
             top: 0;
         }
         .new-navbar {
-            background: #fff;
+            background: #6e6e6e;
             z-index: -2;
             position: relative;
         }
@@ -106,10 +106,10 @@
             position: relative;
             z-index: 0;
             padding-bottom: 10px;
-            background: #fff;
+            background: #6e6e6e;
         }
         .osahan-nav-mid {
-            background: #fff !important;
+            background: #6e6e6e !important;
             margin-top: 11px;
             position: relative;
             left: 43px;
@@ -117,7 +117,7 @@
         }
 
         .menu_item {
-            color: #000 !important;
+            /*color: #000 !important;*/
         }
         .osahan-nav-mid .navbar-toggler {
             margin-left: 60px;
@@ -273,7 +273,7 @@
                     </div>
                     <div class="col-7 col-sm-10 pl-0">
                         <div class="new-menu">
-                            <img class="menu-curve" src="{{asset('frontend/images/menucurve.jpg')}}" alt="img">
+                            <img class="menu-curve" src="{{asset('frontend/images/menucurves2.png')}}" alt="img">
                             <nav class="navbar navbar-expand-lg navbar-light osahan-nav-mid">
                                 <div class="container-fluid position-relative">
 {{--                                    <a class="mobile-seva-ticket text-white" href="javascript:void(0);" data-toggle="modal"--}}
@@ -364,9 +364,9 @@
 {{--                                    class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
-{{--                        --}}{{-- <li>--}}
+{{--                         <li>--}}
 {{--                            <button class="mx-3 btn default-btn py-2" data-toggle="modal" data-target="#socialPlay">Play</button>--}}
-{{--                        </li> --}}
+{{--                        </li>--}}
 {{--                        <li>--}}
 {{--                            <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/org_btn.png')}}" alt="Organizer" style="height:55px"></a>--}}
 {{--                        </li>--}}
