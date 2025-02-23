@@ -54,6 +54,85 @@
             font-weight: 400;
             padding: 10px !important;
         }
+
+        /*new header*/
+        .new-topbar{
+            background: #000000;
+        }
+        .new-logo{
+            background: #000000;
+        }
+        .new-logo{
+            position: relative;
+            min-height: 100%;
+        }
+        .new-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 100%;
+            height: 100%;
+            width: 3000px;
+            background: #000000;
+            z-index: -1;
+        }
+        .new-menu{
+
+        }
+
+        .menu-curve{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .new-navbar {
+            background: #6e6e6e;
+            z-index: -2;
+            position: relative;
+        }
+
+        .new-topbar-ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .new-topbar-ul li {
+            display: inline-block;
+        }
+        .new-topbar-ul li > a{
+            color: #fff;
+        }
+        .new-header {
+            position: relative;
+            z-index: 0;
+            padding-bottom: 10px;
+            background: #6e6e6e;
+        }
+        .osahan-nav-mid {
+            background: #6e6e6e !important;
+            margin-top: 11px;
+            position: relative;
+            left: 43px;
+            border: none;
+        }
+
+        .menu_item {
+            /*color: #000 !important;*/
+        }
+        .osahan-nav-mid .navbar-toggler {
+            margin-left: 60px;
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .menu-curve{
+                width: 40px;
+            }
+            .osahan-nav-mid .navbar-toggler {
+
+            }
+        }
+
     </style>
 </head>
 
@@ -66,166 +145,330 @@
         @endif
         <img src="{{$url}}" alt="preloader">
     </div>
-    <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand navbar-dark topbar static-top shadow-sm bg-dark osahan-nav-top">
+
+    <div class="new-header stickey-top">
+        <div class="new-topbar">
             <div class="container">
-                <div class="d-flex justify-content-between w-100 align-items-center">
-                    <a class="navbar-brand" href="/"><img
-                            src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.fitsportsy.in/images/website/1733339125.png" }}"
-                            class="img-fluid" alt="fitsportsy"></a>
-                    <div class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 ml-3 navbar-search">
-                        <div class="input-group searchinput">
-                            <input type="text" class="form-control border-0 small head-search-box"
-                                placeholder="Search for coaching..." aria-label="Search"
-                                aria-describedby="basic-addon2">
-                            <div class="list-group list-group-flush searchlist scrollbar search-result">
-                            </div>
-                            <div class="input-group-append">
-                                <button class="btn bg-light" type="submit">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
+                <div class="row">
+                    <div class="col">
+                        <ul class="new-topbar-ul text-right">
+{{--                            <li class="nav-item dropdown no-arrow d-sm-none">--}}
+{{--                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"--}}
+{{--                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                    <i class="fas fa-search fa-fw"></i>--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"--}}
+{{--                                     aria-labelledby="searchDropdown">--}}
+{{--                                    <div class="form-inline mx-auto w-100 navbar-search">--}}
+{{--                                        <div class="input-group searchinput">--}}
+{{--                                            <input type="text"--}}
+{{--                                                   class="form-control bg-light text-dark border-0 small head-search-box"--}}
+{{--                                                   placeholder="Search for..." aria-label="Search"--}}
+{{--                                                   aria-describedby="basic-addon2">--}}
+{{--                                            <div class="list-group list-group-flush searchlist scrollbar search-result">--}}
+
+{{--                                            </div>--}}
+{{--                                            <div class="input-group-append">--}}
+{{--                                                <button class="btn btn-primary" type="button">--}}
+{{--                                                    <i class="fas fa-search fa-sm"></i>--}}
+{{--                                                </button>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+                            <li class="nav-item no-arrow mx-1 desk-seva-ticket">
+                                <a class="nav-link" href="javascript:void(0);" data-toggle="modal"
+                                   data-target="#locationModal">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span
+                                        class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>
+                                </a>
+                            </li>
+                            {{-- <li>
+                                <button class="mx-3 btn default-btn py-2" data-toggle="modal" data-target="#socialPlay">Play</button>
+                            </li> --}}
+                            <li>
+                                <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/org_btn_top.png')}}" alt="Organizer" style="height:23px"></a>
+                            </li>
+                            @isset($favicon['appUrl'])
+                                <li>
+                                    <a href="{{$favicon['appUrl']}}" class="mx-3 btn default-btn py-2">Get App</a>
+                                </li>
+                            @endisset
+                            @if (Common::isUserLogin())
+                                <li class="nav-item dropdown no-arrow ">
+                                    @if (Common::isUserLogin())
+                                        @php $userData = Common::fetchUserDetails(); @endphp
+                                        <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            @if (isset($userData['pro_pic']) && $userData['pro_pic'] != null)
+                                                <img class="img-profile rounded-circle"
+                                                     src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}">
+                                            @else
+                                                <i class="fas fa-user-circle fa-lg"></i>
+                                            @endif
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow-sm animated--grow-in"
+                                             aria-labelledby="userDropdown">
+                                            <a class="dropdown-item" href="{{ url('user/my-profile') }}">
+                                                <i class="fas fa-user-circle fa-sm fa-fw mr-2 text-gray-600"></i>
+                                                Profile
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('my-booking', ['type' => 'Active']) }}">
+                                                <i class="fas fa-ticket-alt fa-sm fa-fw mr-2 text-gray-600"></i>
+                                                My Booking
+                                            </a>
+                                            <a class="dropdown-item" href="{{route('help-center')}}">
+                                                <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>
+                                                Help Center
+                                            </a>
+                                            <a class="dropdown-item" href="{{route('my-social-play')}}">
+                                                <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
+                                                My Social Play
+                                            </a>
+                                            <a class="dropdown-item" href="{{route('my-activity')}}">
+                                                <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
+                                                My Activity
+                                            </a>
+                                            <a class="dropdown-item" href="{{route('my-attendence')}}">
+                                                <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-600"></i>
+                                                My Attendence
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" href="{{ url('logout-user') }}">
+                                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
+                                                Logout
+                                            </a>
+                                        </div>
+                                    @endif
+                                </li>
+                            @else
+                                <li class="nav-item no-arrow  mx-2 position-relative">
+                                    <a class="position-relative dropdown-toggle text-light" href="#" role="button"
+                                       data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-user-circle fa-lg"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ url('user-login') }}"><i
+                                                class="fas fa-sign-in-alt"></i> Login</a>
+                                        <a class="dropdown-item" href="{{ url('user-register') }}"><i
+                                                class="fas fa-user-plus"></i> Register</a>
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new-navbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-5 col-sm-2 pr-0">
+                       <div class="new-logo">
+                           <a href="/"><img src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.fitsportsy.in/images/website/1733339125.png" }}"
+                                   class="img-fluid" alt="fitsportsy"></a>
+                       </div>
+                    </div>
+                    <div class="col-7 col-sm-10 pl-0">
+                        <div class="new-menu">
+                            <img class="menu-curve" src="{{asset('frontend/images/menucurves2.png')}}" alt="img">
+                            <nav class="navbar navbar-expand-lg navbar-light osahan-nav-mid">
+                                <div class="container-fluid position-relative">
+{{--                                    <a class="mobile-seva-ticket text-white" href="javascript:void(0);" data-toggle="modal"--}}
+{{--                                       data-target="#locationModal">--}}
+{{--                                        <i class="fas fa-map-marker-alt"></i>--}}
+{{--                                        <span>{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Location'}}</span>--}}
+{{--                                    </a>--}}
+                                    <button class="navbar-toggler navbar-toggler-right btn btn-danger btn-sm " type="button"
+                                            data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                                            aria-expanded="false" aria-label="Toggle navigation">
+                                        Menu  <i class="fas fa-bars"></i>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                                        <ul class="navbar-nav w-100 justify-content-start">
+                                            @foreach ($catData as $cat)
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ route('coaching', [Str::slug($cat['slug'])]) }}">
+                                    <span class="menu_item"><img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cat_img']}}"
+                                                                 class="mr-1" width="20px" alt="{{$cat['title']}}">{{$cat['title']}}</span></a>
+                                                </li>
+                                            @endforeach
+                                            <li class="nav-item">
+                                                <a class="nav-link shopBar" style="color:#6e6e6e !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
                         </div>
                     </div>
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <div class="form-inline mx-auto w-100 navbar-search">
-                                    <div class="input-group searchinput">
-                                        <input type="text"
-                                            class="form-control bg-light text-dark border-0 small head-search-box"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="list-group list-group-flush searchlist scrollbar search-result">
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                        </div>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item no-arrow mx-1 desk-seva-ticket">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="modal"
-                                data-target="#locationModal">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span
-                                    class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>
-                            </a>
-                        </li>
-                        {{-- <li>
-                            <button class="mx-3 btn default-btn py-2" data-toggle="modal" data-target="#socialPlay">Play</button>
-                        </li> --}}
-                        <li>
-                            <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/org_btn.png')}}" alt="Organizer" style="height:55px"></a>
-                        </li>
-                        @isset($favicon['appUrl'])
-                            <li>
-                                <a href="{{$favicon['appUrl']}}" class="mx-3 btn default-btn py-2">Get App</a>
-                            </li>
-                        @endisset
-                        @if (Common::isUserLogin())
-                            <li class="nav-item dropdown no-arrow ">
-                                @if (Common::isUserLogin())
-                                    @php $userData = Common::fetchUserDetails(); @endphp
-                                    <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        @if (isset($userData['pro_pic']) && $userData['pro_pic'] != null)
-                                            <img class="img-profile rounded-circle"
-                                                src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}">
-                                        @else
-                                            <i class="fas fa-user-circle fa-lg"></i>
-                                        @endif
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-sm animated--grow-in"
-                                        aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="{{ url('user/my-profile') }}">
-                                            <i class="fas fa-user-circle fa-sm fa-fw mr-2 text-gray-600"></i>
-                                            Profile
-                                        </a>
-                                        <a class="dropdown-item" href="{{ route('my-booking', ['type' => 'Active']) }}">
-                                            <i class="fas fa-ticket-alt fa-sm fa-fw mr-2 text-gray-600"></i>
-                                            My Booking
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('help-center')}}">
-                                            <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>
-                                            Help Center
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('my-social-play')}}">
-                                            <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
-                                            My Social Play
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('my-activity')}}">
-                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
-                                            My Activity
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('my-attendence')}}">
-                                            <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-600"></i>
-                                            My Attendence
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="{{ url('logout-user') }}">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
-                                            Logout
-                                        </a>
-                                    </div>
-                                @endif
-                            </li>
-                        @else
-                            <li class="nav-item no-arrow align-self-center mx-2 position-relative">
-                                <a class="position-relative dropdown-toggle text-light" href="#" role="button"
-                                    data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user-circle fa-lg"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ url('user-login') }}"><i
-                                            class="fas fa-sign-in-alt"></i> Login</a>
-                                    <a class="dropdown-item" href="{{ url('user-register') }}"><i
-                                            class="fas fa-user-plus"></i> Register</a>
-                                </div>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark osahan-nav-mid">
-            <div class="container-fluid position-relative">
-                <a class="mobile-seva-ticket text-white" href="javascript:void(0);" data-toggle="modal"
-                    data-target="#locationModal">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Location'}}</span>
-                </a>
-                <button class="navbar-toggler navbar-toggler-right btn btn-danger btn-sm " type="button"
-                    data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span> Menu
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav w-100 justify-content-center">
-                        @foreach ($catData as $cat)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('coaching', [Str::slug($cat['slug'])]) }}">
-                                    <span class="menu_item"><img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cat_img']}}"
-                                            class="mr-1" width="20px" alt="{{$cat['title']}}">{{$cat['title']}}</span></a>
-                            </li>
-                        @endforeach
-                        <li class="nav-item">
-                            <a class="nav-link shopBar" style="color:#6e6e6e !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+{{--    <header class="site-header sticky-top">--}}
+{{--        <nav class="navbar navbar-expand navbar-dark topbar static-top shadow-sm bg-dark osahan-nav-top">--}}
+{{--            <div class="container">--}}
+{{--                <div class="d-flex justify-content-between w-100 align-items-center">--}}
+{{--                    <a class="navbar-brand" href="/"><img--}}
+{{--                            src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.fitsportsy.in/images/website/1733339125.png" }}"--}}
+{{--                            class="img-fluid" alt="fitsportsy"></a>--}}
+{{--                    <div class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 ml-3 navbar-search">--}}
+{{--                        <div class="input-group searchinput">--}}
+{{--                            <input type="text" class="form-control border-0 small head-search-box"--}}
+{{--                                placeholder="Search for coaching..." aria-label="Search"--}}
+{{--                                aria-describedby="basic-addon2">--}}
+{{--                            <div class="list-group list-group-flush searchlist scrollbar search-result">--}}
+{{--                            </div>--}}
+{{--                            <div class="input-group-append">--}}
+{{--                                <button class="btn bg-light" type="submit">--}}
+{{--                                    <i class="fas fa-search fa-sm"></i>--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <ul class="navbar-nav align-items-center">--}}
+{{--                        <li class="nav-item dropdown no-arrow d-sm-none">--}}
+{{--                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"--}}
+{{--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                <i class="fas fa-search fa-fw"></i>--}}
+{{--                            </a>--}}
+{{--                            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"--}}
+{{--                                aria-labelledby="searchDropdown">--}}
+{{--                                <div class="form-inline mx-auto w-100 navbar-search">--}}
+{{--                                    <div class="input-group searchinput">--}}
+{{--                                        <input type="text"--}}
+{{--                                            class="form-control bg-light text-dark border-0 small head-search-box"--}}
+{{--                                            placeholder="Search for..." aria-label="Search"--}}
+{{--                                            aria-describedby="basic-addon2">--}}
+{{--                                        <div class="list-group list-group-flush searchlist scrollbar search-result">--}}
+
+{{--                                        </div>--}}
+{{--                                        <div class="input-group-append">--}}
+{{--                                            <button class="btn btn-primary" type="button">--}}
+{{--                                                <i class="fas fa-search fa-sm"></i>--}}
+{{--                                            </button>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item no-arrow mx-1 desk-seva-ticket">--}}
+{{--                            <a class="nav-link" href="javascript:void(0);" data-toggle="modal"--}}
+{{--                                data-target="#locationModal">--}}
+{{--                                <i class="fas fa-map-marker-alt"></i>--}}
+{{--                                <span--}}
+{{--                                    class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                         <li>--}}
+{{--                            <button class="mx-3 btn default-btn py-2" data-toggle="modal" data-target="#socialPlay">Play</button>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/org_btn.png')}}" alt="Organizer" style="height:55px"></a>--}}
+{{--                        </li>--}}
+{{--                        @isset($favicon['appUrl'])--}}
+{{--                            <li>--}}
+{{--                                <a href="{{$favicon['appUrl']}}" class="mx-3 btn default-btn py-2">Get App</a>--}}
+{{--                            </li>--}}
+{{--                        @endisset--}}
+{{--                        @if (Common::isUserLogin())--}}
+{{--                            <li class="nav-item dropdown no-arrow ">--}}
+{{--                                @if (Common::isUserLogin())--}}
+{{--                                    @php $userData = Common::fetchUserDetails(); @endphp--}}
+{{--                                    <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button"--}}
+{{--                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                        @if (isset($userData['pro_pic']) && $userData['pro_pic'] != null)--}}
+{{--                                            <img class="img-profile rounded-circle"--}}
+{{--                                                src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}">--}}
+{{--                                        @else--}}
+{{--                                            <i class="fas fa-user-circle fa-lg"></i>--}}
+{{--                                        @endif--}}
+{{--                                    </a>--}}
+{{--                                    <div class="dropdown-menu dropdown-menu-right shadow-sm animated--grow-in"--}}
+{{--                                        aria-labelledby="userDropdown">--}}
+{{--                                        <a class="dropdown-item" href="{{ url('user/my-profile') }}">--}}
+{{--                                            <i class="fas fa-user-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
+{{--                                            Profile--}}
+{{--                                        </a>--}}
+{{--                                        <a class="dropdown-item" href="{{ route('my-booking', ['type' => 'Active']) }}">--}}
+{{--                                            <i class="fas fa-ticket-alt fa-sm fa-fw mr-2 text-gray-600"></i>--}}
+{{--                                            My Booking--}}
+{{--                                        </a>--}}
+{{--                                        <a class="dropdown-item" href="{{route('help-center')}}">--}}
+{{--                                            <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>--}}
+{{--                                            Help Center--}}
+{{--                                        </a>--}}
+{{--                                        <a class="dropdown-item" href="{{route('my-social-play')}}">--}}
+{{--                                            <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
+{{--                                            My Social Play--}}
+{{--                                        </a>--}}
+{{--                                        <a class="dropdown-item" href="{{route('my-activity')}}">--}}
+{{--                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>--}}
+{{--                                            My Activity--}}
+{{--                                        </a>--}}
+{{--                                        <a class="dropdown-item" href="{{route('my-attendence')}}">--}}
+{{--                                            <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-600"></i>--}}
+{{--                                            My Attendence--}}
+{{--                                        </a>--}}
+{{--                                        <div class="dropdown-divider"></div>--}}
+{{--                                        <a class="dropdown-item text-danger" href="{{ url('logout-user') }}">--}}
+{{--                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>--}}
+{{--                                            Logout--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
+{{--                            </li>--}}
+{{--                        @else--}}
+{{--                            <li class="nav-item no-arrow align-self-center mx-2 position-relative">--}}
+{{--                                <a class="position-relative dropdown-toggle text-light" href="#" role="button"--}}
+{{--                                    data-toggle="dropdown" aria-expanded="false">--}}
+{{--                                    <i class="fas fa-user-circle fa-lg"></i>--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu dropdown-menu dropdown-menu-right">--}}
+{{--                                    <a class="dropdown-item" href="{{ url('user-login') }}"><i--}}
+{{--                                            class="fas fa-sign-in-alt"></i> Login</a>--}}
+{{--                                    <a class="dropdown-item" href="{{ url('user-register') }}"><i--}}
+{{--                                            class="fas fa-user-plus"></i> Register</a>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        @endif--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </nav>--}}
+{{--        <nav class="navbar navbar-expand-lg navbar-dark bg-dark osahan-nav-mid">--}}
+{{--            <div class="container-fluid position-relative">--}}
+{{--                <a class="mobile-seva-ticket text-white" href="javascript:void(0);" data-toggle="modal"--}}
+{{--                    data-target="#locationModal">--}}
+{{--                    <i class="fas fa-map-marker-alt"></i>--}}
+{{--                    <span>{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Location'}}</span>--}}
+{{--                </a>--}}
+{{--                <button class="navbar-toggler navbar-toggler-right btn btn-danger btn-sm " type="button"--}}
+{{--                    data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"--}}
+{{--                    aria-expanded="false" aria-label="Toggle navigation">--}}
+{{--                    <span class="navbar-toggler-icon"></span> Menu--}}
+{{--                </button>--}}
+{{--                <div class="collapse navbar-collapse" id="navbarResponsive">--}}
+{{--                    <ul class="navbar-nav w-100 justify-content-center">--}}
+{{--                        @foreach ($catData as $cat)--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="{{ route('coaching', [Str::slug($cat['slug'])]) }}">--}}
+{{--                                    <span class="menu_item"><img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cat_img']}}"--}}
+{{--                                            class="mr-1" width="20px" alt="{{$cat['title']}}">{{$cat['title']}}</span></a>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link shopBar" style="color:#6e6e6e !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </nav>--}}
+{{--    </header>--}}
     @yield('content')
     <address class="bottom-location">
         <div class="container">
@@ -376,22 +619,22 @@
                                         @endisset
                                     </select>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="title" class="form-label">Play Title <span class="text-danger">*</span></label>
                                     <input type="text" placeholder="Eg: Looking for players to join for a thrilling game of badminton!" class="form-control" id="title" name="title" maxlength="225" required>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="start_date" class="form-label">Start Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control" id="start_date" name="start_date" required>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="start_time" class="form-label">Start Time <span class="text-danger">*</span></label>
                                     <input type="time" class="form-control" id="start_time" name="start_time" required>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="venue" class="form-label">Venue <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="venue" name="venue" placeholder="Eg: ABC Sports Venue, 1st Cross, Indira Nagar Bangalore-560038" maxlength="225" required>
@@ -408,23 +651,23 @@
                                             @endforeach
                                         @endisset
                                     </select>
-                                </div>    
-                    
+                                </div>
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="slots" class="form-label">Slots <span class="text-danger">*</span></label>
                                     <input type="number" placeholder="Enter no. of slots" class="form-control" id="slots" name="slots" required>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6" id="price-container">
                                     <label for="price" class="form-label">Price Per Slot <span class="text-danger">*</span></label>
                                     <input type="number" placeholder="Enter Price Per Slot" step="0.01" class="form-control" id="price" name="price" required>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="upi_id" class="form-label">UPI ID/ Mobile No.</label>
                                     <input type="text" placeholder="Eg: shiva@okaxis/9686889977" class="form-control" id="upi_id" name="upi_id" maxlength="225">
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-6">
                                     <label for="type" class="form-label">Play Type <span class="text-danger">*</span></label>
                                     <select class="form-control" id="type" name="type" required>
@@ -432,7 +675,7 @@
                                         <option value="group">Group</option>
                                     </select>
                                 </div>
-                    
+
                                 <div class="mb-3 col-lg-12">
                                     <label for="skill_level" class="form-label">Skill Level <span class="text-danger">*</span></label>
                                     <select class="form-control select2" id="skill_level" name="skill_level[]" multiple required>
@@ -473,7 +716,7 @@
     <script src="{{ asset('f-vendor/bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('f-vendor/slick/slick.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#skill_level').select2({
@@ -525,7 +768,7 @@
                     // Show the processing indicator
                     const submitButton = $("#submit-btn");
                     submitButton.prop("disabled", true).text("Processing...");
-    
+
                     // Submit the form
                     form.submit();
                 }
@@ -546,7 +789,7 @@
                 inputDate.setHours(inputTime[0], inputTime[1], 0, 0);
                 return this.optional(element) || inputDate > today;
             });
-    
+
             // Optional: Dynamically hide/show fields if needed
             $("#pay_join").change(function () {
                 if ($(this).is(":checked")) {
