@@ -124,6 +124,10 @@
             color: #fff;
         }
 
+        .home-slider{
+            z-index: -1;
+        }
+
         @media (max-width: 992px) {
             .menu-curve{
                 width: 40px;
@@ -204,7 +208,7 @@
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if (isset($userData['pro_pic']) && $userData['pro_pic'] != null)
                                                 <img class="img-profile rounded-circle"
-                                                     src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}">
+                                                     src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}" style="25px">
                                             @else
                                                 <i class="fas fa-user-circle fa-lg"></i>
                                             @endif
