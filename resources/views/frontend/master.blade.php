@@ -124,6 +124,10 @@
             color: #fff;
         }
 
+        .home-slider{
+            z-index: -1;
+        }
+
         @media (max-width: 992px) {
             .menu-curve{
                 width: 40px;
