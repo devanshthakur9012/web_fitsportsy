@@ -136,6 +136,11 @@
 
             }
         }
+        .profileBar{
+            width: 30px !important;
+            height: 30px !important;
+            border: 1px solid #fff !important;
+        }
 
     </style>
 </head>
@@ -207,8 +212,7 @@
                                         <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if (isset($userData['pro_pic']) && $userData['pro_pic'] != null)
-                                                <img class="img-profile rounded-circle"
-                                                     src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}" style="25px">
+                                                <img class="img-thumbnail profile-img profileBar" src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}" width="25px" height="25px">
                                             @else
                                                 <i class="fas fa-user-circle fa-lg"></i>
                                             @endif
