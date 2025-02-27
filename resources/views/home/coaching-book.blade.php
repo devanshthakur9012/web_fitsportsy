@@ -872,11 +872,11 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-4 col-12">
-                <div class="countdown text-left event-ticket card shadow-sm mb-3">
+                {{-- <div class="countdown text-left event-ticket card shadow-sm mb-3">
                     <div class="card-body" id="countdown">
                         <p class="mb-0">Loading countdown...</p>
                     </div>
-                </div>
+                </div> --}}
                 <div class="text-left event-ticket card shadow-sm mb-3">
                     <div class="card-body">
                         <div class="products-reviews text-center">
@@ -898,7 +898,7 @@
                     <div class="card-body">
                         <div class="alert_info" style="background: #FFF3D2" role="alert">
                             <div class="iconBox"><i class="fas fa-ticket-alt"></i></div>
-                            <div>Contactless Ticketing & Fast-track Entry with M-ticket. <span class="text-default" data-toggle="modal" data-target="#exampleModal">Learn How ></span></div>
+                            <div>Seamless Check-ins & Contactless Attendance with QR Scan! <br/><span class="text-default" data-toggle="modal" data-target="#exampleModal">Learn How ></span></div>
                         </div>
                         <div class="single-ticket">
                             @if($tournament_detail['total_ticket'] <= 0)
@@ -964,7 +964,7 @@
         </div>
               
         @if(count($tournament_Facility))
-        <div class="text-white bgFilter2"> 
+        <div class="text-white bgFilter2 mt-4"> 
             <h4 class="highlighter">Coaching Facility</h4>
             <div class="available-sports">
                 @foreach ($tournament_Facility as $sport)
@@ -1175,7 +1175,7 @@
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
-<script>
+{{-- <script>
     // Get the event date and time from PHP
     const eventDateTime = "{{ $event_datetime }}"; // Example: "26 January, 2025 9:00 AM"
 
@@ -1222,7 +1222,7 @@
             document.getElementById("countdown").innerHTML = "<p class='mb-0'>Event has started!</p>";
         }
     // }, 1000);
-</script>
+</script> --}}
 <script>
     document.getElementById('shareBtn').addEventListener('click', function() {
         // Get data attributes from the button

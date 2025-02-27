@@ -198,7 +198,7 @@
                                 <button class="mx-3 btn default-btn py-2" data-toggle="modal" data-target="#socialPlay">Play</button>
                             </li> --}}
                             <li>
-                                <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/org_btn_top.png')}}" alt="Organizer" style="height:23px"></a>
+                                <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/Partner-removebg-preview.png')}}" alt="Organizer" style="height:23px"></a>
                             </li>
                             @isset($favicon['appUrl'])
                                 <li>
@@ -233,7 +233,7 @@
                                             </a>
                                             <a class="dropdown-item" href="{{route('my-social-play')}}">
                                                 <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
-                                                My Social Play
+                                                My Personal Trainer
                                             </a>
                                             <a class="dropdown-item" href="{{route('my-activity')}}">
                                                 <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
@@ -412,7 +412,7 @@
 {{--                                        </a>--}}
 {{--                                        <a class="dropdown-item" href="{{route('my-social-play')}}">--}}
 {{--                                            <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            My Social Play--}}
+{{--                                            My Personal Trainer--}}
 {{--                                        </a>--}}
 {{--                                        <a class="dropdown-item" href="{{route('my-activity')}}">--}}
 {{--                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>--}}
@@ -510,10 +510,7 @@
                 <div class="col-sm-6 col-md-4 mt-4 col-lg-4 col-6 ">
                     <div class="resources">
                         <h6 class="footer-heading text-uppercase text-white fw-bold">About Us</h6>
-                        <p>fitsportsy is the ultimate platform for sports enthusiasts, connecting players to exciting
-                            coaching nearby. Easily book packages online and stay updated with match schedules,
-                            fixtures, live scoring, and results. For organizers, fitsportsy offers seamless tools to
-                            manage and promote coaching effortlessly. Join us to elevate your sports experience!</p>
+                        <p>FitSportsy is the ultimate platform for sports and fitness coaching, covering all disciplines like badminton, cricket, football, yoga, Zumba, CrossFit, and more. Whether you're a beginner or an advanced athlete, find expert coaches and training programs tailored to your needs. Explore curated coaching packages, track attendance with QR-based check-ins, and book a coach or therapist effortlessly. Elevate your fitness journey with FitSportsy!</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 mt-4 col-lg-4 col-6 ">
@@ -600,13 +597,13 @@
         </div>
     </div>
 
-    {{-- Social Play --}}
+    {{-- Personal Trainer --}}
     <div class="modal fade" id="socialPlay" tabindex="-1" role="dialog" aria-labelledby="socialPlayLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="socialPlayLabel">Social Play</h5>
+                    <h5 class="modal-title" id="socialPlayLabel">Personal Trainer</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -697,7 +694,7 @@
                                 </div>
                                 <div class="mb-3 col-lg-12">
                                     <label for="note" class="form-label">Note</label>
-                                    <textarea class="form-control" placeholder="Enter Note" id="note" name="note" maxlength="500" style="height: 115px;">1.Mavis 350 or RSL Supreme Shuttlecocks will be used for all matches.                                                      2.Participants are requested to adhere to the venue's rules and regulations.                                                      3.Kindly specify the game format while creating Social Play.                                                                      4.Payments can be made conveniently via UPI.</textarea>
+                                    <textarea class="form-control" placeholder="Enter Note" id="note" name="note" maxlength="500" style="height: 115px;">1.Mavis 350 or RSL Supreme Shuttlecocks will be used for all matches.                                                      2.Participants are requested to adhere to the venue's rules and regulations.                                                      3.Kindly specify the game format while creating Personal Trainer.                                                                      4.Payments can be made conveniently via UPI.</textarea>
                                 </div>
                                 <div class="mb-3 col-lg-12">
                                     <label for="pay_join" class="form-label">Pay Join <span class="text-danger">*</span></label>

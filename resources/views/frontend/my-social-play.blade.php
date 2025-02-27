@@ -1,6 +1,6 @@
 @extends('frontend.master', ['activePage' => null])
 
-@section('title', __('My Social Play'))
+@section('title', __('My Personal Trainer'))
 
 @section('content')
 <style>
@@ -23,7 +23,7 @@
 </style>
 <section class="active-tickets mt-5">
     <div class="container mb-4">
-        <h2 class="text-center mb-4">My Social Play</h2>
+        <h2 class="text-center mb-4">My Personal Trainer</h2>
         <div class="row">
             @isset($mySocialPlay)
                     <table class="table bg-backGround rounded-sm p-2">
@@ -82,12 +82,12 @@
                         </tbody>
                     </table>
             @else
-                <p class="text-center">No Social Play events available.</p>
+                <p class="text-center">No Personal Trainer available.</p>
             @endisset
         </div>
     </div>
 
-    {{-- Social Play --}}
+    {{-- Personal Trainer --}}
     <div class="modal fade" id="socialPlayEdit" tabindex="-1" role="dialog" aria-labelledby="socialPlayEditLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

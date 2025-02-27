@@ -218,7 +218,7 @@ class HomeController extends Controller
         // }
     }    
 
-    // Social Play
+    // Book a Personal Trainer
     public function socialPlay(Request $request)
     {
         $data = [
@@ -522,15 +522,15 @@ class HomeController extends Controller
             $responseBody = json_decode($apiResponse->getBody(), true);
             // Check the API response for success
             if (isset($responseBody['Result']) && $responseBody['Result'] === 'true') {
-                return redirect()->route('home')->with('success', $responseBody['ResponseMsg'] ?? 'Social Play created successfully.');
+                return redirect()->route('home')->with('success', $responseBody['ResponseMsg'] ?? 'Personal Trainer created successfully.');
             }
     
             // Handle API failure response
-            return redirect()->route('home')->with('error', $responseBody['ResponseMsg'] ?? 'Failed to create social play.');
+            return redirect()->route('home')->with('error', $responseBody['ResponseMsg'] ?? 'Failed to create Personal Trainer.');
     
         } catch (\Exception $e) {
             // Redirect back with error message
-            return redirect()->route('home')->with('error', 'An error occurred while creating the social play. Please try again.');
+            return redirect()->route('home')->with('error', 'An error occurred while creating the Personal Trainer. Please try again.');
         }
     }    
 
@@ -606,15 +606,15 @@ class HomeController extends Controller
             $responseBody = json_decode($apiResponse->getBody(), true);
             // Check the API response for success
             if (isset($responseBody['Result']) && $responseBody['Result'] === 'true') {
-                return redirect()->back()->with('success', $responseBody['ResponseMsg'] ?? 'Social Play updated successfully.');
+                return redirect()->back()->with('success', $responseBody['ResponseMsg'] ?? 'Personal Trainer updated successfully.');
             }
     
             // Handle API failure response
-            return redirect()->back()->with('error', $responseBody['ResponseMsg'] ?? 'Failed to updated social play.');
+            return redirect()->back()->with('error', $responseBody['ResponseMsg'] ?? 'Failed to updated Personal Trainer.');
     
         } catch (\Exception $e) {
             // Redirect back with error message
-            return redirect()->back()->with('error', 'An error occurred while creating the social play. Please try again.');
+            return redirect()->back()->with('error', 'An error occurred while creating the Personal Trainer. Please try again.');
         }
     }
 

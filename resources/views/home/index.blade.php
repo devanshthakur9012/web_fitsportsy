@@ -124,7 +124,7 @@
     @if (isset($tournament) && count($tournament['social_play']))
         <div class="hawan_section">
             <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
-                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/frontend/images/SocialPlay.png')}}" alt="Social Play"> <button class="mx-3 btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button> </div>
+                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/frontend/images/SocialPlay.png')}}" alt="Personal Trainer"> <button class="mx-3 btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button> </div>
                 <a href="{{route('social-play')}}" class="d-sm-inline-block text-xs float-right "> See All </a>
             </div>
             <div class="event-block-slider">
@@ -181,6 +181,16 @@
 
     @if (isset($tournament) && count($tournament['catgeory_data']))
         @foreach ($tournament['catgeory_data'] as $data)
+            @php $locName = "adv_image_".$loop->index +1; @endphp
+            @if (isset($tournament['location_images']) && isset($tournament['location_images'][$locName]))
+                <div class="row my-5">
+                    <div class="col-lg-12">
+                        <a class="small_banner" target="_blank">
+                            <img src="{{env('BACKEND_BASE_URL')}}/{{$tournament['location_images'][$locName]}}" alt="">
+                        </a>
+                    </div>
+                </div>
+            @endif
             <div class="hawan_section">
                 <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
                     <h1 class="h4 mb-0 float-left">{{$data['category_name']}}</h1>

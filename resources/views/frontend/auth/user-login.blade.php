@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="imageHidden col-lg-6 p-0 d-flex align-items-stretch">
-                <img src="{{asset('/images/login_banner.png')}}" width="100%" alt="">
+                <img src="{{asset('/images/fit-login.png')}}" width="100%" alt="">
             </div>
             <div class="col-lg-6 p-0 d-flex align-items-stretch">
                 <div class="card o-hidden shadow-sm border-0 w-100">

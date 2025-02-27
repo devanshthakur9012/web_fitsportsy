@@ -112,5 +112,5 @@
         @endif
     </div>
 @else
-    <p class="text-center">No Social Play events found.</p>
+    <p class="text-center">No Personal Trainer found.</p>
 @endif

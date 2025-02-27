@@ -202,7 +202,7 @@
     <div class="container">
         <section class="subscription-section">
             <div class="container">
-                <h1 class="text-center">Avaliable Ticket Types</h1>
+                <h1 class="text-center">Avaliable Package Types</h1>
                 {{-- <h2>{{$coachData->coaching_title.' ('. $coachData->category->category_name .')'}} Packages</h2> --}}
                 {{-- <h5 class="mt-0 mb-3 text-center">WHAT TICKETS WOULD YOU LIKE??</h5> --}}
                 <div class="row mt-4">
@@ -262,7 +262,7 @@
                                     <h3 class="subscription-card-title text-center">₹{{$package['ticket_price']}}<small class="price-text-muted">/ Slot</small></h3>
                                     <div class="price-list">
                                         <p><span class="badge badge-danger p-2 mb-0 slotBadge">{{$package['TotalTicket']}} Slot Left</span></p>
-                                        <p class="text-center"><i class="fas fa-trophy mr-2"></i>{{$package['description']}}</p>
+                                        <p class="text-center"><i class="fas fa-calendar-alt mr-2"></i>{{$package['description']}}</p>
                                     </div>
                                     <h6 class="mt-2 mb-0"><small>Quantity :</small></h6>
                                     <div class="d-flex align-items-center justify-content-center mt-3">
