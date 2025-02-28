@@ -834,7 +834,7 @@
         })
     </script>
 
-    <script src="{{ asset('/sw.js') }}"></script>
+    {{-- <script src="{{ asset('/sw.js') }}"></script>
     <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", function () {
@@ -844,7 +844,7 @@
                     .catch(err => console.log("service worker not registered", err))
             })
         }
-    </script>
+    </script> --}}
     <script src="{{ asset('frontend/js/site_custom.js') }}" type="text/javascript"></script>
     <script>
         $(document).on('click', function (event) {
