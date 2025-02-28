@@ -73,7 +73,7 @@
     <div class="hawan_section">
         <div class="mt-5 mb-3">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/frontend/images/SocialPlay.png')}}" alt="Personal Trainer">  <button class="mx-3 btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button></div>
+                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/frontend/images/CoachTherapist.png')}}" alt="Personal Trainer">  <button class="mx-3 btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button></div>
                 <div class="d-flex align-items-center gap-2">
                     <!-- City Filter -->
                     <select name="city" id="cityFilter" style="min-width: 160px;" class="form-control mr-2">

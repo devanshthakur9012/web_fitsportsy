@@ -953,7 +953,7 @@
                     <button type="button" class="close modalClose" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <img src="{{asset('/images/contactlessm Ticket.png')}}" width="100%" alt="">
+                    <img src="{{asset('/images/qr-attandance.png')}}" width="100%" alt="">
                 </div>
                 {{-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
