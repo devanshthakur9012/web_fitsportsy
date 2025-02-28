@@ -570,23 +570,8 @@
     left: 7px;
 }
 
-    /* .highlighter{
-        color: #ffffff !important;
-        margin-bottom: 15px !important;
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 20px;
-        border-bottom: 1px solid #0dc1e3;
-        font-size: 18px !important;
-        box-shadow: 1px 1px 7px #fff;
-        font-weight: 600 !important;
-    } */
 
     .bgFilter{
-        /* background: #111635;
-        padding: 20px;
-        border-radius: 5px;
-        margin-bottom: 20px !important; */
         margin-bottom: 20px
     }
 
@@ -614,21 +599,6 @@
         box-shadow: 0px 0px 6px #6e6e6e;
     }
 
-    /* .highlighter:before {
-        content: " ";
-        display: block;
-        height: 90%;
-        width: 100%;
-        margin-left: -3px;
-        margin-right: -3px;
-        position: absolute;
-        background: #0cc2e6;
-        transform: rotate(2deg);
-        top: -1px;
-        left: -1px;
-        border-radius: 20% 25% 20% 24%;
-        padding: 10px 3px 3px 10px;
-    } */
      .img-thumbnail{
         background-color: #a7a7a7 !important;
      }
@@ -704,17 +674,6 @@
                 <div class="dark-gap text-white" style="margin-bottom: 0;">
                     <p class="dark-gap">Sport Catgeory : {{$tournament_detail['category']}}</p>
                     <div class="row">
-                        {{-- <div class="col-lg-6 mbsm">
-                            <div class="d-flex align-items-center">
-                                <div class="icon_box calendar_icon">
-                                    <i class="far fa-calendar-alt"></i>
-                                </div>
-                                <div class="text_box">
-                                    <p class="mb-0">{{ $tournament_detail['event_sdate'] }}</p>
-                                    <small class="text_muted">{{ $tournament_detail['event_time_day'] }}</small>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="col-lg-6">
                             {{-- Tickets --}}
                             <div class="d-flex align-items-center ">
@@ -740,9 +699,6 @@
                             </a></p>
                         </div>
                     </div>
-                    {{-- <p class="mr-3">👨‍👩‍👧‍👦 Age group: {{ $coachData->age_group }}</p>
-                    <p class="mr-3">🏸 BYOE: {{ $coachData->bring_own_equipment }}</p>
-                    <p>🎟️ Free Demo session: {{ $coachData->free_demo_session }}</p> --}}
                 </div>
                 <div class="row align-items-center mb-4">
                     <div class="col-lg-6 mbsm">
@@ -872,22 +828,17 @@
                 @endif
             </div>
             <div class="col-lg-4 col-md-4 col-12">
-                {{-- <div class="countdown text-left event-ticket card shadow-sm mb-3">
-                    <div class="card-body" id="countdown">
-                        <p class="mb-0">Loading countdown...</p>
-                    </div>
-                </div> --}}
                 <div class="text-left event-ticket card shadow-sm mb-3">
                     <div class="card-body">
                         <div class="products-reviews text-center">
-                            @isset($qrCodePath)
+                            @isset($tournament_detail['event_qr'])
                                 <h5 class="mb-3">📲 Scan to register instantly!</h5>
                                 <div class="qr-code-container mb-3" style="display: inline-block; padding: 10px; border: 2px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
-                                    <img src="{{ $qrCodePath }}" alt="QR Code">
+                                    <img src="{{ $tournament_detail['event_qr'] }}" alt="QR Code">
                                 </div>
                                 <br>
                                 <!-- Download Button with Icon -->
-                                <a href="{{ $qrCodePath }}" download="coaching-booking.png" class="btn btn-primary btn-sm mt-2" style="display: inline-flex; align-items: center; gap: 5px;">
+                                <a href="{{ $tournament_detail['event_qr'] }}" download="coaching-booking.png" class="btn btn-primary btn-sm mt-2" style="display: inline-flex; align-items: center; gap: 5px;">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             @endisset 
@@ -946,19 +897,12 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
-                {{-- <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                </div> --}}
                 <div class="modal-body position-relative">
                     <button type="button" class="close modalClose" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <img src="{{asset('/images/qr-attandance.png')}}" width="100%" alt="">
                 </div>
-                {{-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div> --}}
             </div>
             </div>
         </div>
@@ -1013,40 +957,6 @@
                 </div>
             </div>
         @endif
-        <!-- Progress Section -->
-        {{-- <div class="progress-section mb-4 mt-4">
-            <h4>Overview {{ $coachData->category->category_name }} Session</h4>
-            <div class="dark-progress-container mb-3">
-                <div class="progress-label">Begin</div>
-                <div class="dark-progress-bar-wrapper">
-                    <div class="dark-progress">
-                        @php
-                            $activityDurationD = $sessionDurationData['activities'];
-                            $lastKey = array_key_last($activityDurationD);
-                        @endphp
-                        @foreach ($activityDurationD as $key => $activity)
-                            @php
-                                $perc = ceil(($activity['activity_duration'] / $sessionDurationData['session_duration']) * 100)
-                            @endphp
-                            <div class="dark-progress-bar {{ $key==0 ? 'rounded-left' : ($key == $lastKey ? 'rounded-right' : '')}}" style="background:{!! Common::sessionColors($key) !!};width:{{ $perc }}%;"></div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="progress-label">{{ $sessionDurationData['session_duration'] }} Min</div>
-            </div>
-
-            <div class=" p-3 bg-dark-theme mb-3">
-                @foreach ($activityDurationD as $k => $act)
-                <div class="dark-session-item mb-3">
-                    <div class="dark-icon-box" style="background: {!! Common::sessionColors($k) !!};"></div>
-                    <div class="ml-3 d-flex flex-grow-1 justify-content-start">
-                        <span style="width:50px;">{{ $act['activity_duration'] }} Mins</span>
-                        <span class="text-muted ml-5">{{ $act['activity'] }}</span>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div> --}}
 
         @if (isset($related_tournament) && count($related_tournament))
             <div class="hawan_section">
@@ -1126,35 +1036,6 @@
             document.head.appendChild(style);
         };
 </script>
-{{-- <script>
-    document.getElementById("shareButton").addEventListener("click", async () => {
-        const shareData = {
-            title: "{{ $tournament_detail['event_title'] }}",
-            text: "{{ $tournament_detail['event_about'] }}",
-            url: "{{ url()->current() }}",
-        };
-
-        if (navigator.share) {
-            try {
-                await navigator.share(shareData);
-                // alert("Thanks for sharing!");
-            } catch (err) {
-                console.error("Sharing failed", err);
-            }
-        } else {
-            // Fallback for browsers without Web Share API
-            const encodedURL = encodeURIComponent(shareData.url);
-            const shareOptions = `
-                <div>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedURL}" target="_blank">Share on Facebook</a><br>
-                    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodedURL}" target="_blank">Share on Twitter</a><br>
-                    <a href="https://www.linkedin.com/shareArticle?url=${encodedURL}&title=${encodeURIComponent(shareData.title)}" target="_blank">Share on LinkedIn</a>
-                </div>
-            `;
-            document.body.insertAdjacentHTML("beforeend", shareOptions);
-        }
-    });
-</script> --}}
 @php
     $date = $tournament_detail['event_sdate']; // Example: "26 January, 2025"
     $time = $tournament_detail['event_time_day']; // Example: "Sunday, 9:00 AM TO 7:00 PM"
@@ -1175,54 +1056,6 @@
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
-{{-- <script>
-    // Get the event date and time from PHP
-    const eventDateTime = "{{ $event_datetime }}"; // Example: "26 January, 2025 9:00 AM"
-
-    // Parse the date and time into a JavaScript Date object
-    const eventDate = new Date(eventDateTime).getTime();
-
-    // Update the countdown every second
-    // const countdownInterval = setInterval(() => {
-        const now = new Date().getTime();
-        const timeLeft = eventDate - now;
-
-        if (timeLeft >= 0) {
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = `
-                <h5 class="mb-3">⏳ Starts In</h5>
-                <div class="timeCounter">
-                    <div class="days">
-                        <span>${days < 10 ? "0" + days : days}</span>
-                        <div>days</div>
-                    </div>
-                    <div class="separator">:</div>
-                    <div class="days">
-                        <span>${hours < 10 ? "0" + hours : hours}</span>
-                        <div>hours</div>
-                    </div>
-                    <div class="separator">:</div>
-                    <div class="days">
-                        <span>${minutes < 10 ? "0" + minutes : minutes}</span>
-                        <div>minutes</div>
-                    </div>
-                    <div class="separator">:</div>
-                    <div class="days">
-                        <span>${seconds < 10 ? "0" + seconds : seconds}</span>
-                        <div>seconds</div>
-                    </div>
-                </div>
-            `;
-        } else {
-            clearInterval(countdownInterval);
-            document.getElementById("countdown").innerHTML = "<p class='mb-0'>Event has started!</p>";
-        }
-    // }, 1000);
-</script> --}}
 <script>
     document.getElementById('shareBtn').addEventListener('click', function() {
         // Get data attributes from the button
@@ -1263,6 +1096,7 @@
 
         let colors = ["bg-primary", "bg-success", "bg-warning", "bg-danger", "bg-info"];
         let totalActivities = activities.length;
+        console.log(activities.length);
         let currentIndex = 0;
         let progress = 0;
         let stackedHtml = "";

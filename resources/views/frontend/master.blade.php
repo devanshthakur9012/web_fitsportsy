@@ -200,11 +200,14 @@
                             <li>
                                 <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/Partner.png')}}" alt="Organizer" style="height:23px"></a>
                             </li>
-                            @isset($favicon['appUrl'])
+                            {{-- @isset($favicon['appUrl'])
                                 <li>
                                     <a href="{{$favicon['appUrl']}}" class="mx-3 btn default-btn py-2">Get App</a>
                                 </li>
-                            @endisset
+                            @endisset --}}
+                            <li>
+                                <a href="https://play.google.com/store/apps/details?id=com.geekslife.playoffz" class="mx-3 btn btn-outline-dark my-1 py-1">Get App</a>
+                            </li>
                             @if (Common::isUserLogin())
                                 <li class="nav-item dropdown no-arrow ">
                                     @if (Common::isUserLogin())
