@@ -62,7 +62,7 @@ p {
     font-size: 15px;
     color: #e6e0e0;
     height: 45px;
-    background-color: #1a1b2e;
+    background-color: #212121;
     border: 1px solid #616269;
     /* line-height: 50px; */
 }
@@ -74,7 +74,7 @@ p {
 
 .form-control:focus {
     color: #fff;
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-color: #6e6e6e;
     outline: 0;
     box-shadow: none;
@@ -91,7 +91,7 @@ hr {
     border: 1px solid #616269;
 }
 .modal-content {
-   background-color: #1a1b2e;
+   background-color: #212121;
 }
 .close {
     float: right;
@@ -176,7 +176,7 @@ label {
 
 .btn-outline-primary {
     color: #6e6e6e;
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-color: #6e6e6e;
 }
 
@@ -298,7 +298,7 @@ label {
 
 .home-slider{
     position: relative;
-    background-color: #1a1b2e;
+    background-color: #212121;
 }
 .help-block ul {
     margin: 0;
@@ -817,7 +817,7 @@ header .navbar .navbar-brand img {
     object-fit: cover
 }
 .filters{
-    background-color: #1a1b2e;
+    background-color: #212121;
     border: 1px solid #616269 ;
 }
 
@@ -1538,14 +1538,14 @@ form.user .btn-user {
 
 .event-details .event-img {
     padding: 10px;
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-radius: 5px;
     margin-bottom: 20px;
     height: calc(100% - 20px);
 }
 
 .event-other-card {
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-radius: 5px;
     padding: 15px;
     height: calc(100% - 20px);
@@ -1579,7 +1579,7 @@ form.user .btn-user {
 
 .event-info-card {
     border-radius: 5px;
-    background: #1a1b2e;
+    background: #212121;
     border: none;
 }
 
@@ -1680,7 +1680,7 @@ form.user .btn-user {
 }
 
 .slot-details {
-    background-color: #1a1b2e;
+    background-color: #212121;
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #616269;
@@ -1712,7 +1712,7 @@ form.user .btn-user {
 }
 
 .slot-card-body {
-    background-color: #1a1b2e;
+    background-color: #212121;
     padding: 15px;
 }
 
@@ -1771,7 +1771,7 @@ form.user .btn-user {
     display: flex;
     flex-shrink: 0;
     content: "";
-    background-color: #1a1b2e;
+    background-color: #212121;
     width: 14px;
     height: 14px;
     line-height: 16px;
@@ -1830,14 +1830,14 @@ form.user .btn-user {
 }
 
 .checkout-event-area .checkout-card {
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-radius: 5px;
     border: none;
 }
 
 .checkout-event-area .checkout-card .list-group-item {
 
-    background-color: #1a1b2e;
+    background-color: #212121;
     border: 1px solid #616269;
 }
 
@@ -1866,7 +1866,7 @@ form.user .btn-user {
 }
 
 .invoice-box .card-header {
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-bottom: 1px solid #0a0a0a;
     text-align: center;
 }
@@ -1885,13 +1885,13 @@ form.user .btn-user {
 
 .invoice-area .invoice-slot {
     background-color: #fff;
-    border: 1px solid #1a1b2e;
+    border: 1px solid #212121;
     margin-bottom: 15px;
     height: calc(100% - 15px);
 }
 
 .invoice-area .invoice-slot .invoice-header {
-    background-color: #1a1b2e;
+    background-color: #212121;
     color: #fff;
     text-align: center;
     padding: 10px 15px;
@@ -1913,7 +1913,7 @@ form.user .btn-user {
 
 /*=========    product  page ===============*/
 .products-details-area .card{
-    background-color: #1a1b2e;
+    background-color: #212121;
 }
 .small_banner img {
     width: 100%;
@@ -1935,7 +1935,7 @@ form.user .btn-user {
 
 .single-products-card {
     margin-bottom: 20px;
-    background-color: #1a1b2e;
+    background-color: #212121;
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
     border-radius: 10px;
     overflow: hidden;
@@ -2124,7 +2124,7 @@ Cart Area CSS
     outline: 0;
     display: inline-block;
     border: 1px solid #616269;
-    background-color: #1a1b2e;
+    background-color: #212121;
     text-align: center;
     width: 45px;
     height: 36px;
@@ -2211,7 +2211,7 @@ Cart Area CSS
 /*================   Blog area  ======================*/
 .blog-card {
     margin-bottom: 25px;
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-radius: 10px;
 }
 
@@ -2279,7 +2279,7 @@ Cart Area CSS
 }
 
 .blog-details-desc {
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-radius: 5px;
     padding: 20px;
 }
@@ -2513,7 +2513,7 @@ Products Details Area CSS
 }
 
 .products-details-desc .bg-light{
-   background-color: #1a1b2e !important;;
+   background-color: #212121 !important;;
    border: 1px solid #616269 !important;
 }
 
@@ -2843,7 +2843,7 @@ margin-bottom: 0px;
 
 .book-slot-detail .book-sbody{
     padding: 10px;
-    background-color: #1a1b2e;
+    background-color: #212121;
     border-top: 1px solid #616269;
     border-bottom: 1px solid #616269;
 }
@@ -2917,7 +2917,7 @@ margin-bottom: 0px;
     padding: 30px 0px;
 }
 .seatlayout_area .seatcontainer{
-    background-color: #1a1b2e;
+    background-color: #212121;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.05);
@@ -2969,7 +2969,7 @@ margin-bottom: 0px;
 .seatlayout_area .seatrow .rowtitle{
     font-size: 12px;
     font-weight: bold;
-    background-color: #1a1b2e;
+    background-color: #212121;
     height: fit-content;
     padding: 3px 10px;
     margin-right: 10px;
