@@ -124,7 +124,7 @@
     @if (isset($tournament) && count($tournament['social_play']))
         <div class="hawan_section">
             <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
-                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/images/CoachTherapist.png')}}" alt="Personal Trainer"> <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button> </div>
+                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Personal Trainer"> <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button> </div>
                 <a href="{{route('social-play')}}" class="d-sm-inline-block text-xs float-right "> See All </a>
             </div>
             <div class="event-block-slider">
