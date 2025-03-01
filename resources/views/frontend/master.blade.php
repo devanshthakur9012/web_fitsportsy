@@ -200,14 +200,11 @@
                             <li>
                                 <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/Partner.png')}}" alt="Organizer" style="height:23px"></a>
                             </li>
-                            {{-- @isset($favicon['appUrl'])
+                            @isset($favicon['appUrl'])
                                 <li>
                                     <a href="{{$favicon['appUrl']}}" class="mx-3 btn default-btn py-2">Get App</a>
                                 </li>
-                            @endisset --}}
-                            <li>
-                                <a href="https://play.google.com/store/apps/details?id=com.geekslife.playoffz" class="mx-3 btn btn-outline-dark my-1 py-1">Get App</a>
-                            </li>
+                            @endisset
                             @if (Common::isUserLogin())
                                 <li class="nav-item dropdown no-arrow ">
                                     @if (Common::isUserLogin())
@@ -617,7 +614,7 @@
                             <form id="socialPlayForm" action="{{route('create-play')}}" autocomplete="off" class="row" method="POST">
                                 <div class="mb-3 col-lg-6">
                                     @csrf
-                                    <label for="cat_id" class="form-label">Sport Type <span class="text-danger">*</span></label>
+                                    <label for="cat_id" class="form-label">Therapy Type <span class="text-danger">*</span></label>
                                     <select class="form-control" id="cat_id" name="cat_id" required>
                                         @isset($catData)
                                             <option value="" selected disabled>Select Type</option>
@@ -629,22 +626,22 @@
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="title" class="form-label">Play Title <span class="text-danger">*</span></label>
-                                    <input type="text" placeholder="Eg: Looking for players to join for a thrilling game of badminton!" class="form-control" id="title" name="title" maxlength="225" required>
+                                    <label for="title" class="form-label">Service Name <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="Eg: Therapeutic Yoga" class="form-control" id="title" name="Service Name" maxlength="225" required>
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="start_date" class="form-label">Start Date <span class="text-danger">*</span></label>
+                                    <label for="start_date" class="form-label">Available Start Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control" id="start_date" name="start_date" required>
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="start_time" class="form-label">Start Time <span class="text-danger">*</span></label>
+                                    <label for="start_time" class="form-label">Available Time Slot <span class="text-danger">*</span></label>
                                     <input type="time" class="form-control" id="start_time" name="start_time" required>
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="venue" class="form-label">Venue <span class="text-danger">*</span></label>
+                                    <label for="venue" class="form-label">Venue Details <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" id="venue" name="venue" placeholder="Eg: ABC Sports Venue, 1st Cross, Indira Nagar Bangalore-560038" maxlength="225" required>
                                 </div>
 

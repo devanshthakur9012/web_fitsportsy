@@ -82,6 +82,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(document).ready(function () {
+
+      // Prevent form submission on Enter in the OTP field
+        $('input').on('keypress', function (event) {
+            if (event.which === 13) {  // Enter key code
+                event.preventDefault();
+                $('#verify_otp_btn').click(); // Trigger OTP verification button click
+            }
+        });
+        
         // Send OTP on mobile number submission
         $("#continue_btn").on('click', function (event) {
             event.preventDefault();
