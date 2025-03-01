@@ -674,22 +674,20 @@
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="type" class="form-label">Play Type <span class="text-danger">*</span></label>
+                                    <label for="type" class="form-label">Session Type <span class="text-danger">*</span></label>
                                     <select class="form-control" id="type" name="type" required>
-                                        <option value="public" selected>Public</option>
-                                        <option value="group">Group</option>
+                                        <option value="online" selected>Online</option>
+                                        <option value="inperson">In-person</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3 col-lg-12">
-                                    <label for="skill_level" class="form-label">Skill Level <span class="text-danger">*</span></label>
+                                    <label for="skill_level" class="form-label">Experience Level Required <span class="text-danger">*</span></label>
                                     <select class="form-control select2" id="skill_level" name="skill_level[]" multiple required>
                                         <option value="">Select Level</option>
                                         <option value="Beginner">Beginner</option>
                                         <option value="Intermediate">Intermediate</option>
-                                        <option value="Experienced">Experienced</option>
                                         <option value="Advanced">Advanced</option>
-                                        <option value="Master">Master</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-lg-12">
