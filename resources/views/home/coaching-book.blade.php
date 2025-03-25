@@ -355,6 +355,21 @@
             border: 2px solid #FF8C42;
         }
 
+        .ticket_icon2 {
+            color: #17a2b8; /* Bold orange */
+            border: 2px solid #17a2b8;
+        }
+
+        .ticket_icon3 {
+            color: #da21ff; /* Bold orange */
+            border: 2px solid #da21ff;
+        }
+
+        .ticket_icon4 {
+            color: #ffc107; /* Bold orange */
+            border: 2px solid #ffc107;
+        }
+
         /* Location Icon */
         .location_icon {
             color: #3AB795; /* Deep green */
@@ -674,7 +689,7 @@
                 <div class="dark-gap text-white" style="margin-bottom: 0;">
                     <p class="dark-gap">Sport Catgeory : {{$tournament_detail['category']}}</p>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 mb-3">
                             {{-- Tickets --}}
                             <div class="d-flex align-items-center ">
                                 <div class="icon_box ticket_icon">
@@ -682,25 +697,59 @@
                                 </div>
                                 <div class="text_box">
                                     <p class="mb-0">Package Price : {{ $tournament_detail['ticket_price'] }}</p>
-                                    <small class="text_muted">{{ $tournament_detail['total_ticket'] }} Spots Left</small>
+                                    {{-- <small class="text_muted">{{ $tournament_detail['total_ticket'] }} Spots Left</small> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="icon_box ticket_icon2">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="text_box ms-3">
+                                    <p class="mb-0 fw-bold">Mon,Tue,Wed,Thu,Fri,Sat,Sun</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Age Group Filter -->
+                        <div class="col-lg-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="icon_box ticket_icon3">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="text_box ms-3">
+                                    <p class="mb-0 fw-bold">Age Group : Adults,Kids</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Class Type Filter -->
+                        <div class="col-lg-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="icon_box ticket_icon4">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div class="text_box ms-3">
+                                    <p class="mb-0 fw-bold">Class Type : 1-on-1,Group,Online</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            {{-- Address --}}
+                            <div class="d-flex align-items-center">
+                                <div class="icon_box location_icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="text_box"><a class="text-white" href="{{ $tournament_detail['map_url'] }}" target="_blank">
+                                        {{ $tournament_detail['event_address'] }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- Address --}}
-                    <div class="d-flex align-items-center mb-3 mt-2">
-                        <div class="icon_box location_icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="text_box">
-                            <!-- Using the provided latitude and longitude to open Google Maps -->
-                            <p class="text_muted"></p><a class="text-white" href="{{ $tournament_detail['map_url'] }}" target="_blank">
-                                {{ $tournament_detail['event_address'] }}
-                            </a></p>
-                        </div>
-                    </div>
                 </div>
-                <div class="row align-items-center mb-4">
+                <div class="row align-items-center my-4">
                     <div class="col-lg-6 mbsm">
                         <div class="text-white">
                             <h4 class="mb-3">Organized By</h4>
@@ -1085,7 +1134,7 @@
     });
 </script>
 <!-- JavaScript for Animated & Stacked Progress -->
-    @if(isset($collection) && is_array($collection) && count($collection) > 0 && !empty($collection['schedule']))
+    {{-- @if(isset($collection) && is_array($collection) && count($collection) > 0 && !empty($collection['schedule']))
     <script>
         document.addEventListener("DOMContentLoaded", function () {
         let activities = @json($collection['schedule']);
@@ -1141,5 +1190,74 @@
         updateProgress(); // Start progress animation
     });
     </script>
-    @endif
+    @endif --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    let activities = @json($collection['schedule']);
+    let progressBar = document.getElementById("activityProgressBar");
+    let animatedProgressContainer = document.getElementById("animatedProgressContainer");
+    let stackedProgressContainer = document.getElementById("stackedProgressContainer");
+    let stackedProgress = document.getElementById("stackedProgress");
+
+    let colors = ["bg-primary", "bg-success", "bg-warning", "bg-danger", "bg-info"];
+    
+    // First, calculate total minutes
+    let totalMinutes = 0;
+    activities.forEach(activity => {
+        let timeStr = activity.time;
+        let minutes = parseInt(timeStr); // This works for "5 mins", "15 mins", etc.
+        totalMinutes += minutes;
+    });
+
+    let currentIndex = 0;
+    let progress = 0;
+    let stackedHtml = "";
+
+    function updateProgress() {
+        if (currentIndex < activities.length) {
+            let activity = activities[currentIndex];
+            let timeStr = activity.time;
+            let minutes = parseInt(timeStr);
+            let percentage = Math.round((minutes / totalMinutes) * 100);
+            
+            progress += percentage;
+            progressBar.style.width = progress + "%";
+            progressBar.textContent = activity.activity; // Show name inside bar
+
+            // Smooth transition effect
+            progressBar.style.transition = "width 1.5s ease-in-out";
+
+            // Change color dynamically
+            progressBar.className = "progress-bar progress-bar-striped progress-bar-animated " + colors[currentIndex % colors.length];
+
+            // Store for final stacked progress (without text)
+            stackedHtml += `<div class="progress-bar ${colors[currentIndex % colors.length]}" role="progressbar" style="width: ${percentage}%" 
+                            aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="top" title="${activity.activity} (${activity.time})">
+                        </div>`;
+
+            currentIndex++;
+            
+            // Adjust timeout based on activity duration (shorter activities animate faster)
+            let timeoutDuration = 1000 + (minutes * 50); // Base 1s + 50ms per minute
+            setTimeout(updateProgress, timeoutDuration);
+        } else {
+            // After last step, replace single progress with stacked (without text)
+            setTimeout(() => {
+                animatedProgressContainer.style.display = "none";
+                stackedProgressContainer.style.display = "block";
+                stackedProgress.innerHTML = stackedHtml;
+
+                // Reinitialize Bootstrap Tooltip for New Elements
+                let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                    new bootstrap.Tooltip(tooltipTriggerEl);
+                });
+
+            }, 2000);
+        }
+    }
+
+    updateProgress(); // Start progress animation
+});
+    </script>
 @endpush

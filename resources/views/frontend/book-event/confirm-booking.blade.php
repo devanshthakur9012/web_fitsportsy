@@ -74,8 +74,8 @@ $paymentId = "";
                                         </div>
                                     </div>
                                     <div class="col-lg-8 mbsm">
-                                        <h4 class="mb-3" style="font-size: 20px">{{$packageDetails['event_title']}}</h4>
-                                        <p class="mb-0">{{$packageDetails['event_sdate']}}</p>
+                                        <h4 class="mb-0" style="font-size: 20px">{{$packageDetails['event_title']}}</h4>
+                                        {{-- <p class="mb-0">{{$packageDetails['event_sdate']}}</p> --}}
                                         <p class="mb-0">{{$packageDetails['event_address_title']}}</p>
                                     </div>
                                 </div>
@@ -114,18 +114,18 @@ $paymentId = "";
                                             @for($player = 1; $player <= $groupSize; $player++)
                                                 <div class="playerForm">
                                                     @if ($groupSize > 1)
-                                                    <h6 class="playerHead">Player {{ ($group - 1) * $groupSize + $player }}</h6>
+                                                    <h6 class="playerHead">Student {{ ($group - 1) * $groupSize + $player }}</h6>
                                                     @endif
                                                     <!-- Fixed fields: Name and Phone Number -->
                                                     <div class="row">
                                                     <div class="mb-3 col-lg-6">
                                                         <label for="player_name_{{ $group }}_{{ $player }}" class="form-label">Name <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" name="player_name_{{ $group }}_{{ $player }}" id="player_name_{{ $group }}_{{ $player }}" placeholder="Player Name/Team name" required>
+                                                        <input type="text" class="form-control" name="player_name_{{ $group }}_{{ $player }}" id="player_name_{{ $group }}_{{ $player }}" placeholder="Student Name/Team name" required>
                                                     </div>
                         
                                                     <div class="mb-3 col-lg-6">
                                                         <label for="player_contact_{{ $group }}_{{ $player }}" class="form-label">Contact Number</label>
-                                                        <input type="text" class="form-control" name="player_contact_{{ $group }}_{{ $player }}" id="player_contact_{{ $group }}_{{ $player }}" placeholder="Player Contact Number">
+                                                        <input type="text" class="form-control" name="player_contact_{{ $group }}_{{ $player }}" id="player_contact_{{ $group }}_{{ $player }}" placeholder="Student Contact Number">
                                                     </div>
                         
                                                     <!-- Optional fields based on the "fields" array -->
