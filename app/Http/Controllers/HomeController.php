@@ -921,21 +921,6 @@ class HomeController extends Controller
         $data['tournament_reviewdata'] = $details['reviewdata'];
         $data['related_tournament'] = $details['related'];
         
-        // Use the title to create a more descriptive QR code file name
-        // $sanitizedTitle = preg_replace('/[^A-Za-z0-9\-]/', '_', $title); // Sanitize the title for use in filenames
-        // $qrCodeFileName = 'coaching-' . $sanitizedTitle . '-' . $id . '.png';
-        // $qrCodePath = public_path('qrcodes/' . $qrCodeFileName);
-        
-        // // Check if the QR code already exists
-        // if (!file_exists($qrCodePath)) {
-        //     \SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')
-        //         ->size(150) // Set the size of the QR code
-        //         ->margin(0) // Minimize padding
-        //         ->generate(route('coaching-detail', ['title' => $title, 'id' => $id]), $qrCodePath); // Generate and store the QR code
-        // }
-        
-        // // Return the public URL for the cached QR code
-        // $data['qrCodePath'] = asset('qrcodes/' . $qrCodeFileName);
         return view('home.coaching-book', $data);
     }
 

@@ -409,6 +409,16 @@ class BookController extends Controller
                 if(session()->has('booking_data')){
                     session()->forget('booking_data');
                 }
+
+                // Send email to user
+                // Mail::to($request->email)->send(new TicketEmail(
+                //     $data,
+                //     $eventDetails,
+                //     $userDetails,
+                //     $storePaymentDetails['ticket_id']
+                // ));
+
+                // SEND MAIL TO USER WITH TICKET INFORMATION
                 return redirect()->route('ticket-information',['id'=>$storePaymentDetails['ticket_id']])->with('success','Book Coaching Confirmed');
             }
             return redirect()->back()->with('error','Something Went Wrong! Please Contact Site Admin');

@@ -693,10 +693,10 @@
                             {{-- Tickets --}}
                             <div class="d-flex align-items-center ">
                                 <div class="icon_box ticket_icon">
-                                    <i class="fas fa-ticket-alt"></i>
+                                    <i class="fas fa-chalkboard-teacher"></i>
                                 </div>
                                 <div class="text_box">
-                                    <p class="mb-0">Package Price : {{ $tournament_detail['ticket_price'] }}</p>
+                                    <p class="mb-0">Class Type : 1-on-1,Group,Online</p>
                                     {{-- <small class="text_muted">{{ $tournament_detail['total_ticket'] }} Spots Left</small> --}}
                                 </div>
                             </div>
@@ -728,10 +728,10 @@
                         <div class="col-lg-6 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="icon_box ticket_icon4">
-                                    <i class="fas fa-chalkboard-teacher"></i>
+                                    <i class="fas fa-ticket-alt"></i>
                                 </div>
                                 <div class="text_box ms-3">
-                                    <p class="mb-0 fw-bold">Class Type : 1-on-1,Group,Online</p>
+                                    <p class="mb-0 fw-bold">Package Price : {{ $tournament_detail['ticket_price'] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -776,13 +776,16 @@
                             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(url()->current()) }}&title={{ urlencode($tournament_detail['event_title']) }}&summary={{ urlencode($tournament_detail['event_address']) }}" target="_blank" class="social-button linkedin">
                                 <i class="fab fa-linkedin-in text-white"></i>
                             </a>
-                            <a href="https://api.whatsapp.com/send?text={{ urlencode($tournament_detail['event_title']) }}%0A%0A
+                            {{-- <a href="https://api.whatsapp.com/send?text={{ urlencode($tournament_detail['event_title']) }}%0A%0A
                             {{ strip_tags(stripslashes($tournament_detail['event_about'])) }}%0A%0A
                             📅 Date: {{ $tournament_detail['event_sdate'] }}%0A🕒 Time: {{ $tournament_detail['event_time_day'] }}%0A%0A
                             📍 Location: {{ $tournament_detail['event_address'] }}%0A%0A
                             🔗 Register here: {{ url()->current() }}"
                             target="_blank" class="social-button whatsapp">
                             <i class="fab fa-whatsapp text-white"></i>
+                            </a> --}}
+                            <a href="javascript:void(0)" onclick="shareOnWhatsApp()" class="social-button whatsapp">
+                                <i class="fab fa-whatsapp text-white"></i>
                             </a>
                         </div>
                     </div>
@@ -882,8 +885,8 @@
                         <div class="products-reviews text-center">
                             @isset($tournament_detail['event_qr'])
                                 <h5 class="mb-3">📲 Scan to register instantly!</h5>
-                                <div class="qr-code-container mb-3" style="display: inline-block; padding: 10px; border: 2px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
-                                    <img src="{{ $tournament_detail['event_qr'] }}" alt="QR Code">
+                                <div class="qr-code-container mb-3" style="display: inline-block; padding: 10px;border-radius: 8px;">
+                                    <img src="{{ $tournament_detail['event_qr'] }}" alt="QR Code" style="width:150px;border-radius:4px;">
                                 </div>
                                 <br>
                                 <!-- Download Button with Icon -->
@@ -1133,64 +1136,6 @@
         window.open(whatsappURL, '_blank');
     });
 </script>
-<!-- JavaScript for Animated & Stacked Progress -->
-    {{-- @if(isset($collection) && is_array($collection) && count($collection) > 0 && !empty($collection['schedule']))
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        let activities = @json($collection['schedule']);
-        let progressBar = document.getElementById("activityProgressBar");
-        let animatedProgressContainer = document.getElementById("animatedProgressContainer");
-        let stackedProgressContainer = document.getElementById("stackedProgressContainer");
-        let stackedProgress = document.getElementById("stackedProgress");
-
-        let colors = ["bg-primary", "bg-success", "bg-warning", "bg-danger", "bg-info"];
-        let totalActivities = activities.length;
-        console.log(activities.length);
-        let currentIndex = 0;
-        let progress = 0;
-        let stackedHtml = "";
-
-        function updateProgress() {
-            if (currentIndex < totalActivities) {
-                let percentage = Math.round(100 / totalActivities);
-                progress += percentage;
-                progressBar.style.width = progress + "%";
-                progressBar.textContent = activities[currentIndex].activity; // Show name inside bar
-
-                // Smooth transition effect
-                progressBar.style.transition = "width 1.5s ease-in-out";
-
-                // Change color dynamically
-                progressBar.className = "progress-bar progress-bar-striped progress-bar-animated " + colors[currentIndex % colors.length];
-
-                // Store for final stacked progress (without text)
-                stackedHtml += `<div class="progress-bar ${colors[currentIndex % colors.length]}" role="progressbar" style="width: ${percentage}%" 
-                                aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100" data-bs-toggle="tooltip" data-bs-placement="top" title="${activities[currentIndex].activity}">
-                            </div>`;
-
-                currentIndex++;
-                setTimeout(updateProgress, 2000); // Change activity every 2 seconds
-            } else {
-                // After last step, replace single progress with stacked (without text)
-                setTimeout(() => {
-                    animatedProgressContainer.style.display = "none";
-                    stackedProgressContainer.style.display = "block";
-                    stackedProgress.innerHTML = stackedHtml;
-
-                    // **Reinitialize Bootstrap Tooltip for New Elements**
-                    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-                    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-                        new bootstrap.Tooltip(tooltipTriggerEl);
-                    });
-
-                }, 2000);
-            }
-        }
-
-        updateProgress(); // Start progress animation
-    });
-    </script>
-    @endif --}}
     <script>
         document.addEventListener("DOMContentLoaded", function () {
     let activities = @json($collection['schedule']);
@@ -1259,5 +1204,31 @@
 
     updateProgress(); // Start progress animation
 });
+    </script>
+   <script>
+    function shareOnWhatsApp() {
+        // Text content
+        const title = "{{ $tournament_detail['event_title'] }}";
+        const about = "{{ strip_tags($tournament_detail['event_about']) }}";
+        const date = "{{ $tournament_detail['event_sdate'] }}";
+        const time = "{{ $tournament_detail['event_time_day'] }}";
+        const location = "{{ $tournament_detail['event_address'] }}";
+        const url = "{{ url()->current() }}";
+        
+        // Image URL (must be publicly accessible)
+        const imageUrl = "{{ env('BACKEND_BASE_URL') }}/{{ $tournament_detail['event_cover_img'][0] }}";
+        
+        // Construct message with proper spacing
+        const message = `*${title}*\n\n📅 *Date:* ${date}\n🕒 *Time:* ${time}\n📍 *Location:* ${location}\n\n🔗 Register here: ${url}`;
+        
+        // Encode for URL
+        const encodedMessage = encodeURIComponent(message);
+        const encodedImage = encodeURIComponent(imageUrl);
+        
+        // WhatsApp share URL (with fallback)
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+    }
     </script>
 @endpush
