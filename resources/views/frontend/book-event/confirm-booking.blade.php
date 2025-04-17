@@ -100,7 +100,7 @@ $paymentId = "";
                                     @php
                                         $fields = $packageDetails['fields'] ?? [];
                                         $isDouble = strpos(strtolower($packageDetails['type']), 'double') !== false || strpos(strtolower($packageDetails['type']), 'doubles') !== false;
-                                        $groupSize = $isDouble ? 2 : 1; // 2 players per group if double, else 1
+                                        $groupSize = $isDouble ? 1 : 1; // 2 players per group if double, else 1
                                         $totalGroups = ($bookingData['quantity'] ?? 1); // Number of ticket quantities
                                         $totalPlayers = $groupSize * $totalGroups; // Total number of players to render
                                     @endphp

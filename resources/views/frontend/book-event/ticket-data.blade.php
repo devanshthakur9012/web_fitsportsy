@@ -195,9 +195,12 @@
                                     <tr>
                                         <th scope="row">Status</th>
                                         <td>
-                                            <span class="badge {{ $ticketData['ticket_status'] === 'Paid' ? 'badge-success' : 'badge-danger' }}">
-                                                {{ ucfirst($ticketData['ticket_status']) }}
-                                            </span>
+                                        <span class="badge 
+                                        {{ $ticketData['ticket_status'] === 'Verified' ? 'badge-success' : 
+                                            ($ticketData['ticket_status'] === 'Pending' ? 'badge-warning' : 'badge-danger') }}">
+                                        {{ ucfirst($ticketData['ticket_status']) }}
+                                        </span>
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -238,10 +241,6 @@
                                     <tr>
                                         <th scope="row">Transaction ID</th>
                                         <td>{{ $ticketData['ticket_transaction_id'] }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Payment Method</th>
-                                        <td>{{ $ticketData['ticket_p_method'] }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Subtotal</th>
