@@ -163,6 +163,9 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     // TICKET BOOKING
     Route::post('/purchase-coaching',[BookController::class,'purchaseTournament'])->name('purchase-coaching');
     Route::get('/confirm-booking',[BookController::class,'confirmTicketBook'])->name('confirm-ticket-book');
+
+    Route::get('/terms-conditions',[BookController::class,'termsConditions'])->name('terms-conditions');
+
     Route::post('/store-payment-detail',[BookController::class,'storePaymentDetails'])->name('store-payment-detail');
     Route::get('/ticket-information/{id}',[BookController::class,'ticketInformationData'])->name('ticket-information');
 

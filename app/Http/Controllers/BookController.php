@@ -597,6 +597,10 @@ class BookController extends Controller
         return view('frontend.book-event.ticket-data',compact('ticketData'));
     }
 
+    public function termsConditions(){
+        return view('frontend.book-event.term-conditons');
+    }
+
     private function fetchTicketInfo($tid){
         try {
             // Instantiate the Guzzle client

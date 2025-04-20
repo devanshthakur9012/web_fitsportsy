@@ -9,23 +9,25 @@ $totalAmntTC = 0;
 $orgComm = 0;
 @endphp
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <style>
+    /* General Styles */
     @media (max-width: 576px) {
-        .mbsm{
+        .mbsm {
             margin-top: 15px;
         }
-        .mbsm h4{
+        .mbsm h4 {
             font-size: 18px !important;
         }
     }
 
-    .ticketHeading{
+    .ticketHeading {
         background: #6e6e6e;
         color: #ffffff;
         padding: 6px;
     }
 
-    .playerHead{
+    .playerHead {
         color: #fff;
         background: #0a0a0a;
         display: inline-block;
@@ -34,7 +36,7 @@ $orgComm = 0;
         font-weight: 300;
     }
 
-    .playerForm{
+    .playerForm {
         padding: 0px 10px;
     }
 
@@ -154,7 +156,6 @@ $orgComm = 0;
     }
 
     .qr-code-container, .upi-details {
-        background-color: #f9f9f9;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -183,45 +184,195 @@ $orgComm = 0;
             margin-bottom: 20px;
         }
     }
+
+    /* Modal specific styles */
+    #qrPaymentModal .modal-content {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    #qrPaymentModal .modal-header {
+        background-color: #3f3f3f !important;
+        color: white;
+        border-bottom: none;
+    }
+
+    #qrPaymentModal .modal-body {
+        padding: 2rem;
+    }
+
+    #qrPaymentModal .amount-display {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+    }
+
+    #qrPaymentModal .qr-code-container {
+        background-color: white;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+
+    #qrPaymentModal .btn-close {
+        filter: invert(1);
+    }
+
+    .small_card {
+        background: #212121;
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: 3px solid #f7bd0f;
+    }
+
+    .textBox-postion {
+        position: absolute;
+        top: 14px;
+        left: 0;
+        width: 100%;
+    }
+    
+    .textBox-postion small {
+        background: #f7bd0f;
+        padding: 6px 15px;
+        font-weight: 900;
+        color: #000;
+        border-radius: 10px;
+        font-size: 15px !important;
+    }
+    
+    .payment_details_div {
+        background-color:#000;
+    }
+    
+    .qr_container_div {
+        background-image: url(images/2.png);
+        background-position: bottom right;
+        background-repeat: no-repeat;
+    }
+    
+    .qr_container_div .main_qr {
+        border: 3px solid #f7bd0f;
+    }
+    
+    .trans_box {
+        background: #090909;
+        padding: 9px;
+        border-radius: 10px;
+    }
+    
+    .trans_input {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        font-size: 18px;
+        margin: 0 5px;
+    }
+    
+    .modal-footer-btn {
+        font-weight: 700;
+        font-size: 20px;
+        font-family: sans-serif;
+        border-radius: 0;
+    }
+
+    /* Container for the blurred background effect */
+    #blurImg {
+        position: relative;
+        width: 100%;
+        height: 300px; /* Adjust height as needed */
+        overflow: hidden;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /* Blurred background pseudo-element */
+    #blurImg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("{{ env('BACKEND_BASE_URL') }}/{{ $packageDetails['event_img'] }}");
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px);
+        z-index: 1;
+        opacity: 0.8; /* Slightly transparent for better contrast */
+    }
+
+    /* Actual image on top of blurred background */
+    #blurImg img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+        max-height: 90%;
+        z-index: 2;
+        border-radius: 4px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        #blurImg {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        #blurImg {
+            height: 200px;
+        }
+        
+        #blurImg img {
+            max-width: 95%;
+            max-height: 95%;
+        }
+    }
+
+    /* SweetAlert customization */
+    .swal2-popup {
+        font-size: 1.3rem !important;
+    }
+
+    .swal2-modal .swal2-title{
+        padding:0px !important;
+    }
+    .swal2-modal .swal2-html-container{
+        padding:5px 0px !important
+    }
+    .swal2-actions{
+        margin:0px !important;
+    }
 </style>
 <section class="section-area checkout-event-area">
     <div class="container">
         <form action="{{route('store-payment-detail')}}" id="payment-form" method="post">
             @csrf
             <div class="row">
-                <div class="col-md-8 ">
+                <div class="col-md-8">
                     <div class="card checkout-card shadow-sm">
                         <div class="card-body">
                             @isset($packageDetails)
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="payment-details">
-                                            <div class="row g-4">
-                                                <div class="col-lg-12 mb-4">
-                                                    <h4 class="mb-0" style="font-size: 20px">{{$packageDetails['event_title']}}</h4>
-                                                    <p class="mb-0">{{$packageDetails['event_address_title']}}</p>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="qr-code-container text-center">
-                                                        <p class="mb-3"><strong class="text-dark">Scan QR Code to Pay</strong></p>
-                                                        <img src="{{ $packageDetails['qr_code'] }}" alt="QR Code">
-                                                        <div class="mt-3">
-                                                            <p class="text-dark mb-0"><strong class="text-dark">UPI ID:</strong> {{ $packageDetails['upi_id'] }}</p>
-                                                            <p class="text-dark mb-0"><strong class="text-dark">Organizer Name:</strong> {{ $packageDetails['event_title'] }}</p>
+                                            <div class="formBox">
+                                               <div class="row px-2 mb-2">
+                                                    <div class="col-lg-12">
+                                                        <h4 class="mb-3 event-title">{{$packageDetails['event_title']}} <span class="badge badge-primary">{{$packageDetails['event_address_title']}}</span></h4>
+                                                    </div>
+                                                    @if (isset($packageDetails['event_img']))
+                                                        <div class="pt-3 pb-3 shadow-sm" id="blurImg">
+                                                            <img src="{{ env('BACKEND_BASE_URL') }}/{{ $packageDetails['event_img'] }}" class="img-fluid rounded" alt="{{ $packageDetails['event_title'] }}">
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="formBox mt-4">
-                                               <div class="row px-2">
-                                                    <div class="col-lg-12 transaction-id-input mb-3">
-                                                        <label for="transaction_id" class="form-label">Last 4 Digit of Transaction ID/Reference Number <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" id="transaction_id" name="transaction_id" placeholder="Enter last 4 digits of transaction ID" maxlength="4" required>
-                                                        <small class="text-muted">Please enter the last 4 digit of transaction reference number from your payment</small>
-                                                    </div>
+                                                    @endif
                                                </div>
-                                                @php  $userData = Common::fetchUserDetails(); @endphp
+                                                @php $userData = Common::fetchUserDetails(); @endphp
                                                 @if (empty($userData['name']) || empty($userData['email']))
                                                     <div class="row px-2">
                                                         <div class="mb-3 col-lg-6">
@@ -255,13 +406,13 @@ $orgComm = 0;
                                                                 
                                                                 <div class="mb-3 col-lg-6">
                                                                     <label for="player_contact_{{ $i }}" class="form-label">Contact Number <span class="text-danger">*</span></label>
-                                                                    <input type="text" class="form-control" name="player_contact_{{ $i }}" id="player_contact_{{ $i }}" placeholder="Student Contact Number" required>
+                                                                    <input type="text" class="form-control" name="player_contact_{{ $i }}" id="player_contact_{{ $i }}" placeholder="Student Contact Number" required maxlength="10" minlength="10">
                                                                 </div>
                                                                 
                                                                 @if(in_array('age', $packageDetails['fields']))
                                                                 <div class="mb-3 col-lg-6">
                                                                     <label for="age_{{ $i }}" class="form-label">Age <span class="text-danger">*</span></label>
-                                                                    <input type="number" placeholder="Enter Age" class="form-control" name="player_age_{{ $i }}" id="age_{{ $i }}" required>
+                                                                    <input type="number" placeholder="Enter Age" class="form-control" name="player_age_{{ $i }}" id="age_{{ $i }}" required min="1" max="100">
                                                                 </div>
                                                                 @endif
                                                                 
@@ -282,17 +433,6 @@ $orgComm = 0;
                                                     </div>
                                                 @endfor
                                             </div>  
-                                            
-                                            <div class="terms-conditions">
-                                                <h5>Terms & Conditions:</h5>
-                                                <ul>
-                                                    <li>This is a UPI-based direct payment to the organizer. FitSportsy is not responsible for payment disputes or refunds.</li>
-                                                    <li>Please confirm the amount and organizer UPI ID before making the payment.</li>
-                                                    <li>Ensure the last 4 digits of the UPI Transaction ID are accurate for ticket confirmation.</li>
-                                                    <li>Entry without a valid ticket or incorrect payment details may be denied.</li>
-                                                    <li>For any support, contact support@fitsportsy.in / +91 9686314018</li>
-                                                </ul>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>                                                          
@@ -303,7 +443,7 @@ $orgComm = 0;
                 <div class="col-md-4 mbsm mb-4">
                     <div class="card checkout-card shadow-sm">
                         <div class="card-body">
-                            <h4 class=" mb-3">
+                            <h4 class="mb-3">
                                 <span class="text-white">Order Summary</span>
                             </h4>
                             <p class="text-danger m-0" id="coupon_err"></p>
@@ -352,13 +492,17 @@ $orgComm = 0;
                             </ul>
                             <p>Present the QR code on your mobile ticket at the coaching entrance for seamless entry. By proceeding, I confirm my consent to complete this transaction.</p>
                             @if (Common::isUserLogin())
-                                <button type="submit" class="btn default-btn btn-block" id="submitPayment">Complete Booking</button>
+                                <button type="button" class="btn default-btn btn-block" id="submitPayment">Continue To Checkout</button>
                             @else
                                 @php
                                     session(['redirect_url' => url()->current()]);
                                 @endphp
                                 <a href="{{ route('userLogin') }}" class="btn default-btn btn-block">Login To Continue</a>
                             @endif
+
+                            <!-- <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal" data-target="#qrPaymentModal">
+                                <i class="fas fa-qrcode mr-2"></i>View Payment Options
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -394,176 +538,327 @@ $orgComm = 0;
             <input type="hidden" name="total_ticket" value="{{ $total_ticket }}" />
         </form>
     </div>
+
+    <!-- MODAL START -->
+    <div class="modal fade" id="qrPaymentModal" tabindex="-1" role="dialog" aria-labelledby="qrPaymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="qrPaymentModalLabel">
+                        <i class="fas fa-qrcode mr-2"></i>Pay via UPI QR Code <span class="text-warning small-text">( You are saving up to 15% on payment gateway, internet, and platform fees. )</span>
+                    </h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="row">
+                        <div class="col-md-4 payment_details_div">
+                            <div class="px-4 pt-5">
+                                <div class="small_card mb-3">
+                                    <small class="mb-3">Paying directly to:</small>
+                                    <h5 class="text-warning mt-1 mb-0">{{ $packageDetails['short_name'] }}</h5>
+                                </div>
+                                <div class="small_card mb-3">
+                                    <small class="mb-3">Total Payable Amount</small>
+                                    <h5 class="text-warning mt-1 mb-0">Rs. {{ $packageDetails['ticket'] * $bookingData['quantity'] + $settingDetails['tax'] }}</h5>
+                                </div>
+                                <div class="small_card mb-3">
+                                    <small class="mb-3">Using as:</small>
+                                    <h5 class="text-warning mt-1 mb-0">{{ $userData['mobile'] }}</h5>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="accept_term" id="accept_term">
+                                        <label class="form-check-label text-white" for="accept_term">
+                                            I accept the <a href="{{route('terms-conditions')}}" target="_blank" class="text-warning">Terms & Conditions</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="girl_img">
+                                <img src="{{asset('images/girl_image.png')}}" class="img-fluid w-auto" alt="girl-bg">
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex justify-content-center align-items-center qr_container_div flex-column">
+                            <div class="col-5 text-center px-4 py-4">
+                                <div class="rounded p-3 position-relative main_qr">
+                                    <div class="textBox-postion">
+                                        <small class="mb-2 fw-bold">SCAN ME</small>
+                                    </div>
+                                    <img src="{{ $packageDetails['qr_code'] }}" alt="QR Code" class="img-fluid my-2 rounded" style="max-width: 200px;">
+                                </div>
+                                <div class="mt-3">
+                                    <h6 class="mb-1">Partner UP ID : <span class="text-warning">{{ $packageDetails['upi_id'] }}</span></h6>
+                                    <h6 class="mb-1">Partner Mobile No. : <span class="text-warning">9012400499</span></h6>
+                                </div>
+                            </div>
+                            <div class="trans_box">
+                                <div class="form-group mb-0">
+                                    <label for="trans_recept" class="mb-2 text-white">Enter the last 4 digits of your UPI Txn ID.</label>
+                                    <div class="d-flex justify-content-center">
+                                        <input type="text" maxlength="1" class="form-control trans_input" name="trans_recept_1" id="trans_recept_1" oninput="moveToNext(this, 'trans_recept_2')" onkeydown="handleBackspace(this, '')">
+                                        <input type="text" maxlength="1" class="form-control trans_input" name="trans_recept_2" id="trans_recept_2" oninput="moveToNext(this, 'trans_recept_3')" onkeydown="handleBackspace(this, 'trans_recept_1')">
+                                        <input type="text" maxlength="1" class="form-control trans_input" name="trans_recept_3" id="trans_recept_3" oninput="moveToNext(this, 'trans_recept_4')" onkeydown="handleBackspace(this, 'trans_recept_2')">
+                                        <input type="text" maxlength="1" class="form-control trans_input" name="trans_recept_4" id="trans_recept_4" onkeydown="handleBackspace(this, 'trans_recept_3')">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer p-0">
+                    <button type="button" class="btn btn-warning w-100 py-3 modal-footer-btn" id="modalSubmitBtn" disabled>
+                        Submit Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL END -->
 </section>
 @endsection
+
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-$(document).ready(function() {
-    // Form validation
-    function validateForm() {
-        let isValid = true;
-        
-        // Validate transaction ID (exactly 4 digits)
-        let txnId = $('#transaction_id').val().trim();
-        if (!txnId || txnId.length !== 4 || !/^\d+$/.test(txnId)) {
-            $('#transaction_id').addClass('is-invalid');
-            isValid = false;
-        } else {
-            $('#transaction_id').removeClass('is-invalid');
+    // Function to move to next input field
+    function moveToNext(current, nextFieldId) {
+        if (current.value.length === current.maxLength) {
+            document.getElementById(nextFieldId).focus();
         }
-        
-        // Validate player information
-        @for($i = 1; $i <= $bookingData['quantity']; $i++)
-            // Player name validation
-            if (!$('#player_name_{{ $i }}').val().trim()) {
-                $('#player_name_{{ $i }}').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#player_name_{{ $i }}').removeClass('is-invalid');
-            }
-            
-            // Player contact validation (10 digits)
-            let contact = $('#player_contact_{{ $i }}').val().trim();
-            if (!contact || !/^\d{10}$/.test(contact)) {
-                $('#player_contact_{{ $i }}').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#player_contact_{{ $i }}').removeClass('is-invalid');
-            }
-            
-            @if(in_array('age', $packageDetails['fields']))
-            // Age validation
-            if (!$('#age_{{ $i }}').val().trim()) {
-                $('#age_{{ $i }}').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#age_{{ $i }}').removeClass('is-invalid');
-            }
-            @endif
-            
-            @if(in_array('shirt_size', $packageDetails['fields']))
-            // Shirt size validation
-            if (!$('#shirt_size_{{ $i }}').val()) {
-                $('#shirt_size_{{ $i }}').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#shirt_size_{{ $i }}').removeClass('is-invalid');
-            }
-            @endif
-        @endfor
-        
-        // For new users, validate registration fields
-        @if (!Common::isUserLogin())
-            if (!$('#username').val().trim()) {
-                $('#username').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#username').removeClass('is-invalid');
-            }
-            
-            let email = $('#email').val().trim();
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                $('#email').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#email').removeClass('is-invalid');
-            }
-            
-            if (!$('#password').val().trim() || $('#password').val().length < 6) {
-                $('#password').addClass('is-invalid');
-                isValid = false;
-            } else {
-                $('#password').removeClass('is-invalid');
-            }
-        @endif
-        
-        return isValid;
     }
-    
-    // Handle form submission
-    $('#payment-form').on('submit', function(e) {
-        e.preventDefault();
-        
-        if (!validateForm()) {
-            iziToast.error({
-                title: 'Error',
-                position: 'topRight',
-                message: 'Please fill all required fields correctly before submitting.',
+
+    // Function to handle backspace
+    function handleBackspace(current, prevFieldId) {
+        if (event.key === 'Backspace' && current.value.length === 0 && prevFieldId) {
+            document.getElementById(prevFieldId).focus();
+        }
+    }
+
+    // Check if user is logged in and handle form interactions
+    @if (!Common::isUserLogin())
+    document.addEventListener('DOMContentLoaded', () => {
+        let alertShown = false;
+        document.querySelectorAll('#payment-form input, #payment-form select, #payment-form textarea').forEach(el => {
+            el.addEventListener('focus', e => {
+                if (!alertShown) {
+                    alertShown = true;
+                    Swal.fire({
+                        title: 'Login Required',
+                        text: 'Please login to continue',
+                        confirmButtonText: 'Login Now',
+                        background: '#414141',
+                        color: 'white',
+                        width: '500px', // Smaller width
+                        padding: '1.2rem', // Reduced padding
+                        allowOutsideClick: false,
+                        customClass: {
+                            popup: 'small-swal' // Optional: Add custom CSS class
+                        }
+                    }).then(r => {
+                        if (r.isConfirmed) window.location.href = "{{route('userLogin')}}";
+                        alertShown = false;
+                    });
+                }
+                e.preventDefault();
+                e.target.blur();
             });
-            return false;
+        });
+    });
+    @endif
+
+    $(document).ready(function() {
+        // Form validation function
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate player information
+            @for($i = 1; $i <= $bookingData['quantity']; $i++)
+                // Player name validation
+                if (!$('#player_name_{{ $i }}').val().trim()) {
+                    $('#player_name_{{ $i }}').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#player_name_{{ $i }}').removeClass('is-invalid');
+                }
+                
+                // Player contact validation (10 digits)
+                let contact = $('#player_contact_{{ $i }}').val().trim();
+                if (!contact || !/^\d{10}$/.test(contact)) {
+                    $('#player_contact_{{ $i }}').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#player_contact_{{ $i }}').removeClass('is-invalid');
+                }
+                
+                @if(in_array('age', $packageDetails['fields']))
+                // Age validation
+                if (!$('#age_{{ $i }}').val().trim()) {
+                    $('#age_{{ $i }}').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#age_{{ $i }}').removeClass('is-invalid');
+                }
+                @endif
+                
+                @if(in_array('shirt_size', $packageDetails['fields']))
+                // Shirt size validation
+                if (!$('#shirt_size_{{ $i }}').val()) {
+                    $('#shirt_size_{{ $i }}').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#shirt_size_{{ $i }}').removeClass('is-invalid');
+                }
+                @endif
+            @endfor
+            
+            // For new users, validate registration fields
+            @if (!Common::isUserLogin())
+                if (!$('#username').val().trim()) {
+                    $('#username').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#username').removeClass('is-invalid');
+                }
+                
+                let email = $('#email').val().trim();
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    $('#email').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#email').removeClass('is-invalid');
+                }
+                
+                if (!$('#password').val().trim() || $('#password').val().length < 6) {
+                    $('#password').addClass('is-invalid');
+                    isValid = false;
+                } else {
+                    $('#password').removeClass('is-invalid');
+                }
+            @endif
+            
+            return isValid;
         }
         
-        // For new users, check if email exists
-        @if (!Common::isUserLogin())
-            let email = $('#email').val().trim();
-            $.ajax({
-                url: "{{route('verifyEmail')}}",
-                type: "POST",
-                async: false,
-                data: { 
-                    email: email, 
-                    _token: "{{ csrf_token() }}" 
-                },
-                success: function(data) {
-                    if (data.Result === "false") {
+        // Handle Continue to Checkout button click
+        $('#submitPayment').on('click', function(e) {
+            e.preventDefault();
+            
+            // First validate the form
+            if (!validateForm()) {
+                iziToast.error({
+                    title: 'Error',
+                    position: 'topRight',
+                    message: 'Please fill all required fields correctly before proceeding.',
+                });
+                return false;
+            }
+            
+            // If form is valid, open the payment modal
+            $('#qrPaymentModal').modal('show');
+        });
+        
+        // Validate modal fields and enable/disable submit button
+        function validateModal() {
+            // Check transaction ID
+            let txnId = $('#trans_recept_1').val() + $('#trans_recept_2').val() + 
+                        $('#trans_recept_3').val() + $('#trans_recept_4').val();
+            
+            // Check terms checkbox
+            const termsChecked = $('#accept_term').is(':checked');
+            
+            // Enable/disable submit button based on validation
+            if (txnId.length === 4 && termsChecked) {
+                $('#modalSubmitBtn').prop('disabled', false);
+                return true;
+            } else {
+                $('#modalSubmitBtn').prop('disabled', true);
+                return false;
+            }
+        }
+        
+        // Validate modal fields on any change
+        $('.trans_input, #accept_term').on('input change', function() {
+            validateModal();
+        });
+        
+        // Handle the modal's submit button
+        $('#modalSubmitBtn').on('click', function() {
+            if (!validateModal()) {
+                iziToast.error({
+                    title: 'Error',
+                    position: 'topRight',
+                    message: 'Please complete all payment details and accept terms',
+                });
+                return false;
+            }
+            
+            // Get transaction ID
+            let txnId = $('#trans_recept_1').val() + $('#trans_recept_2').val() + 
+                        $('#trans_recept_3').val() + $('#trans_recept_4').val();
+            
+            // Add transaction ID to form
+            $('#payment-form').append('<input type="hidden" name="transaction_id" value="'+txnId+'">');
+            
+            // Submit the form
+            $('#payment-form').submit();
+        });
+        
+        // Coupon code application
+        $("#apply_btn").on('click', function() {
+            var txt = $("#promo_text").val();
+            if (txt != '') {
+                $("#apply_btn").text('Processing...').attr('disabled', 'disabled');
+                
+                $.get('{{url("get-promo-discount")}}?code=' + txt + '&amount={{$ticketAmount+$settingDetails["tax"]}}' + '&sid={{$packageDetails["sponser_id"]}}', function(data) {
+                    if (data.s == 1) {
+                        iziToast.success({
+                            title: 'Success',
+                            position: 'topRight',
+                            message: 'Coupon applied successfully!',
+                        });
+                        
+                        $("#coupon_err").text("");
+                        $('#couponBox').removeClass('d-none').addClass('d-flex');
+                        $('#coupon_amt').val(data.coupon);
+                        $("#coupon_disc").text('-{{$settingDetails["currency"]}}' + data.coupon);
+                        
+                        // Update total amount
+                        let newTotal = parseFloat({{$ticketAmount + $settingDetails['tax']}}) - parseFloat(data.coupon);
+                        $("#total_amount").text('{{$settingDetails["currency"]}}' + newTotal.toFixed(2));
+                        $("input[name='total_amount_pay']").val(newTotal.toFixed(2));
+                    } else {
                         iziToast.error({
                             title: 'Error',
                             position: 'topRight',
-                            message: data.ResponseMsg || 'Email already exists. Please use another email.',
+                            message: data.message || 'Invalid coupon code or coupon is expired',
                         });
-                        $('#email').addClass('is-invalid');
-                        isValid = false;
+                        $("#coupon_err").text(data.message || 'Invalid coupon code or coupon is expired');
                     }
-                }
-            });
-            
-            if (!isValid) return false;
-        @endif
-        
-        // Show loading state
-        $('#submitPayment').prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Processing...');
-        
-        // Submit the form
-        this.submit();
+                    
+                    $("#apply_btn").text('Apply').removeAttr('disabled');
+                });
+            }
+        });
     });
-    
-    // Coupon code application
-    $("#apply_btn").on('click', function() {
-        var txt = $("#promo_text").val();
-        if (txt != '') {
-            $("#apply_btn").text('Processing...').attr('disabled', 'disabled');
-            
-            $.get('{{url("get-promo-discount")}}?code=' + txt + '&amount={{$ticketAmount+$settingDetails["tax"]}}' + '&sid={{$packageDetails["sponser_id"]}}', function(data) {
-                if (data.s == 1) {
-                    iziToast.success({
-                        title: 'Success',
-                        position: 'topRight',
-                        message: 'Coupon applied successfully!',
-                    });
-                    
-                    $("#coupon_err").text("");
-                    $('#couponBox').removeClass('d-none').addClass('d-flex');
-                    $('#coupon_amt').val(data.coupon);
-                    $("#coupon_disc").text('-{{$settingDetails["currency"]}}' + data.coupon);
-                    
-                    // Update total amount
-                    let newTotal = parseFloat({{$ticketAmount + $settingDetails['tax']}}) - parseFloat(data.coupon);
-                    $("#total_amount").text('{{$settingDetails["currency"]}}' + newTotal.toFixed(2));
-                    $("input[name='total_amount_pay']").val(newTotal.toFixed(2));
-                } else {
-                    iziToast.error({
-                        title: 'Error',
-                        position: 'topRight',
-                        message: data.message || 'Invalid coupon code or coupon is expired',
-                    });
-                    $("#coupon_err").text(data.message || 'Invalid coupon code or coupon is expired');
+</script>
+
+<script>
+    // Dynamically set the background image (optional - can be done with inline CSS as shown above)
+    document.addEventListener('DOMContentLoaded', function() {
+        const blurContainer = document.getElementById('blurImg');
+        if (blurContainer) {
+            const imgUrl = "{{ env('BACKEND_BASE_URL') }}/{{ $packageDetails['event_img'] }}";
+            const style = document.createElement('style');
+            style.innerHTML = `
+                #blurImg::before {
+                    background-image: url('${imgUrl}');
                 }
-                
-                $("#apply_btn").text('Apply').removeAttr('disabled');
-            });
+            `;
+            document.head.appendChild(style);
         }
     });
-});
 </script>
 @endpush
