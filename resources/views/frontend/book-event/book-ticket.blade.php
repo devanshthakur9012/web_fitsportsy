@@ -229,7 +229,7 @@ $orgComm = 0;
 
     .textBox-postion {
         position: absolute;
-        top: 14px;
+        top: -12px;
         left: 0;
         width: 100%;
     }
