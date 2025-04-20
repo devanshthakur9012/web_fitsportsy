@@ -5,276 +5,278 @@
     <meta name="keywords" content="Book your coaching, Secure Booking" />
 @endsection
 @push('styles')
-    
 <style>
-    /* Dark Theme Styling */
+    /* Modern Dark Theme */
     .subscription-section {
-        background: #0a0a0a;
         color: #ffffff;
-        padding: 40px 0;
+        padding: 50px 0;
+        font-family: 'Poppins', sans-serif;
     }
 
-    
-    .subscription-section h1{
-        font-size: 30px;
-    }
-
-    .subscription-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: #1a1b2e;
-        color: #ffffff;
-        border-radius: 10px;
-        /* padding: 25px; */
-        transition: transform 0.2s, background 0.3s;
-        /* box-shadow: 0 4px 10px rgb(255 255 255 / 20%); */
-        /* margin-bottom: 20px; */
-        overflow: hidden;
-    }
-
-    .subscription-card:hover {
-        transform: translateY(-4px);
-        background: #1b1b37;
-    }
-
-    .subscription-card-header {
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 15px;
-        border-radius: 10px 10px 0 0;
-        text-align: left;
-    }
-
-    .subscription-card-body {
-        padding: 25px 20px 20px;
-        background: #2e335a45 !important;
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        background: linear-gradient(90deg, #ff6b6b, #feca57);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         position: relative;
     }
 
-    .subscription-card-title {
-        font-size: 2rem;
-        margin: 10px 0;
-        text-align: left;
-        margin-top:0px;
-        margin-bottom:0px;
+    .section-title:after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #ff6b6b, #feca57);
+        margin: 10px auto 0;
+        border-radius: 2px;
     }
 
-    .price-text-muted {
-        color: #b0b0b0;
-        font-size: 0.9rem;
+    .subscription-card {
+        background: #1a1c2e;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        margin-bottom: 25px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #2a2d45;
     }
 
-    .button-primary, .button-success, .button-premium {
-        display: inline-block;
-        padding: 10px 25px;
-        width: 100%;  /* Full width button */
-        color: #ffffff;
-        font-size: 1rem;
+    .subscription-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .subscription-card-header {
+        padding: 20px;
         text-align: center;
-        border-radius: 5px;
-        text-decoration: none;
-        border-radius: 0px;
-        transition: background 0.3s, transform 0.2s;
-        /* margin-top: 20px; */
-        border: none !important;
+        position: relative;
+        background: linear-gradient(135deg, #3a3d5a, #2a2d45);
+        border-radius: 10px 10px 0px 0px;
     }
 
-    .button-primary {
-        /* background: linear-gradient(90deg, #6e6e6e, #e74c3c); */
-        background: #6e6e6e;
-    }
-
-    .bg-girl{
-        background: #e74c3c !important;
-    }
-
-    .bg-boy{
-        background: #6e6e6e !important;
-    }
-
-
-    /* .button-primary:hover {
-        background: linear-gradient(90deg, #e74c3c, #6e6e6e);
-        transform: translateY(-2px);
+    .ticket-type {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0;
         color: #fff;
-    } */
-
-    .button-success {
-        background: linear-gradient(90deg, #28a745, #34d058);
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
-    .button-success:hover {
-        background: linear-gradient(90deg, #34d058, #28a745);
-        transform: translateY(-2px);
-        color: #fff;
-
+    .subscription-card-body {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
 
-    .button-premium {
-        background: linear-gradient(90deg, #f39c12, #e67e22);
+    .price-container {
+        text-align: center;
+        margin-bottom: 20px;
     }
 
-    .button-premium:hover {
-        background: linear-gradient(90deg, #e67e22, #f39c12);
-        transform: translateY(-2px);
-        color: #fff;
-
+    .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0;
+        background: linear-gradient(90deg, #feca57, #ff9f43);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
-    .discount-badge {
-        background-color: #ff9800;
-        color: #121212;
-        padding: 5px 10px;
-        border-radius: 20px;
+    .price-period {
         font-size: 0.9rem;
-        position: absolute;
-        top: 10px;
-        right: 10px;
+        color: #b0b0b0;
+        margin-top: 5px;
     }
 
-    .price-list {
+    .features-list {
         list-style: none;
         padding: 0;
-        margin: 10px 0 0;
+        margin: 0 0 20px;
     }
 
-    .price-list li {
-        margin-bottom: 12px;
+    .features-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid #2a2d45;
         display: flex;
         align-items: center;
     }
 
-    .price-list li i {
-        color: #28a745;
-        margin-right: 8px;
+    .features-list li:last-child {
+        border-bottom: none;
     }
 
+    .features-list li i {
+        margin-right: 10px;
+        color: #feca57;
+        font-size: 1.1rem;
+    }
 
+    .slots-badge {
+        display: inline-block;
+        background: rgba(255, 107, 107, 0.2);
+        color: #ff6b6b;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        align-self: center;
+    }
 
-    @media (min-width: 768px) {
-        .subscription-card {
-            height: 100%;
+    .book-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: auto;
+    }
+
+    .book-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(90deg, #ff6b6b, #feca57);
+        transition: all 0.3s ease;
+    }
+
+    .category-badge {
+        position: absolute;
+        top: -18px;
+        right: -12px;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Different category colors */
+    .badge-premium {
+        background: linear-gradient(90deg, #feca57, #ff9f43);
+        color: #1a1c2e;
+    }
+
+    .badge-standard {
+        background: linear-gradient(90deg, #54a0ff, #2e86de);
+        color: white;
+    }
+
+    .badge-women {
+        background: linear-gradient(90deg, #ff9ff3, #f368e0);
+        color: white;
+    }
+
+    .badge-youth {
+        background: linear-gradient(90deg, #1dd1a1, #10ac84);
+        color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .price {
+            font-size: 2rem;
         }
     }
 
-    .shop_single_page_sidebar{
-        background: #414362;
-        color: #fff;
-        border: none;
-        padding: 8px 20px;
-        border-radius: 10px;
-    }
-
-    .shop_single_page_sidebar2{
-        border: 1px solid #414362 !important;
-        color: #fff;
-        border: none;
-        padding: 8px 20px;
-        border-radius: 10px;
-        width: 50%;
-        text-align: center;
-        background: #1a1b2e;
-    }
-
-    .slotBadge{
-        position: absolute;
-        top: -10px;
-        right: 7px;
-        background: #ffe14f !important;
-        color: #000000 !important;
-        font-size: 11px;
-        padding: 6px !important;
-        font-weight: 500;
-    }
-    .col-md-3{
-        padding: 5px !important;
-    }
-    .quantity-block{
+    /* Quantity selector styles */
+    .quantity-selector {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
+        margin: 20px 0;
+    }
+
+    .quantity-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: #2a2d45;
+        color: #fff;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .quantity-btn:hover {
+        background: #3a3d5a;
+    }
+
+    .quantity-input {
+        width: 60px;
+        height: 40px;
+        text-align: center;
+        margin: 0 10px;
+        border: 1px solid #2a2d45;
+        background: #1a1c2e;
+        color: #fff;
+        font-size: 1.1rem;
+        border-radius: 6px;
+    }
+    .main_card{
+        margin-top:50px;
     }
 </style>
 @endpush
+
 @section('content')
 <section class="section-area single-detail-area py-3">
     <div class="container">
         <section class="subscription-section">
             <div class="container">
-                <h1 class="text-center">Avaliable Package Types</h1>
-                {{-- <h2>{{$coachData->coaching_title.' ('. $coachData->category->category_name .')'}} Packages</h2> --}}
-                {{-- <h5 class="mt-0 mb-3 text-center">WHAT TICKETS WOULD YOU LIKE??</h5> --}}
-                <div class="row mt-4">
-                    {{-- @foreach ($packageData as $package)
-                        @php
-                            $realPrice = $package->package_price;
-                            $afterDiscountPrice = 0;
-                            $showDiscount = 0;
-                            if($package->discount_percent > 0 && $package->discount_percent <= 100){
-                                $perc = ($realPrice * $package->discount_percent) / 100;
-                                $afterDiscountPrice = round($realPrice - $perc, 2);
-                                $showDiscount = 1;
-                            }
-                            $type = explode(" ",$package->package_duration);
-                            $type = $type[0].' '.trim($type[1],'s');
-                        @endphp
-                        <div class="col-md-4 d-flex mb-4">
-                            <div class="subscription-card flex-grow-1 d-flex flex-column position-relative">
-                                <div class="subscription-card-header" style="background-color: #007bff;">
-                                    <h4><i class="fas fa-gem" style="font-size: 1rem;"></i> {{ $package->package_name }}</h4>
-                                    @if($showDiscount)
-                                        <span class="discount-badge">{{ $package->discount_percent }}% Off</span>
-                                    @endif
-                                </div>
-                                <div class="subscription-card-body">
-                                    @if($showDiscount)
-                                        <h3 class="subscription-card-title">₹{{ $afterDiscountPrice }} <small class="price-text-muted">/ {{$type}}</small></h3>
-                                        <p><small class="price-text-muted">Normally ₹{{ $realPrice + 0 }} / {{$type}}</small></p>
-                                    @else
-                                        <h3 class="subscription-card-title">₹{{$realPrice + 0}} <small class="price-text-muted">/ {{$type}}</small></h3>
-                                    @endif
-                                    
-
-                                    <ul class="price-list">
-                                        <li><i class="fas fa-check"></i> Batch Size -  {{ $package->batch_size }}</li>
-                                        <li><i class="fas fa-check"></i> <div>{!! $package->description !!}</div></li>
-                                    </ul>
-                                    @php
-                                           $inputObj = new stdClass();
-                                           $inputObj->params = 'id='.$package->id;
-                                           $inputObj->url = url('book-coaching-package');
-                                           $encLink = Common::encryptLink($inputObj);
-                                    @endphp
-                                    <a href="{{$encLink}}" class="button-primary">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach --}}
-
+                <h1 class="section-title">Available Coaching Packages</h1>
+                <div class="row justify-content-center main_card">
                     @foreach ($tour_plans as $package)
-                        <div class="col-md-3 d-flex mb-4">
-                            <div class="subscription-card flex-grow-1 d-flex flex-column position-relative">
-                                <div class="subscription-card-header" style="background-color: #6e6e6e;" data-ticket-type="{{ $package['ticket_type'] }}">
-                                    <h4 class="mb-0 text-center" style="font-size: 18px;"><i class="fas fa-gem" style="font-size: 18px;"></i> {{ $package['ticket_type'] }}</h4>
+                        <div class="col-md-3 col-sm-6 mb-5">
+                            <div class="subscription-card">
+                                <div class="subscription-card-header">
+                                    @if($package['category'] == 'premium')
+                                        <span class="category-badge badge-premium">Premium</span>
+                                    @elseif($package['category'] == 'women')
+                                        <span class="category-badge badge-women">Women</span>
+                                    @elseif($package['category'] == 'youth')
+                                        <span class="category-badge badge-youth">Youth</span>
+                                    @else
+                                        <span class="category-badge badge-standard">Standard</span>
+                                    @endif
+                                    <h3 class="ticket-type">{{ $package['ticket_type'] }}</h3>
                                 </div>
                                 <div class="subscription-card-body">
-                                    <h3 class="subscription-card-title text-center">₹{{$package['ticket_price']}}<small class="price-text-muted">/ Slot</small></h3>
-                                    <div class="price-list">
-                                        <p><span class="badge badge-danger p-2 mb-0 slotBadge">{{$package['TotalTicket']}} Slot Left</span></p>
-                                        <p class="text-center"><i class="fas fa-calendar-alt mr-2"></i>{{$package['description']}}</p>
+                                    <div class="price-container">
+                                        <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
                                     </div>
-                                    <h6 class="mt-2 mb-0"><small>Quantity :</small></h6>
-                                    <div class="d-flex align-items-center justify-content-center mt-3">
-                                        <div class="quantity-block home_page_sidebar" data-package-id="{{ $package['typeid'] }}">
-                                            <button type="button" class="quantity-arrow-minus2 shop_single_page_sidebar">-</button>
-                                            <input class="quantity-num2 shop_single_page_sidebar2" id="quantity_{{ $package['typeid'] }}" data-min="0" data-max="{{$package['TotalTicket']}}" type="number" value="0" readonly="">
-                                            <button type="button" class="quantity-arrow-plus2 shop_single_page_sidebar">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="subscription-card-footer">
-                                    <button type="button" data-tour="{{$coaching_id}}" data-ticket="{{$package['typeid']}}" class="button-primary btn-buy ">Book Now</button>
+                                    
+                                    <span class="slots-badge">{{ $package['TotalTicket'] }} slots remaining</span>
+                                    
+                                    <ul class="features-list mb-0">
+                                        <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
+                                        <li><i class="fas fa-clock"></i> Valid for {{ $package['price_validity'] }} days</li>
+                                        <li><i class="fas fa-certificate"></i> {{ $package['short_name'] }}</li>
+                                    </ul>
+
+                                    <button class="book-btn" 
+                                        data-tour="{{ $coaching_id }}" 
+                                        data-ticket="{{ $package['typeid'] }}">
+                                        Book Now
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -285,135 +287,99 @@
     </div>
 </section>
 @endsection
+
 @include('alert-messages')
+
 @push('scripts')
 <script src="{{ url('frontend/js/jquery.validate.min.js') }}"></script>
 <script>
-$(document).ready(function () {
-    // Handle click on the minus button
-    $('.quantity-arrow-minus2').click(function () {
-        var quantityInput = $(this).siblings('.quantity-num2');
-        var currentVal = parseInt(quantityInput.val());
-
-        if (currentVal > 0) {
-            quantityInput.val(currentVal - 1);
+$(document).ready(function() {
+    // Quantity selector functionality
+    $('.quantity-btn.minus').click(function() {
+        const packageId = $(this).data('package');
+        const input = $('#quantity_' + packageId);
+        let value = parseInt(input.val());
+        if (value > 1) {
+            input.val(value - 1);
         }
-        resetOtherQuantities(quantityInput);
     });
 
-    // Handle click on the plus button
-    $('.quantity-arrow-plus2').click(function () {
-        var quantityInput = $(this).siblings('.quantity-num2');
-        var currentVal = parseInt(quantityInput.val());
-        var maxVal = parseInt(quantityInput.attr('data-max'));
-
-        if (currentVal < maxVal) {
-            quantityInput.val(currentVal + 1);
+    $('.quantity-btn.plus').click(function() {
+        const packageId = $(this).data('package');
+        const input = $('#quantity_' + packageId);
+        const max = parseInt(input.attr('max'));
+        let value = parseInt(input.val());
+        if (value < max) {
+            input.val(value + 1);
+        } else {
+            iziToast.warning({
+                title: 'Limit Reached',
+                message: 'You cannot book more than the available slots',
+                position: 'topRight'
+            });
         }
-        resetOtherQuantities(quantityInput);
     });
 
-    // Function to reset other quantities to zero
-    function resetOtherQuantities(changedInput) {
-        $('.quantity-num2').each(function () {
-            var currentInput = $(this);
+    // Book Now button functionality
+    $('.book-btn').click(function() {
+        const button = $(this);
+        const tourId = button.data('tour');
+        const ticketId = button.data('ticket');
+        const quantity = $('#quantity_' + ticketId).val();
 
-            // If this input is not the one being modified, set it to 0
-            if (currentInput[0] !== changedInput[0] && parseInt(currentInput.val()) > 0) {
-                currentInput.val(0);
-            }
-        });
-    }
-
-    // Ensure only one quantity input is non-zero at a time (optional)
-    $('.quantity-num2').on('change', function () {
-        resetOtherQuantities($(this));
-    });
-
-    // Add click event listener for "Book Now" button
-    $('.button-primary').click(function (e) {
-        e.preventDefault();
-
-        var button = $(this);
-        var packageCard = button.closest('.subscription-card'); // Get the closest subscription card
-        var quantityInput = packageCard.find('.quantity-num2'); // Find the quantity input within the card
-        var quantityVal = parseInt(quantityInput.val());
-
-        // Extract tour_id and ticket_id from button's data attributes
-        var tourId = button.data('tour');
-        var ticketId = button.data('ticket');
-
-        // Check if quantity is at least 1
-        if (quantityVal < 1) {
+        // Validate quantity
+        if (parseInt(quantity) < 1) {
             iziToast.error({
                 title: 'Error',
-                position: 'topRight',
-                message: "Please select a quantity of at least 1 to proceed with booking.",
+                message: 'Please select at least 1 slot to book',
+                position: 'topRight'
             });
             return false;
         }
 
-        // Perform AJAX request to process booking
+        // Show loading state
+        button.html('<i class="fas fa-spinner fa-spin"></i> Processing...');
+        button.prop('disabled', true);
+
+        // AJAX request
         $.ajax({
-            url: "{{ route('purchase-coaching') }}", // Laravel route for handling the purchase
+            url: "{{ route('purchase-coaching') }}",
             type: 'POST',
             data: {
                 tour_id: tourId,
                 ticket_id: ticketId,
-                quantity: quantityVal,
-                _token: $('meta[name="csrf-token"]').attr('content') // CSRF token for security
+                quantity: quantity,
+                _token: $('meta[name="csrf-token"]').attr('content')
             },
-            success: function (response) {
+            success: function(response) {
                 if (response.status === 'success') {
                     iziToast.success({
                         title: 'Success',
-                        position: 'topRight',
                         message: response.message,
+                        position: 'topRight'
                     });
-                    // Redirect to the returned URL
                     window.location.href = response.redirect_url;
                 } else {
                     iziToast.error({
                         title: 'Error',
-                        position: 'topRight',
                         message: response.message,
+                        position: 'topRight'
                     });
+                    button.html('Book Now');
+                    button.prop('disabled', false);
                 }
             },
-            error: function () {
+            error: function(xhr) {
                 iziToast.error({
                     title: 'Error',
-                    position: 'topRight',
-                    message: 'An error occurred. Please try again later.',
+                    message: xhr.responseJSON?.message || 'An error occurred. Please try again.',
+                    position: 'topRight'
                 });
+                button.html('Book Now');
+                button.prop('disabled', false);
             }
         });
     });
 });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Get all the headers and buttons
-        const ticketHeaders = document.querySelectorAll('.subscription-card-header');
-        
-        // Loop through each header
-        ticketHeaders.forEach(function (ticketHeader) {
-            const textContent = ticketHeader.textContent.toLowerCase();
-            
-            // Check if it contains "girl" or "women"
-            if (textContent.includes("girl") || textContent.includes("women")) {
-                ticketHeader.style.backgroundColor = "#db207b"; // Change header background color
-                
-                // Find the associated buy button and change its background color
-                const btnBuy = ticketHeader
-                    .closest('.subscription-card') // Find the parent card
-                    .querySelector('.btn-buy'); // Find the buy button inside the card
-                
-                if (btnBuy) {
-                    btnBuy.style.backgroundColor = "#db207b";
-                }
-            }
-        });
-    });
 </script>
 @endpush

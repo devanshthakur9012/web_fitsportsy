@@ -83,7 +83,7 @@
         .menu-curve{
             position: absolute;
             left: 0;
-            top: 0;
+            top: -6px;
         }
         .new-navbar {
             background: #6e6e6e;
@@ -304,7 +304,7 @@
                                                 </li>
                                             @endforeach
                                             <li class="nav-item">
-                                                <a class="nav-link shopBar" style="color:#6e6e6e !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>
+                                                <a class="nav-link shopBar" style="background:#0a0a0a;border-radius:4px;color:#fff !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>
                                             </li>
                                         </ul>
                                     </div>

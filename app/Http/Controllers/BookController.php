@@ -211,48 +211,6 @@ class BookController extends Controller
         return redirect($ticketCheckLink);
     }
 
-    // public function confirmTicketBook(){
-    //     $ticketId = $this->memberObj['id'];
-    //     if(!\Session::has('eventTicketBook')){
-    //         return redirect('/');
-    //     }
-    //     $data = \Session::get('eventTicketBook');
-    //     $totalPersons = $data['totalSeats'];
-    //     if(!$data){
-    //         return redirect('/');
-    //     }
-    //     $taxData = Tax::select('name','price','amount_type')->where('status',1)->get();
-    //     $arrCnt = [];
-    //     if(is_array(json_decode($ticketId))){
-    //         $ticketArr = json_decode($ticketId,true);
-    //         $arrCnt = array_count_values($ticketArr);
-    //         $ticketData = Ticket::select('id','name','price','event_id','quantity','ticket_sold','discount_amount','discount_type','price','pay_now','pay_place','superShow_fee_amount','superShow_fee_type','superShow_fee','gateway_fee_amount','gateway_fee_type','gateway_fee','platform_fee_amount','platform_fee_type','platform_fee')->withSum('total_orders','quantity')->with('event')->WhereIn('id',json_decode($ticketId))->get();
-            
-    //         $inputObjB = new \stdClass();
-    //         $inputObjB->url = url('store-book-seat-ticket-razor');
-    //         $inputObjB->params = 'id='.$ticketId;
-    //         $subLink = Common::encryptLink($inputObjB);
-    //     }else{
-    //         $ticketData = Ticket::select('id','name','price','event_id','quantity','ticket_sold','discount_amount','discount_type','price','pay_now','pay_place','superShow_fee_amount','superShow_fee_type','superShow_fee','gateway_fee_amount','gateway_fee_type','gateway_fee','platform_fee_amount','platform_fee_type','platform_fee')->withSum('total_orders','quantity')->with('event')->where('id',$ticketId)->first();
-            
-    //         $inputObjB = new \stdClass();
-    //         $inputObjB->url = url('store-book-ticket-razor');
-    //         $inputObjB->params = 'id='.$ticketId;
-    //         $subLink = Common::encryptLink($inputObjB);
-    //     }
-
-    //     // dd($ticketData);
-
-    //     $inputObj = new \stdClass();
-    //     $inputObj->params = 'id='.$ticketId;
-    //     $inputObj->url = url('calculate-book-amount');
-    //     $ticketCheckLink = Common::encryptLink($inputObj);
-
-        
-
-    //     return view('frontend.book-event.confirm-ticket-book',compact('ticketData','totalPersons','taxData','ticketCheckLink','subLink','data','arrCnt'));
-    // }
-
     private function ticketInformation($eventId,$ticket_id){
         // Instantiate the Guzzle client
         $client = new \GuzzleHttp\Client();
@@ -660,7 +618,7 @@ class BookController extends Controller
     {
         $tourId = $request->input('tour_id');
         $ticketId = $request->input('ticket_id');
-        $quantity = $request->input('quantity');
+        $quantity = 1; // $request->input('quantity')
     
         // Validate request data
         if (!$tourId || !$ticketId || $quantity < 1) {

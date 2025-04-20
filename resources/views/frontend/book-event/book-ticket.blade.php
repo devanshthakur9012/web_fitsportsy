@@ -347,13 +347,19 @@ $orgComm = 0;
         padding:0px !important;
     }
     .swal2-modal .swal2-html-container{
-        padding:5px 0px !important
+        padding:5px 0px !important;
+        font-size:20px;
     }
     .swal2-actions{
         margin:0px !important;
     }
     .small-text{
         font-size:18px !important;
+    }
+    .swal2-confirm{
+        padding: 10px 15px;
+        font-size: 17px;
+        background: #000;
     }
 </style>
 <section class="section-area checkout-event-area">
@@ -600,7 +606,7 @@ $orgComm = 0;
                                 </div>
                                 <div class="mt-3">
                                     <h6 class="mb-1">Partner UP ID : <span class="text-warning">{{ $packageDetails['upi_id'] }}</span></h6>
-                                    <h6 class="mb-1">Partner Mobile No. : <span class="text-warning">9012400499</span></h6>
+                                    <h6 class="mb-1">Partner Mobile No. : <span class="text-warning">{{ $packageDetails['payment_number'] }}</span></h6>
                                 </div>
                             </div>
                             <div class="trans_box">
@@ -681,12 +687,95 @@ $orgComm = 0;
 
     $(document).ready(function() {
         // Form validation function
-        function validateForm() {
-            let isValid = true;
+        // function validateForm() {
+        //     let isValid = true;
 
             
+        //     const termsChecked = $('#accept_term').is(':checked');
+        //     if(!termsChecked){
+        //         isValid = false;
+        //     }
+            
+        //     // Validate player information
+        //     @for($i = 1; $i <= $bookingData['quantity']; $i++)
+        //         // Player name validation
+        //         if (!$('#player_name_{{ $i }}').val().trim()) {
+        //             $('#player_name_{{ $i }}').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#player_name_{{ $i }}').removeClass('is-invalid');
+        //         }
+                
+        //         // Player contact validation (10 digits)
+        //         let contact = $('#player_contact_{{ $i }}').val().trim();
+        //         if (!contact || !/^\d{10}$/.test(contact)) {
+        //             $('#player_contact_{{ $i }}').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#player_contact_{{ $i }}').removeClass('is-invalid');
+        //         }
+                
+        //         @if(in_array('age', $packageDetails['fields']))
+        //         // Age validation
+        //         if (!$('#age_{{ $i }}').val().trim()) {
+        //             $('#age_{{ $i }}').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#age_{{ $i }}').removeClass('is-invalid');
+        //         }
+        //         @endif
+                
+        //         @if(in_array('shirt_size', $packageDetails['fields']))
+        //         // Shirt size validation
+        //         if (!$('#shirt_size_{{ $i }}').val()) {
+        //             $('#shirt_size_{{ $i }}').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#shirt_size_{{ $i }}').removeClass('is-invalid');
+        //         }
+        //         @endif
+        //     @endfor
+            
+        //     // For new users, validate registration fields
+        //     @if (!Common::isUserLogin())
+        //         if (!$('#username').val().trim()) {
+        //             $('#username').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#username').removeClass('is-invalid');
+        //         }
+                
+        //         let email = $('#email').val().trim();
+        //         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        //             $('#email').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#email').removeClass('is-invalid');
+        //         }
+                
+        //         if (!$('#password').val().trim() || $('#password').val().length < 6) {
+        //             $('#password').addClass('is-invalid');
+        //             isValid = false;
+        //         } else {
+        //             $('#password').removeClass('is-invalid');
+        //         }
+        //     @endif
+            
+        //     return isValid;
+        // }
+
+        // Form validation function with specific error messages
+        function validateForm() {
+            let isValid = true;
+            let errorMessages = [];
+
+            // Reset all invalid classes first
+            $('.is-invalid').removeClass('is-invalid');
+
+            // Check terms and conditions
             const termsChecked = $('#accept_term').is(':checked');
-            if(!termsChecked){
+            if (!termsChecked) {
+                errorMessages.push('Please accept the Terms & Conditions to proceed');
                 isValid = false;
             }
             
@@ -694,38 +783,43 @@ $orgComm = 0;
             @for($i = 1; $i <= $bookingData['quantity']; $i++)
                 // Player name validation
                 if (!$('#player_name_{{ $i }}').val().trim()) {
+                    errorMessages.push('Please enter name');
                     $('#player_name_{{ $i }}').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#player_name_{{ $i }}').removeClass('is-invalid');
                 }
                 
                 // Player contact validation (10 digits)
                 let contact = $('#player_contact_{{ $i }}').val().trim();
-                if (!contact || !/^\d{10}$/.test(contact)) {
+                if (!contact) {
+                    errorMessages.push('Please enter contact number');
                     $('#player_contact_{{ $i }}').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#player_contact_{{ $i }}').removeClass('is-invalid');
+                } else if (!/^\d{10}$/.test(contact)) {
+                    errorMessages.push('Please enter a valid 10-digit contact number');
+                    $('#player_contact_{{ $i }}').addClass('is-invalid');
+                    isValid = false;
                 }
                 
                 @if(in_array('age', $packageDetails['fields']))
                 // Age validation
-                if (!$('#age_{{ $i }}').val().trim()) {
+                let age = $('#age_{{ $i }}').val().trim();
+                if (!age) {
+                    errorMessages.push('Please enter age');
                     $('#age_{{ $i }}').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#age_{{ $i }}').removeClass('is-invalid');
+                } else if (age < 1 || age > 100) {
+                    errorMessages.push('Please enter a valid age (1-100)');
+                    $('#age_{{ $i }}').addClass('is-invalid');
+                    isValid = false;
                 }
                 @endif
                 
                 @if(in_array('shirt_size', $packageDetails['fields']))
                 // Shirt size validation
                 if (!$('#shirt_size_{{ $i }}').val()) {
+                    errorMessages.push('Please select t-shirt size');
                     $('#shirt_size_{{ $i }}').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#shirt_size_{{ $i }}').removeClass('is-invalid');
                 }
                 @endif
             @endfor
@@ -733,27 +827,65 @@ $orgComm = 0;
             // For new users, validate registration fields
             @if (!Common::isUserLogin())
                 if (!$('#username').val().trim()) {
+                    errorMessages.push('Please enter a username');
                     $('#username').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#username').removeClass('is-invalid');
                 }
                 
                 let email = $('#email').val().trim();
-                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (!email) {
+                    errorMessages.push('Please enter your email address');
                     $('#email').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#email').removeClass('is-invalid');
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errorMessages.push('Please enter a valid email address');
+                    $('#email').addClass('is-invalid');
+                    isValid = false;
                 }
                 
-                if (!$('#password').val().trim() || $('#password').val().length < 6) {
+                let password = $('#password').val().trim();
+                if (!password) {
+                    errorMessages.push('Please enter a password');
                     $('#password').addClass('is-invalid');
                     isValid = false;
-                } else {
-                    $('#password').removeClass('is-invalid');
+                } else if (password.length < 6) {
+                    errorMessages.push('Password must be at least 6 characters long');
+                    $('#password').addClass('is-invalid');
+                    isValid = false;
                 }
             @endif
+            
+            // Show all error messages if validation fails
+            if (!isValid) {
+                // Create a formatted error message with bullet points
+                let formattedMessage = '<div><ul>';
+                errorMessages.forEach(msg => {
+                    formattedMessage += `<li>${msg}</li>`;
+                });
+                formattedMessage += '</ul></div>';
+                
+                // Remove any existing error toasts
+                iziToast.destroy();
+                
+                iziToast.error({
+                    title: 'Validation Error',
+                    position: 'topRight',
+                    message: formattedMessage,
+                    timeout: 10000, // Show for 10 seconds
+                    displayMode: 2, // Persistent until dismissed
+                    close: false,
+                    buttons: [
+                        ['<button>OK</button>', function (instance, toast) {
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                        }]
+                    ]
+                });
+                
+                // Scroll to the first error field
+                $('html, body').animate({
+                    scrollTop: $('.is-invalid').first().offset().top - 100
+                }, 500);
+            }
             
             return isValid;
         }
@@ -764,11 +896,11 @@ $orgComm = 0;
             
             // First validate the form
             if (!validateForm()) {
-                iziToast.error({
-                    title: 'Error',
-                    position: 'topRight',
-                    message: 'Please fill all required fields correctly before proceeding.',
-                });
+                // iziToast.error({
+                //     title: 'Error',
+                //     position: 'topRight',
+                //     message: 'Please fill all required fields correctly before proceeding.',
+                // });
                 return false;
             }
             
