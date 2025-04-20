@@ -183,7 +183,7 @@
             <div class="row align-items-center justify-content-start">
                 <div class="col-lg-3">
                     <div class="logo_box">
-                        <img src="http://localhost:8000/images/invoice-logo.png" class="img-fluid" alt="logo">
+                        <img src="{{asset('images/invoice-logo.png')}}" class="img-fluid" alt="logo">
                     </div>
                 </div>
                 <div class="col-lg-8">
