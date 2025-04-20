@@ -233,6 +233,10 @@ $orgComm = 0;
         left: 0;
         width: 100%;
     }
+
+    .modal-cstm{
+        max-width: 1000px !important;
+    }
     
     .textBox-postion small {
         background: #f7bd0f;
@@ -347,6 +351,9 @@ $orgComm = 0;
     }
     .swal2-actions{
         margin:0px !important;
+    }
+    .small-text{
+        font-size:18px !important;
     }
 </style>
 <section class="section-area checkout-event-area">
@@ -491,6 +498,17 @@ $orgComm = 0;
                                 </li>
                             </ul>
                             <p>Present the QR code on your mobile ticket at the coaching entrance for seamless entry. By proceeding, I confirm my consent to complete this transaction.</p>
+
+                            
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="accept_term" id="accept_term">
+                                    <label class="form-check-label text-white" for="accept_term">
+                                        I accept the <a href="{{route('terms-conditions')}}" target="_blank" class="text-warning">Terms & Conditions</a>
+                                    </label>
+                                </div>
+                            </div>
+
                             @if (Common::isUserLogin())
                                 <button type="button" class="btn default-btn btn-block" id="submitPayment">Continue To Checkout</button>
                             @else
@@ -541,7 +559,7 @@ $orgComm = 0;
 
     <!-- MODAL START -->
     <div class="modal fade" id="qrPaymentModal" tabindex="-1" role="dialog" aria-labelledby="qrPaymentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-dialog modal-cstm" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="qrPaymentModalLabel">
@@ -567,26 +585,18 @@ $orgComm = 0;
                                     <small class="mb-3">Using as:</small>
                                     <h5 class="text-warning mt-1 mb-0">{{ $userData['mobile'] }}</h5>
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="accept_term" id="accept_term">
-                                        <label class="form-check-label text-white" for="accept_term">
-                                            I accept the <a href="{{route('terms-conditions')}}" target="_blank" class="text-warning">Terms & Conditions</a>
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
                             <div class="girl_img">
                                 <img src="{{asset('images/girl_image.png')}}" class="img-fluid w-auto" alt="girl-bg">
                             </div>
                         </div>
                         <div class="col-md-8 d-flex justify-content-center align-items-center qr_container_div flex-column">
-                            <div class="col-5 text-center px-4 py-4">
-                                <div class="rounded p-3 position-relative main_qr">
+                            <div class="col-5 text-center px-4 py-2">
+                                <div class="rounded p-2 position-relative main_qr d-flex justify-content-center">
                                     <div class="textBox-postion">
                                         <small class="mb-2 fw-bold">SCAN ME</small>
                                     </div>
-                                    <img src="{{ $packageDetails['qr_code'] }}" alt="QR Code" class="img-fluid my-2 rounded" style="max-width: 200px;">
+                                    <img src="{{ $packageDetails['qr_code'] }}" alt="QR Code" class="img-fluid mt-3 rounded" style="max-width: 200px;">
                                 </div>
                                 <div class="mt-3">
                                     <h6 class="mb-1">Partner UP ID : <span class="text-warning">{{ $packageDetails['upi_id'] }}</span></h6>
@@ -673,6 +683,12 @@ $orgComm = 0;
         // Form validation function
         function validateForm() {
             let isValid = true;
+
+            
+            const termsChecked = $('#accept_term').is(':checked');
+            if(!termsChecked){
+                isValid = false;
+            }
             
             // Validate player information
             @for($i = 1; $i <= $bookingData['quantity']; $i++)
