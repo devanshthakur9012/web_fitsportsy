@@ -141,7 +141,9 @@
             height: 30px !important;
             border: 1px solid #fff !important;
         }
-
+        .text-danger{
+            color:#ff0000 !important;
+        }
     </style>
 </head>
 
@@ -233,7 +235,7 @@
                                             </a>
                                             <a class="dropdown-item" href="{{route('my-social-play')}}">
                                                 <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
-                                                My Personal Trainer
+                                                My Group Sessions
                                             </a>
                                             <a class="dropdown-item" href="{{route('my-activity')}}">
                                                 <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
@@ -412,7 +414,7 @@
 {{--                                        </a>--}}
 {{--                                        <a class="dropdown-item" href="{{route('my-social-play')}}">--}}
 {{--                                            <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            My Personal Trainer--}}
+{{--                                            My Group Sessions--}}
 {{--                                        </a>--}}
 {{--                                        <a class="dropdown-item" href="{{route('my-activity')}}">--}}
 {{--                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>--}}
@@ -597,13 +599,13 @@
         </div>
     </div>
 
-    {{-- Personal Trainer --}}
+    {{-- Group Sessions --}}
     <div class="modal fade" id="socialPlay" tabindex="-1" role="dialog" aria-labelledby="socialPlayLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="socialPlayLabel">Personal Trainer</h5>
+                    <h5 class="modal-title" id="socialPlayLabel">Group Sessions</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -614,7 +616,7 @@
                             <form id="socialPlayForm" action="{{route('create-play')}}" autocomplete="off" class="row" method="POST">
                                 <div class="mb-3 col-lg-6">
                                     @csrf
-                                    <label for="cat_id" class="form-label">Therapy Type <span class="text-danger">*</span></label>
+                                    <label for="cat_id" class="form-label">Type <span class="text-danger">*</span></label>
                                     <select class="form-control" id="cat_id" name="cat_id" required>
                                         @isset($catData)
                                             <option value="" selected disabled>Select Type</option>
@@ -626,17 +628,56 @@
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="title" class="form-label">Service Name <span class="text-danger">*</span></label>
-                                    <input type="text" placeholder="Eg: Therapeutic Yoga" class="form-control" id="title" name="Service Name" maxlength="225" required>
+                                    <label for="title" class="form-label">Session Name <span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="Eg: Therapeutic Yoga" class="form-control" id="title" name="title" maxlength="225" required>
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="start_date" class="form-label">Available Start Date <span class="text-danger">*</span></label>
+                                    <label for="start_date" class="form-label">Start Date <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control" id="start_date" name="start_date" required>
                                 </div>
 
                                 <div class="mb-3 col-lg-6">
-                                    <label for="start_time" class="form-label">Available Time Slot <span class="text-danger">*</span></label>
+                                    <label for="end_date" class="form-label">End Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="end_date" name="end_date" required>
+                                </div>
+
+                                <div class="mb-3 col-lg-12">
+                                    <label class="form-label">Select Days <span class="text-danger">*</span></label>
+                                    <div class="d-flex">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Mon" id="dayMon">
+                                            <label class="form-check-label" for="dayMon">Mon</label>
+                                        </div>
+                                        <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Tue" id="dayTue">
+                                            <label class="form-check-label" for="dayTue">Tue</label>
+                                        </div>
+                                        <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Wed" id="dayWed">
+                                            <label class="form-check-label" for="dayWed">Wed</label>
+                                        </div>
+                                        <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Thu" id="dayThu">
+                                            <label class="form-check-label" for="dayThu">Thu</label>
+                                        </div>
+                                        <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Fri" id="dayFri">
+                                            <label class="form-check-label" for="dayFri">Fri</label>
+                                        </div>
+                                        <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Sat" id="daySat">
+                                            <label class="form-check-label" for="daySat">Sat</label>
+                                        </div>
+                                        <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="days[]" value="Sun" id="daySun">
+                                            <label class="form-check-label" for="daySun">Sun</label>
+                                        </div>
+                                   </div>
+                                </div>
+
+                                <div class="mb-3 col-lg-6">
+                                    <label for="start_time" class="form-label">Session Time Slots <span class="text-danger">*</span></label>
                                     <input type="time" class="form-control" id="start_time" name="start_time" required>
                                 </div>
 
@@ -663,42 +704,44 @@
                                     <input type="number" placeholder="Enter no. of slots" class="form-control" id="slots" name="slots" required>
                                 </div>
 
-                                <div class="mb-3 col-lg-6" id="price-container">
+                                <!-- <div class="mb-3 col-lg-6" id="price-container">
                                     <label for="price" class="form-label">Price Per Slot <span class="text-danger">*</span></label>
                                     <input type="number" placeholder="Enter Price Per Slot" step="0.01" class="form-control" id="price" name="price" required>
-                                </div>
+                                </div> -->
 
-                                <div class="mb-3 col-lg-6">
+                                <!-- <div class="mb-3 col-lg-6">
                                     <label for="upi_id" class="form-label">UPI ID/ Mobile No.</label>
                                     <input type="text" placeholder="Eg: shiva@okaxis/9686889977" class="form-control" id="upi_id" name="upi_id" maxlength="225">
-                                </div>
+                                </div> -->
 
                                 <div class="mb-3 col-lg-6">
                                     <label for="type" class="form-label">Session Type <span class="text-danger">*</span></label>
                                     <select class="form-control" id="type" name="type" required>
                                         <option value="online" selected>Online</option>
-                                        <option value="inperson">In-person</option>
+                                        <option value="offline">Offline</option>
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-lg-12">
-                                    <label for="skill_level" class="form-label">Experience Level Required <span class="text-danger">*</span></label>
-                                    <select class="form-control select2" id="skill_level" name="skill_level[]" multiple required>
+                                <div class="mb-3 col-lg-6">
+                                    <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="gender" name="gender" required>
                                         <option value="">Select Level</option>
-                                        <option value="Beginner">Beginner</option>
-                                        <option value="Intermediate">Intermediate</option>
-                                        <option value="Advanced">Advanced</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Any">Any</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-lg-12">
                                     <label for="note" class="form-label">Note</label>
-                                    <textarea class="form-control" placeholder="Enter Note" id="note" name="note" maxlength="500" style="height: 115px;">1.Mavis 350 or RSL Supreme Shuttlecocks will be used for all matches.                                                      2.Participants are requested to adhere to the venue's rules and regulations.                                                      3.Kindly specify the game format while creating Personal Trainer.                                                                      4.Payments can be made conveniently via UPI.</textarea>
+                                    <textarea class="form-control" placeholder="Enter Note" id="note" name="note" maxlength="500" style="height: 115px;">1.Mavis 350 or RSL Supreme Shuttlecocks will be used for all matches.                                                      2.Participants are requested to adhere to the venue's rules and regulations.                                                      3.Kindly specify the game format while creating Group Sessions.                                                                      4.Payments can be made conveniently via UPI.</textarea>
                                 </div>
                                 <div class="mb-3 col-lg-12">
-                                    <label for="pay_join" class="form-label">Pay Join <span class="text-danger">*</span></label>
+                                    <!-- <label for="pay_join" class="form-label">Pay Join <span class="text-danger">*</span></label> -->
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" name="pay_join" role="switch" id="pay_join" checked>
-                                        <label class="form-check-label" for="pay_join">Yes</label>
+                                        <label class="form-check-label" for="terms">
+                                            I agree to the <a href="#">Terms and Conditions</a> <span class="text-danger">*</span>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -720,7 +763,7 @@
     <script type="text/javascript" src="{{ asset('f-vendor/slick/slick.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $('#skill_level').select2({
                 placeholder: "Select Skill Levels",
@@ -802,6 +845,105 @@
                     $("#price").val("");
                 }
             }).trigger("change");
+        });
+    </script> -->
+    <script>
+        $(document).ready(function () {
+            // Initialize jQuery validation
+            $("#socialPlayForm").validate({
+                rules: {
+                    cat_id: { required: true },
+                    title: { required: true, maxlength: 225 },
+                    start_date: { required: true, date: true, greaterThanToday: true },
+                    end_date: { required: true, date: true, greaterThanStartDate: true },
+                    "days[]": { required: true },
+                    start_time: { required: true },
+                    venue: { required: true, maxlength: 225 },
+                    location: { required: true, maxlength: 225 },
+                    slots: { required: true, number: true, min: 1 },
+                    type: { required: true },
+                    gender: { required: true },
+                    pay_join: { required: true }
+                },
+                messages: {
+                    cat_id: { required: "Please select a play type." },
+                    title: { required: "Please enter a session name.", maxlength: "Session name cannot exceed 225 characters." },
+                    start_date: { 
+                        required: "Please select a start date.",
+                        greaterThanToday: "Start date must be in the future." 
+                    },
+                    end_date: { 
+                        required: "Please select an end date.",
+                        greaterThanStartDate: "End date must be after start date." 
+                    },
+                    "days[]": { required: "Please select at least one day." },
+                    start_time: { required: "Please select a start time." },
+                    venue: { required: "Please enter venue details.", maxlength: "Venue details cannot exceed 225 characters." },
+                    location: { required: "Please select a location.", maxlength: "Location cannot exceed 225 characters." },
+                    slots: { 
+                        required: "Please enter the number of slots.", 
+                        number: "Please enter a valid number.", 
+                        min: "Slots must be at least 1." 
+                    },
+                    type: { required: "Please select a session type." },
+                    gender: { required: "Please select a gender preference." },
+                    pay_join: { required: "You must agree to the terms and conditions." }
+                },
+                errorElement: "span",
+                errorClass: "text-danger",
+                highlight: function (element, errorClass) {
+                    $(element).addClass("is-invalid");
+                },
+                unhighlight: function (element, errorClass) {
+                    $(element).removeClass("is-invalid");
+                },
+                submitHandler: function (form) {
+                    // Show the processing indicator
+                    const submitButton = $("#submit-btn");
+                    submitButton.prop("disabled", true).text("Processing...");
+
+                    // Submit the form
+                    form.submit();
+                }
+            });
+
+            // Custom method for validating date is in the future
+            $.validator.addMethod("greaterThanToday", function (value, element) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const inputDate = new Date(value);
+                return this.optional(element) || inputDate >= today;
+            });
+
+            // Custom method for validating end date is after start date
+            $.validator.addMethod("greaterThanStartDate", function (value, element) {
+                const startDate = new Date($("#start_date").val());
+                const endDate = new Date(value);
+                return this.optional(element) || endDate >= startDate;
+            });
+
+            // Validate checkboxes for days
+            $.validator.addClassRules("days-checkbox", {
+                required: true
+            });
+
+            // Custom error placement for checkboxes
+            $("#socialPlayForm").validate({
+                errorPlacement: function(error, element) {
+                    if (element.attr("name") == "days[]") {
+                        error.insertAfter(element.closest(".d-flex"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+
+            // Toggle for terms and conditions
+            $("#pay_join").change(function() {
+                if ($(this).is(":checked")) {
+                    $(this).valid();
+                }
+            });
         });
     </script>
     @stack('scripts')

@@ -706,6 +706,27 @@
                             <img class="img-thumbnail profile-img" src="{{env('BACKEND_BASE_URL')."/".$play['user_img']}}">
                         </div>
                     </div>
+                    <div class="my-2">
+                        @isset($play['category_name'])
+                            <a href="{{route('coaching', ['category' => Str::slug($play['category_name'])])}}"
+                                class="d-inline-flex justify-content-center align-items-center badge badge-default fw-normal"><img
+                                    src="{{env('BACKEND_BASE_URL') . "/" . $play['category_img']}}"
+                                    class="mr-1 catIcon"
+                                    alt="{{$play['category_name']}}"><small>{{$play['category_name']}}</small></a>
+                        @endisset
+                        <!-- @if(isset($play['pay_join']) && $play['pay_join'] == 1)
+                            <a href="javascript:void(0)"
+                                class="d-inline-flex justify-content-center align-items-center badge badge-success fw-normal"><img
+                                    src="{{asset('frontend/images/pay-join-icon.png')}}" class="mr-1 catIcon"
+                                    alt="Price Tag"><small>INR {{$play['play_price']}}</small></a>
+                        @endif -->
+                        @if(isset($play['play_type']))
+                            <a href="javascript:void(0)" class="d-inline-flex justify-content-center align-items-center badge fw-normal" style="background:#723ac6;"><img src="{{asset('images/address.png')}}" class="mr-1 border rounded-pill catIcon" alt="Price Tag"><small class="text-capitalize text-white"> {{$play['play_type']}}</small></a>
+                        @endif
+                        @if(isset($play['play_gender']))
+                            <a href="javascript:void(0)" class="d-inline-flex justify-content-center align-items-center badge badge-primary fw-normal"><img src="{{asset('frontend/images/gender-icon.png')}}" class="mr-1 rounded-0 catIcon" alt="Price Tag"><small class="text-capitalize text-white"> {{$play['play_gender']}}</small></a>
+                        @endif
+                    </div>
                     <div class="dark-gap text-white mt-3 m-0">
                         <div class="row">
                             <div class="col-lg-6">
@@ -714,12 +735,12 @@
                                         <i class="far fa-calendar-alt"></i>
                                     </div>
                                     <div class="text_box">
-                                        <p class="mb-0">Play Date</p>
+                                        <p class="mb-0">Schedule Date</p>
                                         <small class="mb-0">{{$play['play_sdate']}}</small>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <!-- <div class="col-lg-6">
                                 <div class="d-flex align-items-center ">
                                     <div class="icon_box ticket_icon">
                                         <i class="fas fa-ticket-alt"></i>
@@ -731,9 +752,10 @@
                                         <small class="text_muted">{{$play['play_slots']}} Spots Left</small>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 mt-2">
-                                <div class="d-flex align-items-center mb-3 mt-2">
+                            </div> -->
+
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center ">
                                     <div class="icon_box location_icon">
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
@@ -743,7 +765,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <!-- <div class="col-lg-12 mt-2">
+                                <div class="d-flex align-items-center mb-3 mt-2">
+                                    <div class="icon_box location_icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="text_box">
+                                        <p class="mb-0">Location</p>
+                                        <small class="text_muted">{{$play['play_place_name']}}</small>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-12 mt-3">
                                 @isset($play['play_note'])
                                     <div class="mb-2">
                                         <h6 class="mb-1">Notes</h6>
@@ -754,7 +787,7 @@
                                     @isset($play['play_skill_level'])
                                         @if (is_array($play['play_skill_level']) && count($play['play_skill_level']))
                                             <div class="">
-                                                <h6 class="mb-1">Skills</h6>
+                                                <h6 class="mb-1">Session Days</h6>
                                                 @foreach ($play['play_skill_level'] as $item)
                                                     <span class="badge badge-default">{{$item}}</span>
                                                 @endforeach

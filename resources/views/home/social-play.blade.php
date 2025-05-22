@@ -1,5 +1,5 @@
 @extends('frontend.master', ['activePage' => 'home'])
-@section('title', __('Personal Trainer'))
+@section('title', __('Group Sessions'))
 @section('og_data')
 <meta name="title" content="@isset($meta_data['meta_title']){{$meta_data['meta_title']}}@endisset" />
 <meta name="description" content="@isset($meta_data['meta_description']){{$meta_data['meta_description']}}@endisset" />
@@ -73,7 +73,7 @@
     <div class="hawan_section">
         <div class="mt-5 mb-3">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Personal Trainer">  <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button></div>
+                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Group Sessions">  <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button></div>
                 <div class="d-flex align-items-center gap-2">
                     <!-- City Filter -->
                     <select name="city" id="cityFilter" style="min-width: 160px;" class="form-control mr-2">
@@ -143,11 +143,17 @@
                                                                 class="mr-1 catIcon"
                                                                 alt="{{$play['category_name']}}"><small>{{$play['category_name']}}</small></a>
                                                     @endisset
-                                                    @if(isset($play['pay_join']) && $play['pay_join'] == 1)
+                                                    <!-- @if(isset($play['pay_join']) && $play['pay_join'] == 1)
                                                         <a href="javascript:void(0)"
                                                             class="d-inline-flex justify-content-center align-items-center badge badge-success fw-normal"><img
                                                                 src="{{asset('frontend/images/pay-join-icon.png')}}" class="mr-1 catIcon"
                                                                 alt="Price Tag"><small>INR {{$play['play_price']}}</small></a>
+                                                    @endif -->
+                                                    @if(isset($play['play_type']))
+                                                        <a href="javascript:void(0)" class="d-inline-flex justify-content-center align-items-center badge fw-normal" style="background:#723ac6;"><img src="{{asset('images/address.png')}}" class="mr-1 border rounded-pill catIcon" alt="Price Tag"><small class="text-capitalize text-white"> {{$play['play_type']}}</small></a>
+                                                    @endif
+                                                    @if(isset($play['play_gender']))
+                                                        <a href="javascript:void(0)" class="d-inline-flex justify-content-center align-items-center badge badge-primary fw-normal"><img src="{{asset('frontend/images/gender-icon.png')}}" class="mr-1 rounded-0 catIcon" alt="Price Tag"><small class="text-capitalize text-white"> {{$play['play_gender']}}</small></a>
                                                     @endif
                                                 </div>
                                                 <p class="card-text mb-2">

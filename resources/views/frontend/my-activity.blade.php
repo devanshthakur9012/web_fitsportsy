@@ -30,8 +30,8 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Play Title</th>
-                            <th scope="col">Category</th>
+                            <th scope="col">Session Name</th>
+                            <th scope="col">Type</th>
                             <th scope="col">Timing</th>
                             <th scope="col">Venue</th>
                             <th scope="col">Info</th>

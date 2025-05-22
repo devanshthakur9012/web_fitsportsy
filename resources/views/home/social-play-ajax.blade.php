@@ -29,11 +29,17 @@
                                                 class="mr-1 catIcon"
                                                 alt="{{$play['category_name']}}"><small>{{$play['category_name']}}</small></a>
                                     @endisset
-                                    @if(isset($play['pay_join']) && $play['pay_join'] == 1)
+                                    <!-- @if(isset($play['pay_join']) && $play['pay_join'] == 1)
                                         <a href="javascript:void(0)"
                                             class="d-inline-flex justify-content-center align-items-center badge badge-success fw-normal"><img
                                                 src="{{asset('frontend/images/pay-join-icon.png')}}" class="mr-1 catIcon"
                                                 alt="Price Tag"><small>INR {{$play['play_price']}}</small></a>
+                                    @endif -->
+                                    @if(isset($play['play_type']))
+                                        <a href="javascript:void(0)" class="d-inline-flex justify-content-center align-items-center badge fw-normal" style="background:#723ac6;"><img src="{{asset('images/address.png')}}" class="mr-1 border rounded-pill catIcon" alt="Price Tag"><small class="text-capitalize text-white"> {{$play['play_type']}}</small></a>
+                                    @endif
+                                    @if(isset($play['play_gender']))
+                                        <a href="javascript:void(0)" class="d-inline-flex justify-content-center align-items-center badge badge-primary fw-normal"><img src="{{asset('frontend/images/gender-icon.png')}}" class="mr-1 rounded-0 catIcon" alt="Price Tag"><small class="text-capitalize text-white"> {{$play['play_gender']}}</small></a>
                                     @endif
                                 </div>
                                 <p class="card-text mb-2">
@@ -112,5 +118,5 @@
         @endif
     </div>
 @else
-    <p class="text-center">No Personal Trainer found.</p>
+    <p class="text-center">No Group Sessions found.</p>
 @endif

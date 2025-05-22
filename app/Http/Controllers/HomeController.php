@@ -218,7 +218,7 @@ class HomeController extends Controller
         // }
     }    
 
-    // Book a Personal Trainer
+    // Book a Group Sessions
     public function socialPlay(Request $request)
     {
         $data = [
@@ -474,6 +474,7 @@ class HomeController extends Controller
         if (empty($user)) {
             return redirect()->route('home')->with('error', 'Please login to continue!');
         }
+
     
         try {
             // Validate the request data
@@ -481,15 +482,17 @@ class HomeController extends Controller
                 'cat_id' => 'required|integer',
                 'title' => 'required|string|max:225',
                 'start_date' => 'required|date',
+                'end_date' => 'required|date', // new
                 'start_time' => 'required',
                 'location' => 'required',
-                'skill_level' => 'required|array',
-                'skill_level.*' => 'string',
+                'days' => 'required|array',
+                'days.*' => 'string',
                 'venue' => 'required|string|max:225',
                 'slots' => 'required|integer',
-                'price' => 'nullable|numeric',
-                'upi_id' => 'nullable|string|max:225',
-                'type' => 'required|string|in:public,group',
+                // 'price' => 'nullable|numeric',
+                // 'upi_id' => 'nullable|string|max:225',
+                'gender' => 'required|string|in:Male,Female,Any',
+                'type' => 'required|string|in:online,offline',
                 'pay_join' => 'nullable|string|in:on,off',
                 'note' => 'nullable|string|max:500',
             ]);
@@ -500,15 +503,17 @@ class HomeController extends Controller
                 'cat_id' => $validatedData['cat_id'],
                 'title' => $validatedData['title'],
                 'start_date' => $validatedData['start_date'],
+                'end_date' => $validatedData['end_date'],
                 'start_time' => $validatedData['start_time'],
-                'skill_level' => $validatedData['skill_level'], // Array of skill levels
+                'skill_level' => $validatedData['days'], // Array of skill levels
                 'location' => $validatedData['location'],
                 'venue' => $validatedData['venue'],
                 'slots' => $validatedData['slots'],
-                'price' => isset($validatedData['pay_join']) && $validatedData['pay_join'] === 'on' ? $validatedData['price'] : 0,
+                'price' => 0,
                 'upi_id' => $validatedData['upi_id'] ?? null,
+                'gender' => $validatedData['gender'],
                 'type' => $validatedData['type'],
-                'pay_join' => isset($validatedData['pay_join']) && $validatedData['pay_join'] === 'on' ? 1 : 0,
+                'pay_join' => $validatedData['pay_join'],
                 'note' => $validatedData['note'] ?? null,
             ];
     
@@ -522,15 +527,15 @@ class HomeController extends Controller
             $responseBody = json_decode($apiResponse->getBody(), true);
             // Check the API response for success
             if (isset($responseBody['Result']) && $responseBody['Result'] === 'true') {
-                return redirect()->route('home')->with('success', $responseBody['ResponseMsg'] ?? 'Personal Trainer created successfully.');
+                return redirect()->route('home')->with('success', $responseBody['ResponseMsg'] ?? 'Group Sessions created successfully.');
             }
     
             // Handle API failure response
-            return redirect()->route('home')->with('error', $responseBody['ResponseMsg'] ?? 'Failed to create Personal Trainer.');
+            return redirect()->route('home')->with('error', $responseBody['ResponseMsg'] ?? 'Failed to create Group Sessions.');
     
         } catch (\Exception $e) {
             // Redirect back with error message
-            return redirect()->route('home')->with('error', 'An error occurred while creating the Personal Trainer. Please try again.');
+            return redirect()->route('home')->with('error', 'An error occurred while creating the Group Sessions. Please try again.');
         }
     }    
 
@@ -564,15 +569,17 @@ class HomeController extends Controller
                 'cat_id' => 'required|integer',
                 'title' => 'required|string|max:225',
                 'start_date' => 'required|date',
+                'end_date' => 'required|date', // new
                 'start_time' => 'required',
                 'location' => 'required',
-                'skill_level' => 'required|array',
-                'skill_level.*' => 'string',
+                'days' => 'required|array',
+                'days.*' => 'string',
                 'venue' => 'required|string|max:225',
                 'slots' => 'required|integer',
-                'price' => 'nullable|numeric',
-                'upi_id' => 'nullable|string|max:225',
-                'type' => 'required|string|in:public,group',
+                // 'price' => 'nullable|numeric',
+                // 'upi_id' => 'nullable|string|max:225',
+                'gender' => 'required|string|in:Male,Female,Any',
+                'type' => 'required|string|in:online,offline',
                 'pay_join' => 'nullable|string|in:on,off',
                 'note' => 'nullable|string|max:500',
             ]);
@@ -584,15 +591,17 @@ class HomeController extends Controller
                 'cat_id' => $validatedData['cat_id'],
                 'title' => $validatedData['title'],
                 'start_date' => $validatedData['start_date'],
+                'end_date' => $validatedData['end_date'],
                 'start_time' => $validatedData['start_time'],
-                'skill_level' => $validatedData['skill_level'], // Array of skill levels
+                'skill_level' => $validatedData['days'], // Array of skill levels
                 'venue' => $validatedData['venue'],
                 'location' => $validatedData['location'],
                 'slots' => $validatedData['slots'],
-                'price' => isset($validatedData['pay_join']) && $validatedData['pay_join'] === 'on' ? $validatedData['price'] : 0,
+                'price' => 0,
                 'upi_id' => $validatedData['upi_id'] ?? null,
+                'gender' => $validatedData['gender'],
                 'type' => $validatedData['type'],
-                'pay_join' => isset($validatedData['pay_join']) && $validatedData['pay_join'] === 'on' ? 1 : 0,
+                'pay_join' => $validatedData['pay_join'],
                 'note' => $validatedData['note'] ?? null,
             ];
     
@@ -606,15 +615,15 @@ class HomeController extends Controller
             $responseBody = json_decode($apiResponse->getBody(), true);
             // Check the API response for success
             if (isset($responseBody['Result']) && $responseBody['Result'] === 'true') {
-                return redirect()->back()->with('success', $responseBody['ResponseMsg'] ?? 'Personal Trainer updated successfully.');
+                return redirect()->back()->with('success', $responseBody['ResponseMsg'] ?? 'Group Sessions updated successfully.');
             }
     
             // Handle API failure response
-            return redirect()->back()->with('error', $responseBody['ResponseMsg'] ?? 'Failed to updated Personal Trainer.');
+            return redirect()->back()->with('error', $responseBody['ResponseMsg'] ?? 'Failed to updated Group Sessions.');
     
         } catch (\Exception $e) {
             // Redirect back with error message
-            return redirect()->back()->with('error', 'An error occurred while creating the Personal Trainer. Please try again.');
+            return redirect()->back()->with('error', 'An error occurred while creating the Group Sessions. Please try again.');
         }
     }
 
