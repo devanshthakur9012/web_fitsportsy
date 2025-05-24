@@ -233,7 +233,7 @@
                                                 <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>
                                                 Help Center
                                             </a>
-                                            <a class="dropdown-item" href="{{route('my-social-play')}}">
+                                            <a class="dropdown-item" href="{{route('my-group-sessions')}}">
                                                 <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
                                                 My Group Sessions
                                             </a>
@@ -412,7 +412,7 @@
 {{--                                            <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>--}}
 {{--                                            Help Center--}}
 {{--                                        </a>--}}
-{{--                                        <a class="dropdown-item" href="{{route('my-social-play')}}">--}}
+{{--                                        <a class="dropdown-item" href="{{route('my-group-sessions')}}">--}}
 {{--                                            <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
 {{--                                            My Group Sessions--}}
 {{--                                        </a>--}}

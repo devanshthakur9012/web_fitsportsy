@@ -108,7 +108,7 @@
 
                     <!-- Price Filter (optional) -->
                     <button class="btn btn-primary mr-2 py-2" id="applyFilter">Filter</button>
-                    <a href="{{route('social-play')}}" class="btn default2-btn py-2">Reset</a>
+                    <a href="{{route('group-sessions')}}" class="btn default2-btn py-2">Reset</a>
                 </div>
             </div>
         </div>
@@ -244,7 +244,7 @@
             const limit = "{{$limit}}"; // Use limit dynamically
 
             $.ajax({
-                url: '{{ route("social-play.ajax") }}',
+                url: '{{ route("group-sessions.ajax") }}',
                 method: 'GET',
                 data: {
                     city: city,

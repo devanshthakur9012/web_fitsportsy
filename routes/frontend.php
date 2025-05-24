@@ -45,8 +45,8 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     Route::get('coachings/{type}', [HomeController::class, 'tournamentType'])->name('coaching-type');
     Route::get('coaching-type-ajax', [HomeController::class, 'fetchTournaments'])->name('coaching-type-ajax');
 
-    Route::get('social-play', [HomeController::class, 'socialPlay'])->name('social-play');
-    Route::get('/social-play/ajax', [HomeController::class, 'socialPlayAjax'])->name('social-play.ajax');
+    Route::get('group-sessions', [HomeController::class, 'socialPlay'])->name('group-sessions');
+    Route::get('/group-sessions/ajax', [HomeController::class, 'socialPlayAjax'])->name('group-sessions.ajax');
 
     Route::get('play/{uuid}', [HomeController::class, 'play'])->name('play');
     Route::post('join-play', [HomeController::class, 'joinPlay'])->name('joinPlay');
@@ -203,7 +203,7 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     // Route::get('update-play/{uuid}',[HomeController::class, 'updatePlay'])->name('update-play');
    
    
-    Route::get('my-social-play', [HomeController::class, 'mySocialPlay'])->name('my-social-play');
+    Route::get('my-group-sessions', [HomeController::class, 'mySocialPlay'])->name('my-group-sessions');
     Route::get('join-users/{uuid}', [HomeController::class, 'joinUsers'])->name('join-users');
     Route::get('my-activity', [HomeController::class, 'myActivity'])->name('my-activity');
     Route::post('update-play',[HomeController::class,'updatePlay'])->name('update-play');
