@@ -242,13 +242,13 @@
     <div class="container">
         <section class="subscription-section">
             <div class="container">
-                <h1 class="section-title">Available Coaching Packages</h1>
+                <h1 class="section-title">Available Packages</h1>
                 <div class="row justify-content-center main_card">
                     @foreach ($tour_plans as $package)
                         <div class="col-md-3 col-sm-6 mb-5">
                             <div class="subscription-card">
                                 <div class="subscription-card-header">
-                                    @if($package['category'] == 'premium')
+                                    <!-- @if($package['category'] == 'premium')
                                         <span class="category-badge badge-premium">Premium</span>
                                     @elseif($package['category'] == 'women')
                                         <span class="category-badge badge-women">Women</span>
@@ -256,20 +256,20 @@
                                         <span class="category-badge badge-youth">Youth</span>
                                     @else
                                         <span class="category-badge badge-standard">Standard</span>
-                                    @endif
-                                    <h3 class="ticket-type">{{ $package['ticket_type'] }}</h3>
+                                    @endif -->
+                                    <h3 class="ticket-type">{{ $package['category'] }}</h3>
                                 </div>
                                 <div class="subscription-card-body">
                                     <div class="price-container">
                                         <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
                                     </div>
                                     
-                                    <span class="slots-badge">{{ $package['TotalTicket'] }} slots remaining</span>
+                                    <span class="slots-badge">{{ $package['TotalTicket'] }} batch slots</span>
                                     
                                     <ul class="features-list mb-0">
                                         <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
-                                        <li><i class="fas fa-clock"></i> Valid for {{ $package['price_validity'] }} days</li>
-                                        <li><i class="fas fa-certificate"></i> {{ $package['short_name'] }}</li>
+                                        <li><i class="fas fa-clock"></i> Valid for {{ $package['price_validity'] }}</li>
+                                        <li><i class="fas fa-certificate"></i> {{ $package['ticket_type'] }}</li>
                                     </ul>
 
                                     <button class="book-btn" 
