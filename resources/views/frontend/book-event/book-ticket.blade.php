@@ -503,7 +503,7 @@ $orgComm = 0;
                                     <strong id="total_amount">{{$settingDetails['currency']}}{{$packageDetails['ticket']*$bookingData['quantity'] + $settingDetails['tax']}}</strong>
                                 </li>
                             </ul>
-                            <p>Present the QR code on your mobile ticket at the coaching entrance for seamless entry. By proceeding, I confirm my consent to complete this transaction.</p>
+                            <p>Present the QR Code Invoice during your first visit to the venue. By proceeding, I confirm my consent to complete the transaction and agree to the Terms & Conditions.</p>
 
                             
                             <div class="form-group">

@@ -264,7 +264,7 @@
                                         <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
                                     </div>
                                     
-                                    <span class="slots-badge">{{ $package['TotalTicket'] }} batch slots</span>
+                                    <span class="slots-badge">{{ $package['TotalTicket'] }} Available Batch Slots</span>
                                     
                                     <ul class="features-list mb-0">
                                         <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
