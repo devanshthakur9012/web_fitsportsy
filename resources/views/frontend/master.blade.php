@@ -305,9 +305,9 @@
                                                                  class="mr-1" width="20px" alt="{{$cat['title']}}">{{$cat['title']}}</span></a>
                                                 </li>
                                             @endforeach
-                                            <li class="nav-item">
+                                            <!-- <li class="nav-item">
                                                 <a class="nav-link shopBar" style="background:#0a0a0a;border-radius:4px;color:#fff !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>
-                                            </li>
+                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
