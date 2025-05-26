@@ -268,8 +268,8 @@
                                     
                                     <ul class="features-list mb-0">
                                         <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
-                                        <li><i class="fas fa-clock"></i> Valid for {{ $package['price_validity'] }}</li>
-                                        <li><i class="fas fa-certificate"></i> {{ $package['ticket_type'] }}</li>
+                                        <li><i class="fas fa-check-circle"></i> Valid for {{ $package['price_validity'] }}</li>
+                                        <li><i class="fas fa-clock"></i> {{ $package['ticket_type'] }}</li>
                                     </ul>
 
                                     <button class="book-btn" 
