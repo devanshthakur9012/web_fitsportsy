@@ -112,8 +112,8 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
 
     Route::get('/search-all-events', [AppUserController::class, 'searchAllEvents']);
 
-    Route::get('/product/{slug}', [ProductsController::class, 'productDetails']);
-    Route::get('/buy-product/{slug}', [ProductsController::class, 'buyProduct']);
+    // Route::get('/product/{slug}', [ProductsController::class, 'productDetails']);
+    // Route::get('/buy-product/{slug}', [ProductsController::class, 'buyProduct']);
 
     // LOGIN PAGE REGISTERATION PAGE
     Route::post('/send-otp-for-registration', [AuthController::class, 'sendOtpForRegistration'])->name('send-otp-for-registration');
