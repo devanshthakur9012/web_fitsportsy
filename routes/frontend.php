@@ -169,6 +169,10 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     Route::post('/store-payment-detail',[BookController::class,'storePaymentDetails'])->name('store-payment-detail');
     Route::get('/ticket-information/{id}',[BookController::class,'ticketInformationData'])->name('ticket-information');
 
+    
+    Route::get('/ticket/pdf/{id}',[BookController::class,'generateTicketPdf'])->name('ticket-pdf');
+
+
     Route::post('verifyEmail',[BookController::class,'verifyEmail'])->name('verifyEmail');
 
 

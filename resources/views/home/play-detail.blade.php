@@ -295,6 +295,11 @@
             border: 2px solid #FF8C42;
         }
 
+        .timing_icon{
+            color:rgb(255 142 243); /* Bold orange */
+            border: 2px solid rgb(255 142 243);
+        }
+
         /* Location Icon */
         .location_icon {
             color: #3AB795; /* Deep green */
@@ -740,21 +745,30 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-lg-6">
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center ">
+                                    <div class="icon_box timing_icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="text_box">
+                                        <p class="mb-0">Time Slots</p>
+                                        <small class="text_muted">{{$play['play_stime']}} </small>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-lg-6 mt-4">
                                 <div class="d-flex align-items-center ">
                                     <div class="icon_box ticket_icon">
                                         <i class="fas fa-ticket-alt"></i>
                                     </div>
                                     <div class="text_box">
-                                        @if ($play['pay_join'] == 1)
-                                            <p class="mb-0">Price : {{$play['play_price']}}</p>
-                                        @endif
+                                        <p class="mb-0">Total Slots</p>
                                         <small class="text_muted">{{$play['play_slots']}} Spots Left</small>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 mt-4">
                                 <div class="d-flex align-items-center ">
                                     <div class="icon_box location_icon">
                                         <i class="fas fa-map-marker-alt"></i>

@@ -73,7 +73,10 @@
     <div class="hawan_section">
         <div class="mt-5 mb-3">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Group Sessions">  <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button></div>
+                <div class="h4 mb-0 float-left">
+                    <h1 class="h4 mb-0 float-left mr-2">Group Sessions</h1> 
+                    <!-- <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Group Sessions">  -->
+                     <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button></div>
                 <div class="d-flex align-items-center gap-2">
                     <!-- City Filter -->
                     <select name="city" id="cityFilter" style="min-width: 160px;" class="form-control mr-2">

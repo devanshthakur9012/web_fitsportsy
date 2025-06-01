@@ -123,7 +123,11 @@
 <div class="container mt-5">
     <div class="hawan_section">
         <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
-            <div class="h4 mb-0 float-left"> <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Group Sessions"> <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button> </div>
+            <div class="h4 mb-0 float-left">
+                <h1 class="h4 mb-0 float-left mr-2">Group Sessions</h1>
+                <!-- <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Group Sessions">  -->
+                <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button>
+            </div>
             <a href="{{route('group-sessions')}}" class="d-sm-inline-block text-xs float-right "> See All </a>
         </div>
         @if (isset($tournament) && count($tournament['social_play']))

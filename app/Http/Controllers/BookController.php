@@ -19,6 +19,7 @@ use App\Models\SpiritualVolunteers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cache;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
@@ -551,8 +552,15 @@ class BookController extends Controller
 
     public function ticketInformationData($tid){
         $ticketData = $this->fetchTicketInfo($tid);
-        // dd($ticketData);
         return view('frontend.book-event.ticket-data',compact('ticketData'));
+    }
+
+    public function generateTicketPdf($tid)
+    {
+        $ticketData = $this->fetchTicketInfo($tid);
+        // return view('frontend.book-event.download-pdf', compact('ticketData'));
+        $pdf = Pdf::loadView('frontend.book-event.download-pdf', compact('ticketData'))->setPaper('a4', 'portrait');
+        return $pdf->stream('ticket-'.$tid.'.pdf');
     }
 
     public function termsConditions(){
