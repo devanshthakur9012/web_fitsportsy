@@ -1,5 +1,5 @@
-@extends('frontend.master', ['activePage' => 'Confirm Ticket Booking'])
-@section('title', __('Book Event Tickets'))
+@extends('frontend.master', ['activePage' => 'Book Coaching Packages'])
+@section('title', __('Book Coaching Packages'))
 @section('content')
 @php
 $superShowFee = 0;
