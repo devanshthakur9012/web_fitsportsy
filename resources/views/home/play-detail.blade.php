@@ -864,7 +864,7 @@
                             </div>
                         @endif
                     @else
-                        <p>No players joined yet.</p>
+                        <p>No members joined yet.</p>
                     @endif
                 </div>
             </div>            
