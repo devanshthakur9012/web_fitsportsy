@@ -386,23 +386,24 @@ $orgComm = 0;
                                                     @endif
                                                </div>
                                                 @php $userData = Common::fetchUserDetails(); @endphp
-                                                @if (empty($userData['name']) || empty($userData['email']))
-                                                    <div class="row px-2">
-                                                        <div class="mb-3 col-lg-6">
-                                                            <label for="username">Username <span class="text-danger">*</span></label>
-                                                            <input id="username" type="text" class="form-control" placeholder="Username" name="username" required>
+                                                @if(Common::isUserLogin())
+                                                    @if (empty($userData['name']) || empty($userData['email']))
+                                                        <div class="row px-2">
+                                                            <div class="mb-3 col-lg-6">
+                                                                <label for="username">Username <span class="text-danger">*</span></label>
+                                                                <input id="username" type="text" class="form-control" placeholder="Username" name="username" required>
+                                                            </div>
+                                                            <div class="mb-3 col-lg-6">
+                                                                <label for="email">Email Address <span class="text-danger">*</span></label>
+                                                                <input id="email" type="email" class="form-control" placeholder="Enter Email" name="email" required>
+                                                            </div>
+                                                            <div class="mb-3 col-lg-6">
+                                                                <label for="password">Password <span class="text-danger">*</span></label>
+                                                                <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+                                                            </div>
                                                         </div>
-                                                        <div class="mb-3 col-lg-6">
-                                                            <label for="email">Email Address <span class="text-danger">*</span></label>
-                                                            <input id="email" type="email" class="form-control" placeholder="Enter Email" name="email" required>
-                                                        </div>
-                                                        <div class="mb-3 col-lg-6">
-                                                            <label for="password">Password <span class="text-danger">*</span></label>
-                                                            <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
-                                                        </div>
-                                                    </div>
+                                                    @endif
                                                 @endif
-                                                
                                                 <!-- Player Information Fields -->
                                                 @for($i = 1; $i <= $bookingData['quantity']; $i++)
                                                     <div class="playerGroup">
