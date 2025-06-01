@@ -830,7 +830,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="cardBox">
-                    <h4 class="mb-1">Players ({{ count($joinedUsers) }})</h4>
+                    <h4 class="mb-1">Members ({{ count($joinedUsers) }})</h4>
                     @if(count($joinedUsers) > 0)
                         @foreach($joinedUsers as $index => $user)
                             @if($index < 2) <!-- Show first two players -->
