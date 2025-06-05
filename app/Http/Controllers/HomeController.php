@@ -947,12 +947,12 @@ class HomeController extends Controller
         }
 
         $userId = Common::userId();
-        // if(empty($userId) || $userId == 0) {
-        //     return response()->json(['status' => false, 'message' => 'Please Login to continue'], 422);
-        // }
+        if(empty($userId) || $userId == 0) {
+            return response()->json(['status' => false, 'message' => 'Please Login to continue'], 422);
+        }
 
         $data = [
-            'user_id' => 6,
+            'user_id' => $userId,
             'event_id' => $response['id'],
             'slot' => $request->slot,
             'date' => $request->date,
