@@ -144,6 +144,13 @@
         .text-danger{
             color:#ff0000 !important;
         }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #00f0ff, #00ff94, #a6ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -758,95 +765,143 @@
             </div>
         </div>
     </div>
+
+
+    <!-- FREE TRIAL MODAL -->
+    <div class="modal fade" id="freeTrailModal" tabindex="-1" role="dialog" aria-labelledby="freeTrailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="freeTrailModalLabel">Loading...</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="loader" class="text-center">Loading form...</div>
+                    <form id="freeTrialForm" style="display:none;">
+                        @csrf
+                        <div class="form-group">
+                            <label>Select Slot</label>
+                            <select name="slot" class="form-control" id="slotDropdown" required>
+                                <option value="">Select a time slot</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select Date</label>
+                            <select name="date" class="form-control" id="dateDropdown" required>
+                                <option value="">Select a date</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-success w-100" style="background:#28a745 !important;" id="submitBtn">Book Free Trial</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{{ asset('f-vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('f-vendor/bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript" src="{{ asset('f-vendor/slick/slick.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <!-- <script>
-        $(document).ready(function () {
-            $('#skill_level').select2({
-                placeholder: "Select Skill Levels",
-                allowClear: true
+    
+
+    <script>
+        $(document).ready(function() {
+            let submitUrl = '';
+
+            $('.free_trail_btn').on('click', function() {
+                const title = $(this).data('title');
+                submitUrl = $(this).data('url');
+
+                const slots = $(this).data('slots'); // this will be an array already
+                const slotDropdown = $('#slotDropdown');
+                const dateDropdown = $('#dateDropdown');
+
+                // Populate Slot Dropdown
+                slotDropdown.empty().append('<option value="">Select a time slot</option>');
+                if (Array.isArray(slots)) {
+                    slots.forEach(slot => {
+                        slotDropdown.append(`<option value="${slot}">${slot}</option>`);
+                    });
+                }
+
+                const today = new Date();
+                let addedDays = 0;
+                let offset = 1; // Start from tomorrow (NOT today)
+                dateDropdown.empty().append('<option value="">Select a day</option>');
+
+                while (addedDays < 5) {
+                    const date = new Date(today);
+                    date.setDate(today.getDate() + offset);
+                    const dayOfWeek = date.getDay();
+
+                    if (dayOfWeek >= 1 && dayOfWeek <= 7) { // 1 = Monday, 5 = Friday
+                        const dateStr = date.toISOString().split('T')[0]; // Value for form
+                        const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }); // Display
+                        dateDropdown.append(`<option value="${dayName}">${dayName}</option>`);
+                        addedDays++;
+                    }
+
+                    offset++;
+                }
+
+
+                $('#freeTrailModalLabel').text(title);
+                $('#loader').show();
+                $('#freeTrialForm').hide();
+
+                setTimeout(() => {
+                    $('#loader').hide();
+                    $('#freeTrialForm').show();
+                }, 1000);
+            });
+
+            $("#freeTrialForm").validate({
+                submitHandler: function(form) {
+                    const $btn = $('#submitBtn');
+                    $btn.prop('disabled', true).text('Processing...');
+
+                    $.ajax({
+                        url: submitUrl,
+                        type: 'POST',
+                        data: $(form).serialize(),
+                        success: function(response) {
+                            iziToast.success({
+                                title: 'Success',
+                                message: response.message || 'Your free trial booked successfully!',
+                                position: 'topRight'
+                            });
+                            $('#freeTrailModal').modal('hide');
+                            form.reset();
+                        },
+                        error: function(xhr) {
+                            let errorMsg = 'Something went wrong!';
+                            if (xhr.responseJSON && xhr.responseJSON.message) {
+                                errorMsg = xhr.responseJSON.message;
+                            }
+
+                            iziToast.error({
+                                title: 'Error',
+                                message: errorMsg,
+                                position: 'topRight'
+                            });
+                        },
+                        complete: function() {
+                            $btn.prop('disabled', false).text('Book Free Trial');
+                        }
+                    });
+
+
+                    return false;
+                }
             });
         });
     </script>
-    <script>
-        $(document).ready(function () {
 
-            // Initialize jQuery validation
-            $("#socialPlayForm").validate({
-                rules: {
-                    cat_id: { required: true },
-                    title: { required: true, maxlength: 225 },
-                    start_date: { required: true, date: true,greaterThanToday: true },
-                    start_time: { required: true,greaterThanNow: true },
-                    "skill_level[]": { required: true },
-                    venue: { required: true, maxlength: 225 },
-                    location: { required: true, maxlength: 225 },
-                    slots: { required: true, number: true, min: 1 },
-                    price: { required: true, number: true, min: 0 },
-                    type: { required: true }
-                },
-                messages: {
-                    cat_id: { required: "Please select a play type." },
-                    title: { required: "Please enter a title.", maxlength: "Title cannot exceed 225 characters." },
-                    start_date: { required: "Please select a start date.",
-                    greaterThanToday: "Start date must be in the future." },
-                    start_time: { required: "Please select a start time.",
-                    greaterThanNow: "Start time must be in the future." },
-                    "skill_level[]": { required: "Please select at least one skill level." },
-                    venue: { required: "Please enter a venue.", maxlength: "Venue cannot exceed 225 characters." },
-                    location: { required: "Please select a location.", maxlength: "Venue cannot exceed 225 characters." },
-                    slots: { required: "Please enter the number of slots.", number: "Please enter a valid number.", min: "Slots must be at least 1." },
-                    price: { required: "Please enter a price per slot.", number: "Please enter a valid price.", min: "Price must be at least 0." },
-                    type: { required: "Please select a play type." }
-                },
-                errorElement: "span",
-                errorClass: "text-danger",
-                highlight: function (element, errorClass) {
-                    $(element).addClass("is-invalid");
-                },
-                unhighlight: function (element, errorClass) {
-                    $(element).removeClass("is-invalid");
-                },
-                submitHandler: function (form) {
-                    // Show the processing indicator
-                    const submitButton = $("#submit-btn");
-                    submitButton.prop("disabled", true).text("Processing...");
-
-                    // Submit the form
-                    form.submit();
-                }
-            });
-
-             // Custom method for validating date is in the future
-            $.validator.addMethod("greaterThanToday", function (value, element) {
-                const today = new Date();
-                const inputDate = new Date(value);
-                return this.optional(element) || inputDate > today;
-            });
-
-            // Custom method for validating time is in the future
-            $.validator.addMethod("greaterThanNow", function (value, element) {
-                const today = new Date();
-                const inputDate = new Date($("#start_date").val());
-                const inputTime = value.split(":");
-                inputDate.setHours(inputTime[0], inputTime[1], 0, 0);
-                return this.optional(element) || inputDate > today;
-            });
-
-            // Optional: Dynamically hide/show fields if needed
-            $("#pay_join").change(function () {
-                if ($(this).is(":checked")) {
-                    $("#price-container").show();
-                } else {
-                    $("#price-container").hide();
-                    $("#price").val("");
-                }
-            }).trigger("change");
-        });
-    </script> -->
     <script>
         $(document).ready(function () {
             // Initialize jQuery validation

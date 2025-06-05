@@ -40,6 +40,11 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
 
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    
+    Route::post('/free-trail', [HomeController::class, 'freeTrail'])->name('free-trail');
+
+
     Route::get('pages/{title}', [HomeController::class, 'pagesData'])->name('pagesData');
 
     Route::get('coachings/{type}', [HomeController::class, 'tournamentType'])->name('coaching-type');

@@ -933,6 +933,68 @@ class HomeController extends Controller
         return view('home.coaching-book', $data);
     }
 
+    public function freeTrail(Request $request)
+    {
+        $request->validate([
+            'eq' => 'required',
+            'slot' => 'required|string|max:255',
+            'date' => 'required|string|max:255',
+        ]);
+
+        $response = Common::decryptLink($request->eq);
+        if (empty($response['id'])) {
+            return response()->json(['status' => false, 'message' => 'Invalid Event'], 422);
+        }
+
+        $userId = Common::userId();
+        // if(empty($userId) || $userId == 0) {
+        //     return response()->json(['status' => false, 'message' => 'Please Login to continue'], 422);
+        // }
+
+        $data = [
+            'user_id' => 6,
+            'event_id' => $response['id'],
+            'slot' => $request->slot,
+            'date' => $request->date,
+        ];
+
+        $result = $this->submitFreeTrail($data);
+
+        if ($result['ResponseCode'] == "200") {
+            return response()->json(['status' => true, 'message' => 'Free trial booked successfully!']);
+        }
+
+        return response()->json(['status' => false, 'message' => $result['ResponseMsg']], 400);
+    }
+
+    public function submitFreeTrail($data)
+    {
+        try {
+            $client = new Client();
+
+            $payload = [
+                "user_id"    => $data['user_id'],
+                "event_id"   => $data['event_id'],
+                "slot"       => $data['slot'],
+                "date"      => $data['date'],
+            ];
+
+            $baseUrl = env('BACKEND_BASE_URL');
+
+            $response = $client->post("{$baseUrl}/web_api/join_free_trail.php", [
+                'json' => $payload
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (\Throwable $th) {
+            return [
+                "ResponseCode" => "500",
+                "Result" => "false",
+                "ResponseMsg" => "Server error while booking free trial."
+            ];
+        }
+    }
+
     public function getTournamentDetails($userId, $eventId){
         try {
             // Instantiate the Guzzle client
