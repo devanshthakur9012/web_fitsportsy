@@ -940,6 +940,7 @@ class HomeController extends Controller
             'slot' => 'required|string|max:255',
             'date' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'trial_for' => 'required|in:yourself,child',
         ]);
 
         $response = Common::decryptLink($request->eq);
@@ -958,6 +959,7 @@ class HomeController extends Controller
             'slot' => $request->slot,
             'date' => $request->date,
             'name' => $request->name,
+            'trial_for' => $request->trial_for,
         ];
 
         $result = $this->submitFreeTrail($data);
@@ -980,6 +982,7 @@ class HomeController extends Controller
                 "slot"       => $data['slot'],
                 "date"      => $data['date'],
                 "name"      => $data['name'],
+                "trial_for" => $data['trial_for']
             ];
 
             $baseUrl = env('BACKEND_BASE_URL');

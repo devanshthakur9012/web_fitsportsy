@@ -460,6 +460,50 @@
                 grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
             }
         }
+
+        /* Radio Button Styles */
+        #freeTrailModal .btn-radio {
+            background: #2a2a4a;
+            color: #bb86fc;
+            border: 1px solid #4a148c;
+            border-radius: 8px !important;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+
+        #freeTrailModal .btn-radio:last-child {
+            margin-right: 0;
+        }
+
+        #freeTrailModal .btn-radio:hover {
+            background: #3a3a5a;
+            color: #d1b3ff;
+        }
+
+        #freeTrailModal .btn-radio.active {
+            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%) !important;
+            color: white;
+            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+            border-color: #6a0dad;
+            background
+        }
+
+        #freeTrailModal .btn-group-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        #freeTrailModal .btn-group-toggle label {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* Adjust spacing for the new field */
+        #freeTrailModal .floating-label {
+            margin-top: 20px;
+        }
     </style>
 
 </head>
@@ -1104,9 +1148,24 @@
                         <input type="hidden" name="date" id="selectedDate">
                         <input type="hidden" name="slot" id="selectedTime">
                         
-                        <div class="form-group floating-label">
+                        <!-- Radio Button Selection -->
+                        <div class="form-group mb-0">
+                            <label class="d-block mb-2 font-weight-bold">Who is this trial for?</label>
+                            <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                                <label class="btn btn-radio text-white active">
+                                    <input type="radio" name="trial_for" value="yourself" checked> 
+                                    <i class="fas fa-user mr-2"></i> Yourself
+                                </label>
+                                <label class="btn btn-radio text-white">
+                                    <input type="radio" name="trial_for" value="child"> 
+                                    <i class="fas fa-child mr-2"></i> My Child
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group floating-label mt-4">
                             <input type="text" class="form-control" id="name" name="name" value="@if(isset($userData['name']) && ! empty($userData['name'])){{$userData['name']}}@endif" required>
-                            <label for="name">Your Name</label>
+                            <label for="name" class="section-title">Your Name</label>
                             <div class="underline"></div>
                         </div>
 
