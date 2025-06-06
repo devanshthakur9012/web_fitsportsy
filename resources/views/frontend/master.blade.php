@@ -152,6 +152,316 @@
             font-weight: bold;
         }
     </style>
+    
+    <style>
+        /* Modal Container */
+        #freeTrailModal .modal-content {
+            background: #1a1a2e;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3);
+            border: 1px solid #4a148c;
+        }
+
+        /* Modal Header */
+        #freeTrailModal .modal-header {
+            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%);
+            border: none;
+            padding: 0;
+            position: relative;
+            height: 120px;
+        }
+
+        #freeTrailModal .header-content {
+            position: absolute !important;
+            bottom: 60px;
+            left: 0;
+            z-index: 2;
+        }
+
+        #freeTrailModal .modal-title {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        #freeTrailModal .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: white;
+            opacity: 0.8;
+            z-index: 3;
+            text-shadow: none;
+            font-size: 1.5rem;
+        }
+
+        #freeTrailModal .close:hover {
+            opacity: 1;
+            color: #f3e5ff;
+        }
+
+        /* Curved Design Element */
+        #freeTrailModal .modal-curve {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #1a1a2e;
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* Modal Body */
+        #freeTrailModal .modal-body {
+            padding: 30px;
+            background: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        /* Form Elements */
+        #freeTrailModal .floating-label {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        #freeTrailModal .form-control {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #4a148c;
+            border-radius: 0;
+            color: white;
+            padding-left: 0;
+            padding-right: 0;
+            height: 40px;
+        }
+
+        #freeTrailModal .form-control:focus {
+            box-shadow: none;
+            border-color: #9c27b0;
+        }
+
+        #freeTrailModal .floating-label label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            color: #bb86fc;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        #freeTrailModal .floating-label input:focus + label,
+        #freeTrailModal .floating-label input:not(:placeholder-shown) + label {
+            top: -15px;
+            font-size: 12px;
+            color: #bb86fc;
+        }
+
+        #freeTrailModal .underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: #bb86fc;
+            transition: width 0.4s;
+        }
+
+        #freeTrailModal .form-control:focus ~ .underline {
+            width: 100%;
+        }
+
+        /* Date Carousel */
+        #freeTrailModal .date-carousel {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #6a0dad #1a1a2e;
+        }
+
+        #freeTrailModal .date-carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        #freeTrailModal .date-carousel::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        #freeTrailModal .date-carousel::-webkit-scrollbar-thumb {
+            background-color: #6a0dad;
+            border-radius: 3px;
+        }
+
+        #freeTrailModal .date-option {
+            flex: 0 0 80px;
+            padding: 15px 5px;
+            border-radius: 12px;
+            background: #16213e;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #2a2a4a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #freeTrailMLodal .date-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
+            border-color: #6a0dad;
+        }
+
+        #freeTrailModal .date-option.selected {
+            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%);
+            color: white;
+            border-color: #6a0dad;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
+        }
+
+        #freeTrailModal .date-option.weekend {
+            opacity: 0.5;
+            background: #1a1a2e;
+            cursor: not-allowed;
+        }
+
+        #freeTrailModal .day-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #bb86fc;
+            margin-bottom: 5px;
+        }
+
+        #freeTrailModal .date-option.selected .day-name {
+            color: white;
+        }
+
+        #freeTrailModal .date-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 5px 0;
+            color: white;
+        }
+
+        #freeTrailModal .month-name {
+            font-size: 0.7rem;
+            color: #bb86fc;
+            text-transform: uppercase;
+        }
+
+        #freeTrailModal .date-option.selected .month-name {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Time Grid */
+        #freeTrailModal .time-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+        }
+
+        #freeTrailModal .time-option {
+            padding: 12px 5px;
+            border-radius: 8px;
+            background: #16213e;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #2a2a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #freeTrailModal .time-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
+            border-color: #6a0dad;
+        }
+
+        #freeTrailModal .time-option.selected {
+            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%);
+            color: white;
+            border-color: #6a0dad;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
+        }
+
+        /* Section Titles */
+        #freeTrailModal .section-title {
+            font-weight: 600;
+            color: #bb86fc;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Submit Button */
+        #freeTrailModal .btn-glow {
+            background: linear-gradient(135deg, #9c27b0 0%, #6a0dad 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 15px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+        }
+
+        #freeTrailModal .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 25px rgba(156, 39, 176, 0.4);
+        }
+
+        #freeTrailModal .btn-glow:active {
+            transform: translateY(0);
+        }
+
+        #freeTrailModal .btn-glow:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        #freeTrailModal .btn-glow:hover:before {
+            opacity: 1;
+        }
+
+        /* Loader */
+        #freeTrailModal .spinner-grow.text-purple {
+            color: #9c27b0;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            #freeTrailModal .date-carousel {
+                gap: 8px;
+            }
+            
+            #freeTrailModal .date-option {
+                flex: 0 0 70px;
+                padding: 12px 3px;
+            }
+            
+            #freeTrailModal .time-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -766,35 +1076,66 @@
         </div>
     </div>
 
-
     <!-- FREE TRIAL MODAL -->
     <div class="modal fade" id="freeTrailModal" tabindex="-1" role="dialog" aria-labelledby="freeTrailModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content border-0">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="freeTrailModalLabel">Loading...</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+                    <div class="header-content w-100 text-center position-relative">
+                        <h4 class="modal-title" id="freeTrailModalLabel">
+                            <i class="fas fa-magic mr-2"></i> Book Your Free Trial
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-curve"></div>
                 </div>
                 <div class="modal-body">
-                    <div id="loader" class="text-center">Loading form...</div>
+                    <div id="loader" class="text-center py-5">
+                        <div class="spinner-grow text-purple" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-light">Preparing your magical experience...</p>
+                    </div>
+                    
                     <form id="freeTrialForm" style="display:none;">
                         @csrf
-                        <div class="form-group">
-                            <label>Select Slot</label>
-                            <select name="slot" class="form-control" id="slotDropdown" required>
-                                <option value="">Select a time slot</option>
-                            </select>
+                        <input type="hidden" name="date" id="selectedDate">
+                        <input type="hidden" name="slot" id="selectedTime">
+                        
+                        <div class="form-group floating-label">
+                            <input type="text" class="form-control" id="name" name="name" value="@if(isset($userData['name']) && ! empty($userData['name'])){{$userData['name']}}@endif" required>
+                            <label for="name">Your Name</label>
+                            <div class="underline"></div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Select Date</label>
-                            <select name="date" class="form-control" id="dateDropdown" required>
-                                <option value="">Select a date</option>
-                            </select>
+                        <div class="section-title mt-4 mb-3">
+                            <i class="far fa-calendar mr-2"></i> Select Date
+                        </div>
+                        <div id="dateContainer" class="date-carousel">
+                            <!-- Dates will be generated here -->
                         </div>
 
-                        <div class="mt-2">
-                            <button type="submit" class="btn btn-success w-100" style="background:#28a745 !important;" id="submitBtn">Book Free Trial</button>
+                        <div class="section-title mt-4 mb-3">
+                            <i class="far fa-clock mr-2"></i> Available Time Slots
+                        </div>
+                        <div id="timeContainer" class="time-grid">
+                            <!-- Time slots will be generated here -->
+                        </div>
+
+                        <div class="mt-5">
+                            @if (Common::isUserLogin())
+                                <button type="submit" class="btn btn-block btn-glow" id="submitBtn">
+                                    <i class="fas fa-check-circle mr-2"></i> Confirm Your Trial
+                                </button>
+                            @else
+                                <a href="{{route('userLogin')}}" type="button" class="btn btn-block btn-glow">Login to continue.</a>
+                            @endif
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <small class="text-muted">We'll send you a reminder before your session</small>
                         </div>
                     </form>
                 </div>
@@ -808,7 +1149,6 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     
-
     <script>
         $(document).ready(function() {
             let submitUrl = '';
@@ -816,65 +1156,122 @@
             $('.free_trail_btn').on('click', function() {
                 const title = $(this).data('title');
                 submitUrl = $(this).data('url');
-
-                const slots = $(this).data('slots'); // this will be an array already
-                const slotDropdown = $('#slotDropdown');
-                const dateDropdown = $('#dateDropdown');
-
-                // Populate Slot Dropdown
-                slotDropdown.empty().append('<option value="">Select a time slot</option>');
-                if (Array.isArray(slots)) {
-                    slots.forEach(slot => {
-                        slotDropdown.append(`<option value="${slot}">${slot}</option>`);
-                    });
-                }
-
-                const today = new Date();
-                let addedDays = 0;
-                let offset = 1; // Start from tomorrow (NOT today)
-                dateDropdown.empty().append('<option value="">Select a day</option>');
-
-                while (addedDays < 5) {
-                    const date = new Date(today);
-                    date.setDate(today.getDate() + offset);
-                    const dayOfWeek = date.getDay();
-
-                    if (dayOfWeek >= 1 && dayOfWeek <= 7) { // 1 = Monday, 5 = Friday
-                        const dateStr = date.toISOString().split('T')[0]; // Value for form
-                        const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }); // Display
-                        dateDropdown.append(`<option value="${dayName}">${dayName}</option>`);
-                        addedDays++;
-                    }
-
-                    offset++;
-                }
-
-
+                const slots = $(this).data('slots');
+                
                 $('#freeTrailModalLabel').text(title);
                 $('#loader').show();
                 $('#freeTrialForm').hide();
-
+                
+                // Generate calendar dates
+                const today = new Date();
+                const dateContainer = $('#dateContainer');
+                dateContainer.empty();
+                
+                // Add 7 upcoming days (Monday-Friday)
+                let daysAdded = 0;
+                let dayOffset = 1; // Start from tomorrow
+                
+                while (daysAdded < 7) {
+                    const date = new Date(today);
+                    date.setDate(today.getDate() + dayOffset);
+                    const dayOfWeek = date.getDay();
+                    
+                    // Only show weekdays (1-5 = Monday-Friday)
+                    if (dayOfWeek >= 1 && dayOfWeek <= 6) {
+                        const dayName = date.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+                        const dateNum = date.getDate();
+                        const monthName = date.toLocaleDateString('en-US', { month: 'short' });
+                        const dateValue = date.toISOString().split('T')[0];
+                        const isWeekend = (dayOfWeek === 0);
+                        
+                        dateContainer.append(`
+                            <div class="date-option ${isWeekend ? 'weekend' : ''}" data-date="${dateValue}">
+                                <div class="day-name">${dayName}</div>
+                                <div class="date-num">${dateNum}</div>
+                                <div class="month-name">${monthName}</div>
+                            </div>
+                        `);
+                        daysAdded++;
+                    }
+                    dayOffset++;
+                }
+                
+                // Generate time slots
+                const timeContainer = $('#timeContainer');
+                timeContainer.empty();
+                
+                if (Array.isArray(slots)) {
+                    slots.forEach(slot => {
+                        timeContainer.append(`
+                            <div class="time-option" data-time="${slot}">
+                                <i class="far fa-clock mr-2"></i>${slot}
+                            </div>
+                        `);
+                    });
+                }
+                
                 setTimeout(() => {
                     $('#loader').hide();
                     $('#freeTrialForm').show();
-                }, 1000);
+                    
+                    // Initialize selection
+                    $('.date-option:not(.weekend)').first().addClass('selected');
+                    $('.time-option').first().addClass('selected');
+                    
+                    // Update hidden inputs
+                    $('#selectedDate').val($('.date-option.selected').data('date'));
+                    $('#selectedTime').val($('.time-option.selected').data('time'));
+                }, 500);
+            });
+            
+            // Date selection
+            $(document).on('click', '.date-option:not(.weekend)', function() {
+                $('.date-option').removeClass('selected');
+                $(this).addClass('selected');
+                $('#selectedDate').val($(this).data('date'));
+            });
+            
+            // Time selection
+            $(document).on('click', '.time-option', function() {
+                $('.time-option').removeClass('selected');
+                $(this).addClass('selected');
+                $('#selectedTime').val($(this).data('time'));
             });
 
             $("#freeTrialForm").validate({
+                rules: {
+                    name: "required"
+                },
+                messages: {
+                    name: "Please enter your name"
+                },
+                errorElement: "div",
+                errorPlacement: function(error, element) {
+                    error.addClass("invalid-feedback");
+                    element.closest(".form-group").append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass("is-invalid").removeClass("is-valid");
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass("is-invalid").addClass("is-valid");
+                },
                 submitHandler: function(form) {
                     const $btn = $('#submitBtn');
-                    $btn.prop('disabled', true).text('Processing...');
+                    $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Booking...');
 
                     $.ajax({
                         url: submitUrl,
                         type: 'POST',
                         data: $(form).serialize(),
                         success: function(response) {
+                            
                             iziToast.success({
-                                title: 'Success',
-                                message: response.message || 'Your free trial booked successfully!',
+                                title: 'success',
+                                message: response.message || 'Your free trial has been scheduled!',
                                 position: 'topRight'
                             });
+
                             $('#freeTrailModal').modal('hide');
                             form.reset();
                         },
@@ -891,11 +1288,9 @@
                             });
                         },
                         complete: function() {
-                            $btn.prop('disabled', false).text('Book Free Trial');
+                            $btn.prop('disabled', false).html('<i class="fas fa-check-circle mr-2"></i> Confirm Your Trial');
                         }
                     });
-
-
                     return false;
                 }
             });
