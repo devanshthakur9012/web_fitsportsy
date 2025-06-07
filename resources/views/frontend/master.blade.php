@@ -156,25 +156,25 @@
     <style>
         /* Modal Container */
         #freeTrailModal .modal-content {
-            background: #1a1a2e;
+            background: #0a0a0a;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3);
-            border: 1px solid #4a148c;
+            border: 1px solid #6e6e6e;
         }
 
         /* Modal Header */
         #freeTrailModal .modal-header {
-            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%);
+            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
             border: none;
             padding: 0;
             position: relative;
-            height: 120px;
+            height: 65px;
         }
 
         #freeTrailModal .header-content {
             position: absolute !important;
-            bottom: 60px;
+            bottom: 15px;
             left: 0;
             z-index: 2;
         }
@@ -208,15 +208,15 @@
             bottom: -1px;
             left: 0;
             width: 100%;
-            height: 40px;
-            background: #1a1a2e;
+            height: 10px;
+            background: #0a0a0a;
             border-radius: 20px 20px 0 0;
         }
 
         /* Modal Body */
         #freeTrailModal .modal-body {
             padding: 30px;
-            background: #1a1a2e;
+            background: #0a0a0a;
             color: #e0e0e0;
         }
 
@@ -229,24 +229,23 @@
         #freeTrailModal .form-control {
             background: transparent;
             border: none;
-            border-bottom: 1px solid #4a148c;
+            border-bottom: 1px solid #6e6e6e;
             border-radius: 0;
             color: white;
-            padding-left: 0;
-            padding-right: 0;
+            padding: 0;
             height: 40px;
         }
 
         #freeTrailModal .form-control:focus {
             box-shadow: none;
-            border-color: #9c27b0;
+            border-color: #6e6e6e;
         }
 
         #freeTrailModal .floating-label label {
             position: absolute;
             top: 15px;
             left: 0;
-            color: #bb86fc;
+            color: #6e6e6e;
             transition: all 0.3s;
             pointer-events: none;
         }
@@ -255,7 +254,7 @@
         #freeTrailModal .floating-label input:not(:placeholder-shown) + label {
             top: -15px;
             font-size: 12px;
-            color: #bb86fc;
+            color: #6e6e6e;
         }
 
         #freeTrailModal .underline {
@@ -264,7 +263,7 @@
             left: 0;
             height: 2px;
             width: 0;
-            background: #bb86fc;
+            background: #6e6e6e;
             transition: width 0.4s;
         }
 
@@ -279,7 +278,7 @@
             overflow-x: auto;
             padding-bottom: 15px;
             scrollbar-width: thin;
-            scrollbar-color: #6a0dad #1a1a2e;
+            scrollbar-color: #6e6e6e #0a0a0a;
         }
 
         #freeTrailModal .date-carousel::-webkit-scrollbar {
@@ -287,17 +286,17 @@
         }
 
         #freeTrailModal .date-carousel::-webkit-scrollbar-track {
-            background: #1a1a2e;
+            background: #0a0a0a;
         }
 
         #freeTrailModal .date-carousel::-webkit-scrollbar-thumb {
-            background-color: #6a0dad;
+            background-color: #6e6e6e;
             border-radius: 3px;
         }
 
         #freeTrailModal .date-option {
             flex: 0 0 80px;
-            padding: 15px 5px;
+            padding: 8px 5px;
             border-radius: 12px;
             background: #16213e;
             text-align: center;
@@ -311,27 +310,27 @@
         #freeTrailMLodal .date-option:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
-            border-color: #6a0dad;
+            border-color: #6e6e6e;
         }
 
         #freeTrailModal .date-option.selected {
-            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%);
+            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
             color: white;
-            border-color: #6a0dad;
+            border-color: #6e6e6e;
             transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
         }
 
         #freeTrailModal .date-option.weekend {
             opacity: 0.5;
-            background: #1a1a2e;
+            background: #0a0a0a;
             cursor: not-allowed;
         }
 
         #freeTrailModal .day-name {
             font-weight: 600;
             font-size: 0.8rem;
-            color: #bb86fc;
+            color:rgb(255, 255, 255);
             margin-bottom: 5px;
         }
 
@@ -348,7 +347,7 @@
 
         #freeTrailModal .month-name {
             font-size: 0.7rem;
-            color: #bb86fc;
+            color:rgb(255, 255, 255);
             text-transform: uppercase;
         }
 
@@ -379,13 +378,13 @@
         #freeTrailModal .time-option:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
-            border-color: #6a0dad;
+            border-color: #6e6e6e;
         }
 
         #freeTrailModal .time-option.selected {
-            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%);
+            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
             color: white;
-            border-color: #6a0dad;
+            border-color: #6e6e6e;
             transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
         }
@@ -393,14 +392,14 @@
         /* Section Titles */
         #freeTrailModal .section-title {
             font-weight: 600;
-            color: #bb86fc;
+            color:rgb(255, 255, 255);
             font-size: 1.1rem;
             letter-spacing: 0.5px;
         }
 
         /* Submit Button */
         #freeTrailModal .btn-glow {
-            background: linear-gradient(135deg, #9c27b0 0%, #6a0dad 100%);
+            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
             border: none;
             color: white;
             font-weight: 600;
@@ -440,7 +439,7 @@
 
         /* Loader */
         #freeTrailModal .spinner-grow.text-purple {
-            color: #9c27b0;
+            color: #6e6e6e;
             width: 3rem;
             height: 3rem;
         }
@@ -464,10 +463,10 @@
         /* Radio Button Styles */
         #freeTrailModal .btn-radio {
             background: #2a2a4a;
-            color: #bb86fc;
-            border: 1px solid #4a148c;
+            color: #6e6e6e;
+            border: none;
             border-radius: 8px !important;
-            padding: 12px 20px;
+            padding: 10px 20px;
             transition: all 0.3s;
             margin-right: 10px;
         }
@@ -482,10 +481,10 @@
         }
 
         #freeTrailModal .btn-radio.active {
-            background: linear-gradient(135deg, #6a0dad 0%, #4a148c 100%) !important;
+            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%) !important;
             color: white;
             box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
-            border-color: #6a0dad;
+            border-color: #6e6e6e;
             background
         }
 
@@ -1150,7 +1149,10 @@
                         
                         <!-- Radio Button Selection -->
                         <div class="form-group mb-0">
-                            <label class="d-block mb-2 font-weight-bold">Who is this trial for?</label>
+                            <div class="section-title mb-3">
+                                <i class="far fa-user mr-2"></i> Trial for
+                            </div>
+                            <!-- <label class="d-block mb-2 font-weight-bold">Who is this trial for?</label> -->
                             <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
                                 <label class="btn btn-radio text-white active">
                                     <input type="radio" name="trial_for" value="yourself" checked> 
@@ -1162,10 +1164,11 @@
                                 </label>
                             </div>
                         </div>
-                        <br>
                         <div class="form-group floating-label mt-4">
+                            <div class="section-title">
+                                <i class="far fa-user mr-2"></i> Name
+                            </div>
                             <input type="text" class="form-control" id="name" name="name" value="@if(isset($userData['name']) && ! empty($userData['name'])){{$userData['name']}}@endif" required>
-                            <label for="name" class="section-title">Your Name</label>
                             <div class="underline"></div>
                         </div>
 
@@ -1258,14 +1261,20 @@
                 // Generate time slots
                 const timeContainer = $('#timeContainer');
                 timeContainer.empty();
-                
+
                 if (Array.isArray(slots)) {
                     slots.forEach(slot => {
-                        timeContainer.append(`
-                            <div class="time-option" data-time="${slot}">
-                                <i class="far fa-clock mr-2"></i>${slot}
-                            </div>
-                        `);
+                        // Check if ' to ' exists in the slot
+                        if (slot.includes(' to ')) {
+                            // Split slot at ' to ' and take the first part (start time)
+                            const startTime = slot.split(' to ')[0].trim();
+
+                            timeContainer.append(`
+                                <div class="time-option" data-time="${startTime}">
+                                    <i class="far fa-clock mr-2"></i>${startTime}
+                                </div>
+                            `);
+                        }
                     });
                 }
                 
