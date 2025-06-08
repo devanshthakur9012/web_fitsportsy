@@ -108,22 +108,6 @@
 }
 </style>
 <style>
-.section-title {
-    position: relative;
-    padding-bottom: 15px;
-}
-
-.section-title:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #6b46c1, #9f7aea);
-}
-
 .category-card {
     transition: all 0.4s ease;
     border-radius: 12px;
