@@ -100,7 +100,26 @@
                                         @endisset
                                         <div class="mt-2">
                                             <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
-                                            <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a>
+                                            <!-- <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a> -->
+
+                                            <div class="d-flex mt-1 mb-1">
+                                                @if($tour['play_free_trial'])
+                                                    @php
+                                                        $inputObj = new stdClass();
+                                                        $inputObj->params = 'id='.$tour['event_id'];
+                                                        $inputObj->url = route('free-trail');
+                                                        $encLink = Common::encryptLink($inputObj);
+
+                                                        $ticket_type_keys = array_keys($tour['ticket_types']);
+                                                        $data_slots = json_encode(array_keys($tour['ticket_types']));
+                                                    @endphp
+                                                    <button class="btn btn-primary btn-sm mr-1 w-50 free_trail_btn" data-url="{{$encLink}}" data-title="{{$tour['event_title']}}" data-slots="{{$data_slots}}" style="background:#28a745 !important;" data-toggle="modal" data-target="#freeTrailModal">Free Trial</button>
+                                                    <a href="{{ route('coaching-detail', [Str::slug($tour['event_title']), $tour['event_id']]) }}" class="btn btn-success btn-sm w-50">Book Coaching</a>
+                                                @else
+                                                    <a href="{{ route('coaching-detail', [Str::slug($tour['event_title']), $tour['event_id']]) }}" class="btn btn-success btn-sm w-100">Book Coaching</a>
+                                                @endif
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

@@ -34,7 +34,7 @@
                             <th scope="col">Type</th>
                             <th scope="col">Timing</th>
                             <th scope="col">Venue</th>
-                            <th scope="col">Info</th>
+                            <!-- <th scope="col">Info</th> -->
                             <th scope="col">Status</th>
                             <th scope="col">Apply Date</th>
                             <th scope="col">Action</th>
@@ -48,10 +48,10 @@
                                 <td>{{ $item['category_name'] }}</td>
                                 <td>{{ $item['play_sdate'] }}</td>
                                 <td>{{ $item['venue'] }}</td>
-                                <td>
+                                <!-- <td>
                                     <p class="mb-0">TXT No. : {{$item['txt_number'] ?? "--"}}</p>
                                     <p class="mb-0">Message : {{$item['message'] ?? "--"}}</p>
-                                </td>
+                                </td> -->
                                 <td>{{ $item['category_name'] }}</td>
                                 <td>{{ $item['apply_date'] }}</td>
                                 <td>

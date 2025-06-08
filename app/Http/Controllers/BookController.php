@@ -552,7 +552,7 @@ class BookController extends Controller
 
     public function ticketInformationData($tid){
         $ticketData = $this->fetchTicketInfo($tid);
-        return view('frontend.book-event.ticket-data',compact('ticketData'));
+        return view('frontend.book-event.ticket-data',compact('ticketData','tid'));
     }
 
     public function generateTicketPdf($tid)
@@ -560,8 +560,18 @@ class BookController extends Controller
         $ticketData = $this->fetchTicketInfo($tid);
         // return view('frontend.book-event.download-pdf', compact('ticketData'));
         $pdf = Pdf::loadView('frontend.book-event.download-pdf', compact('ticketData'))->setPaper('a4', 'portrait');
-        return $pdf->stream('ticket-'.$tid.'.pdf');
+
+        // Prepare file name using event name
+        $eventName = ($ticketData['ticket_title'] ?? "FITSPORTSY");
+
+        // Sanitize filename and convert to lowercase
+        $eventName = preg_replace('/[^A-Za-z0-9_\-]/', '_', $eventName);
+        $eventName = strtolower($eventName);
+
+        // Download with custom file name
+        return $pdf->download($eventName . '_ticket.pdf');
     }
+
 
     public function termsConditions(){
         return view('frontend.book-event.term-conditons');

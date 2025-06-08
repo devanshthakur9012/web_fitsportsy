@@ -803,7 +803,7 @@
                                             <div class="">
                                                 <h6 class="mb-1">Session Days</h6>
                                                 @foreach ($play['play_skill_level'] as $item)
-                                                    <span class="badge badge-default">{{$item}}</span>
+                                                    <span class="badge badge-default" style="font-size:16px;font-weight:500;">{{$item}}</span>
                                                 @endforeach
                                             </div>
                                         @endif
@@ -816,8 +816,16 @@
                                 </div>
                                 <div class="d-flex align-items-center mt-2">
                                     @if (Common::isUserLogin())
-                                        <button class="text-center btn default-btn w-100"  data-toggle="modal"
-                                        data-target="#joinModal">Join Now</button>
+                                        @php
+                                            $inputObj = new stdClass();
+                                            $inputObj->params = 'id='.$play['play_id'];
+                                            $inputObj->url = url('join-play');
+                                            $encLink = Common::encryptLink($inputObj);
+                                        @endphp
+                                        <form id="joinForm" method="POST" class="w-100" action="{{$encLink}}">
+                                            @csrf
+                                            <button type="submit" class="text-center btn default-btn w-100">Join Now</button>
+                                        </form>
                                     @else
                                         @php session(['redirect_url' => url()->current()]); @endphp
                                         <a href="{{ route('userLogin') }}" class="btn default-btn btn-block w-100">Login To Join</a>

@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('f-vendor/slick/slick-theme.min.css') }}" />
     <link href="{{ asset('f-css/main.css') }}" rel="stylesheet">
     <link href="{{asset('css/select2.css')}}" rel="stylesheet">
+    <link href="{{asset('f-css\iziToast.min.css')}}" rel="stylesheet">
 
     @stack('styles')
     <style>
@@ -174,16 +175,16 @@
 
         #freeTrailModal .header-content {
             position: absolute !important;
-            bottom: 15px;
+            bottom: 20px;
             left: 0;
             z-index: 2;
         }
 
         #freeTrailModal .modal-title {
-            font-weight: 700;
-            font-size: 1.8rem;
+            /* font-weight: 700; */
+            /* font-size: 1.8rem; */
             color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            /* text-shadow: 0 2px 4px rgba(0,0,0,0.2); */
         }
 
         #freeTrailModal .close {
@@ -215,7 +216,7 @@
 
         /* Modal Body */
         #freeTrailModal .modal-body {
-            padding: 30px;
+            padding: 18px 30px;
             background: #0a0a0a;
             color: #e0e0e0;
         }
@@ -328,8 +329,8 @@
         }
 
         #freeTrailModal .day-name {
-            font-weight: 600;
-            font-size: 0.8rem;
+            /* font-weight: 600; */
+            font-size: 12px;
             color:rgb(255, 255, 255);
             margin-bottom: 5px;
         }
@@ -339,8 +340,8 @@
         }
 
         #freeTrailModal .date-num {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 16px;
+            /* font-weight: 700; */
             margin: 5px 0;
             color: white;
         }
@@ -391,9 +392,9 @@
 
         /* Section Titles */
         #freeTrailModal .section-title {
-            font-weight: 600;
+            /* font-weight: 600; */
             color:rgb(255, 255, 255);
-            font-size: 1.1rem;
+            font-size: 16px;
             letter-spacing: 0.5px;
         }
 
@@ -466,7 +467,7 @@
             color: #6e6e6e;
             border: none;
             border-radius: 8px !important;
-            padding: 10px 20px;
+            padding: 7px 20px;
             transition: all 0.3s;
             margin-right: 10px;
         }
@@ -926,12 +927,21 @@
         </div>
     </footer>
 
+    <!-- Add this inside your <body> -->
+    <div id="qrPopup" class="card shadow-lg p-2" style="position: fixed; bottom: 20px; right: 20px; width: 180px; z-index: 1050;    box-shadow: 0px 0px 10px #444444 !important;background:#0a0a0a !important;color:#fff;">
+        <div class="card-body text-center p-2">
+            <p class="mb-3" style="font-size: 14px;">For better experience,<br> use Fitsportsy App</p>
+            <img src="{{asset('/images/qr-fitsportsy.jpeg')}}" alt="QR Code" class="img-fluid border border-white rounded" style="width: 100%;">
+        </div>
+    </div>
+
+
     <div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="locationModalLabel"><i class="fas fa-map-marker-alt"></i>
+                    <h5 class="modal-title h4" id="locationModalLabel"><i class="fas fa-map-marker-alt"></i>
                         Locations</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -1179,14 +1189,14 @@
                             <!-- Dates will be generated here -->
                         </div>
 
-                        <div class="section-title mt-4 mb-3">
+                        <div class="section-title mt-3 mb-3">
                             <i class="far fa-clock mr-2"></i> Available Time Slots
                         </div>
                         <div id="timeContainer" class="time-grid">
                             <!-- Time slots will be generated here -->
                         </div>
 
-                        <div class="mt-5">
+                        <div class="mt-4">
                             @if (Common::isUserLogin())
                                 <button type="submit" class="btn btn-block btn-glow" id="submitBtn">
                                     <i class="fas fa-check-circle mr-2"></i> Confirm Your Trial
@@ -1195,10 +1205,9 @@
                                 <a href="{{route('userLogin')}}" type="button" class="btn btn-block btn-glow">Login to continue.</a>
                             @endif
                         </div>
-                        
-                        <div class="text-center mt-3">
+                        <!-- <div class="text-center mt-3">
                             <small class="text-muted">We'll send you a reminder before your session</small>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
             </div>
@@ -1210,12 +1219,13 @@
     <script type="text/javascript" src="{{ asset('f-vendor/slick/slick.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="{{ asset('f-js\iziToast.min.js') }}" type="text/javascript"></script>
     
     <script>
         $(document).ready(function() {
             let submitUrl = '';
 
-            $('.free_trail_btn').on('click', function() {
+            $(document).on('click','.free_trail_btn', function() {
                 const title = $(this).data('title');
                 submitUrl = $(this).data('url');
                 const slots = $(this).data('slots');

@@ -107,6 +107,109 @@
     padding: 3px 8px !important;
 }
 </style>
+<style>
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #6b46c1, #9f7aea);
+}
+
+.category-card {
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    border: none;
+    /* background: #ffffff; */
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+}
+
+.category-card .card-img-top {
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card img.category-img {
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.85);
+    height: 220px;
+    object-fit: cover;
+}
+
+.category-card:hover img.category-img {
+    transform: scale(1.08);
+    filter: brightness(1);
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65));
+    z-index: 1;
+}
+
+.category-card .card-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 2;
+    text-align: center;
+}
+
+.category-card .card-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-card .explore-link {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.category-card:hover .explore-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hover-effect {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+</style>
 <div class="pt-3 pb-3 shadow-sm home-slider">
     <div class="osahan-slider">
         @if (isset($tournament) && count($tournament['banner_img']))
@@ -498,7 +601,7 @@
             </div>
         </div>
     @endif --}}
-    <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
+    <!-- <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
         <h2 class="h4 mb-0 float-left">Categories</h2>
     </div>
     <div class="all-category mb-5">
@@ -512,6 +615,63 @@
                 </a>
             </div>
         @endforeach
+    </div> -->
+    <!-- <div class="categories-section py-5">
+        <div class="container">
+            <div class="section-header mb-5 text-center">
+                <h2 class="section-title display-5 fw-bold">Explore Our Coaching Categories</h2>
+                <p class="section-subtitle text-muted">Find the perfect coaching program for your needs</p>
+            </div>
+            
+            <div class="row g-4">
+                @foreach (Common::allEventCategoriesByApi() as $cat)
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="category-card card border-0 shadow-sm h-100 overflow-hidden hover-effect">
+                        <a href="{{ route('coaching', [Str::slug($cat['title'])]) }}" class="text-decoration-none">
+                            <div class="card-img-top position-relative overflow-hidden">
+                                <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cover_img']}}" 
+                                    class="img-fluid w-100 category-img" 
+                                    alt="{{$cat['title']}}"
+                                    style="height: 200px; object-fit: cover;">
+                                <div class="img-overlay"></div>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="h5 card-title fw-bold text-white mb-0">{{$cat['title']}}</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div> -->
+
+   <div class="categories-section py-5">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h2 class="h4 mb-0">Explore Our Categories</h2>
+            </div>
+            <div class="row g-4">
+                @foreach (Common::allEventCategoriesByApi() as $cat)
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="category-card card border-0 shadow-sm h-100 overflow-hidden hover-effect">
+                        <a href="{{ route('coaching', [Str::slug($cat['title'])]) }}" class="text-decoration-none d-block h-100 position-relative">
+                            <div class="card-img-top position-relative overflow-hidden">
+                                <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cover_img']}}" 
+                                    class="img-fluid w-100 category-img" 
+                                    alt="{{$cat['title']}}">
+                                <div class="img-overlay"></div>
+                            </div>
+                            <div class="card-body text-center d-flex flex-column justify-content-end">
+                                <h3 class="h5 card-title fw-bold text-white mb-2">{{$cat['title']}}</h3>
+                                <span class="explore-link">Explore Category</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
 @if (isset($tournament['location_images']) && isset($tournament['location_images']['popup_image']))

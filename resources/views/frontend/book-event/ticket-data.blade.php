@@ -324,9 +324,9 @@
                         </div>
                         <!-- PRINT BTN -->
                         <div class="text-center mt-3 mb-3 print_box">
-                            <button id="print_ticket" class="btn btn-dark">
+                            <a href="{{route('ticket-pdf',$tid)}}" id="print_ticket" class="btn btn-dark">
                                 <i class="fas fa-print"></i> Print Ticket
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

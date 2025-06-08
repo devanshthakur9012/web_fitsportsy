@@ -4,109 +4,39 @@
     <meta charset="utf-8">
     <title>Fitsportsy - Ticket Information</title>
     <style>
-        /* Simplified, PDF-friendly styles */
         body {
             font-family: Arial, sans-serif;
             color: #000;
             background-color: #fff;
             margin: 0;
-            padding: 0;
-            line-height: 1.5;
+            padding: 5px;
+            line-height: 1.2;
+            font-size: 11px;
         }
         
         .container {
             width: 100%;
-            /* max-width: 800px; */
             margin: 0 auto;
-            /* padding: 20px; */
         }
         
         .card {
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 4px;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: none;
-        }
-        
-        .header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .logo_box {
-            width: 100px;
-        }
-        
-        .logo_box img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        .header-text {
-            margin-left: 10px;
-        }
-        
-        .header-text h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin: 0 0 10px 0;
-            color: #000;
-        }
-        
-        .header-text p {
-            font-size: 14px;
-            margin: 0;
-            color: #333;
-        }
-        
-        .details-section {
-            display: flex;
-            margin-bottom: 20px;
-        }
-        
-        .details-column {
-            flex: 1;
-            padding: 10px;
-        }
-        
-        .details-column h2 {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0 0 15px 0;
-            color: #000;
-            border-bottom: 2px solid #ffc107;
-            padding-bottom: 5px;
-        }
-        
-        .detail-item {
-            margin-bottom: 10px;
-        }
-        
-        .detail-item h5 {
-            font-size: 14px;
-            margin: 0;
-            color: #000;
-        }
-        
-        .detail-item h5 span {
-            font-weight: normal;
-            color: #333;
+            padding: 8px;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         
         th, td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 5px;
             text-align: left;
+            vertical-align: top;
         }
         
         th {
@@ -114,60 +44,46 @@
             font-weight: bold;
         }
         
+        .section-title {
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+            color: #000;
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 2px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            width: 100px;
+        }
+        
         .qr-code {
             text-align: center;
-            padding: 10px;
+            padding: 3px;
         }
         
         .qr-code img {
-            max-width: 120px;
+            max-width: 70px;
             height: auto;
         }
         
         .qr-code p {
-            font-size: 12px;
-            margin-top: 5px;
-        }
-        
-        .payment-section {
-            margin-bottom: 20px;
-        }
-        
-        .payment-section h2 {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0 0 15px 0;
-            color: #000;
+            font-size: 9px;
+            margin-top: 2px;
         }
         
         .payment-details {
-            padding: 15px;
+            padding: 8px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
         
         .payment-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .payment-row:last-child {
-            margin-bottom: 0;
-        }
-        
-        .booking-info {
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        .booking-info h4 {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0 0 15px 0;
-            color: #000;
+            margin-bottom: 4px;
         }
         
         .info-list {
@@ -177,63 +93,50 @@
         }
         
         .info-list li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             display: flex;
             align-items: flex-start;
         }
         
-        .info-list li:last-child {
-            margin-bottom: 0;
-        }
-        
-        .info-list li i {
+        .info-list li:before {
+            content: "✓";
             color: #28a745;
-            margin-right: 10px;
-            margin-top: 3px;
+            margin-right: 6px;
         }
         
         .thank-you {
-            padding: 15px;
+            padding: 8px;
             background-color: #28a745;
             color: #fff;
             text-align: center;
-            border-radius: 5px;
-            margin-top: 20px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 11px;
         }
         
-        .thank-you h3 {
-            font-size: 18px;
-            margin: 0 0 10px 0;
+        .logo {
+            width: 100px;
+            height: 100px;
         }
         
-        .thank-you p {
-            font-size: 14px;
-            margin: 0;
-            font-style: italic;
+        .compact {
+            font-size: 10px;
         }
         
-        /* Print-specific styles */
         @media print {
             body {
                 padding: 0;
                 margin: 0;
-                background: #fff;
-                color: #000;
             }
             
             .container {
-                padding: 0;
-                max-width: 100%;
+                padding: 3px;
             }
             
             .card {
                 border: none;
-                padding: 0;
+                padding: 3px;
                 box-shadow: none;
-            }
-            
-            .print-btn {
-                display: none;
             }
         }
     </style>
@@ -241,54 +144,71 @@
 <body>
     <div class="container">
         <div class="card">
-            <div class="header">
-                <div class="logo_box">
-                    <img src="https://fitsportsy.in/images/invoice-logo.png" alt="FitSportsy Logo">
-                </div>
-                <div class="header-text">
-                    <h1>BOOKING INFO</h1>
-                    <!-- <p>Your booking with FitSportsy is confirmed! We connect sports enthusiasts with expert coaches and training facilities across India. Your selected coaching session has been reserved, and the organizer will verify your payment shortly.</p> -->
-                </div>
-            </div>
-            
-            <div class="details-section">
-                <div class="details-column">
-                    <h2><i class="fas fa-user-circle"></i> Customer Details</h2>
-                    <div class="detail-item">
-                        <h5>Name : <span>{{$ticketData['ticket_username']}}</span></h5>
-                    </div>
-                    <div class="detail-item">
-                        <h5>Booking Date : <span>{{$ticketData['ticket_book_time']}}</span></h5>
-                    </div>
-                    <div class="detail-item">
-                        <h5>Booking No. : <span>{{$ticketData['unique_code']}}</span></h5>
-                    </div>
-                    <div class="detail-item">
-                        <h5>Mobile No. : <span>{{$ticketData['ticket_mobile']}}</span></h5>
-                    </div>
-                </div>
-                
-                <div class="details-column">
-                    <h2><i class="fas fa-store-alt"></i> Partner Details</h2>
-                    <div class="detail-item">
-                        <h5>Name : <span>{{$ticketData['sponsore_title']}}</span></h5>
-                    </div>
-                    <div class="detail-item">
-                        <h5>Address : <span>{{$ticketData['event_address']}}</span></h5>
-                    </div>
-                    <div class="detail-item">
-                        <h5>Mobile No. : <span>{{$ticketData['sponsore_mobile']}}</span></h5>
-                    </div>
-                </div>
-            </div>
-            
+            <!-- Header with logo and title -->
+            <table width="100%" style="border:none; margin-bottom:10px;">
+                <tr>
+                    <td style="width:100px; border:none; vertical-align:middle;">
+                        <img src="https://fitsportsy.in/images/invoice-logo.png" alt="FitSportsy Logo" class="logo">
+                    </td>
+                    <td style="border:none; vertical-align:middle;">
+                        <h1 style="font-size:20px; margin-bottom:0; color:#000;">BOOKING INFO</h1>
+                        <p style="margin-top:5px;">Your booking with FitSportsy is confirmed! We connect sports enthusiasts with expert coaches and training facilities across India. Your selected coaching session has been reserved, and the organizer will verify your payment shortly.</p>
+                    </td>
+                </tr>
+            </table>
+            <p style="border-top:1px solid #dddddd;height:1;"></p>
+            <!-- Customer and Partner Details -->
+            <table width="100%" style="border:none; margin-bottom:10px;">
+                <tr>
+                    <td style="width:50%; border:none; vertical-align:top; padding-right:5px;">
+                        <div class="section-title">Customer Details</div>
+                        <table style="border:none;">
+                            <tr>
+                                <td style="border:none; width:90px;" class="detail-label">Name:</td>
+                                <td style="border:none;">{{$ticketData['ticket_username']}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border:none;" class="detail-label">Booking Date:</td>
+                                <td style="border:none;">{{$ticketData['ticket_book_time']}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border:none;" class="detail-label">Booking No.:</td>
+                                <td style="border:none;">{{$ticketData['unique_code']}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border:none;" class="detail-label">Mobile No.:</td>
+                                <td style="border:none;">{{$ticketData['ticket_mobile']}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:50%; border:none; vertical-align:top; padding-left:5px;">
+                        <div class="section-title">Partner Details</div>
+                        <table style="border:none;">
+                            <tr>
+                                <td style="border:none; width:90px;" class="detail-label">Name:</td>
+                                <td style="border:none;">{{$ticketData['sponsore_title']}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border:none;" class="detail-label">Address:</td>
+                                <td style="border:none;">{{$ticketData['event_address']}}</td>
+                            </tr>
+                            <tr>
+                                <td style="border:none;" class="detail-label">Mobile No.:</td>
+                                <td style="border:none;">{{$ticketData['sponsore_mobile']}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Package and Payment Details -->
             <table>
                 <thead>
                     <tr>
                         <th>Package Name</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>Subtotal</th>
+                        <th style="width:60px;">Price</th>
+                        <th style="width:40px;">Qty</th>
+                        <th style="width:70px;">Subtotal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -299,9 +219,9 @@
                         <td>Rs. {{ $ticketData['ticket_total_amt'] }}</td>
                     </tr>
                     <tr>
-                        <td rowspan="4" class="qr-code">
+                        <td rowspan="3" class="qr-code">
                             <img src="{{ $ticketData['qrcode'] }}" alt="QR Code">
-                            <p>Show this QR invoice at the venue for entry. Partner will scan and verify payment.</p>
+                            <p>Show this QR invoice at the venue for entry.</p>
                         </td>
                         <td colspan="2"><strong>Total Amount</strong></td>
                         <td>Rs. {{$ticketData['ticket_total_amt']}}</td>
@@ -317,58 +237,40 @@
                 </tbody>
             </table>
             
-            <div class="payment-section">
-                <h2><i class="fas fa-qrcode"></i> QR Code Payment Information</h2>
-                <div class="payment-details">
-                    <div class="payment-row">
-                        <span><strong>Amount:</strong></span>
-                        <span>Rs. {{ $ticketData['ticket_total_amt'] }}/-</span>
-                    </div>
-                    <div class="payment-row">
-                        <span><strong>UPI TXN ID:</strong></span>
-                        <span>****{{ $ticketData['ticket_transaction_id'] }}</span>
-                    </div>
-                    <div class="payment-row">
-                        <span><strong>Payment Date:</strong></span>
-                        <span>{{ $ticketData['ticket_book_time'] }}</span>
-                    </div>
+            <!-- Payment Information -->
+            <div class="payment-details">
+                <div class="section-title">Payment Information</div>
+                <div class="payment-row">
+                    <span><strong>Amount:</strong></span>
+                    <span>Rs. {{ $ticketData['ticket_total_amt'] }}/-</span>
+                </div>
+                <div class="payment-row">
+                    <span><strong>UPI TXN ID:</strong></span>
+                    <span>****{{ $ticketData['ticket_transaction_id'] }}</span>
+                </div>
+                <div class="payment-row">
+                    <span><strong>Payment Date:</strong></span>
+                    <span>{{ $ticketData['ticket_book_time'] }}</span>
                 </div>
             </div>
             
-            <div class="booking-info">
-                <h4><i class="fas fa-calendar-check"></i> Booking Info & Processing</h4>
-                
-                <ul class="info-list">
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Your payment details have been submitted and are pending verification by the organiser.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>The organiser will review and confirm your payment.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Once verified, you will receive a confirmation via Email and WhatsApp.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Your payment is secure and processed directly to the organiser via UPI.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Please keep this booking ID handy and present it at the venue if requested.</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>For any support, contact: support@fitsportsy.in / +91 96863 14018</span>
-                    </li>
+            <!-- Booking Info -->
+            <div>
+                <div class="section-title">Booking Info & Processing</div>
+                <ul class="info-list compact">
+                    <li>Your payment details have been submitted and are pending verification by the organiser.</li>
+                    <li>The organiser will review and confirm your payment.</li>
+                    <li>Once verified, you will receive a confirmation via Email and WhatsApp.</li>
+                    <li>Your payment is secure and processed directly to the organiser via UPI.</li>
+                    <li>Please keep this booking ID handy and present it at the venue if requested.</li>
+                    <li>For any support, contact: support@fitsportsy.in / +91 96863 14018</li>
                 </ul>
-                
-                <div class="thank-you">
-                    <h3><i class="fas fa-heart"></i> Thank you for booking with FitSportsy!</h3>
-                    <p>Stay active, Stay fit!</p>
-                </div>
+            </div>
+            
+            <!-- Thank You -->
+            <div class="thank-you">
+                <div><strong>Thank you for booking with FitSportsy!</strong></div>
+                <div>Stay active, Stay fit!</div>
             </div>
         </div>
     </div>

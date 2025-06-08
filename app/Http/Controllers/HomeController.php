@@ -343,8 +343,8 @@ class HomeController extends Controller
         $apiResponse = $this->joinPlayByApi([
             'user_id' => $user_id,   // Use the authenticated user ID
             'play_id' => $play_id,   // The play ID from the decrypted link
-            'txt_number' => $request->txt_number,  // User's phone number from the form
-            'message' => $request->message,  // User's message from the form
+            'txt_number' => $request->txt_number ?? "123456",  // User's phone number from the form
+            'message' => $request->message ?? "Book for self",  // User's message from the form
         ]);
 
         // Check if the API response indicates success or failure

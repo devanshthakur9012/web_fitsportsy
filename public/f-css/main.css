@@ -1116,6 +1116,10 @@ header .navbar .navbar-brand img {
     width: 100%;
 }*/
 
+.hawan_section{
+    position: relative;
+}
+
 .osahan-nav-mid .navbar-collapse {
     transition: 0.3s ease-in-out;
 }
