@@ -81,6 +81,10 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
 
     Route::get('/list-your-event',[FrontendController::class,'listYourEvent']);
 
+    // GENERATE QR FLEX
+    Route::get('/generate-qr-flex',[HomeController::class,'generatQrFlex']);
+
+
 
    
     // Route::get('/appuser-privacy-policy', [FrontendController::class, 'appuserPrivacyPolicyShow']);

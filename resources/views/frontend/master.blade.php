@@ -594,13 +594,13 @@
                                                 <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>
                                                 Help Center
                                             </a>
-                                            <a class="dropdown-item" href="{{route('my-group-sessions')}}">
+                                            <!-- <a class="dropdown-item" href="{{route('my-group-sessions')}}">
                                                 <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
                                                 My Group Sessions
-                                            </a>
+                                            </a> -->
                                             <a class="dropdown-item" href="{{route('my-activity')}}">
                                                 <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
-                                                My Activity
+                                                My Group Sessions
                                             </a>
                                             <a class="dropdown-item" href="{{route('my-attendence')}}">
                                                 <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-600"></i>

@@ -1,6 +1,6 @@
 @extends('frontend.master', ['activePage' => null])
 
-@section('title', __('My Activity'))
+@section('title', __('My Group Session'))
 
 @section('content')
 <style>
@@ -23,21 +23,21 @@
 </style>
 <section class="active-tickets mb-4 mt-5">
     <div class="container">
-        <h2 class="text-center mb-4">My Activity</h2>
+        <h2 class="h4 mb-4 text-center">My Group Session</h2>
         <div class="row">
             @isset($myActivity)
                 <table class="table bg-backGround rounded-sm p-2">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Session Name</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Timing</th>
-                            <th scope="col">Venue</th>
+                            <th scope="col" class="text-center">#</th>
+                            <th scope="col" class="text-center">Session Name</th>
+                            <th scope="col" class="text-center">Type</th>
+                            <th scope="col" class="text-center">Timing</th>
+                            <th scope="col" class="text-center">Venue</th>
                             <!-- <th scope="col">Info</th> -->
-                            <th scope="col">Status</th>
-                            <th scope="col">Apply Date</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" class="text-center">Status</th>
+                            <th scope="col" class="text-center">Apply Date</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>

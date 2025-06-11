@@ -62,6 +62,21 @@ use App\Models\EventDescription;
 class FrontendController extends Controller
 {
 
+    // public function generatQrFlex(){
+    //     $qrimage = "https://app.fitsportsy.in/images/qr/207.png";
+    //     $bannerImage = "https://app.fitsportsy.in/images/sample-qr-holding.png";
+    //     $sponsreName = "Sample Name";
+
+    //     $data = [
+    //         'qrimage' => $qrimage,
+    //         'bannerImage' => $bannerImage,
+    //         'sponsreName' => $sponsreName,
+    //     ];
+
+    //     return view('home.generate-qr', $data);
+    // }
+
+
     public function home()
     {
         

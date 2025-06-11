@@ -213,7 +213,7 @@
             <div class="h4 mb-0 float-left">
                 <h1 class="h4 mb-0 float-left mr-2 gradient-text">Group Sessions</h1>
                 <!-- <img width="180px" src="{{asset('/images/coach-therapist.png')}}" alt="Group Sessions">  -->
-                <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button>
+                <!-- <button class="btn social-btn py-2" data-toggle="modal" data-target="#socialPlay">Create</button> -->
             </div>
             <a href="{{route('group-sessions')}}" class="d-sm-inline-block text-xs float-right "> See All </a>
         </div>

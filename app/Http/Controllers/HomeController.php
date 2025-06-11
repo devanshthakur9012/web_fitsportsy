@@ -21,6 +21,39 @@ use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
+
+    
+
+    public function generatQrFlex()
+    {
+        $data = $this->getQrList();
+        return view('home.generate-qr', $data);
+    }
+
+    public function getQrList(){
+        try {
+            // Instantiate the Guzzle client
+            $client = new Client();
+
+            $data = [
+                "uid"=>0
+            ];
+
+            // Send POST request to the PHP admin panel API with the data in the body
+            $baseUrl = env('BACKEND_BASE_URL');
+            $response = $client->post("{$baseUrl}/web_api/qr-code-listing.php",[
+                'json' => $data, 
+            ]);
+            // Decode the JSON response
+            $responseData = json_decode($response->getBody(), true);
+
+            // Return the HomeData from the response
+            return $responseData;
+        } catch (\Throwable $th) {
+           return [];
+        }
+    } 
+
     public function index()
     {
         $selectedCity = Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'All';
