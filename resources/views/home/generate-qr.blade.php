@@ -10,7 +10,6 @@
     .banner-card {
       position: relative;
     }
-
     .qr-img {
       position: absolute;
       width: 150px;
@@ -18,7 +17,6 @@
       left: 156px;
       transform: translateX(-50%);
     }
-
     .sponsor-name {
       position: absolute;
       bottom: 82px;
@@ -45,15 +43,15 @@
 
     <div id="banners" class="row g-4">
       @foreach ($data as $item)
-      <div class="col-md-6">
-        <div class="card shadow-sm banner-card">
-          <img src="{{ asset('images/sample-qr-holding.png') }}" class="card-img-top" crossorigin="anonymous" />
-          <img src="{{ $item['qr'] }}" class="qr-img" crossorigin="anonymous" />
-          <div class="sponsor-name">
-            {{ Str::length($item['sponsor_name']) > 12 ? explode(' ', $item['sponsor_name'])[0] : $item['sponsor_name'] }}
+        <div class="col-md-6">
+          <div class="card shadow-sm banner-card">
+            <img src="{{ asset('images/sample-qr-holding.png') }}" class="card-img-top" crossorigin="anonymous" />
+            <img src="{{ $item['qr'] }}" class="qr-img" crossorigin="anonymous" />
+            <div class="sponsor-name">
+              {{ strlen($item['sponsor_name']) > 12 ? strtok($item['sponsor_name'], ' ') : $item['sponsor_name'] }}
+            </div>
           </div>
         </div>
-      </div>
       @endforeach
     </div>
 
@@ -63,35 +61,58 @@
   </div>
 
   <footer class="bg-dark text-white py-3 text-center">&copy; 2025 FITSPORTSY</footer>
+<script>
+  function chunkArray(array, size) {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+  }
 
-  <script>
-    document.getElementById('download-all').addEventListener('click', async () => {
-      const zip = new JSZip();
-      const cards = document.querySelectorAll('#banners .card');
+  async function processChunk(chunk, chunkIndex) {
+    const zip = new JSZip();
 
-      for (let i = 0; i < cards.length; i++) {
-        const card = cards[i];
+    for (let i = 0; i < chunk.length; i++) {
+      const card = chunk[i];
 
-        // Wait to ensure fonts/images are loaded (optional delay)
-        await new Promise(resolve => setTimeout(resolve, 200));
+      // Wait for images to load
+      const images = card.querySelectorAll('img');
+      await Promise.all(Array.from(images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => (img.onload = resolve));
+      }));
 
-        const canvas = await html2canvas(card, {
-          useCORS: true,
-          scale: 2,
-        });
-
-        const dataUrl = canvas.toDataURL("image/png");
-        const content = dataUrl.split(',')[1];
-        zip.file(`qr-banner-${i + 1}.png`, content, { base64: true });
-      }
-
-      zip.generateAsync({ type: "blob" }).then(blob => {
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'qr-banners.zip';
-        link.click();
+      const canvas = await html2canvas(card, {
+        useCORS: true,
+        scale: 2
       });
-    });
-  </script>
+
+      const dataUrl = canvas.toDataURL("image/png");
+      const content = dataUrl.split(',')[1];
+      zip.file(`qr-banner-${chunkIndex * 50 + i + 1}.png`, content, { base64: true });
+    }
+
+    const blob = await zip.generateAsync({ type: "blob" });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `qr-banners-${chunkIndex + 1}.zip`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  document.getElementById('download-all').addEventListener('click', async () => {
+    const cards = Array.from(document.querySelectorAll('#banners .card'));
+    const chunks = chunkArray(cards, 50);
+
+    for (let i = 0; i < chunks.length; i++) {
+      await processChunk(chunks[i], i);
+      await new Promise(resolve => setTimeout(resolve, 500)); // Slight delay between downloads
+    }
+
+    alert("All ZIPs have been downloaded.");
+  });
+</script>
 </body>
 </html>

@@ -21,14 +21,12 @@ use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
-
-    
-
     public function generatQrFlex()
     {
         $data = $this->getQrList();
-        return view('home.generate-qr', $data);
+        return view('home.generate-qr', ['data' => $data['data'] ?? []]);
     }
+
 
     public function getQrList(){
         try {
@@ -46,7 +44,7 @@ class HomeController extends Controller
             ]);
             // Decode the JSON response
             $responseData = json_decode($response->getBody(), true);
-
+            // dd($responseData);
             // Return the HomeData from the response
             return $responseData;
         } catch (\Throwable $th) {
