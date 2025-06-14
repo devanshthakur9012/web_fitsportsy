@@ -6,7 +6,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://stuk.github.io/jszip/dist/jszip.min.js"></script>
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>    
+    body {
+      font-family: 'Orbitron', sans-serif;
+    }
     .banner-card {
       position: relative;
     }
@@ -17,29 +21,25 @@
       left: 156px;
       transform: translateX(-50%);
     }
- .sponsor-name {
-  position: absolute;
-  bottom: 60px;
-  left: 156px;
-  transform: translateX(-50%);
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  white-space: nowrap;
-  text-align: center;
-  max-width: 80%;
-  padding: 10px 20px;
-  border-radius: 30px;
-  background: black;
-
-  /* Neon Glow Border */
-  border: 2px solid #8f00ff;
-  box-shadow: 
-    0 0 5px #fff,
-    0 0 10px #8f00ff,
-    0 0 20px #8f00ff,
-    0 0 40px #8f00ff;
-}
+  .sponsor-name {
+    position: absolute;
+    bottom: 60px;
+    left: 156px;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px;
+    white-space: nowrap;
+    text-align: center;
+    max-width: 90%;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: black;
+    border: 2px solid #ed68c9;
+    box-shadow: 0 0 2px #fff, 0 0 5px #f066c9, 0 0 10px #ef64c9, 0 0 20px #8569f1;
+    letter-spacing: 1px;
+  }
 
   </style>
 </head>
