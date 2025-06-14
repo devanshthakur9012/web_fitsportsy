@@ -60,7 +60,7 @@
             <img src="{{ asset('images/sample-qr-holding.png') }}" class="card-img-top" crossorigin="anonymous" />
             <img src="{{ $item['qr'] }}" class="qr-img" crossorigin="anonymous" />
             <div class="sponsor-name">
-              {{ strlen($item['sponsor_name']) > 12 ? strtok($item['sponsor_name'], ' ') : $item['sponsor_name'] }}
+              {{ $item['sponsor_name'] }}
             </div>
           </div>
         </div>
