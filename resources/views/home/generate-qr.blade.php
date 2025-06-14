@@ -17,18 +17,30 @@
       left: 156px;
       transform: translateX(-50%);
     }
-    .sponsor-name {
-      position: absolute;
-      bottom: 82px;
-      left: 156px;
-      transform: translateX(-50%);
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      white-space: nowrap;
-      text-align: center;
-      max-width: 80%;
-    }
+ .sponsor-name {
+  position: absolute;
+  bottom: 60px;
+  left: 156px;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  white-space: nowrap;
+  text-align: center;
+  max-width: 80%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: black;
+
+  /* Neon Glow Border */
+  border: 2px solid #8f00ff;
+  box-shadow: 
+    0 0 5px #fff,
+    0 0 10px #8f00ff,
+    0 0 20px #8f00ff,
+    0 0 40px #8f00ff;
+}
+
   </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
