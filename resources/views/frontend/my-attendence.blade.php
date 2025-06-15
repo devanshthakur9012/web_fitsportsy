@@ -23,7 +23,7 @@
 
 <section class="active-tickets mb-5 mt-5">
     <div class="container">
-        <h2 class="text-center mb-4">My Attendance</h2>
+        <h2 class="text-center h4 mb-4">My Attendance</h2>
 
         <!-- Filters -->
         <form id="attendanceFilterForm">

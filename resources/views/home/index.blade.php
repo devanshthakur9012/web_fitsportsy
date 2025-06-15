@@ -290,7 +290,10 @@
             @endif
             <div class="hawan_section">
                 <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
-                    <h1 class="h4 mb-0 float-left">{{$data['category_name']}}</h1>
+                    <div class="d-flex align-items-center">
+                        <img src="{{env('BACKEND_BASE_URL')}}/{{$data['category_img']}}" class="cat-small-img" alt="{{$data['category_name']}}">
+                        <h1 class="h4 mb-0 float-left ml-2">{{$data['category_name']}}</h1>
+                    </div>
                     <a href="{{ route('coaching', [Str::slug($data['category_name'])]) }}" class="d-sm-inline-block text-xs float-right "> See All </a>
                 </div>
                 <div class="event-block-slider">
@@ -337,7 +340,6 @@
                                     @endisset
                                     <div class="mt-2">
                                         <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tours['event_ticket_price']}}</button>
-
                                        <div class="d-flex mt-1 mb-1">
                                             @if($tours['play_free_trial'])
                                                 @php
@@ -349,7 +351,7 @@
                                                     $ticket_type_keys = array_keys($tours['ticket_types']);
                                                     $data_slots = json_encode(array_keys($tours['ticket_types']));
                                                 @endphp
-                                                <button class="btn btn-primary btn-sm mr-1 w-50 free_trail_btn" data-url="{{$encLink}}" data-title="{{$tours['event_title']}}" data-slots="{{$data_slots}}" style="background:#28a745 !important;" data-toggle="modal" data-target="#freeTrailModal">Free Trial</button>
+                                                <button class="btn btn-primary btn-sm mr-1 w-50 free_trail_btn" data-url="{{$encLink}}" data-title="{{$tours['event_title']}}" data-sponser_name="{{$tours['sponser']}}" data-slots="{{$data_slots}}"  style="background:#28a745 !important;" data-toggle="modal" data-target="#freeTrailModal">Try For Free</button>
                                                 <a href="{{ route('coaching-detail', [Str::slug($tours['event_title']), $tours['event_id']]) }}" class="btn btn-success btn-sm w-50">Book Coaching</a>
                                             @else
                                                 <a href="{{ route('coaching-detail', [Str::slug($tours['event_title']), $tours['event_id']]) }}" class="btn btn-success btn-sm w-100">Book Coaching</a>

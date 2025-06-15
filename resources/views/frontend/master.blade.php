@@ -105,7 +105,7 @@
         }
         .new-header {
             position: relative;
-            z-index: 0;
+            z-index: 1;
             padding-bottom: 10px;
             background: #6e6e6e;
         }
@@ -126,7 +126,7 @@
         }
 
         .home-slider{
-            z-index: -1;
+            z-index: 0;
         }
 
         @media (max-width: 992px) {
@@ -157,20 +157,22 @@
     <style>
         /* Modal Container */
         #freeTrailModal .modal-content {
-            background: #0a0a0a;
+            background: #282828;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3);
+            /* box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3); */
             border: 1px solid #6e6e6e;
         }
 
         /* Modal Header */
         #freeTrailModal .modal-header {
-            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
+            /* background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%); */
+            background: #282828;
             border: none;
-            padding: 0;
+            /* padding: 0;
             position: relative;
-            height: 65px;
+            height: 65px; */
+            text-align:center;
         }
 
         #freeTrailModal .header-content {
@@ -210,14 +212,14 @@
             left: 0;
             width: 100%;
             height: 10px;
-            background: #0a0a0a;
+            background: #282828;
             border-radius: 20px 20px 0 0;
         }
 
         /* Modal Body */
         #freeTrailModal .modal-body {
             padding: 18px 30px;
-            background: #0a0a0a;
+            background: #282828;
             color: #e0e0e0;
         }
 
@@ -296,21 +298,21 @@
         }
 
         #freeTrailModal .date-option {
-            flex: 0 0 80px;
+            flex: 0 0 70px;
             padding: 8px 5px;
             border-radius: 12px;
-            background: #16213e;
+            background: #3a3a5c;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid #2a2a4a;
+            /* border: 1px solid #2a2a4a; */
             position: relative;
             overflow: hidden;
         }
 
         #freeTrailMLodal .date-option:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3);
+            /* box-shadow: 0 5px 15px rgba(106, 13, 173, 0.3); */
             border-color: #6e6e6e;
         }
 
@@ -318,8 +320,8 @@
             background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
             color: white;
             border-color: #6e6e6e;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
+            /* transform: translateY(-3px); */
+            /* box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4); */
         }
 
         #freeTrailModal .date-option.weekend {
@@ -366,11 +368,11 @@
         #freeTrailModal .time-option {
             padding: 12px 5px;
             border-radius: 8px;
-            background: #16213e;
+            background: #3a3a5c;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid #2a2a4a;
+            /* border: 1px solid #2a2a4a; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -385,9 +387,9 @@
         #freeTrailModal .time-option.selected {
             background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
             color: white;
-            border-color: #6e6e6e;
+            /* border-color: #6e6e6e; */
             transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4);
+            /* box-shadow: 0 5px 20px rgba(106, 13, 173, 0.4); */
         }
 
         /* Section Titles */
@@ -410,12 +412,12 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+            /* box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); */
         }
 
         #freeTrailModal .btn-glow:hover {
             transform: translateY(-2px);
-            box-shadow: 0 7px 25px rgba(156, 39, 176, 0.4);
+            /* box-shadow: 0 7px 25px rgba(156, 39, 176, 0.4); */
         }
 
         #freeTrailModal .btn-glow:active {
@@ -463,7 +465,7 @@
 
         /* Radio Button Styles */
         #freeTrailModal .btn-radio {
-            background: #2a2a4a;
+            background: #3a3a5c;
             color: #6e6e6e;
             border: none;
             border-radius: 8px !important;
@@ -484,7 +486,7 @@
         #freeTrailModal .btn-radio.active {
             background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%) !important;
             color: white;
-            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+            /* box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3); */
             border-color: #6e6e6e;
             background
         }
@@ -503,6 +505,14 @@
         /* Adjust spacing for the new field */
         #freeTrailModal .floating-label {
             margin-top: 20px;
+        }
+
+        .cat-small-img{
+            width: 43px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            background: #171717;
+            padding: 5px;
         }
     </style>
 
@@ -524,37 +534,11 @@
                 <div class="row">
                     <div class="col">
                         <ul class="new-topbar-ul text-right">
-{{--                            <li class="nav-item dropdown no-arrow d-sm-none">--}}
-{{--                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"--}}
-{{--                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                    <i class="fas fa-search fa-fw"></i>--}}
-{{--                                </a>--}}
-{{--                                <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"--}}
-{{--                                     aria-labelledby="searchDropdown">--}}
-{{--                                    <div class="form-inline mx-auto w-100 navbar-search">--}}
-{{--                                        <div class="input-group searchinput">--}}
-{{--                                            <input type="text"--}}
-{{--                                                   class="form-control bg-light text-dark border-0 small head-search-box"--}}
-{{--                                                   placeholder="Search for..." aria-label="Search"--}}
-{{--                                                   aria-describedby="basic-addon2">--}}
-{{--                                            <div class="list-group list-group-flush searchlist scrollbar search-result">--}}
-
-{{--                                            </div>--}}
-{{--                                            <div class="input-group-append">--}}
-{{--                                                <button class="btn btn-primary" type="button">--}}
-{{--                                                    <i class="fas fa-search fa-sm"></i>--}}
-{{--                                                </button>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
                             <li class="nav-item no-arrow mx-1 desk-seva-ticket">
                                 <a class="nav-link" href="javascript:void(0);" data-toggle="modal"
                                    data-target="#locationModal">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span
-                                        class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>
+                                    <span class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>
                                 </a>
                             </li>
                             {{-- <li>
@@ -594,10 +578,6 @@
                                                 <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>
                                                 Help Center
                                             </a>
-                                            <!-- <a class="dropdown-item" href="{{route('my-group-sessions')}}">
-                                                <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>
-                                                My Group Sessions
-                                            </a> -->
                                             <a class="dropdown-item" href="{{route('my-activity')}}">
                                                 <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>
                                                 My Group Sessions
@@ -647,11 +627,6 @@
                             <img class="menu-curve" src="{{asset('frontend/images/menucurves2.png')}}" alt="img">
                             <nav class="navbar navbar-expand-lg navbar-light osahan-nav-mid">
                                 <div class="container-fluid position-relative">
-{{--                                    <a class="mobile-seva-ticket text-white" href="javascript:void(0);" data-toggle="modal"--}}
-{{--                                       data-target="#locationModal">--}}
-{{--                                        <i class="fas fa-map-marker-alt"></i>--}}
-{{--                                        <span>{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Location'}}</span>--}}
-{{--                                    </a>--}}
                                     <button class="navbar-toggler navbar-toggler-right btn btn-danger btn-sm " type="button"
                                             data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                                             aria-expanded="false" aria-label="Toggle navigation">
@@ -666,9 +641,6 @@
                                                                  class="mr-1" width="20px" alt="{{$cat['title']}}">{{$cat['title']}}</span></a>
                                                 </li>
                                             @endforeach
-                                            <!-- <li class="nav-item">
-                                                <a class="nav-link shopBar" style="background:#0a0a0a;border-radius:4px;color:#fff !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>
-                                            </li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -679,167 +651,6 @@
             </div>
         </div>
     </div>
-
-{{--    <header class="site-header sticky-top">--}}
-{{--        <nav class="navbar navbar-expand navbar-dark topbar static-top shadow-sm bg-dark osahan-nav-top">--}}
-{{--            <div class="container">--}}
-{{--                <div class="d-flex justify-content-between w-100 align-items-center">--}}
-{{--                    <a class="navbar-brand" href="/"><img--}}
-{{--                            src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.fitsportsy.in/images/website/1733339125.png" }}"--}}
-{{--                            class="img-fluid" alt="fitsportsy"></a>--}}
-{{--                    <div class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 ml-3 navbar-search">--}}
-{{--                        <div class="input-group searchinput">--}}
-{{--                            <input type="text" class="form-control border-0 small head-search-box"--}}
-{{--                                placeholder="Search for coaching..." aria-label="Search"--}}
-{{--                                aria-describedby="basic-addon2">--}}
-{{--                            <div class="list-group list-group-flush searchlist scrollbar search-result">--}}
-{{--                            </div>--}}
-{{--                            <div class="input-group-append">--}}
-{{--                                <button class="btn bg-light" type="submit">--}}
-{{--                                    <i class="fas fa-search fa-sm"></i>--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <ul class="navbar-nav align-items-center">--}}
-{{--                        <li class="nav-item dropdown no-arrow d-sm-none">--}}
-{{--                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"--}}
-{{--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                <i class="fas fa-search fa-fw"></i>--}}
-{{--                            </a>--}}
-{{--                            <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in"--}}
-{{--                                aria-labelledby="searchDropdown">--}}
-{{--                                <div class="form-inline mx-auto w-100 navbar-search">--}}
-{{--                                    <div class="input-group searchinput">--}}
-{{--                                        <input type="text"--}}
-{{--                                            class="form-control bg-light text-dark border-0 small head-search-box"--}}
-{{--                                            placeholder="Search for..." aria-label="Search"--}}
-{{--                                            aria-describedby="basic-addon2">--}}
-{{--                                        <div class="list-group list-group-flush searchlist scrollbar search-result">--}}
-
-{{--                                        </div>--}}
-{{--                                        <div class="input-group-append">--}}
-{{--                                            <button class="btn btn-primary" type="button">--}}
-{{--                                                <i class="fas fa-search fa-sm"></i>--}}
-{{--                                            </button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item no-arrow mx-1 desk-seva-ticket">--}}
-{{--                            <a class="nav-link" href="javascript:void(0);" data-toggle="modal"--}}
-{{--                                data-target="#locationModal">--}}
-{{--                                <i class="fas fa-map-marker-alt"></i>--}}
-{{--                                <span--}}
-{{--                                    class="pl-2">{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Popular Locations'}}</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                         <li>--}}
-{{--                            <button class="mx-3 btn default-btn py-2" data-toggle="modal" data-target="#socialPlay">Play</button>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="{{env('BACKEND_BASE_URL')}}/add_event.php" class="mx-3 loginbtn "><img src="{{asset('/images/org_btn.png')}}" alt="Organizer" style="height:55px"></a>--}}
-{{--                        </li>--}}
-{{--                        @isset($favicon['appUrl'])--}}
-{{--                            <li>--}}
-{{--                                <a href="{{$favicon['appUrl']}}" class="mx-3 btn default-btn py-2">Get App</a>--}}
-{{--                            </li>--}}
-{{--                        @endisset--}}
-{{--                        @if (Common::isUserLogin())--}}
-{{--                            <li class="nav-item dropdown no-arrow ">--}}
-{{--                                @if (Common::isUserLogin())--}}
-{{--                                    @php $userData = Common::fetchUserDetails(); @endphp--}}
-{{--                                    <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button"--}}
-{{--                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                        @if (isset($userData['pro_pic']) && $userData['pro_pic'] != null)--}}
-{{--                                            <img class="img-profile rounded-circle"--}}
-{{--                                                src="{{env('BACKEND_BASE_URL')."/".$userData['pro_pic']}}" alt="{{$userData['name']}}">--}}
-{{--                                        @else--}}
-{{--                                            <i class="fas fa-user-circle fa-lg"></i>--}}
-{{--                                        @endif--}}
-{{--                                    </a>--}}
-{{--                                    <div class="dropdown-menu dropdown-menu-right shadow-sm animated--grow-in"--}}
-{{--                                        aria-labelledby="userDropdown">--}}
-{{--                                        <a class="dropdown-item" href="{{ url('user/my-profile') }}">--}}
-{{--                                            <i class="fas fa-user-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            Profile--}}
-{{--                                        </a>--}}
-{{--                                        <a class="dropdown-item" href="{{ route('my-booking', ['type' => 'Active']) }}">--}}
-{{--                                            <i class="fas fa-ticket-alt fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            My Booking--}}
-{{--                                        </a>--}}
-{{--                                        <a class="dropdown-item" href="{{route('help-center')}}">--}}
-{{--                                            <i class="fas fa-question fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            Help Center--}}
-{{--                                        </a>--}}
-{{--                                        <a class="dropdown-item" href="{{route('my-group-sessions')}}">--}}
-{{--                                            <i class="fas fa-play-circle fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            My Group Sessions--}}
-{{--                                        </a>--}}
-{{--                                        <a class="dropdown-item" href="{{route('my-activity')}}">--}}
-{{--                                            <i class="fas fa-at fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            My Activity--}}
-{{--                                        </a>--}}
-{{--                                        <a class="dropdown-item" href="{{route('my-attendence')}}">--}}
-{{--                                            <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-600"></i>--}}
-{{--                                            My Attendence--}}
-{{--                                        </a>--}}
-{{--                                        <div class="dropdown-divider"></div>--}}
-{{--                                        <a class="dropdown-item text-danger" href="{{ url('logout-user') }}">--}}
-{{--                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>--}}
-{{--                                            Logout--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                            </li>--}}
-{{--                        @else--}}
-{{--                            <li class="nav-item no-arrow align-self-center mx-2 position-relative">--}}
-{{--                                <a class="position-relative dropdown-toggle text-light" href="#" role="button"--}}
-{{--                                    data-toggle="dropdown" aria-expanded="false">--}}
-{{--                                    <i class="fas fa-user-circle fa-lg"></i>--}}
-{{--                                </a>--}}
-{{--                                <div class="dropdown-menu dropdown-menu dropdown-menu-right">--}}
-{{--                                    <a class="dropdown-item" href="{{ url('user-login') }}"><i--}}
-{{--                                            class="fas fa-sign-in-alt"></i> Login</a>--}}
-{{--                                    <a class="dropdown-item" href="{{ url('user-register') }}"><i--}}
-{{--                                            class="fas fa-user-plus"></i> Register</a>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        @endif--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </nav>--}}
-{{--        <nav class="navbar navbar-expand-lg navbar-dark bg-dark osahan-nav-mid">--}}
-{{--            <div class="container-fluid position-relative">--}}
-{{--                <a class="mobile-seva-ticket text-white" href="javascript:void(0);" data-toggle="modal"--}}
-{{--                    data-target="#locationModal">--}}
-{{--                    <i class="fas fa-map-marker-alt"></i>--}}
-{{--                    <span>{{Session::has('CURR_CITY') ? Session::get('CURR_CITY') : 'Location'}}</span>--}}
-{{--                </a>--}}
-{{--                <button class="navbar-toggler navbar-toggler-right btn btn-danger btn-sm " type="button"--}}
-{{--                    data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"--}}
-{{--                    aria-expanded="false" aria-label="Toggle navigation">--}}
-{{--                    <span class="navbar-toggler-icon"></span> Menu--}}
-{{--                </button>--}}
-{{--                <div class="collapse navbar-collapse" id="navbarResponsive">--}}
-{{--                    <ul class="navbar-nav w-100 justify-content-center">--}}
-{{--                        @foreach ($catData as $cat)--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" href="{{ route('coaching', [Str::slug($cat['slug'])]) }}">--}}
-{{--                                    <span class="menu_item"><img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cat_img']}}"--}}
-{{--                                            class="mr-1" width="20px" alt="{{$cat['title']}}">{{$cat['title']}}</span></a>--}}
-{{--                            </li>--}}
-{{--                        @endforeach--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link shopBar" style="color:#6e6e6e !important;padding:10px !important;" href="https://shop.playoffz.in">Shop</a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </nav>--}}
-{{--    </header>--}}
     @yield('content')
     <address class="bottom-location">
         <div class="container">
@@ -1073,17 +884,6 @@
                                     <label for="slots" class="form-label">Slots <span class="text-danger">*</span></label>
                                     <input type="number" placeholder="Enter no. of slots" class="form-control" id="slots" name="slots" required>
                                 </div>
-
-                                <!-- <div class="mb-3 col-lg-6" id="price-container">
-                                    <label for="price" class="form-label">Price Per Slot <span class="text-danger">*</span></label>
-                                    <input type="number" placeholder="Enter Price Per Slot" step="0.01" class="form-control" id="price" name="price" required>
-                                </div> -->
-
-                                <!-- <div class="mb-3 col-lg-6">
-                                    <label for="upi_id" class="form-label">UPI ID/ Mobile No.</label>
-                                    <input type="text" placeholder="Eg: shiva@okaxis/9686889977" class="form-control" id="upi_id" name="upi_id" maxlength="225">
-                                </div> -->
-
                                 <div class="mb-3 col-lg-6">
                                     <label for="type" class="form-label">Session Type <span class="text-danger">*</span></label>
                                     <select class="form-control" id="type" name="type" required>
@@ -1129,22 +929,23 @@
         </div>
     </div>
 
-    <!-- FREE TRIAL MODAL -->
+    <!-- Try For Free MODAL -->
     <div class="modal fade" id="freeTrailModal" tabindex="-1" role="dialog" aria-labelledby="freeTrailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content border-0">
                 <div class="modal-header">
-                    <div class="header-content w-100 text-center position-relative">
-                        <h4 class="modal-title" id="freeTrailModalLabel">
-                            <i class="fas fa-magic mr-2"></i> Book Your Free Trial
+                    <div class="d-flex align-items-center">
+                        <h4 class="h5 w-100" id="freeTrailModalLabel">
+                            <i class="fas fa-magic mr-2"></i> Try For Free
                         </h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <span style="background: #282828;color: #ffffff;border: 1px dashed #fff;" class="badge p-2 ml-2 rounded-pill" id="sponserName"></span>
                     </div>
-                    <div class="modal-curve"></div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <!-- <div class="modal-curve"></div> -->
                 </div>
-                <div class="modal-body">
+                <div class="modal-body pt-1">
                     <div id="loader" class="text-center py-5">
                         <div class="spinner-grow text-purple" role="status">
                             <span class="sr-only">Loading...</span>
@@ -1179,7 +980,6 @@
                                 <i class="far fa-user mr-2"></i> Name
                             </div>
                             <input type="text" class="form-control" id="name" name="name" value="@if(isset($userData['name']) && ! empty($userData['name'])){{$userData['name']}}@endif" required>
-                            <div class="underline"></div>
                         </div>
 
                         <div class="section-title mt-4 mb-3">
@@ -1205,9 +1005,6 @@
                                 <a href="{{route('userLogin')}}" type="button" class="btn btn-block btn-glow">Login to continue.</a>
                             @endif
                         </div>
-                        <!-- <div class="text-center mt-3">
-                            <small class="text-muted">We'll send you a reminder before your session</small>
-                        </div> -->
                     </form>
                 </div>
             </div>
@@ -1227,10 +1024,12 @@
 
             $(document).on('click','.free_trail_btn', function() {
                 const title = $(this).data('title');
+                const sname = $(this).data('sponser_name');
                 submitUrl = $(this).data('url');
                 const slots = $(this).data('slots');
                 
                 $('#freeTrailModalLabel').text(title);
+                $('#sponserName').text(sname);
                 $('#loader').show();
                 $('#freeTrialForm').hide();
                 

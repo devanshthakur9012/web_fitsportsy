@@ -3,7 +3,7 @@
 @section('content')
     <section class="FAQ mt-5">
         <div class="container">
-            <h2 class="text-center">Help Center</h2>
+            <h2 class="text-center h4">Help Center</h2>
             <div class="row mt-3">
                 <div class="col-sm-12">
                     @foreach ($help as $item)

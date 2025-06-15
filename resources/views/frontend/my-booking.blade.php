@@ -5,7 +5,7 @@
 @section('content')
 <section class="active-tickets mt-5">
     <div class="container">
-        <h2 class="text-center mb-4">My Tickets</h2>
+        <h2 class="h4 text-center mb-4">My Tickets</h2>
         <div class="d-flex justify-content-center gap-2 mb-3">
             <a href="{{route('my-booking',['type'=>'Active'])}}" class="btn btn-{{$status == 'Active' ? 'primary' : 'outline-primary'}} w-50 py-2 mr-2">Active Ticket</a>
             <a href="{{route('my-booking',['type'=>'Completed'])}}" class="btn btn-{{$status == 'Completed' ? 'primary' : 'outline-primary'}} py-2 w-50 ml-2">Completed Ticket</a>
