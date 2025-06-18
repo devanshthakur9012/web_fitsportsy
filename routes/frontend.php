@@ -83,6 +83,7 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
 
     // GENERATE QR FLEX
     Route::get('/generate-qr-flex',[HomeController::class,'generatQrFlex']);
+    Route::get('/invitation-card',[HomeController::class,'invitationCard']);
 
 
 

@@ -107,7 +107,7 @@
     padding: 3px 8px !important;
 }
 </style>
-<style>
+<!-- <style>
 .category-card {
     transition: all 0.4s ease;
     border-radius: 12px;
@@ -147,8 +147,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65));
-    z-index: 1;
+    background: linear-gradient(360deg, #6e6e6e 0.21%, #0a0a0a7d 35.92%);
+    z-index: 0;
 }
 
 .category-card .card-body {
@@ -192,6 +192,130 @@
 
 .hover-effect {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+</style> -->
+<style>
+.categories-section {
+    /* background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%); */
+}
+
+.category-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    position: relative;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.category-card .card-img-top {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+}
+
+.category-card img.category-img {
+    transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    filter: brightness(0.9) saturate(0.9);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform-origin: center;
+}
+
+.category-card:hover img.category-img {
+    transform: scale(1.05);
+    filter: brightness(1) saturate(1.1);
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.01) 30%, rgba(0,0,0,0.7) 90%);
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.category-card:hover .img-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.8) 90%);
+}
+
+.category-card .card-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 24px;
+    z-index: 2;
+    text-align: center;
+}
+
+.category-card .card-title {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .card-title {
+    transform: translateY(-5px);
+}
+
+.category-card .explore-link {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 18px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.category-card:hover .explore-link {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.category-card .explore-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.row > div:nth-child(4n+1) .img-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(56, 83, 214, 0.1) 30%, rgb(21 78 69) 90%);
+}
+
+.row > div:nth-child(4n+2) .img-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(214, 56, 121, 0.1) 30%, rgba(214, 56, 121, 0.7) 90%);
+}
+
+.row > div:nth-child(4n+3) .img-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(56, 214, 149, 0.1) 30%, rgba(56, 214, 149, 0.7) 90%);
+}
+
+.row > div:nth-child(4n+4) .img-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(214, 159, 56, 0.1) 30%, rgba(214, 159, 56, 0.7) 90%);
 }
 </style>
 <div class="pt-3 pb-3 shadow-sm home-slider">
@@ -632,7 +756,7 @@
         </div>
     </div> -->
 
-   <div class="categories-section py-5">
+   <!-- <div class="categories-section py-5">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h2 class="h4 mb-0">Explore Our Categories</h2>
@@ -643,7 +767,7 @@
                     <div class="category-card card border-0 shadow-sm h-100 overflow-hidden hover-effect">
                         <a href="{{ route('coaching', [Str::slug($cat['title'])]) }}" class="text-decoration-none d-block h-100 position-relative">
                             <div class="card-img-top position-relative overflow-hidden">
-                                <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['cover_img']}}" 
+                                <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['web_img']}}" 
                                     class="img-fluid w-100 category-img" 
                                     alt="{{$cat['title']}}">
                                 <div class="img-overlay"></div>
@@ -658,7 +782,34 @@
                 @endforeach
             </div>
         </div>
+    </div> -->
+    <div class="categories-section py-5">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between mb-5">
+            <h2 class="h4 mb-0">Explore Our Categories</h2>
+        </div>
+        <div class="row g-4">
+            @foreach (Common::allEventCategoriesByApi() as $index => $cat)
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="category-card">
+                    <a href="{{ route('coaching', [Str::slug($cat['title'])]) }}" class="text-decoration-none d-block h-100 position-relative">
+                        <div class="card-img-top">
+                            <img src="{{env('BACKEND_BASE_URL')}}/{{$cat['web_img']}}" 
+                                class="img-fluid w-100 category-img" 
+                                alt="{{$cat['title']}}">
+                            <div class="img-overlay"></div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{$cat['title']}}</h3>
+                            <span class="explore-link">Explore Now</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
+</div>
 </div>
 @if (isset($tournament['location_images']) && isset($tournament['location_images']['popup_image']))
     <div class="modal fade" id="Location" tabindex="-1" role="dialog" aria-labelledby="LocationLabel" aria-hidden="true">

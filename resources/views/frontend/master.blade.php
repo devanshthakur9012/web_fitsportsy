@@ -9,8 +9,8 @@
     @endphp
     <meta charset="utf-8">
 
-    <link rel="manifest" href="{{ asset('/manifest.json') }}">
-    <link rel="manifest" href="{{ asset('/organizer_manifest.json') }}">
+    <!-- <link rel="manifest" href="{{ asset('/manifest.json') }}"> -->
+    <!-- <link rel="manifest" href="{{ asset('/organizer_manifest.json') }}"> -->
     <link
         href="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['favicon'] : "https://app.fitsportsy.in/images/favicon.png" }}"
         rel="icon" type="image/png">
@@ -934,11 +934,11 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content border-0">
                 <div class="modal-header">
-                    <div class="d-flex align-items-center">
-                        <h4 class="h5 w-100" id="freeTrailModalLabel">
+                    <div class="w-100">
+                        <h4 class="h5 w-100 mb-1" id="freeTrailModalLabel">
                             <i class="fas fa-magic mr-2"></i> Try For Free
                         </h4>
-                        <span style="background: #282828;color: #ffffff;border: 1px dashed #fff;" class="badge p-2 ml-2 rounded-pill" id="sponserName"></span>
+                        <p class="p-0 m-0 text-end" id="sponserName"></p>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

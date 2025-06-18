@@ -413,15 +413,15 @@ $orgComm = 0;
                                                         
                                                         <div class="playerForm">
                                                             <div class="row">
-                                                                <div class="mb-3 col-lg-6">
+                                                                <!-- <div class="mb-3 col-lg-6">
                                                                     <label for="player_name_{{ $i }}" class="form-label">Name <span class="text-danger">*</span></label>
                                                                     <input type="text" class="form-control" name="player_name_{{ $i }}" id="player_name_{{ $i }}" placeholder="Student Name" required>
-                                                                </div>
+                                                                </div> -->
                                                                 
-                                                                <div class="mb-3 col-lg-6">
+                                                                <!-- <div class="mb-3 col-lg-6">
                                                                     <label for="player_contact_{{ $i }}" class="form-label">Contact Number <span class="text-danger">*</span></label>
                                                                     <input type="text" class="form-control" name="player_contact_{{ $i }}" id="player_contact_{{ $i }}" placeholder="Student Contact Number" required maxlength="10" minlength="10">
-                                                                </div>
+                                                                </div> -->
                                                                 
                                                                 @if(in_array('age', $packageDetails['fields']))
                                                                 <div class="mb-3 col-lg-6">
@@ -687,84 +687,6 @@ $orgComm = 0;
     @endif
 
     $(document).ready(function() {
-        // Form validation function
-        // function validateForm() {
-        //     let isValid = true;
-
-            
-        //     const termsChecked = $('#accept_term').is(':checked');
-        //     if(!termsChecked){
-        //         isValid = false;
-        //     }
-            
-        //     // Validate player information
-        //     @for($i = 1; $i <= $bookingData['quantity']; $i++)
-        //         // Player name validation
-        //         if (!$('#player_name_{{ $i }}').val().trim()) {
-        //             $('#player_name_{{ $i }}').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#player_name_{{ $i }}').removeClass('is-invalid');
-        //         }
-                
-        //         // Player contact validation (10 digits)
-        //         let contact = $('#player_contact_{{ $i }}').val().trim();
-        //         if (!contact || !/^\d{10}$/.test(contact)) {
-        //             $('#player_contact_{{ $i }}').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#player_contact_{{ $i }}').removeClass('is-invalid');
-        //         }
-                
-        //         @if(in_array('age', $packageDetails['fields']))
-        //         // Age validation
-        //         if (!$('#age_{{ $i }}').val().trim()) {
-        //             $('#age_{{ $i }}').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#age_{{ $i }}').removeClass('is-invalid');
-        //         }
-        //         @endif
-                
-        //         @if(in_array('shirt_size', $packageDetails['fields']))
-        //         // Shirt size validation
-        //         if (!$('#shirt_size_{{ $i }}').val()) {
-        //             $('#shirt_size_{{ $i }}').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#shirt_size_{{ $i }}').removeClass('is-invalid');
-        //         }
-        //         @endif
-        //     @endfor
-            
-        //     // For new users, validate registration fields
-        //     @if (!Common::isUserLogin())
-        //         if (!$('#username').val().trim()) {
-        //             $('#username').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#username').removeClass('is-invalid');
-        //         }
-                
-        //         let email = $('#email').val().trim();
-        //         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        //             $('#email').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#email').removeClass('is-invalid');
-        //         }
-                
-        //         if (!$('#password').val().trim() || $('#password').val().length < 6) {
-        //             $('#password').addClass('is-invalid');
-        //             isValid = false;
-        //         } else {
-        //             $('#password').removeClass('is-invalid');
-        //         }
-        //     @endif
-            
-        //     return isValid;
-        // }
-
         // Form validation function with specific error messages
         function validateForm() {
             let isValid = true;
@@ -783,23 +705,23 @@ $orgComm = 0;
             // Validate player information
             @for($i = 1; $i <= $bookingData['quantity']; $i++)
                 // Player name validation
-                if (!$('#player_name_{{ $i }}').val().trim()) {
-                    errorMessages.push('Please enter name');
-                    $('#player_name_{{ $i }}').addClass('is-invalid');
-                    isValid = false;
-                }
+                // if (!$('#player_name_{{ $i }}').val().trim()) {
+                //     errorMessages.push('Please enter name');
+                //     $('#player_name_{{ $i }}').addClass('is-invalid');
+                //     isValid = false;
+                // }
                 
-                // Player contact validation (10 digits)
-                let contact = $('#player_contact_{{ $i }}').val().trim();
-                if (!contact) {
-                    errorMessages.push('Please enter contact number');
-                    $('#player_contact_{{ $i }}').addClass('is-invalid');
-                    isValid = false;
-                } else if (!/^\d{10}$/.test(contact)) {
-                    errorMessages.push('Please enter a valid 10-digit contact number');
-                    $('#player_contact_{{ $i }}').addClass('is-invalid');
-                    isValid = false;
-                }
+                // // Player contact validation (10 digits)
+                // let contact = $('#player_contact_{{ $i }}').val().trim();
+                // if (!contact) {
+                //     errorMessages.push('Please enter contact number');
+                //     $('#player_contact_{{ $i }}').addClass('is-invalid');
+                //     isValid = false;
+                // } else if (!/^\d{10}$/.test(contact)) {
+                //     errorMessages.push('Please enter a valid 10-digit contact number');
+                //     $('#player_contact_{{ $i }}').addClass('is-invalid');
+                //     isValid = false;
+                // }
                 
                 @if(in_array('age', $packageDetails['fields']))
                 // Age validation
