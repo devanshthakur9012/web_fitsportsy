@@ -303,22 +303,18 @@
 }
 
 .row > div:nth-child(4n+1) .img-overlay {
-    /* background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(56, 83, 214, 0.1) 30%, rgb(21 78 69) 90%); */
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(33 33 33 / 10%) 30%, rgb(38 38 38 / 75%) 90%);
 }
 
 .row > div:nth-child(4n+2) .img-overlay {
-    /* background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(214, 56, 121, 0.1) 30%, rgba(214, 56, 121, 0.7) 90%); */
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(33 33 33 / 10%) 30%, rgb(38 38 38 / 75%) 90%);
 }
 
 .row > div:nth-child(4n+3) .img-overlay {
-    /* background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(56, 214, 149, 0.1) 30%, rgba(56, 214, 149, 0.7) 90%); */
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(33 33 33 / 10%) 30%, rgb(38 38 38 / 75%) 90%);
 }
 
 .row > div:nth-child(4n+4) .img-overlay {
-    /* background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(214, 159, 56, 0.1) 30%, rgba(214, 159, 56, 0.7) 90%); */
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(33 33 33 / 10%) 30%, rgb(38 38 38 / 75%) 90%);
 }
 </style>

@@ -21,9 +21,9 @@
   .sponsor-name {
     position: absolute;
     top: 35px;
-    left: 158px;
+    left: 33px;
     color: white;
-    font-size: 18px;
+    font-size: 19px;
     white-space: nowrap;
     text-align: center;
     max-width: 90%;
@@ -73,7 +73,7 @@
           <div class="card shadow-sm banner-card">
             <img src="{{ asset('images/sample-invitation-1.png') }}" class="card-img-top" crossorigin="anonymous" />
             <div class="sponsor-name">
-              {{ strtolower($item['title']) }}
+              {{ "Welcome ".strtolower($item['title']) }}
             </div>
             <div class="sponsor-email">
               {{ strtolower($item['email']) }}
