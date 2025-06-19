@@ -125,6 +125,10 @@
                             position: 'topRight',
                             message: 'OTP sent successfully to your mobile number.'
                         });
+
+                        // Make the mobile number field readonly
+                        $('#number').prop('readonly', true);
+
                         // Show the OTP field
                         $('.otp-section').show();
                         $('#verify_otp_btn').show();

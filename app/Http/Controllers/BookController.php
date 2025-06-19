@@ -1464,7 +1464,7 @@ class BookController extends Controller
         $city = $request->city;
         \Session::put('CURR_CITY',$city);
         if($request->redirect){
-            return redirect($request->redirect);
+            return redirect('/');
         } else {
             return redirect('/');
         }

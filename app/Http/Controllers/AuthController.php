@@ -536,37 +536,6 @@ class AuthController extends Controller
         }
     }
 
-    // public function checkUserLogin(Request $request){
-    //     $request->validate([
-    //         'email' => 'bail|required|email',
-    //         'password' => 'bail|required',
-    //     ]);
-
-    //     $userdata = array(
-    //         'email' => $request->email,
-    //         'password' => $request->password,
-    //         'status'=>1
-    //     );
-    //     $remember = $request->get('remember_me');
-    //     if ($request->logintype == '1') {
-    //         if (\Auth::guard('appuser')->attempt($userdata, $remember)) {
-    //             if(Session::has('LAST_URL_VISITED')){
-    //                 $redirectLink = Session::get('LAST_URL_VISITED');
-    //                 return redirect($redirectLink);
-    //             }
-    //             return redirect('/');
-    //         } else {
-    //             return \Redirect::back()->with('warning', 'Invalid Username or Password.');
-    //         }
-    //     }else{
-    //         if (\Auth::attempt($userdata, $remember)) {
-    //             return redirect('/dashboard');
-    //         } else {
-    //             return \Redirect::back()->with('warning', 'Invalid Username or Password.');
-    //         }
-    //     }
-    // }
-
     public function checkUserLogin(Request $request){
         $request->validate([
             'phonenumber' => 'bail|required|number',
