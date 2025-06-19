@@ -18,6 +18,10 @@
             padding: 0px 15px !important;
         }
     }
+
+    .form-control[readonly] {
+        background-color:none !important;
+    }
 </style>
 <section class="section-area login-section">
     <div class="container">
