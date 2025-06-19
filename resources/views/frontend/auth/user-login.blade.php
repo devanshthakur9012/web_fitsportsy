@@ -20,7 +20,7 @@
     }
 
     .form-control[readonly] {
-        background-color:none !important;
+        background:none !important;
     }
 </style>
 <section class="section-area login-section">
