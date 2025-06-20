@@ -562,6 +562,11 @@
             outline:none;
             box-shadow:none;
         }
+        .border-remove{
+            border: none !important;
+            border-bottom: 1px solid #fff !important;
+            border-radius: 0px !important;
+        }
     </style>
 </head>
 
@@ -1071,29 +1076,35 @@
                 <span>&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body pt-0">
                 <form id="loginOtpForm">
                         @csrf
-                       <div class="text-center mb-4">
-                           <a href="/"><img src="{{ $favicon['favicon'] ? env('BACKEND_BASE_URL') . "/" . $favicon['logo'] : "https://app.fitsportsy.in/images/website/1733339125.png" }}"
+                       <div class="text-center mb-3">
+                           <a href="/"><img src="{{asset('images/login-logo.png')}}"
                                    class="img-fluid" style="width:200px;" alt="fitsportsy"></a>
                        </div>
                         
                         <div id="mobileInputSection">
                             <div class="form-group">
-                                <label class="mb-1">Mobile Number</label>
+                                <!-- <label class="mb-1">Mobile Number</label> -->
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">+91</span>
+                                        <span class="input-group-text border-remove">+91</span>
                                     </div>
-                                    <input type="tel" maxlength="10" class="form-control" id="loginMobileInput" name="number" placeholder="Enter your mobile number" required>
+                                    <input type="tel" maxlength="10" class="form-control border-remove" id="loginMobileInput" name="number" placeholder="Enter your mobile number" required>
                                 </div>
-                                <small class="form-text text-muted">We'll send an OTP to this number</small>
+                                <small class="form-text text-muted mt-2">We'll send an OTP to this number</small>
                             </div>
                             
                             <button type="button" id="sendOtpBtn" class="btn btn-primary btn-block mt-3">
-                                Continue
+                                CONTINUE
                             </button>
+
+                            <p style="
+                                margin-top: 10px;
+                                font-size: 11px;
+                                text-align: center;
+                            ">"BY CONTINUE YOU AGREE TO THE <span style="color:#29f3e2;">TERMS OF SERVICES</span> AND <span style="color:#ff0095;">PRIVACY POLICY OF FITSPORTSY"</span></p>
                         </div>
                         
                         <div id="otpInputSection" class="d-none">
@@ -1120,7 +1131,7 @@
                             </div>
                         </div>
                         
-                        <div class="footer-links text-right mt-2">
+                        <div class="footer-links text-right mt-2 text-muted">
                             <a href="{{url('user-register')}}" class="text-muted">Create Account</a> | 
                             <a href="{{url('user/resetPassword')}}" class="text-muted">Forgot Password?</a>
                         </div>
