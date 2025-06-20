@@ -645,7 +645,7 @@
                                     @endif
                                 </li>
                             @else
-                                <li class="nav-item no-arrow  mx-2 position-relative">
+                                <!-- <li class="nav-item no-arrow  mx-2 position-relative">
                                     <a class="position-relative dropdown-toggle text-light" href="#" role="button"
                                        data-toggle="dropdown" aria-expanded="false">
                                         <i class="fas fa-user-circle fa-lg"></i>
@@ -656,7 +656,7 @@
                                         <a class="dropdown-item" href="{{ url('user-register') }}"><i
                                                 class="fas fa-user-plus"></i> Register</a>
                                     </div>
-                                </li>
+                                </li> -->
                             @endif
                         </ul>
                     </div>
