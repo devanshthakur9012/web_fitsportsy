@@ -828,7 +828,7 @@
                                         </form>
                                     @else
                                         @php session(['redirect_url' => url()->current()]); @endphp
-                                        <a href="{{ route('userLogin') }}" class="btn default-btn btn-block w-100">Login To Join</a>
+                                        <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn default-btn btn-block w-100">Login To Join</button>
                                     @endif
                                 </div>
                             </div>

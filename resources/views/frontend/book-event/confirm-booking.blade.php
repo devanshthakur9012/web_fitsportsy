@@ -294,7 +294,7 @@ $paymentId = "";
                                 @php
                                     session(['redirect_url' => url()->current()]);
                                 @endphp
-                                <a href="{{ route('userLogin') }}" class="btn default-btn btn-block">Login To Continue</a>
+                                <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn default-btn btn-block">Login To Continue</button>
                             @endif
                         </div>
                     </div>
@@ -656,23 +656,24 @@ $paymentId = "";
                 formElements.forEach(element => {
                     element.addEventListener('focus', (event) => {
                         if (!isAlertShown && !isRedirecting) {
-                            isAlertShown = true; // Set the flag to true to show alert only once
-                            Swal.fire({
-                                title: 'Login Required',
-                                text: 'Please log in to continue.',
-                                confirmButtonText: 'Login To Continue',
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                customClass: {
-                                    popup: 'smaller-modal', // Add a custom class if further styling is needed
-                                },
-                            }).then((result) => {
-                                isAlertShown = false; // Reset flag only if no redirection happens
-                                if (result.isConfirmed && !isRedirecting) {
-                                    isRedirecting = true; // Prevent multiple redirects
-                                    window.location.href = "{{ route('userLogin') }}"; // Redirect to login page
-                                }
-                            });
+                            alert('dfgdgf');
+                            // isAlertShown = true; // Set the flag to true to show alert only once
+                            // Swal.fire({
+                            //     title: 'Login Required',
+                            //     text: 'Please log in to continue.',
+                            //     confirmButtonText: 'Login To Continue',
+                            //     allowOutsideClick: false,
+                            //     allowEscapeKey: false,
+                            //     customClass: {
+                            //         popup: 'smaller-modal', // Add a custom class if further styling is needed
+                            //     },
+                            // }).then((result) => {
+                            //     isAlertShown = false; // Reset flag only if no redirection happens
+                            //     if (result.isConfirmed && !isRedirecting) {
+                            //         isRedirecting = true; // Prevent multiple redirects
+                            //         window.location.href = "{{ route('home') }}"; // Redirect to login page
+                            //     }
+                            // });
                         }
                         event.target.blur(); // Immediately remove focus to prevent input
                     });

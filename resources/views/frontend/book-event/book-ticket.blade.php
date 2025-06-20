@@ -522,7 +522,7 @@ $orgComm = 0;
                                 @php
                                     session(['redirect_url' => url()->current()]);
                                 @endphp
-                                <a href="{{ route('userLogin') }}" class="btn default-btn btn-block">Login To Continue</a>
+                                <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn default-btn btn-block">Login To Continue</button>
                             @endif
 
                             <!-- <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal" data-target="#qrPaymentModal">
@@ -654,36 +654,45 @@ $orgComm = 0;
         }
     }
 
-    // Check if user is logged in and handle form interactions
     @if (!Common::isUserLogin())
-    document.addEventListener('DOMContentLoaded', () => {
-        let alertShown = false;
-        document.querySelectorAll('#payment-form input, #payment-form select, #payment-form textarea').forEach(el => {
-            el.addEventListener('focus', e => {
-                if (!alertShown) {
-                    alertShown = true;
-                    Swal.fire({
-                        title: 'Login Required',
-                        text: 'Please login to continue',
-                        confirmButtonText: 'Login Now',
-                        background: '#414141',
-                        color: 'white',
-                        width: '500px', // Smaller width
-                        padding: '1.2rem', // Reduced padding
-                        allowOutsideClick: false,
-                        customClass: {
-                            popup: 'small-swal' // Optional: Add custom CSS class
-                        }
-                    }).then(r => {
-                        if (r.isConfirmed) window.location.href = "{{route('userLogin')}}";
-                        alertShown = false;
-                    });
-                }
-                e.preventDefault();
-                e.target.blur();
+        document.addEventListener('DOMContentLoaded', () => {
+            let alertShown = false;
+            
+            document.querySelectorAll('#payment-form input, #payment-form select, #payment-form textarea').forEach(el => {
+                el.addEventListener('focus', e => {
+                    if (!alertShown) {
+                        alertShown = true;
+                        
+                        // Show your custom modal
+                        $('#loginOtpModal').modal({
+                            backdrop: 'static', // Prevent closing by clicking outside
+                            keyboard: false   // Prevent closing with ESC key
+                        });
+                        
+                        // Store the current focused element
+                        const focusedElement = e.target;
+                        
+                        // When modal is hidden, reset the alertShown flag
+                        $('#loginOtpModal').on('hidden.bs.modal', function () {
+                            alertShown = false;
+                        });
+                        
+                        // Optional: Redirect after successful login
+                        // This would be handled by your existing OTP verification success callback
+                    }
+                    
+                    // Prevent default and blur the element
+                    e.preventDefault();
+                    e.target.blur();
+                });
+            });
+            
+            // Handle successful login (this should match your existing OTP success handler)
+            $(document).on('loginSuccess', function() {
+                $('#loginOtpModal').modal('hide');
+                alertShown = false; // Reset flag to allow future interactions
             });
         });
-    });
     @endif
 
     $(document).ready(function() {

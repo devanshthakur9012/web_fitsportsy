@@ -20,10 +20,11 @@
     }
   .sponsor-name {
     position: absolute;
-    top: 35px;
-    left: 33px;
+    top: 216px;
+    left: 50%;
+    transform: translateX(-50%);
     color: white;
-    font-size: 19px;
+    font-size: 24px;
     white-space: nowrap;
     text-align: center;
     max-width: 90%;
@@ -34,10 +35,10 @@
 
   .sponsor-email {
     position: absolute;
-    top: 113px;
-    left: 88px;
+    top: 329px;
+    left: 255px;
     color: white;
-    font-size: 13px;
+    font-size: 20px;
     white-space: nowrap;
     text-align: center;
     max-width: 90%;
@@ -46,11 +47,11 @@
   
   .sponsor-password {
     position: absolute;
-    top: 132px;
-    left: 98px;
+    top: 365px;
+    left: 272px;
     color: white;
-    font-size: 12px;
-    white-space: nowrap;  
+    font-size: 20px;
+    white-space: nowrap;
     text-align: center;
     max-width: 90%;
     color: #fff;
@@ -71,7 +72,7 @@
       @foreach ($data as $item)
         <div class="col-md-6">
           <div class="card shadow-sm banner-card">
-            <img src="{{ asset('images/sample-invitation-1.png') }}" class="card-img-top" crossorigin="anonymous" />
+            <img src="{{ asset('images/sample-invitation-3.png') }}" class="card-img-top" crossorigin="anonymous" />
             <div class="sponsor-name">
               {{ "Welcome ".strtolower($item['title']) }}
             </div>

@@ -113,7 +113,7 @@ class ProductsController extends Controller
     public function cartCheckout(){
         if(\Auth::guard('appuser')->check()==false){
             Session::put('LAST_URL_VISITED',url('cart-checkout'));
-            return redirect('user-login')->with('warning','Login or register with your account to proceed checkout');
+            return redirect('/')->with('warning','Login or register with your account to proceed checkout');
         }
         Session::forget('LAST_URL_VISITED');
         $cartData = [];

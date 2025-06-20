@@ -74,7 +74,7 @@
                                     {{-- @if(Auth::guard('appuser')->check())
                                         <a href="{{$encLink}}" class="btn default-btn w-100">Buy Ticket Now</a>
                                     @else
-                                        <a href="{{url('user-login')}}" class="btn default-btn w-100">Buy Ticket Now</a>
+                                        <a href="{{url('/')}}" class="btn default-btn w-100">Buy Ticket Now</a>
                                     @endif --}}
                                     <a href="{{$encLink}}" class="btn default-btn w-100">Buy Ticket Now</a>
                                 </div>

@@ -122,7 +122,7 @@ $paymentId = "";
                                 <button type="button" class="btn default-btn btn-block" id="payBookAmount">Continue To
                                     Checkout</button>
                             @else
-                                <a href="{{route('userLogin')}}" class="btn default-btn btn-block">Login To Continue</a>
+                                <button data-toggle="modal" data-target="#loginOtpModal" class="btn default-btn btn-block">Login To Continue</button>
                             @endif
                         </div>
                     </div>

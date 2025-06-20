@@ -32,7 +32,7 @@
   ],
   "theme_color": "#FFFFFF",
   "background_color": "#0F172A",
-  "start_url": "/user-login",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "screenshots": [

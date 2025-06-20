@@ -19,7 +19,7 @@ class Organiser
     {
         if (!Auth::guard($guard)->check()) {
 
-            return redirect('user-login');
+            return redirect('/');
         }
         
         return $next($request);

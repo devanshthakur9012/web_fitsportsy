@@ -39,7 +39,7 @@
                         <div class="text-center">
                         </div>
                         <div class="text-center">
-                            <a href="{{url('user-login')}}">Back To Login!</a>
+                            <a href="{{url('/')}}">Back To Login!</a>
                         </div>
                     </div>
                 </div>
