@@ -339,9 +339,10 @@
 
 @push('scripts')
 <script>
-    // Print functionality for ticket
     $("#print_ticket").click(function () {
-        window.print();
+        $(this).prop('disabled', true);
+        $(this).html('<i class="fas fa-spinner fa-spin"></i> Downloading...');
+        return false;
     });
 </script>
 @endpush

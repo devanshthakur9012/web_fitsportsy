@@ -361,7 +361,7 @@ class BookController extends Controller
             if (empty($userData['name']) || empty($userData['email'])) {
                 $data['email'] = $request->email;
                 $data['username'] = $request->username;
-                $data['password'] = bcrypt($request->password);
+                $data['password'] = $request->password;
             }
     
             $storePaymentDetails = $this->savebookingDetails($data);

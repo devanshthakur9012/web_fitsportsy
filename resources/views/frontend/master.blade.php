@@ -567,6 +567,14 @@
             border-bottom: 1px solid #fff !important;
             border-radius: 0px !important;
         }
+        .loginOption{
+            background: transparent;
+            color: #fff;
+            border: none;
+        }
+        .loginOption:focus{
+            outline:none;
+        }
     </style>
 </head>
 
@@ -588,7 +596,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <ul class="new-topbar-ul text-right">
+                        <ul class="new-topbar-ul text-right d-flex justify-content-end align-items-center">
                             <li class="nav-item no-arrow mx-1 desk-seva-ticket">
                                 <a class="nav-link" href="javascript:void(0);" data-toggle="modal"
                                    data-target="#locationModal">
@@ -650,18 +658,19 @@
                                     @endif
                                 </li>
                             @else
-                                <!-- <li class="nav-item no-arrow  mx-2 position-relative">
-                                    <a class="position-relative dropdown-toggle text-light" href="#" role="button"
-                                       data-toggle="dropdown" aria-expanded="false">
+                                <li class="nav-item no-arrow  mx-2 position-relative">
+                                    <button data-toggle="modal" data-target="#loginOtpModal" class="loginOption" type="button" style="background: transparent;color: #fff;border: none;">
+                                         <!-- class="position-relative dropdown-toggle text-light" href="#" role="button"
+                                       data-toggle="dropdown" aria-expanded="false" -->
                                         <i class="fas fa-user-circle fa-lg"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ url('user-login') }}"><i
-                                                class="fas fa-sign-in-alt"></i> Login</a>
+                                    </button>
+                                    <!-- <div class="dropdown-menu dropdown-menu dropdown-menu-right">
+                                        <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="dropdown-item" href="{{ url('user-login') }}"><i
+                                                class="fas fa-sign-in-alt"></i> Login</button>
                                         <a class="dropdown-item" href="{{ url('user-register') }}"><i
                                                 class="fas fa-user-plus"></i> Register</a>
-                                    </div>
-                                </li> -->
+                                    </div> -->
+                                </li>
                             @endif
                         </ul>
                     </div>
@@ -797,7 +806,7 @@
     <div id="qrPopup" class="card shadow-lg p-2" style="position: fixed; bottom: 20px; right: 20px; width: 180px; z-index: 1050;    box-shadow: 0px 0px 10px #444444 !important;background:#0a0a0a !important;color:#fff;">
         <div class="card-body text-center p-2">
             <p class="mb-3" style="font-size: 14px;">For better experience,<br> use Fitsportsy App</p>
-            <img src="{{asset('/images/qr-fitsportsy.jpeg')}}" alt="QR Code" class="img-fluid border border-white rounded" style="width: 100%;">
+            <img src="{{asset('/images/qr-fitsportsy.png')}}" alt="QR Code" class="img-fluid border border-white rounded" style="width: 100%;">
         </div>
     </div>
 
@@ -1079,8 +1088,8 @@
             <div class="modal-body pt-0">
                 <form id="loginOtpForm">
                         @csrf
-                       <div class="text-center mb-3">
-                           <a href="/"><img src="{{asset('images/login-logo.png')}}"
+                       <div class="text-center my-3">
+                           <a href="/"><img src="{{asset('images/login-logo-1.png')}}"
                                    class="img-fluid" style="width:200px;" alt="fitsportsy"></a>
                        </div>
                         
@@ -1093,10 +1102,10 @@
                                     </div>
                                     <input type="tel" maxlength="10" class="form-control border-remove" id="loginMobileInput" name="number" placeholder="Enter your mobile number" required>
                                 </div>
-                                <small class="form-text text-muted mt-2">We'll send an OTP to this number</small>
+                                <small class="form-text text-muted mt-2" style="font-size:12px !important;">An OTP will be sent to your mobile number for verification.</small>
                             </div>
                             
-                            <button type="button" id="sendOtpBtn" class="btn btn-primary btn-block mt-3">
+                            <button type="button" id="sendOtpBtn" class="btn btn-primary btn-block my-4">
                                 CONTINUE
                             </button>
 

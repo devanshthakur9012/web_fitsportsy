@@ -50,9 +50,13 @@
 </style>
 <div class="container my-5">
     <div class="hawan_section">
-        <div class="mt-5 mb-3">
-            <h1 class="h4 mb-2">{{ucwords(str_replace('-', ' ', $category))}} Coaching</h1>
+        <div class="d-flex align-items-center mt-5 mb-4">
+            <img src="{{env('BACKEND_BASE_URL')}}/{{$category_img}}" class="cat-small-img" alt="{{$category_img}}">
+            <h1 class="h4 mb-0 float-left ml-2">{{ucwords(str_replace('-', ' ', $category))}} Coaching</h1>
         </div>
+        <!-- <div class="mt-5 mb-3">
+            <h1 class="h4 mb-2">{{ucwords(str_replace('-', ' ', $category))}} Coaching</h1>
+        </div> -->
         <div id="playData">
             <div class="row list-bp" >
                 @if(isset($category_tournament) && count($category_tournament))

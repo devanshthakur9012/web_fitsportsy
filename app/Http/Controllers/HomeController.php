@@ -140,6 +140,7 @@ class HomeController extends Controller
 
         $data['category_tournament'] = $category_tournament['CatEventData'] ?? [];
         $data['category'] = $categorySlug;
+        $data['category_img'] = $category['cat_img'];
         $data['pagination'] = $category_tournament['Pagination'] ?? [];
         $data['category_desciption'] = $category['description'] ?? null;
         $data['meta_data'] = [

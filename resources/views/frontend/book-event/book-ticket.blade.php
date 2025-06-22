@@ -874,6 +874,10 @@ $orgComm = 0;
                 });
                 return false;
             }
+
+            const submitBtn = $(this);
+            submitBtn.prop('disabled', true);
+            submitBtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...');
             
             // Get transaction ID
             let txnId = $('#trans_recept_1').val() + $('#trans_recept_2').val() + 
