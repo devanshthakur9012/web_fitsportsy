@@ -580,15 +580,15 @@
 
 <body>
     <div class="sigma_preloader">
-        <!-- @if (isset($favicon['loader']))
+        @if (isset($favicon['loader']))
             @php $url = env('BACKEND_BASE_URL') . "/" . $favicon['loader'];  @endphp
         @else
             @php $url = asset('images/FitSportsy_logo_No_BG.png');  @endphp
-        @endif -->
+        @endif
         <!-- <img src="{{asset('/images/loader-animation.mp4')}}" alt="preloader"> -->
-        <video autoplay muted loop style="width: 100px; height: auto;">
+        <!-- <video autoplay muted loop style="width: 100px; height: auto;">
             <source src="{{ asset('/images/loader-animation.gif') }}" type="video/mp4">
-        </video>
+        </video> -->
     </div>
 
     <div class="new-header stickey-top">
