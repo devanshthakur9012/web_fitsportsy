@@ -585,7 +585,7 @@
         @else
             @php $url = asset('images/FitSportsy_logo_No_BG.png');  @endphp
         @endif
-        <!-- <img src="{{asset('/images/loader-animation.mp4')}}" alt="preloader"> -->
+        <img src="{{$url}}" alt="preloader">
         <!-- <video autoplay muted loop style="width: 100px; height: auto;">
             <source src="{{ asset('/images/loader-animation.gif') }}" type="video/mp4">
         </video> -->
