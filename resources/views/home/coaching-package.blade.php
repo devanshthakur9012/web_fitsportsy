@@ -318,7 +318,7 @@
                                         @endif
                                         <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
                                         @if($package['discount'] > 0)
-                                            <p class="you-save">You save ₹{{ number_format($package['actual_price'] - $package['ticket_price']) }}</p>
+                                            <p class="you-save mb-0">You save ₹{{ number_format($package['actual_price'] - $package['ticket_price']) }}</p>
                                         @endif
                                     </div>
                                     
