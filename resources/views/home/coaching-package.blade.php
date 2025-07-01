@@ -234,6 +234,50 @@
     .main_card{
         margin-top:50px;
     }
+
+    .original-price {
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+
+    .strikethrough {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 16px;
+    }
+
+    .discount-badge {
+        background-color: #ff4757;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .current-price {
+        color: #2ecc71;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+
+    .you-save {
+        color: #7f8c8d;
+        font-size: 14px;
+        font-style: italic;
+    }
+
+    .offerText{
+        color: #feca57;
+        text-align: center;
+        padding: 7px 4px;
+        border-radius: 4px;
+        border: 1px solid;
+    }
 </style>
 @endpush
 
@@ -260,8 +304,22 @@
                                     <h3 class="ticket-type">{{ $package['category'] }}</h3>
                                 </div>
                                 <div class="subscription-card-body">
-                                    <div class="price-container">
+                                    <!-- <div class="price-container">
                                         <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
+                                    </div>
+                                     -->
+                                    
+                                    <div class="price-container">
+                                        @if($package['discount'] > 0)
+                                            <div class="original-price">
+                                                <span class="strikethrough">₹{{ number_format($package['actual_price']) }}</span>
+                                                <span class="discount-badge">{{ $package['discount'] }}% OFF</span>
+                                            </div>
+                                        @endif
+                                        <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
+                                        @if($package['discount'] > 0)
+                                            <p class="you-save">You save ₹{{ number_format($package['actual_price'] - $package['ticket_price']) }}</p>
+                                        @endif
                                     </div>
                                     
                                     <span class="slots-badge">{{ $package['TotalTicket'] }} Available Batch Slots</span>
@@ -270,8 +328,12 @@
                                         <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
                                         <li><i class="fas fa-check-circle"></i> Valid for {{ $package['price_validity'] }}</li>
                                         <li><i class="fas fa-clock"></i> {{ $package['ticket_type'] }}</li>
+                                        <li><i class="fas fa-clock"></i> {{ $package['comp_classes'] }} Compensation Classes</li>
+                                        <li><i class="fas fa-clock"></i> {{ $package['pause_weeks'] }} Pause Week</li>
                                     </ul>
-
+                                    @if($package['offer'])
+                                        <p class="mt-3 mb-0 offerText">{{ $package['offer'] }}</p>
+                                    @endif
                                     <button class="book-btn" 
                                         data-tour="{{ $coaching_id }}" 
                                         data-ticket="{{ $package['typeid'] }}">
