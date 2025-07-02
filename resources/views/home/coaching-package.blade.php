@@ -289,7 +289,7 @@
                 <h1 class="section-title">Available Packages</h1>
                 <div class="row justify-content-center main_card">
                     @foreach ($tour_plans as $package)
-                        <div class="col-md-3 col-sm-6 mb-5">
+                        <div class="col-md-4 col-sm-6 mb-5">
                             <div class="subscription-card">
                                 <div class="subscription-card-header">
                                     <!-- @if($package['category'] == 'premium')
