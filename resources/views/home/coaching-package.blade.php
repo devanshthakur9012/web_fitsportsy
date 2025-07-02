@@ -292,23 +292,9 @@
                         <div class="col-md-4 col-sm-6 mb-5">
                             <div class="subscription-card">
                                 <div class="subscription-card-header">
-                                    <!-- @if($package['category'] == 'premium')
-                                        <span class="category-badge badge-premium">Premium</span>
-                                    @elseif($package['category'] == 'women')
-                                        <span class="category-badge badge-women">Women</span>
-                                    @elseif($package['category'] == 'youth')
-                                        <span class="category-badge badge-youth">Youth</span>
-                                    @else
-                                        <span class="category-badge badge-standard">Standard</span>
-                                    @endif -->
                                     <h3 class="ticket-type">{{ $package['category'] }}</h3>
                                 </div>
                                 <div class="subscription-card-body">
-                                    <!-- <div class="price-container">
-                                        <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
-                                    </div>
-                                     -->
-                                    
                                     <div class="price-container">
                                         @if($package['discount'] > 0)
                                             <div class="original-price">
@@ -326,10 +312,33 @@
                                     
                                     <ul class="features-list mb-0">
                                         <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
-                                        <li><i class="fas fa-check-circle"></i> Valid for {{ $package['price_validity'] }}</li>
+                                        @php
+                                            $validityMap = [
+                                                'monthly' => 'Monthly',
+                                                'qtrly' => 'Quarterly',
+                                                'quarterly' => 'Quarterly',
+                                                'halfyearly' => 'Half-Yearly',
+                                                'half-yearly' => 'Half-Yearly',
+                                                'yearly' => 'Yearly',
+                                            ];
+
+                                            $key = strtolower(trim($package['price_validity']));
+                                            $validityLabel = $validityMap[$key] ?? ucfirst($key);
+                                        @endphp
+
+                                        <li><i class="fas fa-check-circle"></i> {{ $validityLabel }} Package</li>
                                         <li><i class="fas fa-clock"></i> {{ $package['ticket_type'] }}</li>
-                                        <li><i class="fas fa-clock"></i> {{ $package['comp_classes'] }} Compensation Classes</li>
-                                        <li><i class="fas fa-clock"></i> {{ $package['pause_weeks'] }} Pause Week</li>
+                                        @if($package['comp_classes'] > 0)
+                                            <li><i class="fas fa-undo-alt"></i> {{ $package['comp_classes'] }} Compensation Classes</li>
+                                        @endif
+
+                                        @if($package['pause_weeks'] > 0)
+                                            <li><i class="fas fa-pause-circle"></i> {{ $package['pause_weeks'] }} Pause Week{{ $package['pause_weeks'] > 1 ? 's' : '' }}</li>
+                                        @endif
+
+                                        @if($package['weekly_session'] > 0)
+                                            <li><i class="fas fa-calendar-alt"></i> {{ $package['weekly_session'] }} Session{{ $package['weekly_session'] > 1 ? 's' : '' }} per week</li>
+                                        @endif
                                     </ul>
                                     @if($package['offer'])
                                         <p class="mt-3 mb-0 offerText">{{ $package['offer'] }}</p>
