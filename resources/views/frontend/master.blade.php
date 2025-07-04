@@ -1053,14 +1053,14 @@
                             <!-- Dates will be generated here -->
                         </div>
 
-                        <div class="section-title mt-3 mb-3">
+                        <div class="section-title mt-2 mb-3">
                             <i class="far fa-clock mr-2"></i> Available Time Slots
                         </div>
                         <div id="timeContainer" class="time-grid">
                             <!-- Time slots will be generated here -->
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="row mt-4">
                             <div class="col-lg-6 form-group">
                                 <label><i class="fas fa-map-marker-alt mr-2"></i> Preferred Center</label>
                                 <select class="form-control" id="locationDropdown" name="location" required>
@@ -1423,9 +1423,9 @@
                 if (Array.isArray(slots)) {
                     slots.forEach(slot => {
                         // Check if ' to ' exists in the slot
-                        if (slot.includes(' to ')) {
+                        if (slot.includes(' - ')) {
                             // Split slot at ' to ' and take the first part (start time)
-                            const startTime = slot.split(' to ')[0].trim();
+                            const startTime = slot.split(' - ')[0].trim();
 
                             timeContainer.append(`
                                 <div class="time-option" data-time="${startTime}">
@@ -1438,7 +1438,7 @@
 
                 // Populate location dropdown
                 const locationDropdown = $('#locationDropdown');
-                locationDropdown.empty().append('<option value="">Select Location</option>');
+                locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
                 if (Array.isArray(groupLocations)) {
                     groupLocations.forEach(loc => {
                         locationDropdown.append(`<option value="${loc}" class="text-dark">${loc}</option>`);
@@ -1447,7 +1447,7 @@
 
                 // Populate short name dropdown
                 const shortNameDropdown = $('#shortNameDropdown');
-                shortNameDropdown.empty().append('<option value="">Select Category</option>');
+                shortNameDropdown.empty().append('<option value="" class="text-dark">Select Category</option>');
                 if (Array.isArray(groupShortNames)) {
                     groupShortNames.forEach(sn => {
                         shortNameDropdown.append(`<option value="${sn}" class="text-dark">${sn}</option>`);

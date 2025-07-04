@@ -1002,6 +1002,8 @@ class HomeController extends Controller
             'slot' => 'required|string|max:255',
             'date' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'location' => 'nullable|string|max:100',
+            'short_name' => 'nullable|string|max:100',
             'trial_for' => 'required|in:yourself,child',
         ]);
 
@@ -1022,6 +1024,8 @@ class HomeController extends Controller
             'date' => $request->date,
             'name' => $request->name,
             'trial_for' => $request->trial_for,
+            'location' => $request->location ?? null,
+            'short_name' => $request->short_name ?? null,
         ];
 
         $result = $this->submitFreeTrail($data);
@@ -1039,12 +1043,14 @@ class HomeController extends Controller
             $client = new Client();
 
             $payload = [
-                "user_id"    => $data['user_id'],
-                "event_id"   => $data['event_id'],
-                "slot"       => $data['slot'],
+                "user_id"   => $data['user_id'],
+                "event_id"  => $data['event_id'],
+                "slot"      => $data['slot'],
                 "date"      => $data['date'],
                 "name"      => $data['name'],
-                "trial_for" => $data['trial_for']
+                "trial_for" => $data['trial_for'],
+                "location"  => $data['location'],
+                "short_name" => $data['short_name']
             ];
 
             $baseUrl = env('BACKEND_BASE_URL');

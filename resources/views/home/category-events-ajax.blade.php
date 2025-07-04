@@ -58,7 +58,7 @@
                                             $ticket_type_keys = array_keys($tour['ticket_types']);
                                             $data_slots = json_encode(array_keys($tour['ticket_types']));
                                         @endphp
-                                        <button class="btn btn-primary btn-sm mr-1 w-50 free_trail_btn" data-url="{{$encLink}}" data-title="{{$tour['event_title']}}" data-slots="{{$data_slots}}" style="background:#28a745 !important;" data-toggle="modal" data-target="#freeTrailModal">Try For Free</button>
+                                        <button class="btn btn-primary btn-sm mr-1 w-50 free_trail_btn" data-url="{{$encLink}}" data-title="{{$tour['event_title']}}" data-group-location='@json($tour["group_location"])' data-group-short_name='@json($tour["group_short_name"])' data-slots="{{$data_slots}}" style="background:#28a745 !important;" data-toggle="modal" data-target="#freeTrailModal">Try For Free</button>
                                         <a href="{{ route('coaching-detail', [Str::slug($tour['event_title']), $tour['event_id']]) }}" class="btn btn-success btn-sm w-50">Book Coaching</a>
                                     @else
                                         <a href="{{ route('coaching-detail', [Str::slug($tour['event_title']), $tour['event_id']]) }}" class="btn btn-success btn-sm w-100">Book Coaching</a>
