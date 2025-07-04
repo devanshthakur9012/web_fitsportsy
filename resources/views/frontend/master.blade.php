@@ -1060,6 +1060,22 @@
                             <!-- Time slots will be generated here -->
                         </div>
 
+                        <div class="row mt-3">
+                            <div class="col-lg-6 form-group">
+                                <label><i class="fas fa-map-marker-alt mr-2"></i> Choose Location</label>
+                                <select class="form-control" id="locationDropdown" name="location" required>
+                                    <option value="">Select Location</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6 form-group">
+                                <label><i class="fas fa-tags mr-2"></i> Choose Category</label>
+                                <select class="form-control" id="shortNameDropdown" name="short_name" required>
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="mt-4">
                             @if (Common::isUserLogin())
                                 <button type="submit" class="btn btn-block btn-glow" id="submitBtn">
@@ -1358,6 +1374,8 @@
                 const sname = $(this).data('sponser_name');
                 submitUrl = $(this).data('url');
                 const slots = $(this).data('slots');
+                const groupLocations = $(this).data('group-location');
+                const groupShortNames = $(this).data('group-short_name');
                 
                 $('#freeTrailModalLabel').text(title);
                 $('#sponserName').text(sname);
@@ -1415,6 +1433,24 @@
                                 </div>
                             `);
                         }
+                    });
+                }
+
+                // Populate location dropdown
+                const locationDropdown = $('#locationDropdown');
+                locationDropdown.empty().append('<option value="">Select Location</option>');
+                if (Array.isArray(groupLocations)) {
+                    groupLocations.forEach(loc => {
+                        locationDropdown.append(`<option value="${loc}" class="text-dark">${loc}</option>`);
+                    });
+                }
+
+                // Populate short name dropdown
+                const shortNameDropdown = $('#shortNameDropdown');
+                shortNameDropdown.empty().append('<option value="">Select Category</option>');
+                if (Array.isArray(groupShortNames)) {
+                    groupShortNames.forEach(sn => {
+                        shortNameDropdown.append(`<option value="${sn}" class="text-dark">${sn}</option>`);
                     });
                 }
                 
