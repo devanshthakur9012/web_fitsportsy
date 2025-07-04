@@ -1062,16 +1062,16 @@
 
                         <div class="row mt-3">
                             <div class="col-lg-6 form-group">
-                                <label><i class="fas fa-map-marker-alt mr-2"></i> Choose Location</label>
+                                <label><i class="fas fa-map-marker-alt mr-2"></i> Preferred Center</label>
                                 <select class="form-control" id="locationDropdown" name="location" required>
-                                    <option value="">Select Location</option>
+                                    <option value="">Select Center</option>
                                 </select>
                             </div>
 
                             <div class="col-lg-6 form-group">
-                                <label><i class="fas fa-tags mr-2"></i> Choose Category</label>
+                                <label><i class="fas fa-tags mr-2"></i> Age Group and Batch</label>
                                 <select class="form-control" id="shortNameDropdown" name="short_name" required>
-                                    <option value="">Select Category</option>
+                                    <option value="">Select Batch</option>
                                 </select>
                             </div>
                         </div>
