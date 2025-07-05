@@ -236,7 +236,7 @@
             border-radius: 0;
             color: white;
             padding: 0;
-            height: 40px;
+            height: 35px;
         }
 
         #freeTrailModal .form-control:focus {
@@ -1047,26 +1047,18 @@
                         </div>
                         
 
-                        <div class="row mt-4">
-                            <div class="col-lg-6 form-group">
+                        <div class="row">
+                            <div class="col-lg-6 form-group shortname-dropdown-container mt-4">
                                 <label><i class="fas fa-tags mr-2"></i> Age Group and Batch</label>
                                 <select class="form-control" id="shortNameDropdown" name="short_name" required>
                                     <option value="">Select Batch</option>
                                 </select>
                             </div>
 
-                            <div class="col-lg-6 form-group">
+                            <div class="col-lg-6 form-group location-dropdown-container mt-4">
                                 <label><i class="fas fa-map-marker-alt mr-2"></i> Preferred Center</label>
                                 <select class="form-control" id="locationDropdown" name="location" required>
                                         <option value="" class="text-dark">Select Center</option>
-                                        <option value="Sporthood Aratt Big Game" class="text-dark">Sporthood Aratt Big Game</option>
-                                        <option value="Sporthood Begur Turf" class="text-dark">Sporthood Begur Turf</option>
-                                        <option value="Sporthood Turfpark HSR" class="text-dark">Sporthood Turfpark HSR</option>
-                                        <option value="Play Arena" class="text-dark">Play Arena</option>
-                                        <option value="Sporthood Football and Swimming Academy @cult Bellandur" class="text-dark">Sporthood Football and Swimming Academy @cult Bellandur</option>
-                                        <option value="Suncity Sports Complex" class="text-dark">Suncity Sports Complex</option>
-                                        <option value="Sporthood Center of Football Excellence @HAL Sports Club" class="text-dark">Sporthood Center of Football Excellence @HAL Sports Club</option>
-                                        <option value="Active Arena" class="text-dark">Active Arena</option>
                                 </select>
                             </div>
                         </div>
@@ -1445,32 +1437,50 @@
                     });
                 }
 
-                // Populate location dropdown
+                // // Populate location dropdown
                 // const locationDropdown = $('#locationDropdown');
                 // locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
                 // if (Array.isArray(groupLocations)) {
                 //     groupLocations.forEach(loc => {
                 //        locationDropdown.append(`<option value="${loc}" class="text-dark">${loc}</option>`);
                 //    });
-                //}
+                // }
 
-                // Populate location dropdown only if groupLocations has 1 or less locations
-                if (Array.isArray(groupLocations) && groupLocations.length == 0) {
-                    const locationDropdown = $('#locationDropdown');
-                    locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
+
+                // // Populate short name dropdown
+                // const shortNameDropdown = $('#shortNameDropdown');
+                // shortNameDropdown.empty().append('<option value="" class="text-dark">Select Category</option>');
+                // if (Array.isArray(groupShortNames)) {
+                //     groupShortNames.forEach(sn => {
+                //         shortNameDropdown.append(`<option value="${sn}" class="text-dark">${sn}</option>`);
+                //     });
+                // }
+
+                // Populate location dropdown
+                const locationDropdown = $('#locationDropdown');
+                const locationGroup = $('.location-group');
+                locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
+
+                if (Array.isArray(groupLocations) && groupLocations.length > 0) {
+                    $('.location-dropdown-container').show(); // <-- Show container
                     groupLocations.forEach(loc => {
                         locationDropdown.append(`<option value="${loc}" class="text-dark">${loc}</option>`);
                     });
+                } else {
+                    $('.location-dropdown-container').hide(); // <-- Hide if no locations
                 }
-
 
                 // Populate short name dropdown
                 const shortNameDropdown = $('#shortNameDropdown');
                 shortNameDropdown.empty().append('<option value="" class="text-dark">Select Category</option>');
-                if (Array.isArray(groupShortNames)) {
+
+                if (Array.isArray(groupShortNames) && groupShortNames.length > 0) {
+                    $('.shortname-dropdown-container').show(); // <-- Show container
                     groupShortNames.forEach(sn => {
                         shortNameDropdown.append(`<option value="${sn}" class="text-dark">${sn}</option>`);
                     });
+                } else {
+                    $('.shortname-dropdown-container').hide(); // <-- Hide if empty
                 }
                 
                 setTimeout(() => {

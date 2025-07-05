@@ -95,7 +95,7 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
     Route::post('/store-book-ticket-razor',[BookController::class,'storeBookTicketRazor']);
     Route::post('/store-book-seat-ticket-razor',[BookController::class,'storeBookSeatTicketRazor']);
     Route::get('/razor-event-book-payment-failed',[BookController::class,'razorEventBookPaymentFailed']);
-    Route::get('/all-events',[BookController::class,'allEvents']);
+    // Route::get('/all-events',[BookController::class,'allEvents']);
 
     Route::get('/event-city',[BookController::class,'eventCity']);
 
@@ -105,8 +105,8 @@ Route::group(['middleware' => ['mode', 'XSS']], function () {
 
     Route::get('/organizer-login',[AuthController::class,'organizerLogin']);
     Route::post('/organizer-login',[AuthController::class,'checkOrganizerLogin']);
-    Route::get('/organizer-register',[AuthController::class,'organizerRegsiter']);
-    Route::post('/organizer-register',[AuthController::class,'postOrganizerRegister']);
+    // Route::get('/organizer-register',[AuthController::class,'organizerRegsiter']);
+    // Route::post('/organizer-register',[AuthController::class,'postOrganizerRegister']);
 
     Route::get('/user-register',[AuthController::class,'userRegister']);
     Route::post('/user-register',[AuthController::class,'postUserRegister']);

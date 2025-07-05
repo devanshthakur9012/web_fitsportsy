@@ -231,5 +231,5 @@ Route::get('/rave/callback/{id}', [UserController::class, 'callback'])->name('ca
 Route::get('FlutterWavepayment/{id}', [UserController::class, 'FlutterWavepayment']);
 Route::get('transction_verify/{id}', [UserController::class, 'transction_verify']);
 
-Route::get('all-products', [ProductController::class, 'allProducts']);
+// Route::get('all-products', [ProductController::class, 'allProducts']);
 
