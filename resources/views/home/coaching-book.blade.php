@@ -679,7 +679,7 @@
                     </div>
                 </div>
             @else
-                <div class="pt-3 pb-3 shadow-sm home-slider" id="blurImg">
+                <div class="mt-3 shadow-sm home-slider" id="blurImg">
                     @foreach ($tournament_detail['event_cover_img'] as $item)
                         <img src="{{ env('BACKEND_BASE_URL') }}/{{$item}}" class="img-fluid rounded" alt="...">
                     @endforeach
