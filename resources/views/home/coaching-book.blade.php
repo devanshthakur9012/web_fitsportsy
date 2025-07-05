@@ -654,14 +654,20 @@
     .tableDesign th{
         border: 1px solid #fff;
     }
+    .slick-prev{
+        left: 10px !important;
+    }
+    .slick-next{
+        right: 10px !important;
+    }
     </style>
 @endpush
 @section('content')
-<section class="section-area single-detail-area py-3">
-    <div class="container-fluid">
+<section class="section-area single-detail-area p-0">
+    <div class="container-fluid p-0">
         @if (isset($tournament_detail) && count($tournament_detail['event_cover_img']))
             @if (count($tournament_detail['event_cover_img']) > 1)
-                <div class="pt-3 pb-3 shadow-sm home-slider">
+                <div class="pt-3 pb-3 shadow-sm position-relative">
                     <div class="osahan-slider">
                         @foreach ($tournament_detail['event_cover_img'] as $item)
                             <div class="osahan-slider-item">
