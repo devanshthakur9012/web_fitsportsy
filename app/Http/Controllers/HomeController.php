@@ -1002,8 +1002,8 @@ class HomeController extends Controller
             'slot' => 'required|string|max:255',
             'date' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'location' => 'nullable|string|max:100',
-            'short_name' => 'nullable|string|max:100',
+            'location' => 'nullable|string|max:225',
+            'short_name' => 'nullable|string|max:225',
             'trial_for' => 'required|in:yourself,child',
         ]);
 
