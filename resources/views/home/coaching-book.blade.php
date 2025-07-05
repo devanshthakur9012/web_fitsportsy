@@ -658,7 +658,7 @@
 @endpush
 @section('content')
 <section class="section-area single-detail-area py-3">
-    <div class="container">
+    <div class="container-fluid">
         @if (isset($tournament_detail) && count($tournament_detail['event_cover_img']))
             @if (count($tournament_detail['event_cover_img']) > 1)
                 <div class="pt-3 pb-3 shadow-sm home-slider">
@@ -680,7 +680,8 @@
                 </div>
             @endif
         @endif
-
+    </div>
+    <div class="container">
         <div class="row mt-5">
             <div class="col-lg-8 col-md-8 col-12">
                 <div class="d-flex justify-content-between align-items-center">
