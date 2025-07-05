@@ -28,11 +28,23 @@
     <link href="{{asset('css/select2.css')}}" rel="stylesheet">
     <link href="{{asset('f-css\iziToast.min.css')}}" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     @stack('styles')
     <style>
+        .type_cat {
+            padding: 4px 5px !important;
+            background: #723ac6;
+            color: #000;
+            font-size: 13px !important;
+            font-weight: 500;
+            color: #fff;
+            font-size: 12px;
+        }
         .menu_item {
             border-radius: 20px;
-            padding: 5px 10px;
+            padding: 5px 8px;
             color: #ffffff;
             line-height: 20px;
         }
@@ -58,7 +70,7 @@
 
         /*new header*/
         .new-topbar{
-            background: #000000;
+            background:linear-gradient(to right, #000000, #000000, #000000);
         }
         .new-logo{
             background: #000000;
@@ -87,7 +99,7 @@
             top: -6px;
         }
         .new-navbar {
-            background: #6e6e6e;
+            background: linear-gradient(to right, #1c1c1c, #232323);
             z-index: -2;
             position: relative;
         }
@@ -107,10 +119,11 @@
             position: relative;
             z-index: 1;
             padding-bottom: 10px;
-            background: #6e6e6e;
+            background: linear-gradient(to right, #1c1c1c, #232323);
+            border-bottom: 1px solid #2f2f2f;
         }
         .osahan-nav-mid {
-            background: #6e6e6e !important;
+            background: linear-gradient(to right, #1c1c1c, #232323) !important;
             margin-top: 11px;
             position: relative;
             left: 43px;
@@ -147,7 +160,8 @@
         }
         
         .gradient-text {
-            background: linear-gradient(to right, #00f0ff, #00ff94, #a6ff00);
+            /* background: linear-gradient(to right, #00f0ff, #00ff94, #a6ff00); */
+            background: linear-gradient(to right, #00f0ff, #e51f92, #a6ff00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: bold;
@@ -160,14 +174,13 @@
             background: #282828;
             border-radius: 20px;
             overflow: hidden;
-            /* box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3); */
-            border: 1px solid #6e6e6e;
+            border: 1px solid #333333 !important;
         }
 
         /* Modal Header */
         #freeTrailModal .modal-header {
             /* background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%); */
-            background: #282828;
+            background: #151515;
             border: none;
             /* padding: 0;
             position: relative;
@@ -212,14 +225,14 @@
             left: 0;
             width: 100%;
             height: 10px;
-            background: #282828;
+            background: #151515;
             border-radius: 20px 20px 0 0;
         }
 
         /* Modal Body */
         #freeTrailModal .modal-body {
             padding: 18px 30px;
-            background: #282828;
+            background:#151515;
             color: #e0e0e0;
         }
 
@@ -301,7 +314,7 @@
             flex: 0 0 70px;
             padding: 8px 5px;
             border-radius: 12px;
-            background: #3a3a5c;
+            background: #272727;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -317,7 +330,7 @@
         }
 
         #freeTrailModal .date-option.selected {
-            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
+            background: linear-gradient(to right, #28a745, #28a745);
             color: white;
             border-color: #6e6e6e;
             /* transform: translateY(-3px); */
@@ -368,7 +381,7 @@
         #freeTrailModal .time-option {
             padding: 12px 5px;
             border-radius: 8px;
-            background: #3a3a5c;
+            background: #272727;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -385,7 +398,7 @@
         }
 
         #freeTrailModal .time-option.selected {
-            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
+            background: linear-gradient(to right, #28a745, #28a745);
             color: white;
             /* border-color: #6e6e6e; */
             transform: translateY(-3px);
@@ -402,8 +415,8 @@
 
         /* Submit Button */
         #freeTrailModal .btn-glow {
-            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%);
-            border: none;
+            border: 1px solid #363636 !important;
+            background: #272727;
             color: white;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -412,7 +425,6 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
-            /* box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); */
         }
 
         #freeTrailModal .btn-glow:hover {
@@ -465,11 +477,11 @@
 
         /* Radio Button Styles */
         #freeTrailModal .btn-radio {
-            background: #3a3a5c;
+            background: linear-gradient(to right, #1c1c1c, #232323) ;
             color: #6e6e6e;
             border: none;
             border-radius: 8px !important;
-            padding: 7px 20px;
+            padding: 10px 20px;
             transition: all 0.3s;
             margin-right: 10px;
         }
@@ -479,12 +491,17 @@
         }
 
         #freeTrailModal .btn-radio:hover {
-            background: #3a3a5a;
+            background: #272727;
             color: #d1b3ff;
+            box-shadow:none;
         }
 
+        #freeTrailModal .btn-radio:focus{
+            box-shadow:none;
+        } 
+
         #freeTrailModal .btn-radio.active {
-            background: linear-gradient(135deg, #6e6e6e 0%, #6e6e6e 100%) !important;
+            background: linear-gradient(to right, #28a745, #28a745);
             color: white;
             /* box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3); */
             border-color: #6e6e6e;
@@ -504,14 +521,14 @@
 
         /* Adjust spacing for the new field */
         #freeTrailModal .floating-label {
-            margin-top: 20px;
+            margin-top: 5px;
         }
 
         .cat-small-img{
             width: 43px;
-            border: 1px dashed #fff;
+            border: 1px dashed #ffffff;
             border-radius: 50%;
-            background: #171717;
+            background: #000000;
             padding: 5px;
         }
     </style>
@@ -574,6 +591,22 @@
         }
         .loginOption:focus{
             outline:none;
+        }
+        .category-h1{
+            font-weight: 700;
+            background: linear-gradient(to right, #00f0ff, #e51f92, #a6ff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .location{
+            background: #dd473f;
+            color: #fff;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 11px !important;
+            position: absolute;
+            top: -12px;
+            right: 10px;
         }
     </style>
 </head>
@@ -690,7 +723,7 @@
                         <div class="new-menu">
                             <img class="menu-curve" src="{{asset('frontend/images/menucurves2.png')}}" alt="img">
                             <nav class="navbar navbar-expand-lg navbar-light osahan-nav-mid">
-                                <div class="container-fluid position-relative">
+                                <div class="container-fluid position-relative p-0">
                                     <button class="navbar-toggler navbar-toggler-right btn btn-danger btn-sm " type="button"
                                             data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                                             aria-expanded="false" aria-label="Toggle navigation">
@@ -730,7 +763,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div>
+            <div class="mt-3">
                 <h5 class="text-white mb-2">Locations</h5>
                 <ul class="list-unstyled ">
                     @foreach ($locationData as $item)
@@ -795,9 +828,9 @@
                 </div>
             </div>
         </div>
-        <div class="text-center bg-dark mt-4 p-2" style="color: #b5b5b5">
+        <div class="text-center bg-dark mt-5 p-2" style="color: #b5b5b5">
             <div class="container">
-                <p class="m-0 small text-center">{{ $favicon['footer_copyright'] }}</p>
+                <p class="m-0 small text-center py-2">{{ $favicon['footer_copyright'] }}</p>
             </div>
         </div>
     </footer>

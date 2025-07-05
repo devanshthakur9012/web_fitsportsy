@@ -27,23 +27,6 @@
         border-radius: 4px;
         color: #000;
     }
-.type_cat{
-    padding: 4px 10px !important;
-    background: #ffd700;
-    color: #000;
-    font-size: 14px !important;
-    font-weight: 500;
-}
-.location{
-    background: #6e6e6e;
-    color: #fff;
-    border-radius: 20px;
-    padding: 4px 10px;
-    font-size: 11px !important;
-    position: absolute;
-    top: -12px;
-    right: 10px;
-}
 .category{
     background: #ffd700;
     color: #000000;
@@ -90,13 +73,14 @@
 }
 .default2-btn{
     background-color: #ff2f31 !important;
-    border-color: #ff2f31 !important;
     padding: 7px 10px;
     color:#fff !important;
+    font-family: 'Inter-Medium', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif !important;
+    font-weight:700 !important;
 }
 .badge-default{
     color: #fff;
-    background-color: #6e6e6e;
+    background-color: #3d3d3d;
     padding: 4px 8px;
 }
 .badge-default:hover{
@@ -205,13 +189,14 @@
     overflow: hidden;
     border: none;
     position: relative;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 15px rgb(10 10 10);
     height: 100%;
+    border: 1px solid #3f3f3f;
 }
 
 .category-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(18, 18, 18, 0.2);
 }
 
 .category-card .card-img-top {
@@ -282,8 +267,8 @@
     font-size: 0.95rem;
     padding: 8px 18px;
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
+    /* background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px); */
     -webkit-backdrop-filter: blur(5px);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -298,11 +283,11 @@
 }
 
 .category-card .explore-link:hover {
-    background: rgba(255, 255, 255, 0.3);
+    /* background: rgba(255, 255, 255, 0.3); */
     transform: translateY(-2px);
 }
 
-.row > div:nth-child(4n+1) .img-overlay {
+/* .row > div:nth-child(4n+1) .img-overlay {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(33 33 33 / 10%) 30%, rgb(38 38 38 / 75%) 90%);
 }
 
@@ -316,7 +301,7 @@
 
 .row > div:nth-child(4n+4) .img-overlay {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(33 33 33 / 10%) 30%, rgb(38 38 38 / 75%) 90%);
-}
+} */
 </style>
 <div class="pt-3 pb-3 shadow-sm home-slider">
     <div class="osahan-slider">
@@ -389,7 +374,7 @@
                                 @endif
                             @endisset
                             <div class="mt-2">
-                                <button class="mt-1 btn btn-outline-white btn-sm mb-1"><i class="far fa-calendar-alt pr-2"></i> <small>{{$play['play_sdate']}}</small> </button>
+                                <button class="btn text-warning btn-sm mb-1 p-0"><i class="far fa-calendar-alt pr-2"></i> <small>{{$play['play_sdate']}}</small> </button>
                                 <a href="{{route('play', $play['play_uuid'])}}" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Join Now</a>
                             </div>
                         </div>
@@ -416,7 +401,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between mt-5 mb-3 overflow-hidden">
                     <div class="d-flex align-items-center">
                         <img src="{{env('BACKEND_BASE_URL')}}/{{$data['category_img']}}" class="cat-small-img" alt="{{$data['category_name']}}">
-                        <h1 class="h4 mb-0 float-left ml-2">{{$data['category_name']}}</h1>
+                        <h1 class="h4 mb-0 float-left ml-2 category-h1">{{$data['category_name']}}</h1>
                     </div>
                     <a href="{{ route('coaching', [Str::slug($data['category_name'])]) }}" class="d-sm-inline-block text-xs float-right "> See All </a>
                 </div>
@@ -433,9 +418,9 @@
                                 <div class="card-body position-relative">
                                     <h5 class="card-title mb-2"><u>{{$tours['event_title']}}</u></h5>
                                     <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tours['event_place_name']}}</small></p>
-                                    <p class="card-text mb-0">
+                                    <p class="card-text mb-2">
                                         <small class="text-dark" title="{{$tours['event_place_address']}}"><i class="fas fa-map pr-1"></i>
-                                        {{ strlen($tours['event_place_address']) > 50 ? substr($tours['event_place_address'], 0, 50) . '...' : $tours['event_place_address'] }}
+                                        {{ strlen($tours['event_place_address']) > 40 ? substr($tours['event_place_address'], 0, 40) . '...' : $tours['event_place_address'] }}
                                         </small>
                                     </p>
                                     @php
@@ -459,11 +444,11 @@
                                     @endphp
                                     @isset($tours['ticket_types'])
                                         @foreach ($tours['ticket_types'] as $key => $item)
-                                            <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
+                                            <span class="badge badge-primary type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
                                         @endforeach
                                     @endisset
                                     <div class="mt-2">
-                                        <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tours['event_ticket_price']}}</button>
+                                        <button class="btn text-warning btn-sm mb-1 p-0">Package Price : {{$tours['event_ticket_price']}}</button>
                                        <div class="d-flex mt-1 mb-1">
                                             @if($tours['play_free_trial'])
                                                 @php
@@ -521,7 +506,7 @@
                                 <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
                                 <small>{{$tour['event_sdate']}}</small>
                                 <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
-                                <p class="card-text mb-0">
+                                <p class="card-text mb-2">
                                     <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map-marker-alt pr-1"></i>
                                     {{ strlen($tour['event_place_address']) > 50 ? substr($tour['event_place_address'], 0, 50) . '...' : $tour['event_place_address'] }}
                                     </small>
@@ -547,11 +532,11 @@
                                 @endphp
                                 @isset($tour['ticket_types'])
                                     @foreach ($tour['ticket_types'] as $key =>  $item)
-                                        <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
+                                        <span class="badge badge-primary type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
                                     @endforeach
                                 @endisset
                                 <div class="mt-2"> 
-                                    <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
+                                    <button class="btn text-warning btn-sm mb-1 p-0">Package Price : {{$tour['event_ticket_price']}}</button>
                                     @if(strtotime($tour['event_sdate']) < strtotime(date('Y-m-d')))
                                         <a href="javascript:void(0);" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Completed</a>
                                     @else
@@ -594,7 +579,7 @@
                                 <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
                                 <small>{{$tour['event_sdate']}}</small>
                                 <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
-                                <p class="card-text mb-0">
+                                <p class="card-text mb-2">
                                     <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map-marker-alt pr-1"></i>
                                     {{ strlen($tour['event_place_address']) > 50 ? substr($tour['event_place_address'], 0, 50) . '...' : $tour['event_place_address'] }}
                                     </small>
@@ -620,11 +605,11 @@
                                 @endphp
                                 @isset($tour['ticket_types'])
                                     @foreach ($tour['ticket_types'] as $key =>  $item)
-                                        <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
+                                        <span class="badge badge-primary type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
                                     @endforeach
                                 @endisset
                                 <div class="mt-2"> 
-                                    <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
+                                    <button class="btn text-warning btn-sm mb-1 p-0">Package Price : {{$tour['event_ticket_price']}}</button>
                                     @if(strtotime($tour['event_sdate']) < strtotime(date('Y-m-d')))
                                         <a href="javascript:void(0);" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Completed</a>
                                     @else
@@ -667,7 +652,7 @@
                                 <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
                                 <small>{{$tour['event_sdate']}}</small>
                                 <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
-                                <p class="card-text mb-0">
+                                <p class="card-text mb-2">
                                     <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map-marker-alt pr-1"></i>
                                     {{ strlen($tour['event_place_address']) > 50 ? substr($tour['event_place_address'], 0, 50) . '...' : $tour['event_place_address'] }}
                                     </small>
@@ -693,11 +678,11 @@
                                 @endphp
                                 @isset($tour['ticket_types'])
                                     @foreach ($tour['ticket_types'] as $key => $item)
-                                        <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
+                                        <span class="badge badge-primary type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
                                     @endforeach
                                 @endisset
                                 <div class="mt-2"> 
-                                    <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
+                                    <button class="btn text-warning btn-sm mb-1 p-0">Package Price : {{$tour['event_ticket_price']}}</button>
                                     @if(strtotime($tour['event_sdate']) < strtotime(date('Y-m-d')))
                                         <a href="javascript:void(0);" class="mt-1 btn default2-btn btn-sm mb-1 w-100">Completed</a>
                                     @else
@@ -783,10 +768,10 @@
             </div>
         </div>
     </div> -->
-    <div class="categories-section py-5">
+    <div class="categories-section py-5 mb-5">
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between mb-5">
-            <h2 class="h4 mb-0">Explore Our Categories</h2>
+            <h2 class="h4 mb-2 mr-2 gradient-text">Explore Our Categories</h2>
         </div>
         <div class="row g-4">
             @foreach (Common::allEventCategoriesByApi() as $index => $cat)

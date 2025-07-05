@@ -5,8 +5,9 @@ body {
     color: #e6e0e0;
     font-size: 14px;
     overflow-x: hidden;
-    font-family: 'Jost', sans-serif;
-    background-color: #0a0a0a;
+    /* font-family: 'Jost', sans-serif; */
+    background: linear-gradient(to right, #000000, #222222, #000000);
+    font-family: Roboto, Arial, sans-serif;
 }
 
 .sigma_preloader  img{
@@ -36,7 +37,7 @@ a {
 
 a:hover {
   
-    color: #6e6e6e;
+    color: #efb508 !important;
 }
 
 p {
@@ -298,7 +299,7 @@ label {
 
 .home-slider{
     position: relative;
-    background-color: #212121;
+    /* background-color: #212121; */
 }
 .help-block ul {
     margin: 0;
@@ -571,11 +572,11 @@ header .navbar .navbar-brand img {
 }
 
 .slick-next {
-    right: 0px;
+    right: 10px;
 }
 
 .slick-prev {
-    left: -15px;
+    left: 10px;
 }
 
 .slick-prev,
@@ -608,12 +609,9 @@ header .navbar .navbar-brand img {
 }
 
 .m-card{
-  
-    background-color: #2e335a45;
-  
+    background: linear-gradient(to right, #121212, #161616);  
     border-radius: 10px;
-    
-    /* border: 1px solid #616269 !important; */
+    border: 1px solid #333333 !important;
 }
 
 /* .m-card .card-body {
@@ -1505,7 +1503,7 @@ form.user .btn-user {
 }
 
 .footer {
-    background-color: #6e6e6e;
+    background-color: #151515;
 }
 .footer .bg-dark{
     background-color: #0a0a0a !important;
@@ -1515,7 +1513,8 @@ form.user .btn-user {
 .footer h6 {
     color: #fff;
     font-size: 18px;
-    margin: 8px 0 24px
+    margin: 8px 0 24px;
+    font-weight: 700;
 }
 
 .footer ul {
@@ -2383,13 +2382,14 @@ Cart Area CSS
 
 /*=========== all location ==============*/
 .bottom-location {
-    background-color: #6e6e6e;
-    padding: 30px 0px 0px 0px;
+    background-color: #151515;
+    padding: 70px 0px 10px 0px;
     margin-bottom: 0px;
+    border-top: 1px solid #3d3d3d;
 }
 
 .bottom-location h5 {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 600;
 }
 
@@ -2402,7 +2402,7 @@ Cart Area CSS
 }
 
 .bottom-location ul li a {
-    font-size: 12px;
+    font-size: 13px;
     color: #fff;
     padding-right: 5px;
     border-right: 1px solid #f1f1f1;
@@ -2880,9 +2880,11 @@ margin-bottom: 0px;
 }
 
 .btn-success{
-    background-color: #6e6e6e !important;
-    border-color: #6e6e6e !important;
-    padding: 7px 10px;
+    background-color: #292929 !important;
+    border-color: #3d3d3d !important;
+    padding: 9px 10px;
+    font-family: 'Inter-Medium', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif !important;
+    font-weight: 400 !important;    
 }
 
 .card-title u{
@@ -2890,8 +2892,7 @@ margin-bottom: 0px;
 }
 
 .btn-success:hover{
-    background-color: #03387e !important;
-    border-color: #03387e !important;
+    background-color: #202020 !important;
 }
 /* ====== seat layout ===== */
 #seatModal .seat-pannel img{

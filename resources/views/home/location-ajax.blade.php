@@ -14,7 +14,7 @@
                             <h5 class="card-title mb-2"><u>{{$tour['event_title']}}</u></h5>
                             {{-- <small>{{$tour['event_sdate']}}</small> --}}
                             <p class="my-2"><small class="location"><i class="fas fa-map-marker-alt pr-1"></i>{{$tour['event_place_name']}}</small></p>
-                            <p class="card-text mb-0">
+                            <p class="card-text mb-2">
                                 <small class="text-dark" title="{{$tour['event_place_address']}}"><i class="fas fa-map pr-2"></i>
                                 {{ strlen($tour['event_place_address']) > 50 ? substr($tour['event_place_address'], 0, 50) . '...' : $tour['event_place_address'] }}
                                 </small>
@@ -40,11 +40,11 @@
                             @endphp
                             @isset($tour['ticket_types'])
                                 @foreach ($tour['ticket_types'] as $key => $item)
-                                    <span class="badge badge-primary m-1 type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
+                                    <span class="badge badge-primary type_cat" data-toggle="tooltip" data-placement="top" title="{{ $key }}">{{ $item }}</span>
                                 @endforeach
                             @endisset
                             <div class="mt-2">
-                                <button class="mt-1 btn btn-outline-white btn-sm mb-1">Package Price : {{$tour['event_ticket_price']}}</button>
+                                <button class="btn text-warning btn-sm mb-1 p-0">Package Price : {{$tour['event_ticket_price']}}</button>
                                 <!-- <a href="{{route('coaching-detail', [Str::slug($tour['event_title']),$tour['event_id']])}}" class="mt-1 btn btn-success btn-sm mb-1 w-100">Book Coaching</a> -->
 
                                 <div class="d-flex mt-1 mb-1">
