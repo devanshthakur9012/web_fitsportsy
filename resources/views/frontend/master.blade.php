@@ -1045,8 +1045,33 @@
                             </div>
                             <input type="text" class="form-control" id="name" name="name" value="@if(isset($userData['name']) && ! empty($userData['name'])){{$userData['name']}}@endif" required>
                         </div>
+                        
 
-                        <div class="section-title mt-4 mb-3">
+                        <div class="row mt-4">
+                            <div class="col-lg-6 form-group">
+                                <label><i class="fas fa-tags mr-2"></i> Age Group and Batch</label>
+                                <select class="form-control" id="shortNameDropdown" name="short_name" required>
+                                    <option value="">Select Batch</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6 form-group">
+                                <label><i class="fas fa-map-marker-alt mr-2"></i> Preferred Center</label>
+                                <select class="form-control" id="locationDropdown" name="location" required>
+                                        <option value="" class="text-dark">Select Center</option>
+                                        <option value="Sporthood Aratt Big Game" class="text-dark">Sporthood Aratt Big Game</option>
+                                        <option value="Sporthood Begur Turf" class="text-dark">Sporthood Begur Turf</option>
+                                        <option value="Sporthood Turfpark HSR" class="text-dark">Sporthood Turfpark HSR</option>
+                                        <option value="Play Arena" class="text-dark">Play Arena</option>
+                                        <option value="Sporthood Football and Swimming Academy @cult Bellandur" class="text-dark">Sporthood Football and Swimming Academy @cult Bellandur</option>
+                                        <option value="Suncity Sports Complex" class="text-dark">Suncity Sports Complex</option>
+                                        <option value="Sporthood Center of Football Excellence @HAL Sports Club" class="text-dark">Sporthood Center of Football Excellence @HAL Sports Club</option>
+                                        <option value="Active Arena" class="text-dark">Active Arena</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="section-title mt-2 mb-3">
                             <i class="far fa-calendar mr-2"></i> Select Date
                         </div>
                         <div id="dateContainer" class="date-carousel">
@@ -1058,22 +1083,6 @@
                         </div>
                         <div id="timeContainer" class="time-grid">
                             <!-- Time slots will be generated here -->
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-lg-6 form-group">
-                                <label><i class="fas fa-map-marker-alt mr-2"></i> Preferred Center</label>
-                                <select class="form-control" id="locationDropdown" name="location" required>
-                                    <option value="">Select Center</option>
-                                </select>
-                            </div>
-
-                            <div class="col-lg-6 form-group">
-                                <label><i class="fas fa-tags mr-2"></i> Age Group and Batch</label>
-                                <select class="form-control" id="shortNameDropdown" name="short_name" required>
-                                    <option value="">Select Batch</option>
-                                </select>
-                            </div>
                         </div>
 
                         <div class="mt-4">
@@ -1437,13 +1446,23 @@
                 }
 
                 // Populate location dropdown
-                const locationDropdown = $('#locationDropdown');
-                locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
-                if (Array.isArray(groupLocations)) {
+                // const locationDropdown = $('#locationDropdown');
+                // locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
+                // if (Array.isArray(groupLocations)) {
+                //     groupLocations.forEach(loc => {
+                //        locationDropdown.append(`<option value="${loc}" class="text-dark">${loc}</option>`);
+                //    });
+                //}
+
+                // Populate location dropdown only if groupLocations has 1 or less locations
+                if (Array.isArray(groupLocations) && groupLocations.length == 0) {
+                    const locationDropdown = $('#locationDropdown');
+                    locationDropdown.empty().append('<option value="" class="text-dark">Select Location</option>');
                     groupLocations.forEach(loc => {
                         locationDropdown.append(`<option value="${loc}" class="text-dark">${loc}</option>`);
                     });
                 }
+
 
                 // Populate short name dropdown
                 const shortNameDropdown = $('#shortNameDropdown');
