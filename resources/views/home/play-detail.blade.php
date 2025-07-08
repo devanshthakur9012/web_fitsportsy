@@ -591,14 +591,15 @@
      }
 
     .cardBox{
-        background: #2e335a45;
+        background: #212121;
         border-radius: 20px;
         border: none !important;
         padding: 30px 40px;
+        border: 1px solid #2f2f2f !important
     }
 
     .playerBox{
-        border-bottom: 1px solid #fff;
+        border-bottom:1px solid #2f2f2f;
         padding:12px 0px !important;
     }
 
@@ -607,7 +608,7 @@
         height: 40px;
         width: 40px;
         background-color: transparent !important;
-        border: 2px solid #fff !important;
+        border:2px solid #2f2f2f !important;
     }
     </style>
     <style>
@@ -667,34 +668,6 @@
     }
     
     /* Apply animation to the modal */
-    .modal-dialog.animate-zoom-in {
-        animation: zoomIn 0.5s ease-out;
-    }
-    .modal-backdrop {
-        backdrop-filter: blur(5px);
-    }
-    .catIcon{
-        width: 20px !important;
-        height: 20px !important;
-    }
-    .default2-btn{
-        background-color: #ff2f31 !important;
-        border-color: #ff2f31 !important;
-        padding: 7px 10px;
-        color:#fff !important;
-    }
-    .badge-default{
-        color: #fff;
-        background-color: #6e6e6e;
-        padding: 4px 8px;
-    }
-    .badge-default:hover{
-        color: #fff;
-        background-color: #06408d;
-    }
-    .badge-success{
-        padding: 3px 8px !important;
-    }
     </style>
 @endpush
 <section class="section-area single-detail-area py-3">
@@ -801,9 +774,9 @@
                                     @isset($play['play_skill_level'])
                                         @if (is_array($play['play_skill_level']) && count($play['play_skill_level']))
                                             <div class="">
-                                                <h6 class="mb-1">Session Days</h6>
+                                                <h6 class="mb-2">Session Days</h6>
                                                 @foreach ($play['play_skill_level'] as $item)
-                                                    <span class="badge badge-default" style="font-size:16px;font-weight:500;">{{$item}}</span>
+                                                    <span class="badge badge-primary type_cat fs-3" style="font-size:16px;font-weight:500;">{{$item}}</span>
                                                 @endforeach
                                             </div>
                                         @endif
@@ -824,11 +797,11 @@
                                         @endphp
                                         <form id="joinForm" method="POST" class="w-100" action="{{$encLink}}">
                                             @csrf
-                                            <button type="submit" class="text-center btn default-btn w-100">Join Now</button>
+                                            <button type="submit" class="btn btn-success btn-sm w-100">Join Now</button>
                                         </form>
                                     @else
                                         @php session(['redirect_url' => url()->current()]); @endphp
-                                        <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn default-btn btn-block w-100">Login To Join</button>
+                                        <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn btn-success btn-sm w-100">Login To Join</button>
                                     @endif
                                 </div>
                             </div>

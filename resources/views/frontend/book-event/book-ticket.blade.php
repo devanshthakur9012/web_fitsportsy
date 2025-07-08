@@ -286,10 +286,11 @@ $orgComm = 0;
     #blurImg {
         position: relative;
         width: 100%;
-        height: 300px; /* Adjust height as needed */
+        height: 300px;
         overflow: hidden;
         border-radius: 8px;
         margin-bottom: 20px;
+        border: 1px solid #2f2f2f;
     }
 
     /* Blurred background pseudo-element */
@@ -377,7 +378,7 @@ $orgComm = 0;
                                             <div class="formBox">
                                                <div class="row px-2 mb-2">
                                                     <div class="col-lg-12">
-                                                        <h4 class="mb-3 event-title">{{$packageDetails['event_title']}} <span class="badge badge-primary">{{$packageDetails['event_address_title']}}</span></h4>
+                                                        <h4 class="mb-3 event-title">{{$packageDetails['event_title']}} <span class="badge badge-primary type_cat ml-1">{{$packageDetails['event_address_title']}}</span></h4>
                                                     </div>
                                                     @if (isset($packageDetails['event_img']))
                                                         <div class="pt-3 pb-3 shadow-sm" id="blurImg">
@@ -517,12 +518,12 @@ $orgComm = 0;
                             </div>
 
                             @if (Common::isUserLogin())
-                                <button type="button" class="btn default-btn btn-block" id="submitPayment">Continue To Checkout</button>
+                                <button type="button" class="btn btn-success btn-sm w-100" style="padding:13px 10px;" id="submitPayment">Continue To Checkout</button>
                             @else
                                 @php
                                     session(['redirect_url' => url()->current()]);
                                 @endphp
-                                <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn default-btn btn-block">Login To Continue</button>
+                                <button data-toggle="modal" data-target="#loginOtpModal" type="button" class="btn btn-success btn-sm w-100" style="padding:13px 10px;">Login To Continue</button>
                             @endif
 
                             <!-- <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal" data-target="#qrPaymentModal">

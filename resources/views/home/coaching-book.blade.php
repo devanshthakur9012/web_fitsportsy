@@ -285,44 +285,7 @@
     .amenity_round img{
         margin-top: 5px;
     }
-/* 
-    #shareButton {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #shareButton:hover {
-        background-color: #0056b3;
-    }
-
-    a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    } */
 </style>
-    
-        
-    
-    {{-- <style>
-        .btn-success, .default-btn {  
-            animation: glowing 800ms infinite;
-        }
-
-        @keyframes  glowing {
-        0% {  box-shadow: 0 0 3px #fff; }
-        50% {  box-shadow: 0 0 8px #fff; }
-        100% {  box-shadow: 0 0 3px #fff; }
-        }
-
-    </style> --}}
     <style>
         .icon_box{
             /* background: #f8f9fa; */
@@ -385,9 +348,9 @@
             margin-right: 15px;
         }
         .tags{
-            background: #6e6e6e;
+            background: #723ac6;
             color: #ffffff;
-            border-radius: 20px;
+            border-radius: 10px;
             padding: 3px 10px;
         }
 
@@ -425,7 +388,7 @@
         }
 
         .alert_info{
-            background: #0a0a0a !important;
+            background: linear-gradient(to right, #121212, #161616) !important;
             padding: 20px;
             text-align: left;
             color: #ffffff;
@@ -433,10 +396,11 @@
             display: flex;
             border-radius: 3px;
             margin-bottom: 20px;
+            border: 1px solid #2f2f2f;
         }
 
         .alert_info span{
-            color:#6e6e6e;
+            color: #ffc107;
             cursor: pointer;
         }
 
@@ -538,10 +502,10 @@
         }
 
         .refree{
-            background: #2e335a45;
-            padding: 12px;
-            border-radius: 20px;
-            border: 1px dashed;
+            background: linear-gradient(to right, #121212, #161616) !important;
+            padding: 22px 10px 22px;
+            border-radius: 10px;
+            border: 1px solid #2f2f2f;
         }
 
         .grayText * {
@@ -648,11 +612,16 @@
         color:#fff !important;
     }
     .tableDesign{
-        background: #13151f;
+        background: #151515;
         color: #fff;
+        border: 1px solid #202020;
     }
     .tableDesign th{
-        border: 1px solid #fff;
+        border: 1px solid #202020 !important;
+        background: #723ac6;
+    }
+    .tableDesign td{
+        border: 1px solid #202020 !important;
     }
     .slick-prev{
         left: 10px !important;
@@ -832,8 +801,8 @@
                             </div>
                             <h6 class="mb-2 mt-3"><i class="⏳"></i> Overview</h6>
                             <div class="d-flex flex-wrap">
-                                <table class="table table-bordered table-striped tableDesign">
-                                    <thead class="table-dark">
+                                <table class="table tableDesign">
+                                    <thead>
                                         <tr>
                                             <th>Duration</th>
                                             <th>Activity</th>
@@ -854,7 +823,7 @@
                             <h6 class="mb-2 mt-3"><i class="⏳"></i> Benefits</h6>
                             <div class="d-flex flex-wrap">
                                 @foreach ($collection['benefits'] as $benefit)
-                                    <span class="badge badge-primary rounded-pill text-white m-1 px-3 py-2">{{ $benefit }}</span>
+                                    <span class="badge badge-primary rounded-pill text-white m-1 px-3 py-2" style="background:#723ac6;">{{ $benefit }}</span>
                                 @endforeach
                             </div>
                         </div>
@@ -862,15 +831,15 @@
                 @endif
 
                 @if(count($tournament_Artist))
-                <div class="text-white bgFilter2"> 
+                <div class="text-white bgFilter2 mt-5"> 
                     <h4 class="highlighter">Coaching Organizing Team & Coach</h4>
-                    <div class="row">
+                    <div class="row mt-3">
                         @foreach ($tournament_Artist as $sport)
                             <div class="col-md-3 col-sm-6 mb-3">
                                 <div class="mt-2 text-center refree">
                                     <div class="">
                                         <!-- Artist Image -->
-                                        <img class="rounded-circle p-1 border" 
+                                        <img class="rounded-circle p-1" style="border:1px solid #222222 !important;"
                                             src="{{ env('BACKEND_BASE_URL').'/'.$sport['artist_img'] }}" 
                                             alt="{{ $sport['artist_title'] }}" 
                                             width="90px" height="90px">
@@ -892,12 +861,12 @@
                         <div class="products-reviews text-center">
                             @isset($tournament_detail['event_qr'])
                                 <h5 class="mb-3">📲 Scan to register instantly!</h5>
-                                <div class="qr-code-container mb-3" style="display: inline-block; padding: 10px;border-radius: 8px;">
-                                    <img src="{{ $tournament_detail['event_qr'] }}" alt="QR Code" style="width:150px;border-radius:4px;">
+                                <div class="qr-code-container mb-0">
+                                    <img src="{{ $tournament_detail['event_qr'] }}" alt="QR Code">
                                 </div>
                                 <br>
                                 <!-- Download Button with Icon -->
-                                <a href="{{ $tournament_detail['event_qr'] }}" download="coaching-booking.png" class="btn btn-primary btn-sm mt-2" style="display: inline-flex; align-items: center; gap: 5px;">
+                                <a href="{{ $tournament_detail['event_qr'] }}" download="coaching-booking.png" class="btn btn-success btn-sm w-50">
                                     <i class="fas fa-download"></i> Download
                                 </a>
                             @endisset 
@@ -912,9 +881,9 @@
                         </div>
                         <div class="single-ticket">
                             @if($tournament_detail['total_ticket'] <= 0)
-                                <a href="javascript:void(0)" class="btn default-btn w-100">Sold Out</a>
+                                <a href="javascript:void(0)" class="btn btn-success btn-sm w-100 py-2" style="padding:12px 20px !important;">Sold Out</a>
                             @else
-                                <a href="{{ $packageLink }}" class="btn default-btn w-100">Continue To Book {{ $tournament_detail['category'] }}</a>
+                                <a href="{{ $packageLink }}" class="btn btn-success btn-sm w-100 py-2" style="background:#28a745 !important;color:#fff !important;padding:12px 20px !important;">Continue To Book {{ $tournament_detail['category'] }}</a>
                             @endif
                         </div>
                     </div>

@@ -35,7 +35,7 @@
     }
 
     .subscription-card {
-        background: #1a1c2e;
+        background: linear-gradient(to right, #121212, #161616);
         border-radius: 12px;
         transition: all 0.3s ease;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -43,7 +43,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        border: 1px solid #2a2d45;
+        border: 1px solid #2f2f2f;
     }
 
     .subscription-card:hover {
@@ -55,12 +55,12 @@
         padding: 20px;
         text-align: center;
         position: relative;
-        background: linear-gradient(135deg, #3a3d5a, #2a2d45);
+        background: linear-gradient(135deg, #1e1e1e, #232323);
         border-radius: 10px 10px 0px 0px;
     }
 
     .ticket-type {
-        font-size: 1.4rem;
+        font-size: 18px;
         font-weight: 600;
         margin: 0;
         color: #fff;
@@ -84,7 +84,7 @@
         font-size: 2.5rem;
         font-weight: 700;
         margin: 0;
-        background: linear-gradient(90deg, #feca57, #ff9f43);
+        background: linear-gradient(90deg, #8b8b8b, #ffffff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -114,18 +114,16 @@
 
     .features-list li i {
         margin-right: 10px;
-        color: #feca57;
+        color: #797979;
         font-size: 1.1rem;
     }
 
     .slots-badge {
         display: inline-block;
-        background: rgba(255, 107, 107, 0.2);
-        color: #ff6b6b;
+        background: rgb(31 31 31);
+        color: #ffffff;
         padding: 5px 15px;
         border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 600;
         margin-bottom: 20px;
         align-self: center;
     }
@@ -147,8 +145,9 @@
 
     .book-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        background: linear-gradient(90deg, #ff6b6b, #feca57);
+        color:#ffc107 !important;
+        /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
+        /* background: linear-gradient(90deg, #ff6b6b, #feca57); */
         transition: all 0.3s ease;
     }
 
@@ -285,73 +284,77 @@
 <section class="section-area single-detail-area py-3">
     <div class="container">
         <section class="subscription-section">
-            <div class="container">
-                <h1 class="section-title">Available Packages</h1>
-                <div class="row justify-content-center main_card">
-                    @foreach ($tour_plans as $package)
-                        <div class="col-md-4 col-sm-6 mb-5">
-                            <div class="subscription-card">
-                                <div class="subscription-card-header">
-                                    <h3 class="ticket-type">{{ $package['category'] }}</h3>
-                                </div>
-                                <div class="subscription-card-body">
-                                    <div class="price-container">
-                                        @if($package['discount'] > 0)
-                                            <div class="original-price">
-                                                <span class="strikethrough">₹{{ number_format($package['actual_price']) }}</span>
-                                                <span class="discount-badge">{{ $package['discount'] }}% OFF</span>
-                                            </div>
-                                        @endif
-                                        <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
-                                        @if($package['discount'] > 0)
-                                            <p class="you-save mb-0">You save ₹{{ number_format($package['actual_price'] - $package['ticket_price']) }}</p>
-                                        @endif
+            <div class="container d-flex align-items-center justify-content-center">
+                <div class="col-lg-11">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <h1 class="h2 mb-0 ml-2 category-h1">Available Packages</h1>
+                    </div>
+                    <div class="row justify-content-center main_card">
+                        @foreach ($tour_plans as $package)
+                            <div class="col-md-4 col-sm-6 mb-5">
+                                <div class="subscription-card">
+                                    <div class="subscription-card-header">
+                                        <h3 class="ticket-type">{{ $package['category'] }}</h3>
                                     </div>
-                                    
-                                    <span class="slots-badge">{{ $package['TotalTicket'] }} Available Batch Slots</span>
-                                    
-                                    <ul class="features-list mb-0">
-                                        <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
-                                        @php
-                                            $validityMap = [
-                                                'monthly' => 'Monthly',
-                                                'qtrly' => 'Quarterly',
-                                                'quarterly' => 'Quarterly',
-                                                'halfyearly' => 'Half-Yearly',
-                                                'half-yearly' => 'Half-Yearly',
-                                                'yearly' => 'Yearly',
-                                            ];
+                                    <div class="subscription-card-body">
+                                        <div class="price-container">
+                                            @if($package['discount'] > 0)
+                                                <div class="original-price">
+                                                    <span class="strikethrough">₹{{ number_format($package['actual_price']) }}</span>
+                                                    <span class="discount-badge">{{ $package['discount'] }}% OFF</span>
+                                                </div>
+                                            @endif
+                                            <h2 class="price">₹{{ number_format($package['ticket_price']) }}</h2>
+                                            @if($package['discount'] > 0)
+                                                <p class="you-save mb-0">You save ₹{{ number_format($package['actual_price'] - $package['ticket_price']) }}</p>
+                                            @endif
+                                        </div>
+                                        
+                                        <span class="slots-badge">{{ $package['TotalTicket'] }} Available Batch Slots</span>
+                                        
+                                        <ul class="features-list mb-0">
+                                            <li><i class="fas fa-calendar-check"></i> {{ $package['description'] }}</li>
+                                            @php
+                                                $validityMap = [
+                                                    'monthly' => 'Monthly',
+                                                    'qtrly' => 'Quarterly',
+                                                    'quarterly' => 'Quarterly',
+                                                    'halfyearly' => 'Half-Yearly',
+                                                    'half-yearly' => 'Half-Yearly',
+                                                    'yearly' => 'Yearly',
+                                                ];
 
-                                            $key = strtolower(trim($package['price_validity']));
-                                            $validityLabel = $validityMap[$key] ?? ucfirst($key);
-                                        @endphp
+                                                $key = strtolower(trim($package['price_validity']));
+                                                $validityLabel = $validityMap[$key] ?? ucfirst($key);
+                                            @endphp
 
-                                        <li><i class="fas fa-check-circle"></i> {{ $validityLabel }} Package</li>
-                                        <li><i class="fas fa-clock"></i> {{ $package['ticket_type'] }}</li>
-                                        @if($package['comp_classes'] > 0)
-                                            <li><i class="fas fa-undo-alt"></i> {{ $package['comp_classes'] }} Compensation Classes</li>
+                                            <li><i class="fas fa-check-circle"></i> {{ $validityLabel }} Package</li>
+                                            <li><i class="fas fa-clock"></i> {{ $package['ticket_type'] }}</li>
+                                            @if($package['comp_classes'] > 0)
+                                                <li><i class="fas fa-undo-alt"></i> {{ $package['comp_classes'] }} Compensation Classes</li>
+                                            @endif
+
+                                            @if($package['pause_weeks'] > 0)
+                                                <li><i class="fas fa-pause-circle"></i> {{ $package['pause_weeks'] }} Pause Week{{ $package['pause_weeks'] > 1 ? 's' : '' }}</li>
+                                            @endif
+
+                                            @if($package['weekly_session'] > 0)
+                                                <li><i class="fas fa-calendar-alt"></i> {{ $package['weekly_session'] }} Session{{ $package['weekly_session'] > 1 ? 's' : '' }} per week</li>
+                                            @endif
+                                        </ul>
+                                        @if($package['offer'])
+                                            <p class="mt-3 mb-0 offerText">{{ $package['offer'] }}</p>
                                         @endif
-
-                                        @if($package['pause_weeks'] > 0)
-                                            <li><i class="fas fa-pause-circle"></i> {{ $package['pause_weeks'] }} Pause Week{{ $package['pause_weeks'] > 1 ? 's' : '' }}</li>
-                                        @endif
-
-                                        @if($package['weekly_session'] > 0)
-                                            <li><i class="fas fa-calendar-alt"></i> {{ $package['weekly_session'] }} Session{{ $package['weekly_session'] > 1 ? 's' : '' }} per week</li>
-                                        @endif
-                                    </ul>
-                                    @if($package['offer'])
-                                        <p class="mt-3 mb-0 offerText">{{ $package['offer'] }}</p>
-                                    @endif
-                                    <button class="book-btn" 
-                                        data-tour="{{ $coaching_id }}" 
-                                        data-ticket="{{ $package['typeid'] }}">
-                                        Book Now
-                                    </button>
+                                        <button class="btn btn-success btn-sm book-btn" 
+                                            data-tour="{{ $coaching_id }}" 
+                                            data-ticket="{{ $package['typeid'] }}">
+                                            Book Now
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </section>

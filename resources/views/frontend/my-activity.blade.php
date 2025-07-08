@@ -1,60 +1,40 @@
 @extends('frontend.master', ['activePage' => null])
-
 @section('title', __('My Group Session'))
-
 @section('content')
-<style>
-    .btn-delete {
-        background: #ff0000;
-        border: 1px solid #ff0000;
-        color: #fff;
-    }
-
-    .bg-backGround {
-        background-color: transparent !important;
-        color: #fff;
-        border: 1px solid;
-    }
-
-    .table td,
-    .table th {
-        border: 1px solid #dee2e6;
-    }
-</style>
-<section class="active-tickets mb-4 mt-5">
+<section class="group-session py-5">
     <div class="container">
-        <h2 class="h4 mb-4 text-center">My Group Session</h2>
-        <div class="row">
-            @isset($myActivity)
-                <table class="table bg-backGround rounded-sm p-2">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">#</th>
-                            <th scope="col" class="text-center">Session Name</th>
-                            <th scope="col" class="text-center">Type</th>
-                            <th scope="col" class="text-center">Timing</th>
-                            <th scope="col" class="text-center">Venue</th>
-                            <!-- <th scope="col">Info</th> -->
-                            <th scope="col" class="text-center">Status</th>
-                            <th scope="col" class="text-center">Apply Date</th>
-                            <th scope="col" class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($myActivity as $index => $item)
+        <div class="text-center mb-4">
+            <h1 class="h3 font-weight-bold">{{ __('My Group Session') }}</h1>
+            <p class="lead text-muted">View and manage your group session activities</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                @isset($myActivity)
+                <div class="table-responsive">
+                    <table class="table table-dark rounded-lg overflow-hidden">
+                        <thead class="bg-dark">
                             <tr>
-                                <th scope="row">{{ $index + 1 }}</th>
-                                <td>{{ $item['title'] }}</td>
-                                <td>{{ $item['category_name'] }}</td>
-                                <td>{{ $item['play_sdate'] }}</td>
-                                <td>{{ $item['venue'] }}</td>
-                                <!-- <td>
-                                    <p class="mb-0">TXT No. : {{$item['txt_number'] ?? "--"}}</p>
-                                    <p class="mb-0">Message : {{$item['message'] ?? "--"}}</p>
-                                </td> -->
-                                <td>{{ $item['category_name'] }}</td>
-                                <td>{{ $item['apply_date'] }}</td>
-                                <td>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col" class="text-center">Session Name</th>
+                                <th scope="col" class="text-center">Type</th>
+                                <th scope="col" class="text-center">Timing</th>
+                                <th scope="col" class="text-center">Venue</th>
+                                <th scope="col" class="text-center">Status</th>
+                                <th scope="col" class="text-center">Apply Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($myActivity as $index => $item)
+                            <tr class="border-secondary">
+                                <td scope="row" class="text-center align-middle border">{{ $index + 1 }}</td>
+                                <td class="align-middle border">{{ $item['title'] }}</td>
+                                <td class="text-center align-middle border">
+                                    <span class="badge badge-primary">{{ $item['category_name'] }}</span>
+                                </td>
+                                <td class="text-center align-middle border">{{ $item['play_sdate'] }}</td>
+                                <td class="text-center align-middle border">{{ $item['venue'] }}</td>
+                                <td class="text-center align-middle border">
                                     @if($item['status'] === 'Accepted')
                                         <span class="badge bg-success">Accepted</span>
                                     @elseif($item['status'] === 'Rejected')
@@ -63,15 +43,78 @@
                                         <span class="badge bg-warning text-dark">Pending</span>
                                     @endif
                                 </td>
+                                <td class="text-center align-middle border">{{ $item['apply_date'] }}</td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @else
-                <p class="text-center">No Activity Available.</p>
-            @endisset
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @else
+                <div class="card bg-dark text-center p-4 border-secondary">
+                    <p class="mb-0 text-muted">No Activity Available.</p>
+                </div>
+                @endisset
+            </div>
         </div>
     </div>
 </section>
 @include('alert-messages')
 @endsection
+
+@push('styles')
+<style>
+    .group-session {
+        background-color: #121212;
+    }
+    
+    .group-session .table {
+        background: linear-gradient(to right, #121212, #161616);
+        border-color: #2f2f2f !important;
+    }
+    
+    .group-session .table th, 
+    .group-session .table td {
+        border-color: #2f2f2f !important;
+        vertical-align: middle;
+    }
+    
+    .group-session .table thead th {
+        background-color: #212121;
+        border-bottom: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+    }
+    
+    .group-session .table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+    }
+    
+    .group-session .badge-primary {
+        background-color: #efb507 !important;
+        color: #121212;
+        font-weight: 500;
+    }
+    
+    .group-session .badge-success {
+        background-color: #28a745 !important;
+    }
+    
+    .group-session .badge-danger {
+        background-color: #dc3545 !important;
+    }
+    
+    .group-session .badge-warning {
+        background-color: #ffc107 !important;
+    }
+    
+    .group-session .rounded-lg {
+        border-radius: 0.5rem !important;
+    }
+    
+    .group-session .text-muted {
+        color: #6c757d !important;
+    }
+</style>
+@endpush

@@ -54,9 +54,10 @@
         }
 
         .socialFooter i {
-            border: 1px solid #fff;
+            border: 1px solid #a5a5a5;
             padding: 10px;
             border-radius: 50%;
+            color: #a5a5a5;
         }
         ::-webkit-calendar-picker-indicator {
             filter: invert(1);
@@ -609,6 +610,32 @@
             right: 10px;
         }
     </style>
+    <style>
+        .location-modal-content{
+            background-color: #000000;
+            border: 2px solid #2f2f2f;
+        }
+
+        .location-modal-content .location-box{
+            border: 1px solid #000000;
+            color: #fff;
+            background: #000000;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0px 0px 2px #fff;
+            text-align: center;
+        }
+
+        .location-modal-content .location-box:hover {
+            border: 1px solid #ffc107 !important;
+            color: #ffc107 !important;
+        }
+
+        .location-modal-content .location-box.active {
+            border: 1px solid #ffc107 !important;
+            color: #ffc107 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -846,29 +873,22 @@
 
     <div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title h4" id="locationModalLabel"><i class="fas fa-map-marker-alt"></i>
-                        Locations</h5>
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content location-modal-content">
+                <div class="modal-body pt-4 px-5 pb-5">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
                     <div class="popular-location">
-                        <h6 class="text-center mb-3">Popular Cites</h6>
-                        <div class="d-flex flex-wrap justify-content-center" style="gap: 10px;">
+                        <h3 class="text-center mb-4">Popular Cites</h3>
+                        <div class="d-flex flex-wrap justify-content-center" style="gap: 12px;">
                             @foreach ($locationData as $item)
-                                <div class="w-auto">
-                                    <a href="{{ url('event-city?city=' . $item['city'] . '&redirect=' . request()->fullUrl()) }}"
-                                        class="btn text-center btn-outline-light btn-sm">
-                                        @if(isset($item['image']) && $item['image'] != null)
-                                            <img class="img-fluid d-block m-auto" style="width: 50px; height: 50px; object-fit: contain;" src="{{ env('BACKEND_BASE_URL') }}/{{$item['image']}}" alt="{{$item['city']}}">
-                                        @endif
-                                        {{$item['city']}}
-                                    </a>
-                                </div>
+                                <a href="{{ url('event-city?city=' . $item['city'] . '&redirect=' . request()->fullUrl()) }}" class="w-auto location-box @if(\Session::get('CURR_CITY') == $item['city']) active @endif">
+                                    @if(isset($item['image']) && $item['image'] != null)
+                                        <img class="img-fluid d-block m-auto" style="width: 50px; height: 50px; object-fit: contain;" src="{{ env('BACKEND_BASE_URL') }}/{{$item['image']}}" alt="{{$item['city']}}">
+                                    @endif
+                                    {{$item['city']}}
+                                </a>
                             @endforeach
                         </div>
                     </div>

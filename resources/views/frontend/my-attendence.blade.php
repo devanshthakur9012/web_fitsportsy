@@ -2,70 +2,153 @@
 @section('title', __('My Attendance'))
 @section('content')
 
-<style>
-    .btn-delete {
-        background: #ff0000;
-        border: 1px solid #ff0000;
-        color: #fff;
-    }
-
-    .bg-backGround {
-        background-color: transparent !important;
-        color: #fff;
-        border: 1px solid;
-    }
-
-    .table td,
-    .table th {
-        border: 1px solid #dee2e6;
-    }
-</style>
-
-<section class="active-tickets mb-5 mt-5">
+<section class="my-attendance py-5">
     <div class="container">
-        <h2 class="text-center h4 mb-4">My Attendance</h2>
+        <div class="text-center mb-4">
+            <h1 class="h3 font-weight-bold">{{ __('My Attendance') }}</h1>
+            <p class="lead text-muted">Track and manage your event attendance records</p>
+        </div>
 
-        <!-- Filters -->
-        <form id="attendanceFilterForm">
-            <div class="row mb-3">
-                <!-- Event Filter -->
-                <div class="col-md-4">
-                    <label for="event_id" class="form-label">Select Event</label>
-                    <select name="event_id" id="event_id" class="form-control">
-                        <option value="">All Events</option>
-                        @isset($events)
-                            @foreach ($events as $event)
-                                <option value="{{ $event['id'] }}" {{ $defaultEvent == $event['id'] ? 'selected' : '' }}>
-                                    {{ $event['title'] }}
-                                </option>
-                            @endforeach
-                        @endisset
-                    </select>
-                </div>
+        <!-- Filters Card -->
+        <div class="card bg-dark border-secondary mb-4">
+            <div class="card-body">
+                <form id="attendanceFilterForm">
+                    <div class="row">
+                        <!-- Event Filter -->
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <label for="event_id" class="form-label text-muted">Select Event</label>
+                            <select name="event_id" id="event_id" class="form-control text-light border-secondary">
+                                <option value="">All Events</option>
+                                @isset($events)
+                                    @foreach ($events as $event)
+                                        <option value="{{ $event['id'] }}" {{ $defaultEvent == $event['id'] ? 'selected' : '' }}>
+                                            {{ $event['title'] }}
+                                        </option>
+                                    @endforeach
+                                @endisset
+                            </select>
+                        </div>
 
-                <!-- Date Filter -->
-                <div class="col-md-4">
-                    <label for="date_filter" class="form-label">Select Month & Year</label>
-                    <input type="month" name="date_filter" id="date_filter" class="form-control"
-                           value="{{ request('date_filter', date('Y-m')) }}">
-                </div>
+                        <!-- Date Filter -->
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <label for="date_filter" class="form-label text-muted">Select Month & Year</label>
+                            <input type="month" name="date_filter" id="date_filter" class="form-control text-light border-secondary"
+                                   value="{{ request('date_filter', date('Y-m')) }}">
+                        </div>
 
-                <!-- Submit Button -->
-                <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-secondary w-100 py-2">Filter</button>
-                </div>
+                        <!-- Submit Button -->
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100 py-2" style="background-color: #efb507; border-color: #efb507; color:rgb(251, 251, 251);">
+                                <i class="fas fa-filter mr-2"></i> Filter
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
 
         <!-- Attendance Table -->
-        <div id="attendanceTable">
-            @include('frontend.attendance-ajax', ['attendance' => $attendance])
+        <div id="attendanceTable" class="card bg-dark border-secondary">
+            <div class="card-body p-0">
+                @include('frontend.attendance-ajax', ['attendance' => $attendance])
+            </div>
         </div>
 
     </div>
 </section>
+
 @include('alert-messages')
 @endsection
+
+@push('styles')
+<style>
+    .my-attendance {
+        background-color: #121212;
+        color: #fff;
+    }
+    
+    .my-attendance .card {
+        background: linear-gradient(to right, #121212, #161616);
+        border-color: #2f2f2f !important;
+    }
+    
+    .my-attendance .form-control {
+        background-color: #1e1e1e;
+        border-color: #2f2f2f;
+        color: #fff;
+    }
+    
+    .my-attendance .form-control:focus {
+        background-color: #1e1e1e;
+        border-color: #efb507;
+        color: #fff;
+        box-shadow: 0 0 0 0.2rem rgba(239, 181, 7, 0.25);
+    }
+    
+    .my-attendance .form-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    
+    .my-attendance .table {
+        color: #fff;
+        margin-bottom: 0;
+    }
+    
+    .my-attendance .table th {
+        background-color: #212121;
+        border-color: #2f2f2f !important;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+    }
+    
+    .my-attendance .table td {
+        border-color: #2f2f2f !important;
+        vertical-align: middle;
+    }
+    
+    .my-attendance .table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+    }
+    
+    .my-attendance .badge-success {
+        background-color: #28a745 !important;
+    }
+    
+    .my-attendance .badge-danger {
+        background-color: #dc3545 !important;
+    }
+    
+    .my-attendance .badge-warning {
+        background-color: #ffc107 !important;
+        color: #121212 !important;
+    }
+    
+    .my-attendance .text-muted {
+        color: #6c757d !important;
+    }
+    
+    .my-attendance .pagination .page-item .page-link {
+        background-color: #1e1e1e;
+        border-color: #2f2f2f;
+        color: #efb507;
+    }
+    
+    .my-attendance .pagination .page-item.active .page-link {
+        background-color: #efb507;
+        border-color: #efb507;
+        color: #121212;
+    }
+    
+    .my-attendance .pagination .page-item.disabled .page-link {
+        background-color: #1e1e1e;
+        border-color: #2f2f2f;
+        color: #6c757d;
+    }
+</style>
+@endpush
 
 @push('scripts')
 <script>
@@ -78,13 +161,29 @@
                 method: 'GET',
                 data: formData,
                 beforeSend: function() {
-                    $('#attendanceTable').html('<div class="text-center"><i class="fas fa-spinner fa-spin fa-2x"></i></div>');
+                    $('#attendanceTable').html(`
+                        <div class="card-body">
+                            <div class="text-center py-4">
+                                <i class="fas fa-spinner fa-spin fa-2x" style="color: #efb507;"></i>
+                            </div>
+                        </div>
+                    `);
                 },
                 success: function (response) {
-                    $('#attendanceTable').html(response.html);
+                    $('#attendanceTable').html(`
+                        <div class="card-body p-0">
+                            ${response.html}
+                        </div>
+                    `);
                 },
                 error: function () {
-                    alert('Failed to fetch data.');
+                    $('#attendanceTable').html(`
+                        <div class="card-body">
+                            <div class="alert alert-danger">
+                                Failed to fetch attendance data. Please try again.
+                            </div>
+                        </div>
+                    `);
                 }
             });
         }
