@@ -348,7 +348,7 @@
             margin-right: 15px;
         }
         .tags{
-            background: #723ac6;
+            background: #353535;
             color: #ffffff;
             border-radius: 10px;
             padding: 3px 10px;
@@ -618,7 +618,7 @@
     }
     .tableDesign th{
         border: 1px solid #202020 !important;
-        background: #723ac6;
+        background: #353535;
     }
     .tableDesign td{
         border: 1px solid #202020 !important;
@@ -823,7 +823,7 @@
                             <h6 class="mb-2 mt-3"><i class="⏳"></i> Benefits</h6>
                             <div class="d-flex flex-wrap">
                                 @foreach ($collection['benefits'] as $benefit)
-                                    <span class="badge badge-primary rounded-pill text-white m-1 px-3 py-2" style="background:#723ac6;">{{ $benefit }}</span>
+                                    <span class="badge badge-primary rounded-pill text-white m-1 px-3 py-2" style="background:#353535;">{{ $benefit }}</span>
                                 @endforeach
                             </div>
                         </div>

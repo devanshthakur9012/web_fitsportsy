@@ -35,7 +35,8 @@
     }
 
     .subscription-card {
-        background: linear-gradient(to right, #121212, #161616);
+        /* background: linear-gradient(to right, #121212, #161616); */
+        background: #1a1c2e;
         border-radius: 12px;
         transition: all 0.3s ease;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -43,6 +44,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        /* border: 1px solid #2f2f2f; */
         border: 1px solid #2f2f2f;
     }
 
@@ -55,12 +57,13 @@
         padding: 20px;
         text-align: center;
         position: relative;
-        background: linear-gradient(135deg, #1e1e1e, #232323);
+        /* background: linear-gradient(135deg, #1e1e1e, #232323); */
+        background: linear-gradient(135deg, #3a3d5a, #2a2d45);
         border-radius: 10px 10px 0px 0px;
     }
 
     .ticket-type {
-        font-size: 18px;
+        font-size: 1.4rem;
         font-weight: 600;
         margin: 0;
         color: #fff;
@@ -84,7 +87,8 @@
         font-size: 2.5rem;
         font-weight: 700;
         margin: 0;
-        background: linear-gradient(90deg, #8b8b8b, #ffffff);
+        /* background: linear-gradient(90deg, #8b8b8b, #ffffff); */
+         background: linear-gradient(90deg, #feca57, #ff9f43);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -114,16 +118,21 @@
 
     .features-list li i {
         margin-right: 10px;
-        color: #797979;
+        /* color: #797979; */
+        color: #feca57;
         font-size: 1.1rem;
     }
 
     .slots-badge {
         display: inline-block;
-        background: rgb(31 31 31);
-        color: #ffffff;
+        /* background: rgb(31 31 31);
+        color: #ffffff; */
+        background: rgba(255, 107, 107, 0.2);
+        color: #ff6b6b;
         padding: 5px 15px;
         border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
         margin-bottom: 20px;
         align-self: center;
     }
@@ -145,7 +154,9 @@
 
     .book-btn:hover {
         transform: translateY(-2px);
-        color:#ffc107 !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(90deg, #ff6b6b, #feca57);
+        /* color:#ffc107 !important; */
         /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
         /* background: linear-gradient(90deg, #ff6b6b, #feca57); */
         transition: all 0.3s ease;
@@ -285,10 +296,11 @@
     <div class="container">
         <section class="subscription-section">
             <div class="container d-flex align-items-center justify-content-center">
-                <div class="col-lg-11">
-                    <div class="d-flex align-items-center justify-content-center">
+                <div class="col-lg-12">
+                    <!-- <div class="d-flex align-items-center justify-content-center">
                         <h1 class="h2 mb-0 ml-2 category-h1">Available Packages</h1>
-                    </div>
+                    </div> -->
+                    <h1 class="section-title">Available Packages</h1>
                     <div class="row justify-content-center main_card">
                         @foreach ($tour_plans as $package)
                             <div class="col-md-4 col-sm-6 mb-5">
@@ -345,7 +357,7 @@
                                         @if($package['offer'])
                                             <p class="mt-3 mb-0 offerText">{{ $package['offer'] }}</p>
                                         @endif
-                                        <button class="btn btn-success btn-sm book-btn" 
+                                        <button class="book-btn" 
                                             data-tour="{{ $coaching_id }}" 
                                             data-ticket="{{ $package['typeid'] }}">
                                             Book Now
